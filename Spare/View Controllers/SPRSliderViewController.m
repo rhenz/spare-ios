@@ -8,14 +8,20 @@
 
 #import "SPRSliderViewController.h"
 
-@interface SPRSliderViewController ()
+@interface SPRSliderViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITabBarController *content;
+@property (strong, nonatomic) UITableView *menu;
+
+@property (strong, nonatomic) NSArray *menuOptions;
 
 @end
 
 static const CGFloat kContentOffsetLimit = 250;
-static const NSInteger kMinimumTranslation = 100;
+static const CGFloat kMenuCellHeight = 50;
+static const NSInteger kMinimumTranslation = 50;
+
+static NSString * const kMenuCell = @"Cell";
 
 static CGPoint contentOrigin;
 static BOOL rightPanBeganInContent;
@@ -27,6 +33,22 @@ static BOOL rightPanBeganInContent;
     self = [super init];
     if (self) {
         _content = [[UIStoryboard storyboardWithName:@"iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"Content"];
+        _content.tabBar.hidden = YES;
+        
+        _menuOptions = @[@"Home", @"Drafts", @"Settings"];
+        
+        CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+        CGFloat menuHeight = kMenuCellHeight * [_menuOptions count];
+        CGFloat menuY = screenHeight / 2 - menuHeight / 2;
+        
+        _menu = [[UITableView alloc] initWithFrame:CGRectMake(0, menuY, kContentOffsetLimit, menuHeight) style:UITableViewStylePlain];
+        _menu.backgroundColor = [UIColor clearColor];
+        _menu.separatorColor = [UIColor clearColor];
+        _menu.scrollEnabled = NO;
+        _menu.dataSource = self;
+        _menu.delegate = self;
+        [_menu registerClass:[UITableViewCell class] forCellReuseIdentifier:kMenuCell];
+        
     }
     return self;
 }
@@ -37,6 +59,10 @@ static BOOL rightPanBeganInContent;
     
     self.view.backgroundColor = [UIColor darkGrayColor];
     
+    // Add the menu.
+    [self.view addSubview:self.menu];
+    
+    // Add the content.
     [self addChildViewController:self.content];
     [self.view addSubview:self.content.view];
     [self.content didMoveToParentViewController:self];
@@ -119,16 +145,62 @@ static BOOL rightPanBeganInContent;
 
 - (void)showMenu
 {
-    [UIView animateWithDuration:0.25 animations:^{
+    self.content.view.userInteractionEnabled = NO;
+    [UIView animateWithDuration:0.2 animations:^{
         self.content.view.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, kContentOffsetLimit, 0);
+    } completion:^(BOOL finished) {
+        self.menu.userInteractionEnabled = YES;
     }];
 }
 
 - (void)hideMenu
 {
-    [UIView animateWithDuration:0.25 animations:^{
+    self.menu.userInteractionEnabled = NO;
+    [UIView animateWithDuration:0.2 animations:^{
         self.content.view.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, 0);
+    } completion:^(BOOL finished) {
+        self.content.view.userInteractionEnabled = YES;
     }];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.menuOptions count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kMenuCell];
+    
+    cell.backgroundColor = [UIColor clearColor];
+    cell.textLabel.text = self.menuOptions[indexPath.row];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.font = [UIFont systemFontOfSize:20];
+    
+    return cell;
+}
+
+#pragma mark - Table view delegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return kMenuCellHeight;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    self.content.selectedIndex = indexPath.row;
+    
+    [self hideMenu];
 }
 
 @end
