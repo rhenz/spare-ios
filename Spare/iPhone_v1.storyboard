@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--OldSPR Home View Controller-->
         <scene sceneID="U3i-GL-Ttx">
             <objects>
-                <viewController id="PDP-O7-nbk" customClass="SPRHomeViewController" sceneMemberID="viewController">
+                <viewController id="PDP-O7-nbk" customClass="OldSPRHomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iYG-qf-Jrg"/>
                         <viewControllerLayoutGuide type="bottom" id="KFN-NH-RpE"/>

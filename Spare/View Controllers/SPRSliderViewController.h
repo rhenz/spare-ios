@@ -10,5 +10,7 @@
 
 @interface SPRSliderViewController : UIViewController
 
+- (void)showMenu;
+- (void)hideMenu;
 
 @end

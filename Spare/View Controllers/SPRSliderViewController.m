@@ -19,7 +19,7 @@
 
 static const CGFloat kContentOffsetLimit = 250;
 static const CGFloat kMenuCellHeight = 50;
-static const NSInteger kMinimumTranslation = 50;
+static const NSInteger kMinimumTranslation = 100;
 
 static NSString * const kMenuCell = @"Cell";
 
@@ -136,7 +136,7 @@ static BOOL rightPanBeganInContent;
     CGPoint translation = [panGesture translationInView:self.view];
     
     // If the pan distance is big enough, lock the content to the left.
-    if (translation.x <= -kMinimumTranslation) {
+    if (translation.x <= -kMinimumTranslation / 2) {
         [self hideMenu];
     } else {
         [self showMenu];
