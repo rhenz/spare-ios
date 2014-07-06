@@ -195,8 +195,8 @@ static const NSInteger kTextFieldTag = 1000;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    [Crashlytics setIntValue:range.location forKey:@"range.location"];
-    [Crashlytics setIntValue:range.length forKey:@"range.length"];
+    [Crashlytics setIntValue:(int)range.location forKey:@"range.location"];
+    [Crashlytics setIntValue:(int)range.length forKey:@"range.length"];
     [Crashlytics setObjectValue:string forKey:@"replacementString"];
     
     SPRTextField *theTextField = (SPRTextField *)textField;

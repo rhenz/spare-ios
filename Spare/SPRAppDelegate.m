@@ -16,6 +16,9 @@
 #import "GAI.h"
 #import "GAIFields.h"
 
+// View controllers
+#import "SPRSliderViewController.h"
+
 @implementation SPRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -30,6 +33,13 @@
     // Track the start of the session.
     id tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-51765151-1"];
     [tracker set:kGAISessionControl value:@"start"];
+    
+    // Set up the root view controller.
+    SPRSliderViewController *slider = [[SPRSliderViewController alloc] init];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = slider;
+    self.window.backgroundColor = [UIColor blackColor];
+    [self.window makeKeyAndVisible];
     
     return YES;
 }
