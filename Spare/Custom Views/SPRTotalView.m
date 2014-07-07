@@ -72,6 +72,7 @@ static const CGFloat kWidth = 212;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [super touchesBegan:touches withEvent:event];
     [UIView animateWithDuration:0.1 animations:^{
         self.alpha = 0.3;
     }];
@@ -79,6 +80,7 @@ static const CGFloat kWidth = 212;
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [super touchesCancelled:touches withEvent:event];
     [UIView animateWithDuration:0.1 animations:^{
         self.alpha = 1;
     }];
@@ -86,6 +88,7 @@ static const CGFloat kWidth = 212;
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    [super touchesEnded:touches withEvent:event];
     [UIView animateWithDuration:0.1 animations:^{
         self.alpha = 1;
     }];

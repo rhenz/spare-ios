@@ -49,6 +49,8 @@
 		2666C2C61957CF7A003752BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C41957CF7A003752BF /* SystemConfiguration.framework */; };
 		2666C2C81957CF93003752BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C71957CF93003752BF /* libz.dylib */; };
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
+		2667328A196AF82700BB4DBE /* SPRPeriodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26673289196AF82700BB4DBE /* SPRPeriodViewController.m */; };
+		2667328D196AFA9200BB4DBE /* SPRPeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 2667328C196AFA9200BB4DBE /* SPRPeriod.m */; };
 		2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */; };
 		2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628218E3370400B8D167 /* SPRManagedDocument.m */; };
 		2688628618E339F900B8D167 /* SPRField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628518E339F900B8D167 /* SPRField.m */; };
@@ -94,7 +96,7 @@
 /* Begin PBXFileReference section */
 		1D78CD279F1A45BD8D86373D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		2603E759193C83F1009F9AD6 /* spare-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-icons.ttf"; sourceTree = "<group>"; };
-		260F2BF61910053300FAEA5C /* SPRTimeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRTimeFrame.h; sourceTree = "<group>"; };
+		260F2BF61910053300FAEA5C /* SPRDateDimension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRDateDimension.h; sourceTree = "<group>"; };
 		260F58C5192C33B800F27F28 /* SPRFormComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRFormComponents.h; sourceTree = "<group>"; };
 		260F58C6192C33B800F27F28 /* SPRFormComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRFormComponents.m; sourceTree = "<group>"; };
 		2612A25318FBEEE300E4848E /* SPRExpenseSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseSectionHeaderView.h; sourceTree = "<group>"; };
@@ -167,6 +169,10 @@
 		2666C2C41957CF7A003752BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2666C2C71957CF93003752BF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		2666C2C91957CFA1003752BF /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		26673288196AF82700BB4DBE /* SPRPeriodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRPeriodViewController.h; sourceTree = "<group>"; };
+		26673289196AF82700BB4DBE /* SPRPeriodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRPeriodViewController.m; sourceTree = "<group>"; };
+		2667328B196AFA9200BB4DBE /* SPRPeriod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRPeriod.h; sourceTree = "<group>"; };
+		2667328C196AFA9200BB4DBE /* SPRPeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRPeriod.m; sourceTree = "<group>"; };
 		2688627B18E31E2F00B8D167 /* SPRColorChooserSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRColorChooserSectionHeader.h; sourceTree = "<group>"; };
 		2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRColorChooserSectionHeader.m; sourceTree = "<group>"; };
 		2688628118E3370400B8D167 /* SPRManagedDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRManagedDocument.h; sourceTree = "<group>"; };
@@ -263,7 +269,7 @@
 		260F2BF5191004FF00FAEA5C /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				260F2BF61910053300FAEA5C /* SPRTimeFrame.h */,
+				260F2BF61910053300FAEA5C /* SPRDateDimension.h */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -408,6 +414,8 @@
 				263BA033193E39750022BFDC /* SPRExpenseSectionHeader.m */,
 				26922D9D19443D6D00074638 /* SPRNSIndexPathTransformer.h */,
 				26922D9E19443D6D00074638 /* SPRNSIndexPathTransformer.m */,
+				2667328B196AFA9200BB4DBE /* SPRPeriod.h */,
+				2667328C196AFA9200BB4DBE /* SPRPeriod.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -506,6 +514,8 @@
 				2659EFF91968D62D005F31E1 /* SPRSliderViewController.m */,
 				26D2D70F19694BB100CCC973 /* SPRHomeViewController.h */,
 				26D2D71019694BB100CCC973 /* SPRHomeViewController.m */,
+				26673288196AF82700BB4DBE /* SPRPeriodViewController.h */,
+				26673289196AF82700BB4DBE /* SPRPeriodViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -684,6 +694,7 @@
 				263B09351939ADD900454F2D /* SPRCategorySummary.m in Sources */,
 				2612A25518FBEEE300E4848E /* SPRExpenseSectionHeaderView.m in Sources */,
 				26D2D7301969CFB100CCC973 /* SPRCategoryColorCell.m in Sources */,
+				2667328D196AFA9200BB4DBE /* SPRPeriod.m in Sources */,
 				2612C8AF18E847DB00DE2765 /* NSDate+SPR.m in Sources */,
 				260F58C7192C33B800F27F28 /* SPRFormComponents.m in Sources */,
 				261DD0831945979200B0EBB2 /* SPRExpense.m in Sources */,
@@ -700,6 +711,7 @@
 				2661CD7619321751009C7034 /* SPRCategoryHeaderCell.m in Sources */,
 				26A9029D191DD81400CEE065 /* UIView+SPR.m in Sources */,
 				26E2484618E1B7F900391354 /* UIColor+HexColor.m in Sources */,
+				2667328A196AF82700BB4DBE /* SPRPeriodViewController.m in Sources */,
 				26A90290191DCF9000CEE065 /* SPREditExpenseViewController.m in Sources */,
 				26E9C310193CC41B009F18D9 /* NSIndexPath+SPR.m in Sources */,
 				261EB87118DDB631009DDF78 /* main.m in Sources */,

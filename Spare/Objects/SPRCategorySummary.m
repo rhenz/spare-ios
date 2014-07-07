@@ -37,7 +37,7 @@
     return self;
 }
 
-- (NSDecimalNumber *)totalForTimeFrame:(SPRTimeFrame)timeFrame
+- (NSDecimalNumber *)totalForTimeFrame:(SPRDateDimension)timeFrame
 {
     NSArray *fetchers = @[self.dailyTotalFetcher, self.weeklyTotalFetcher, self.monthlyTotalFetcher, self.yearlyTotalFetcher];
     NSFetchedResultsController *fetcher = fetchers[timeFrame];
@@ -55,7 +55,7 @@
         return _dailyTotalFetcher;
     }
     
-    _dailyTotalFetcher = [SPRCategorySummary totalFetcherForCategory:self.category timeFrame:SPRTimeFrameDay];
+    _dailyTotalFetcher = [SPRCategorySummary totalFetcherForCategory:self.category timeFrame:SPRDateDimensionDay];
     return _dailyTotalFetcher;
 }
 
@@ -65,7 +65,7 @@
         return _weeklyTotalFetcher;
     }
     
-    _weeklyTotalFetcher = [SPRCategorySummary totalFetcherForCategory:self.category timeFrame:SPRTimeFrameWeek];
+    _weeklyTotalFetcher = [SPRCategorySummary totalFetcherForCategory:self.category timeFrame:SPRDateDimensionWeek];
     return _weeklyTotalFetcher;
 }
 
@@ -75,7 +75,7 @@
         return _monthlyTotalFetcher;
     }
     
-    _monthlyTotalFetcher = [SPRCategorySummary totalFetcherForCategory:self.category timeFrame:SPRTimeFrameMonth];
+    _monthlyTotalFetcher = [SPRCategorySummary totalFetcherForCategory:self.category timeFrame:SPRDateDimensionMonth];
     return _monthlyTotalFetcher;
 }
 
@@ -85,21 +85,21 @@
         return _yearlyTotalFetcher;
     }
     
-    _yearlyTotalFetcher = [SPRCategorySummary totalFetcherForCategory:self.category timeFrame:SPRTimeFrameYear];
+    _yearlyTotalFetcher = [SPRCategorySummary totalFetcherForCategory:self.category timeFrame:SPRDateDimensionYear];
     return _yearlyTotalFetcher;
 }
 
 #pragma mark -
 
-+ (NSFetchedResultsController *)totalFetcherForCategory:(SPRCategory *)category timeFrame:(SPRTimeFrame)timeFrame
++ (NSFetchedResultsController *)totalFetcherForCategory:(SPRCategory *)category timeFrame:(SPRDateDimension)timeFrame
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([SPRExpense class]) inManagedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext];
     fetchRequest.entity = entityDescription;
     
     NSDate *currentDate = [NSDate date];
-    NSDate *startDate = [currentDate firstMomentInTimeFrame:timeFrame];
-    NSDate *endDate = [currentDate lastMomentInTimeFrame:timeFrame];
+    NSDate *startDate = [currentDate firstMomentInDimension:timeFrame];
+    NSDate *endDate = [currentDate lastMomentInDimension:timeFrame];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category == %@ AND dateSpent >= %@ AND dateSpent <= %@", category, startDate, endDate];
     fetchRequest.predicate = predicate;

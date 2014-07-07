@@ -15,6 +15,6 @@
 @property (strong, nonatomic) SPRCategory *category;
 
 - (instancetype)initWithCategory:(SPRCategory *)category;
-- (NSDecimalNumber *)totalForTimeFrame:(SPRTimeFrame)timeFrame;
+- (NSDecimalNumber *)totalForTimeFrame:(SPRDateDimension)timeFrame;
 
 @end

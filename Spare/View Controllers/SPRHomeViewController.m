@@ -54,6 +54,7 @@ static NSString * const kNewCategoryCellIdentifier = @"NewCategoryCell";
     self.navigationItem.titleView = self.totalView;
     self.totalView.total = [NSDecimalNumber decimalNumberWithString:@"12345678.90"];
     self.totalView.period = @"Sep 30, 2004 - Sep 30, 2005";
+    [self.totalView addTarget:self action:@selector(totalViewTapped) forControlEvents:UIControlEventTouchUpInside];
     
     // Set up the collection view.
     self.collectionView.draggable = YES;
@@ -96,6 +97,11 @@ static NSString * const kNewCategoryCellIdentifier = @"NewCategoryCell";
     for (SPRCategory *category in self.categoryFetcher.fetchedObjects) {
         [self.summaries addObject:[[SPRCategorySummary alloc] initWithCategory:category]];
     }
+}
+
+- (void)totalViewTapped
+{
+    [self performSegueWithIdentifier:@"presentPeriod" sender:self];
 }
 
 #pragma mark - Bar button items
@@ -143,7 +149,7 @@ static NSString * const kNewCategoryCellIdentifier = @"NewCategoryCell";
     SPRCategorySummaryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     SPRCategorySummary *summary = self.summaries[indexPath.row];
     cell.category = summary.category;
-    cell.displayedTotal = [summary totalForTimeFrame:SPRTimeFrameDay];
+    cell.displayedTotal = [summary totalForTimeFrame:SPRDateDimensionDay];
     
     return cell;
 }
