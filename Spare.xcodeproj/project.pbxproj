@@ -55,7 +55,7 @@
 		26922D9F19443D6D00074638 /* SPRNSIndexPathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 26922D9E19443D6D00074638 /* SPRNSIndexPathTransformer.m */; };
 		26A90290191DCF9000CEE065 /* SPREditExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */; };
 		26A9029D191DD81400CEE065 /* UIView+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9029C191DD81400CEE065 /* UIView+SPR.m */; };
-		26B4B75618F277B5001B119D /* SPRCategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B4B75518F277B5001B119D /* SPRCategoryCollectionViewCell.m */; };
+		26B4B75618F277B5001B119D /* SPRCategorySummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B4B75518F277B5001B119D /* SPRCategorySummaryCell.m */; };
 		26D08D2618F105C600AE018F /* OldSPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D08D2518F105C600AE018F /* OldSPRHomeViewController.m */; };
 		26D2D71119694BB100CCC973 /* SPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D2D71019694BB100CCC973 /* SPRHomeViewController.m */; };
 		26D2D71A196951A800CCC973 /* UIViewController+Slider.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D2D719196951A800CCC973 /* UIViewController+Slider.m */; };
@@ -77,6 +77,7 @@
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26E9C310193CC41B009F18D9 /* NSIndexPath+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E9C30F193CC41B009F18D9 /* NSIndexPath+SPR.m */; };
 		26E9C313193CC76F009F18D9 /* NSFetchedResultsController+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E9C312193CC76F009F18D9 /* NSFetchedResultsController+SPR.m */; };
+		26F652FC196A33B200C19D87 /* SPRNewCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F652FB196A33B200C19D87 /* SPRNewCategoryCell.m */; };
 		28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6196FFB0C5B41DEB0DB54BF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -178,8 +179,8 @@
 		26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPREditExpenseViewController.m; sourceTree = "<group>"; };
 		26A9029B191DD81400CEE065 /* UIView+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SPR.h"; sourceTree = "<group>"; };
 		26A9029C191DD81400CEE065 /* UIView+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SPR.m"; sourceTree = "<group>"; };
-		26B4B75418F277B5001B119D /* SPRCategoryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryCollectionViewCell.h; sourceTree = "<group>"; };
-		26B4B75518F277B5001B119D /* SPRCategoryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryCollectionViewCell.m; sourceTree = "<group>"; };
+		26B4B75418F277B5001B119D /* SPRCategorySummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategorySummaryCell.h; sourceTree = "<group>"; };
+		26B4B75518F277B5001B119D /* SPRCategorySummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategorySummaryCell.m; sourceTree = "<group>"; };
 		26D08D2418F105C600AE018F /* OldSPRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldSPRHomeViewController.h; sourceTree = "<group>"; };
 		26D08D2518F105C600AE018F /* OldSPRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldSPRHomeViewController.m; sourceTree = "<group>"; };
 		26D2D70F19694BB100CCC973 /* SPRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRHomeViewController.h; sourceTree = "<group>"; };
@@ -220,6 +221,8 @@
 		26E9C30F193CC41B009F18D9 /* NSIndexPath+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+SPR.m"; sourceTree = "<group>"; };
 		26E9C311193CC76F009F18D9 /* NSFetchedResultsController+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFetchedResultsController+SPR.h"; sourceTree = "<group>"; };
 		26E9C312193CC76F009F18D9 /* NSFetchedResultsController+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFetchedResultsController+SPR.m"; sourceTree = "<group>"; };
+		26F652FA196A33B200C19D87 /* SPRNewCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNewCategoryCell.h; sourceTree = "<group>"; };
+		26F652FB196A33B200C19D87 /* SPRNewCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNewCategoryCell.m; sourceTree = "<group>"; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -370,14 +373,16 @@
 				2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */,
 				2612C8AA18E831F600DE2765 /* SPRTextField.h */,
 				2612C8AB18E831F600DE2765 /* SPRTextField.m */,
-				26B4B75418F277B5001B119D /* SPRCategoryCollectionViewCell.h */,
-				26B4B75518F277B5001B119D /* SPRCategoryCollectionViewCell.m */,
+				26B4B75418F277B5001B119D /* SPRCategorySummaryCell.h */,
+				26B4B75518F277B5001B119D /* SPRCategorySummaryCell.m */,
 				2612A25318FBEEE300E4848E /* SPRExpenseSectionHeaderView.h */,
 				2612A25418FBEEE300E4848E /* SPRExpenseSectionHeaderView.m */,
 				2661CD7419321751009C7034 /* SPRCategoryHeaderCell.h */,
 				2661CD7519321751009C7034 /* SPRCategoryHeaderCell.m */,
 				26D2D71B1969B0DD00CCC973 /* SPRTotalView.h */,
 				26D2D71C1969B0DD00CCC973 /* SPRTotalView.m */,
+				26F652FA196A33B200C19D87 /* SPRNewCategoryCell.h */,
+				26F652FB196A33B200C19D87 /* SPRNewCategoryCell.m */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -684,6 +689,7 @@
 				261DD0831945979200B0EBB2 /* SPRExpense.m in Sources */,
 				26922D9F19443D6D00074638 /* SPRNSIndexPathTransformer.m in Sources */,
 				26D2D7311969CFB100CCC973 /* SPRCategoryNameCell.m in Sources */,
+				26F652FC196A33B200C19D87 /* SPRNewCategoryCell.m in Sources */,
 				26D2D71D1969B0DD00CCC973 /* SPRTotalView.m in Sources */,
 				2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */,
 				261EB87518DDB631009DDF78 /* SPRAppDelegate.m in Sources */,
@@ -703,7 +709,7 @@
 				26D2D71119694BB100CCC973 /* SPRHomeViewController.m in Sources */,
 				26D2D71A196951A800CCC973 /* UIViewController+Slider.m in Sources */,
 				266065BD18F055D50085F877 /* SPRExpense+Extension.m in Sources */,
-				26B4B75618F277B5001B119D /* SPRCategoryCollectionViewCell.m in Sources */,
+				26B4B75618F277B5001B119D /* SPRCategorySummaryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,8 +9,9 @@
 #import "SPRHomeViewController.h"
 
 // Custom views
-#import "SPRCategoryCollectionViewCell.h"
 #import "SPRTotalView.h"
+#import "SPRCategorySummaryCell.h"
+#import "SPRNewCategoryCell.h"
 
 // Objects
 #import "SPRCategorySummary.h"
@@ -28,8 +29,9 @@
 #import "SPRIcons.h"
 
 static NSString * const kCellIdentifier = @"Cell";
+static NSString * const kNewCategoryCellIdentifier = @"NewCategoryCell";
 
-@interface SPRHomeViewController () <UICollectionViewDataSource_Draggable, UICollectionViewDelegate, NSFetchedResultsControllerDelegate>
+@interface SPRHomeViewController () <UICollectionViewDataSource_Draggable, UICollectionViewDelegate>
 
 @property (strong, nonatomic) SPRTotalView *totalView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -55,7 +57,8 @@ static NSString * const kCellIdentifier = @"Cell";
     
     // Set up the collection view.
     self.collectionView.draggable = YES;
-    [self.collectionView registerClass:[SPRCategoryCollectionViewCell class] forCellWithReuseIdentifier:kCellIdentifier];
+    [self.collectionView registerClass:[SPRCategorySummaryCell class] forCellWithReuseIdentifier:kCellIdentifier];
+    [self.collectionView registerClass:[SPRNewCategoryCell class] forCellWithReuseIdentifier:kNewCategoryCellIdentifier];
     
     // Prevent the collection view from adjusting the scroll as if the tab bar is still shown.
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -106,12 +109,8 @@ static NSString * const kCellIdentifier = @"Cell";
     [menuButton addTarget:self action:@selector(menuButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:menuButton];
     
-    UIButton *addButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    NSAttributedString *addIcon = [[NSAttributedString alloc] initWithString:[SPRIcons characterForIcon:SPRIconAdd] attributes:@{NSFontAttributeName : [UIFont fontWithName:SPRIconFontName size:23]}];
-    [addButton setAttributedTitle:addIcon forState:UIControlStateNormal];
-    [addButton sizeToFit];
-    [addButton addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
+    UIBarButtonItem *newExpenseButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(newExpenseButtonTapped)];
+    self.navigationItem.rightBarButtonItem = newExpenseButton;
 }
 
 - (void)menuButtonTapped
@@ -119,17 +118,29 @@ static NSString * const kCellIdentifier = @"Cell";
     [self.sliderViewController showMenu];
 }
 
+- (void)newExpenseButtonTapped
+{
+    UINavigationController *newExpenseModal = [[UIStoryboard storyboardWithName:@"iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"NewExpenseModal"];
+    [self presentViewController:newExpenseModal animated:YES completion:nil];
+}
+
 #pragma mark - Collection view data source
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [self.summaries count];
+    return [self.summaries count] + 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPRCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
+    // If the cell is the last one, make it the New Category cell.
+    if (indexPath.row == [self.summaries count]) {
+        SPRNewCategoryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kNewCategoryCellIdentifier forIndexPath:indexPath];
+        return cell;
+    }
     
+    // Otherwise, make it a category summary cell.
+    SPRCategorySummaryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     SPRCategorySummary *summary = self.summaries[indexPath.row];
     cell.category = summary.category;
     cell.displayedTotal = [summary totalForTimeFrame:SPRTimeFrameDay];
@@ -159,12 +170,30 @@ static NSString * const kCellIdentifier = @"Cell";
 
 - (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == self.summaries.count) {
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+    if (toIndexPath.row == self.summaries.count) {
+        return NO;
+    }
     return YES;
 }
 
 - (CGAffineTransform)collectionView:(UICollectionView *)collectionView transformForDraggingItemAtIndexPath:(NSIndexPath *)indexPath duration:(NSTimeInterval *)duration
 {
     return CGAffineTransformMakeScale(1.15, 1.15);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == self.summaries.count) {
+        [self performSegueWithIdentifier:@"presentNewCategory" sender:self];
+    }
 }
 
 #pragma mark - Lazy initializers
@@ -182,7 +211,6 @@ static NSString * const kCellIdentifier = @"Cell";
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"displayOrder" ascending:YES]];
     
     _categoryFetcher = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-    _categoryFetcher.delegate = self;
     
     return _categoryFetcher;
 }

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Matt Quiros. All rights reserved.
 //
 
-#import "SPRCategoryCollectionViewCell.h"
+#import "SPRCategorySummaryCell.h"
 
 // Categories
 #import "UIColor+HexColor.h"
@@ -18,14 +18,14 @@ static const CGFloat kCellWidth = 145;
 static const CGFloat kInnerMargin = 5;
 static const CGFloat kLabelWidth = kCellWidth - kInnerMargin * 2;
 
-@interface SPRCategoryCollectionViewCell ()
+@interface SPRCategorySummaryCell ()
 
 @property (strong, nonatomic) UILabel *categoryLabel;
 @property (strong, nonatomic) UILabel *totalLabel;
 
 @end
 
-@implementation SPRCategoryCollectionViewCell
+@implementation SPRCategorySummaryCell
 
 - (id)initWithFrame:(CGRect)frame
 {

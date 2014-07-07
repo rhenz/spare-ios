@@ -10,7 +10,7 @@
 
 @class SPRCategory;
 
-@interface SPRCategoryCollectionViewCell : UICollectionViewCell
+@interface SPRCategorySummaryCell : UICollectionViewCell
 
 @property (weak, nonatomic) SPRCategory *category;
 @property (strong, nonatomic) NSDecimalNumber *displayedTotal;

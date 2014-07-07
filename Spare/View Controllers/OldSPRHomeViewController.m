@@ -12,7 +12,7 @@
 #import "SPRIconFont.h"
 
 // Custom views
-#import "SPRCategoryCollectionViewCell.h"
+#import "SPRCategorySummaryCell.h"
 
 // View controllers
 #import "SPRNewCategoryViewController.h"
@@ -71,7 +71,7 @@ SPRNewExpenseViewControllerDelegate>
     
     self.collectionView.draggable = YES;
     // Register a collection view cell class.
-    [self.collectionView registerClass:[SPRCategoryCollectionViewCell class] forCellWithReuseIdentifier:kCellIdentifier];
+    [self.collectionView registerClass:[SPRCategorySummaryCell class] forCellWithReuseIdentifier:kCellIdentifier];
     
     // By default, the active time frame for totals is daily.
     self.activeTimeFrame = SPRTimeFrameDay;
@@ -216,7 +216,7 @@ SPRNewExpenseViewControllerDelegate>
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPRCategoryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
+    SPRCategorySummaryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     
     SPRCategorySummary *summary = self.summaries[indexPath.row];
     cell.category = summary.category;
