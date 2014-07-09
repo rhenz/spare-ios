@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 
 // Constants
-#import "SPRDateDimension.h"
+#import "SPRDateUnit.h"
 
 @interface NSDate (SPR)
 
 - (BOOL)isSameDayAsDate:(NSDate *)date;
 - (NSString *)textInForm;
 
-- (NSDate *)firstMomentInDimension:(SPRDateDimension)timeFrame;
-- (NSDate *)lastMomentInDimension:(SPRDateDimension)timeFrame;
+- (NSDate *)firstMomentInDateUnit:(SPRDateUnit)dateUnit;
+- (NSDate *)lastMomentInDateUnit:(SPRDateUnit)dateUnit;
 
 + (NSDate *)simplifiedDate;
 + (NSDate *)simplifiedDateFromDate:(NSDate *)date;

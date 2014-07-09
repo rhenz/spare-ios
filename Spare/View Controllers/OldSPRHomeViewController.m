@@ -29,7 +29,7 @@
 #import "UICollectionView+Draggable.h"
 
 // Constants
-#import "SPRDateDimension.h"
+#import "SPRDateUnit.h"
 
 // Categories
 #import "UIColor+HexColor.h"
@@ -56,7 +56,7 @@ SPRNewExpenseViewControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *categoryFetcher;
 @property (strong, nonatomic) NSMutableArray *summaries;
-@property (nonatomic) SPRDateDimension activeTimeFrame;
+@property (nonatomic) SPRDateUnit activeTimeFrame;
 
 @end
 
@@ -74,7 +74,7 @@ SPRNewExpenseViewControllerDelegate>
     [self.collectionView registerClass:[SPRCategorySummaryCell class] forCellWithReuseIdentifier:kCellIdentifier];
     
     // By default, the active time frame for totals is daily.
-    self.activeTimeFrame = SPRDateDimensionDay;
+    self.activeTimeFrame = SPRDateUnitDay;
     
     // Google Analytics tracking.
     id tracker = [[GAI sharedInstance] defaultTracker];

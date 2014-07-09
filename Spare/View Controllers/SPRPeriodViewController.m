@@ -49,11 +49,6 @@ static NSArray *identifiers;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)doneButtonTapped:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -95,6 +90,10 @@ static NSArray *identifiers;
     // Select and deselect the cell.
     [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    // Save the period manager and dismiss the screen.
+    [self.periodManager save];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

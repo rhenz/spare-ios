@@ -38,7 +38,7 @@
     return text;
 }
 
-- (NSDate *)firstMomentInDimension:(SPRDateDimension)timeFrame
+- (NSDate *)firstMomentInDateUnit:(SPRDateUnit)dateUnit
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components;
@@ -46,22 +46,22 @@
     
     NSUInteger commonComponents = NSYearCalendarUnit|NSMonthCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit;
     
-    switch (timeFrame) {
-        case SPRDateDimensionDay: {
+    switch (dateUnit) {
+        case SPRDateUnitDay: {
             components = [calendar components:commonComponents|NSDayCalendarUnit fromDate:self];
             break;
         }
-        case SPRDateDimensionWeek: {
+        case SPRDateUnitWeek: {
             components = [calendar components:commonComponents|NSYearForWeekOfYearCalendarUnit|NSWeekCalendarUnit|NSWeekdayCalendarUnit fromDate:self];
             components.weekday = 1;
             break;
         }
-        case SPRDateDimensionMonth: {
+        case SPRDateUnitMonth: {
             components = [calendar components:commonComponents|NSDayCalendarUnit fromDate:self];
             components.day = 1;
             break;
         }
-        case SPRDateDimensionYear: {
+        case SPRDateUnitYear: {
             components = [calendar components:commonComponents|NSDayCalendarUnit fromDate:self];
             components.month = 1;
             components.day = 1;
@@ -79,7 +79,7 @@
     return firstMoment;
 }
 
-- (NSDate *)lastMomentInDimension:(SPRDateDimension)timeFrame
+- (NSDate *)lastMomentInDateUnit:(SPRDateUnit)dateUnit
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components;
@@ -87,17 +87,17 @@
     
     NSUInteger commonComponents = NSYearCalendarUnit|NSMonthCalendarUnit|NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit;
     
-    switch (timeFrame) {
-        case SPRDateDimensionDay: {
+    switch (dateUnit) {
+        case SPRDateUnitDay: {
             components = [calendar components:commonComponents|NSDayCalendarUnit fromDate:self];
             break;
         }
-        case SPRDateDimensionWeek: {
+        case SPRDateUnitWeek: {
             components = [calendar components:commonComponents|NSYearForWeekOfYearCalendarUnit|NSWeekCalendarUnit|NSWeekdayCalendarUnit fromDate:self];
             components.weekday = 7;
             break;
         }
-        case SPRDateDimensionMonth: {
+        case SPRDateUnitMonth: {
             // Get the number of days in this date's month.
             NSRange days = [calendar rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:self];
             
@@ -105,7 +105,7 @@
             components.day = days.length;
             break;
         }
-        case SPRDateDimensionYear: {
+        case SPRDateUnitYear: {
             components = [calendar components:commonComponents|NSDayCalendarUnit fromDate:self];
             components.month = 12;
             components.day = 31;

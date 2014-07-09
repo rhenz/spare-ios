@@ -11,6 +11,9 @@
 // Objects
 #import "SPRPeriod.h"
 
+// Macros
+#define pathToFile(A) [[SPRPeriodManager pathToPeriodManagerDirectory] stringByAppendingPathComponent:A]
+
 @interface SPRPeriodManager ()
 
 @property (strong, nonatomic) NSArray *quickDefaults;
@@ -20,21 +23,22 @@
 
 @end
 
+static NSString * const kActiveIndexPathFile = @"kActiveIndexPathFile";
+
 @implementation SPRPeriodManager
 
-- (id)init
++ (NSString *)pathToPeriodManagerDirectory
 {
-    @throw [NSException exceptionWithName:[NSString stringWithFormat:@"%@ singleton exception", [self class]]
-                                   reason:[NSString stringWithFormat:@"You must call [%@ sharedManager].", [self class]]
-                                 userInfo:nil];
-}
-
-- (instancetype)initPrivate
-{
-    if (self = [super init]) {
-        
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths[0] stringByAppendingPathComponent:@"SPRPeriodManager"];
+    
+    // Make sure that the path exists before returning it.
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:path]) {
+        [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
     }
-    return self;
+    
+    return path;
 }
 
 + (instancetype)sharedManager
@@ -48,6 +52,21 @@
     return sharedManager;
 }
 
+- (instancetype)initPrivate
+{
+    if (self = [super init]) {
+        
+    }
+    return self;
+}
+
+- (id)init
+{
+    @throw [NSException exceptionWithName:[NSString stringWithFormat:@"%@ singleton exception", [self class]]
+                                   reason:[NSString stringWithFormat:@"You must call [%@ sharedManager].", [self class]]
+                                 userInfo:nil];
+}
+
 - (void)initializePeriods
 {
     [self initializeQuickDefaults];
@@ -55,6 +74,7 @@
     
     // Select the period at the last active index path.
     // If there is no last active index path, default to Today.
+    self.activeIndexPath = [NSKeyedUnarchiver unarchiveObjectWithFile:pathToFile(kActiveIndexPathFile)];
     if (self.activeIndexPath == nil) {
         self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         self.activeIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -70,7 +90,7 @@
     NSDate *currentDate = [NSDate date];
     
     // Set up the arrays for iteration.
-    int dateDimensions[] = {SPRDateDimensionDay, SPRDateDimensionWeek, SPRDateDimensionMonth, SPRDateDimensionYear};
+    int dateUnits[] = {SPRDateUnitDay, SPRDateUnitWeek, SPRDateUnitMonth, SPRDateUnitYear};
     NSArray *descriptiveForms = @[@"Today", @"This week", @"This month", @"This year"];
     
     NSMutableArray *periods = [NSMutableArray array];
@@ -78,8 +98,8 @@
     
     for (int i = 0; i < 4; i++) {
         period = [[SPRPeriod alloc] init];
-        period.startDate = [currentDate firstMomentInDimension:dateDimensions[i]];
-        period.endDate = [currentDate lastMomentInDimension:dateDimensions[i]];
+        period.startDate = [currentDate firstMomentInDateUnit:dateUnits[i]];
+        period.endDate = [currentDate lastMomentInDateUnit:dateUnits[i]];
         period.descriptiveForm = descriptiveForms[i];
         [periods addObject:period];
     }
@@ -114,6 +134,8 @@
 - (void)save
 {
     // Set the selected index path as the active period.
+    self.activeIndexPath = self.selectedIndexPath;
+    [NSKeyedArchiver archiveRootObject:self.activeIndexPath toFile:pathToFile(kActiveIndexPathFile)];
 }
 
 @end

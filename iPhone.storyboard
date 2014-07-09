@@ -252,11 +252,6 @@
                                 <action selector="cancelButtonTapped:" destination="Bg6-qR-42N" id="EeF-t7-cVd"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="gQN-mx-pM5">
-                            <connections>
-                                <action selector="doneButtonTapped:" destination="Bg6-qR-42N" id="4uc-fS-eNe"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
