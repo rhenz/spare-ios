@@ -12,9 +12,7 @@
 
 @property (strong, nonatomic) NSDate *startDate;
 @property (strong, nonatomic) NSDate *endDate;
-@property (nonatomic, getter = isActive) BOOL active;
 @property (strong, nonatomic) NSString *descriptiveForm;
-
-+ (NSArray *)quickDefaults;
+@property (nonatomic, getter = isSelected) BOOL selected;
 
 @end

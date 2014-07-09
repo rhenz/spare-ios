@@ -24,7 +24,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Set up Crashlytics.
-    [Crashlytics startWithAPIKey:@"5777ab02ad26fe0af3227a87ff1a25c1314bab82"];
+//    [Crashlytics startWithAPIKey:@"5777ab02ad26fe0af3227a87ff1a25c1314bab82"];
     
     // Set up Google Analytics.
     [GAI sharedInstance].trackUncaughtExceptions = YES;

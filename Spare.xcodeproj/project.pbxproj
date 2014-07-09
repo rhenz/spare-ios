@@ -57,6 +57,7 @@
 		26922D9F19443D6D00074638 /* SPRNSIndexPathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 26922D9E19443D6D00074638 /* SPRNSIndexPathTransformer.m */; };
 		26A90290191DCF9000CEE065 /* SPREditExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */; };
 		26A9029D191DD81400CEE065 /* UIView+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9029C191DD81400CEE065 /* UIView+SPR.m */; };
+		26B235F3196C5FCC00268B27 /* SPRPeriodManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B235F2196C5FCC00268B27 /* SPRPeriodManager.m */; };
 		26B4B75618F277B5001B119D /* SPRCategorySummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B4B75518F277B5001B119D /* SPRCategorySummaryCell.m */; };
 		26D08D2618F105C600AE018F /* OldSPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D08D2518F105C600AE018F /* OldSPRHomeViewController.m */; };
 		26D2D71119694BB100CCC973 /* SPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D2D71019694BB100CCC973 /* SPRHomeViewController.m */; };
@@ -80,6 +81,8 @@
 		26E9C310193CC41B009F18D9 /* NSIndexPath+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E9C30F193CC41B009F18D9 /* NSIndexPath+SPR.m */; };
 		26E9C313193CC76F009F18D9 /* NSFetchedResultsController+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E9C312193CC76F009F18D9 /* NSFetchedResultsController+SPR.m */; };
 		26F652FC196A33B200C19D87 /* SPRNewCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F652FB196A33B200C19D87 /* SPRNewCategoryCell.m */; };
+		26FCD19F196BD6D400AC0FC8 /* SPRQuickDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCD19E196BD6D400AC0FC8 /* SPRQuickDefaultCell.m */; };
+		26FCD1A5196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCD1A4196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m */; };
 		28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6196FFB0C5B41DEB0DB54BF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -185,6 +188,8 @@
 		26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPREditExpenseViewController.m; sourceTree = "<group>"; };
 		26A9029B191DD81400CEE065 /* UIView+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SPR.h"; sourceTree = "<group>"; };
 		26A9029C191DD81400CEE065 /* UIView+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SPR.m"; sourceTree = "<group>"; };
+		26B235F1196C5FCC00268B27 /* SPRPeriodManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRPeriodManager.h; sourceTree = "<group>"; };
+		26B235F2196C5FCC00268B27 /* SPRPeriodManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRPeriodManager.m; sourceTree = "<group>"; };
 		26B4B75418F277B5001B119D /* SPRCategorySummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategorySummaryCell.h; sourceTree = "<group>"; };
 		26B4B75518F277B5001B119D /* SPRCategorySummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategorySummaryCell.m; sourceTree = "<group>"; };
 		26D08D2418F105C600AE018F /* OldSPRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldSPRHomeViewController.h; sourceTree = "<group>"; };
@@ -229,6 +234,10 @@
 		26E9C312193CC76F009F18D9 /* NSFetchedResultsController+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFetchedResultsController+SPR.m"; sourceTree = "<group>"; };
 		26F652FA196A33B200C19D87 /* SPRNewCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNewCategoryCell.h; sourceTree = "<group>"; };
 		26F652FB196A33B200C19D87 /* SPRNewCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNewCategoryCell.m; sourceTree = "<group>"; };
+		26FCD19D196BD6D400AC0FC8 /* SPRQuickDefaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRQuickDefaultCell.h; sourceTree = "<group>"; };
+		26FCD19E196BD6D400AC0FC8 /* SPRQuickDefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRQuickDefaultCell.m; sourceTree = "<group>"; };
+		26FCD1A3196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRPeriodTableViewCell.h; sourceTree = "<group>"; };
+		26FCD1A4196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRPeriodTableViewCell.m; sourceTree = "<group>"; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -370,6 +379,7 @@
 		261EB8A318DDC46B009DDF78 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				26FCD19C196BD6BD00AC0FC8 /* Period Table View Cells */,
 				26D2D7211969CFB100CCC973 /* Form Table View Cells */,
 				26369E6218F57817000A9ADA /* SPRCategoryPicker.h */,
 				26369E6318F57817000A9ADA /* SPRCategoryPicker.m */,
@@ -416,6 +426,8 @@
 				26922D9E19443D6D00074638 /* SPRNSIndexPathTransformer.m */,
 				2667328B196AFA9200BB4DBE /* SPRPeriod.h */,
 				2667328C196AFA9200BB4DBE /* SPRPeriod.m */,
+				26B235F1196C5FCC00268B27 /* SPRPeriodManager.h */,
+				26B235F2196C5FCC00268B27 /* SPRPeriodManager.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -518,6 +530,17 @@
 				26673289196AF82700BB4DBE /* SPRPeriodViewController.m */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		26FCD19C196BD6BD00AC0FC8 /* Period Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				26FCD19D196BD6D400AC0FC8 /* SPRQuickDefaultCell.h */,
+				26FCD19E196BD6D400AC0FC8 /* SPRQuickDefaultCell.m */,
+				26FCD1A3196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.h */,
+				26FCD1A4196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m */,
+			);
+			path = "Period Table View Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -685,9 +708,12 @@
 				2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */,
 				2688628618E339F900B8D167 /* SPRField.m in Sources */,
 				26E2485F18E1DCEF00391354 /* SPRCategory+Extension.m in Sources */,
+				26B235F3196C5FCC00268B27 /* SPRPeriodManager.m in Sources */,
 				26E2485C18E1DA2B00391354 /* NSString+SPR.m in Sources */,
+				26FCD19F196BD6D400AC0FC8 /* SPRQuickDefaultCell.m in Sources */,
 				263BA034193E39750022BFDC /* SPRExpenseSectionHeader.m in Sources */,
 				261EB87818DDB631009DDF78 /* Spare.xcdatamodeld in Sources */,
+				26FCD1A5196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m in Sources */,
 				26369E6618F57817000A9ADA /* SPRCategoryPicker.m in Sources */,
 				262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */,
 				263BA037193E3D3E0022BFDC /* NSNumber+SPR.m in Sources */,

@@ -10,19 +10,22 @@
 
 // Objects
 #import "SPRPeriod.h"
+#import "SPRPeriodManager.h"
+
+// Custom views
+#import "SPRPeriodTableViewCell.h"
+#import "SPRQuickDefaultCell.h"
 
 @interface SPRPeriodViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) SPRPeriodManager *periodManager;
 
 @end
 
 static NSString * const kQuickDefaultCell = @"kQuickDefaultCell";
-static NSString * const kCustomDefaultCell = @"kCustomDefaultCell";
-static NSString * const kCustomPeriodCell = @"kCustomPeriodCell";
 
 static NSArray *identifiers;
-static NSArray *quickDefaults;
 
 @implementation SPRPeriodViewController
 
@@ -31,8 +34,12 @@ static NSArray *quickDefaults;
     [super viewDidLoad];
     
     // Set up the static arrays.
-    identifiers = @[kQuickDefaultCell, kCustomDefaultCell];
-    quickDefaults = [SPRPeriod quickDefaults];
+    identifiers = @[kQuickDefaultCell];
+    
+    self.periodManager = [SPRPeriodManager sharedManager];
+    
+    // Register table view cells.
+    [self.tableView registerClass:[SPRQuickDefaultCell class] forCellReuseIdentifier:kQuickDefaultCell];
 }
 
 #pragma mark - Target actions
@@ -51,19 +58,30 @@ static NSArray *quickDefaults;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [identifiers count] + 1;
+    return [identifiers count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    switch (section) {
+        case 0:
+        case 1: {
+            return 4;
+        }
+        case 2: {
+            return 1;
+        }
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SPRPeriod *period = quickDefaults[indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kQuickDefaultCell];
-    cell.textLabel.text = period.descriptiveForm;
+    SPRPeriod *period = self.periodManager.periods[indexPath.section][indexPath.row];
+    NSString *identifier = kQuickDefaultCell;
+    
+    SPRPeriodTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    cell.period = period;
     return cell;
 }
 
@@ -71,7 +89,12 @@ static NSArray *quickDefaults;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    self.periodManager.selectedIndexPath = indexPath;
+    [self.tableView reloadData];
+    
+    // Select and deselect the cell.
+    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
