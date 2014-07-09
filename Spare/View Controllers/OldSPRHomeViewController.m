@@ -174,12 +174,12 @@ SPRNewExpenseViewControllerDelegate>
 {
     // Sum all the active totals and set it as the total label's text.
     NSDecimalNumber *total = [NSDecimalNumber decimalNumberWithString:@"0"];
-    NSDecimalNumber *singleTotal;
+//    NSDecimalNumber *singleTotal;
     
-    for (SPRCategorySummary *summary in self.summaries) {
-        singleTotal = [summary totalForTimeFrame:self.activeTimeFrame];
-        total = [total decimalNumberByAdding:singleTotal];
-    }
+//    for (SPRCategorySummary *summary in self.summaries) {
+//        singleTotal = [summary totalForTimeFrame:self.activeTimeFrame];
+//        total = [total decimalNumberByAdding:singleTotal];
+//    }
     
     self.totalLabel.text = [total currencyString];
     [self.totalLabel sizeToFit];
@@ -220,7 +220,7 @@ SPRNewExpenseViewControllerDelegate>
     
     SPRCategorySummary *summary = self.summaries[indexPath.row];
     cell.category = summary.category;
-    cell.displayedTotal = [summary totalForTimeFrame:self.activeTimeFrame];
+//    cell.displayedTotal = [summary totalForTimeFrame:self.activeTimeFrame];
     
     return cell;
 }

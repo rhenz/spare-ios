@@ -17,10 +17,12 @@
 #import "SPRCategorySummary.h"
 #import "SPRManagedDocument.h"
 #import "SPRCategory+Extension.h"
+#import "SPRPeriodManager.h"
 
 // View controllers
 #import "SPRSetupViewController.h"
 #import "SPRSliderViewController.h"
+#import "SPRCategoryViewController.h"
 
 // Libraries
 #import "UICollectionView+Draggable.h"
@@ -39,6 +41,7 @@ static NSString * const kNewCategoryCellIdentifier = @"NewCategoryCell";
 @property (strong, nonatomic) NSMutableArray *summaries;
 @property (strong, nonatomic) NSFetchedResultsController *categoryFetcher;
 @property (nonatomic) BOOL hasBeenSetup;
+@property (nonatomic) NSInteger selectedCategoryIndex;
 
 @end
 
@@ -52,8 +55,6 @@ static NSString * const kNewCategoryCellIdentifier = @"NewCategoryCell";
     
     self.totalView = [[SPRTotalView alloc] init];
     self.navigationItem.titleView = self.totalView;
-    self.totalView.total = [NSDecimalNumber decimalNumberWithString:@"12345678.90"];
-    self.totalView.period = @"Sep 30, 2004 - Sep 30, 2005";
     [self.totalView addTarget:self action:@selector(totalViewTapped) forControlEvents:UIControlEventTouchUpInside];
     
     // Set up the collection view.
@@ -72,6 +73,7 @@ static NSString * const kNewCategoryCellIdentifier = @"NewCategoryCell";
     if (self.hasBeenSetup) {
         [self initializeSummaries];
         [self.collectionView reloadData];
+        [self updateTotalView];
     }
     
     // If the screen has not been set up yet, display a loading modal.
@@ -102,6 +104,31 @@ static NSString * const kNewCategoryCellIdentifier = @"NewCategoryCell";
 - (void)totalViewTapped
 {
     [self performSegueWithIdentifier:@"presentPeriod" sender:self];
+}
+
+- (void)updateTotalView
+{
+    NSDecimalNumber *total = [NSDecimalNumber decimalNumberWithString:@"0"];
+    NSDecimalNumber *singleTotal;
+    
+    for (SPRCategorySummary *summary in self.summaries) {
+        singleTotal = [summary totalForPeriod:[SPRPeriodManager sharedManager].activePeriod];
+        total = [total decimalNumberByAdding:singleTotal];
+    }
+    
+    self.totalView.total = total;
+    self.totalView.period = [SPRPeriodManager sharedManager].activePeriod;
+
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"pushCategory"]) {
+        SPRCategoryViewController *categoryScreen = segue.destinationViewController;
+        SPRCategorySummary *summary = self.summaries[self.selectedCategoryIndex];
+        categoryScreen.category = summary.category;
+        return;
+    }
 }
 
 #pragma mark - Bar button items
@@ -149,9 +176,22 @@ static NSString * const kNewCategoryCellIdentifier = @"NewCategoryCell";
     SPRCategorySummaryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     SPRCategorySummary *summary = self.summaries[indexPath.row];
     cell.category = summary.category;
-    cell.displayedTotal = [summary totalForTimeFrame:SPRDateDimensionDay];
+    cell.displayedTotal = [summary totalForPeriod:[SPRPeriodManager sharedManager].activePeriod];
     
     return cell;
+}
+
+#pragma mark - Collection view delegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == self.summaries.count) {
+        [self performSegueWithIdentifier:@"presentNewCategory" sender:self];
+        return;
+    }
+    
+    self.selectedCategoryIndex = indexPath.row;
+    [self performSegueWithIdentifier:@"pushCategory" sender:self];
 }
 
 #pragma mark - Draggable collection view data source
@@ -193,13 +233,6 @@ static NSString * const kNewCategoryCellIdentifier = @"NewCategoryCell";
 - (CGAffineTransform)collectionView:(UICollectionView *)collectionView transformForDraggingItemAtIndexPath:(NSIndexPath *)indexPath duration:(NSTimeInterval *)duration
 {
     return CGAffineTransformMakeScale(1.15, 1.15);
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row == self.summaries.count) {
-        [self performSegueWithIdentifier:@"presentNewCategory" sender:self];
-    }
 }
 
 #pragma mark - Lazy initializers

@@ -8,6 +8,9 @@
 
 #import "SPRTotalView.h"
 
+// Objects
+#import "SPRPeriod.h"
+
 @interface SPRTotalView ()
 
 @property (strong, nonatomic) UILabel *totalLabel;
@@ -61,10 +64,10 @@ static const CGFloat kWidth = 212;
     [self setNeedsLayout];
 }
 
-- (void)setPeriod:(NSString *)period
+- (void)setPeriod:(SPRPeriod *)period
 {
     _period = period;
-    self.periodLabel.text = period;
+    self.periodLabel.text = period.descriptiveForm;
     [self setNeedsLayout];
 }
 

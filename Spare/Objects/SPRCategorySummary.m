@@ -11,13 +11,9 @@
 // Objects
 #import "SPRExpense+Extension.h"
 #import "SPRManagedDocument.h"
+#import "SPRPeriod.h"
 
 @interface SPRCategorySummary ()
-
-@property (strong, nonatomic) NSFetchedResultsController *dailyTotalFetcher;
-@property (strong, nonatomic) NSFetchedResultsController *weeklyTotalFetcher;
-@property (strong, nonatomic) NSFetchedResultsController *monthlyTotalFetcher;
-@property (strong, nonatomic) NSFetchedResultsController *yearlyTotalFetcher;
 
 @end
 
@@ -37,71 +33,24 @@
     return self;
 }
 
-- (NSDecimalNumber *)totalForTimeFrame:(SPRDateDimension)timeFrame
+- (NSDecimalNumber *)totalForPeriod:(SPRPeriod *)period
 {
-    NSArray *fetchers = @[self.dailyTotalFetcher, self.weeklyTotalFetcher, self.monthlyTotalFetcher, self.yearlyTotalFetcher];
-    NSFetchedResultsController *fetcher = fetchers[timeFrame];
+    NSFetchedResultsController *fetcher = [SPRCategorySummary totalFetcherForCategory:self.category period:period];
     [fetcher performFetch:nil];
     NSDictionary *dictionary = fetcher.fetchedObjects[0];
     NSDecimalNumber *total = dictionary[@"total"];
     return total;
 }
 
-#pragma mark - Getters
-
-- (NSFetchedResultsController *)dailyTotalFetcher
-{
-    if (_dailyTotalFetcher) {
-        return _dailyTotalFetcher;
-    }
-    
-    _dailyTotalFetcher = [SPRCategorySummary totalFetcherForCategory:self.category timeFrame:SPRDateDimensionDay];
-    return _dailyTotalFetcher;
-}
-
-- (NSFetchedResultsController *)weeklyTotalFetcher
-{
-    if (_weeklyTotalFetcher) {
-        return _weeklyTotalFetcher;
-    }
-    
-    _weeklyTotalFetcher = [SPRCategorySummary totalFetcherForCategory:self.category timeFrame:SPRDateDimensionWeek];
-    return _weeklyTotalFetcher;
-}
-
-- (NSFetchedResultsController *)monthlyTotalFetcher
-{
-    if (_monthlyTotalFetcher) {
-        return _monthlyTotalFetcher;
-    }
-    
-    _monthlyTotalFetcher = [SPRCategorySummary totalFetcherForCategory:self.category timeFrame:SPRDateDimensionMonth];
-    return _monthlyTotalFetcher;
-}
-
-- (NSFetchedResultsController *)yearlyTotalFetcher
-{
-    if (_yearlyTotalFetcher) {
-        return _yearlyTotalFetcher;
-    }
-    
-    _yearlyTotalFetcher = [SPRCategorySummary totalFetcherForCategory:self.category timeFrame:SPRDateDimensionYear];
-    return _yearlyTotalFetcher;
-}
-
 #pragma mark -
 
-+ (NSFetchedResultsController *)totalFetcherForCategory:(SPRCategory *)category timeFrame:(SPRDateDimension)timeFrame
++ (NSFetchedResultsController *)totalFetcherForCategory:(SPRCategory *)category period:(SPRPeriod *)period
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entityDescription = [NSEntityDescription entityForName:NSStringFromClass([SPRExpense class]) inManagedObjectContext:[SPRManagedDocument sharedDocument].managedObjectContext];
     fetchRequest.entity = entityDescription;
     
-    NSDate *currentDate = [NSDate date];
-    NSDate *startDate = [currentDate firstMomentInDimension:timeFrame];
-    NSDate *endDate = [currentDate lastMomentInDimension:timeFrame];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category == %@ AND dateSpent >= %@ AND dateSpent <= %@", category, startDate, endDate];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"category == %@ AND dateSpent >= %@ AND dateSpent <= %@", category, period.startDate, period.endDate];
     fetchRequest.predicate = predicate;
     
     NSExpressionDescription *totalColumn = [[NSExpressionDescription alloc] init];

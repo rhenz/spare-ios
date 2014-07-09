@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class SPRPeriod;
+
 @interface SPRTotalView : UIButton
 
 @property (strong, nonatomic) NSDecimalNumber *total;
-@property (strong, nonatomic) NSString *period;
+@property (strong, nonatomic) SPRPeriod *period;
 
 @end

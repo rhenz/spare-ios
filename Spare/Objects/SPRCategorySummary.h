@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 
 @class SPRCategory;
+@class SPRPeriod;
 
 @interface SPRCategorySummary : NSObject
 
 @property (strong, nonatomic) SPRCategory *category;
 
 - (instancetype)initWithCategory:(SPRCategory *)category;
-- (NSDecimalNumber *)totalForTimeFrame:(SPRDateDimension)timeFrame;
+- (NSDecimalNumber *)totalForPeriod:(SPRPeriod *)period;
 
 @end
