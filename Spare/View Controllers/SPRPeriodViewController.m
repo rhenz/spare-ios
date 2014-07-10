@@ -24,6 +24,7 @@
 @end
 
 static NSString * const kQuickDefaultCell = @"kQuickDefaultCell";
+static NSString * const kCustomDefaultCell = @"kCustomDefaultCell";
 
 static NSArray *identifiers;
 
@@ -34,12 +35,13 @@ static NSArray *identifiers;
     [super viewDidLoad];
     
     // Set up the static arrays.
-    identifiers = @[kQuickDefaultCell];
+    identifiers = @[kQuickDefaultCell, kCustomDefaultCell];
     
     self.periodManager = [SPRPeriodManager sharedManager];
     
     // Register table view cells.
     [self.tableView registerClass:[SPRQuickDefaultCell class] forCellReuseIdentifier:kQuickDefaultCell];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCustomDefaultCell];
 }
 
 #pragma mark - Target actions

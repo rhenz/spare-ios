@@ -22,6 +22,27 @@
     ownComponents.year == dateComponents.year;
 }
 
+- (BOOL)isSameMonthAsDate:(NSDate *)date
+{
+    unsigned componentFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *ownComponents = [calendar components:componentFlags fromDate:self];
+    NSDateComponents *dateComponents = [calendar components:componentFlags fromDate:date];
+    
+    return ownComponents.month == dateComponents.month &&
+    ownComponents.year == dateComponents.year;
+}
+
+- (BOOL)isSameYearAsDate:(NSDate *)date
+{
+    unsigned componentFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *ownComponents = [calendar components:componentFlags fromDate:self];
+    NSDateComponents *dateComponents = [calendar components:componentFlags fromDate:date];
+    
+    return ownComponents.year == dateComponents.year;
+}
+
 - (NSString *)textInForm
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

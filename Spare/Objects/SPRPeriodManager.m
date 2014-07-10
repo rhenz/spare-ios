@@ -24,6 +24,7 @@
 @end
 
 static NSString * const kActiveIndexPathFile = @"kActiveIndexPathFile";
+static NSString * const kCustomDefaultsFile = @"kCustomDefaultsFile";
 
 @implementation SPRPeriodManager
 
@@ -70,7 +71,8 @@ static NSString * const kActiveIndexPathFile = @"kActiveIndexPathFile";
 - (void)initializePeriods
 {
     [self initializeQuickDefaults];
-    self.periods = @[self.quickDefaults];
+    [self initializeCustomDefaults];
+    self.periods = @[self.quickDefaults, self.customDefaults];
     
     // Select the period at the last active index path.
     // If there is no last active index path, default to Today.
@@ -100,11 +102,32 @@ static NSString * const kActiveIndexPathFile = @"kActiveIndexPathFile";
         period = [[SPRPeriod alloc] init];
         period.startDate = [currentDate firstMomentInDateUnit:dateUnits[i]];
         period.endDate = [currentDate lastMomentInDateUnit:dateUnits[i]];
+        period.dateUnit = dateUnits[i];
         period.descriptiveForm = descriptiveForms[i];
         [periods addObject:period];
     }
     
     self.quickDefaults = [NSArray arrayWithArray:periods];
+}
+
+- (void)initializeCustomDefaults
+{
+    self.customDefaults = [NSArray arrayWithContentsOfFile:pathToFile(kCustomDefaultsFile)];
+    
+    // Initialize custom defaults if none have been created before.
+    if (self.customDefaults == nil) {
+        int dateUnits[] = {SPRDateUnitDay, SPRDateUnitWeek, SPRDateUnitMonth, SPRDateUnitYear};
+        NSMutableArray *periods = [NSMutableArray array];
+        SPRPeriod *period;
+        
+        for (int i = 0; i < 4; i++) {
+            period = [[SPRPeriod alloc] init];
+            period.dateUnit = dateUnits[i];
+            [periods addObject:period];
+        }
+        
+        self.customDefaults = [NSArray arrayWithArray:periods];
+    }
 }
 
 - (SPRPeriod *)activePeriod

@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SPRPeriod : NSObject
+@interface SPRPeriod : NSObject <NSCoding>
 
 @property (strong, nonatomic) NSDate *startDate;
 @property (strong, nonatomic) NSDate *endDate;
+@property (nonatomic) SPRDateUnit dateUnit;
 @property (strong, nonatomic) NSString *descriptiveForm;
 @property (nonatomic, getter = isSelected) BOOL selected;
 

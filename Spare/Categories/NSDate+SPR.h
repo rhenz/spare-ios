@@ -14,6 +14,9 @@
 @interface NSDate (SPR)
 
 - (BOOL)isSameDayAsDate:(NSDate *)date;
+- (BOOL)isSameMonthAsDate:(NSDate *)date;
+- (BOOL)isSameYearAsDate:(NSDate *)date;
+
 - (NSString *)textInForm;
 
 - (NSDate *)firstMomentInDateUnit:(SPRDateUnit)dateUnit;
