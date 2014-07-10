@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SPRPeriod : NSObject <NSCoding>
+@interface SPRPeriod : NSObject
 
 @property (strong, nonatomic) NSDate *startDate;
 @property (strong, nonatomic) NSDate *endDate;

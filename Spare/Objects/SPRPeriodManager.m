@@ -36,7 +36,11 @@ static NSString * const kCustomDefaultsFile = @"kCustomDefaultsFile";
     // Make sure that the path exists before returning it.
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:path]) {
-        [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+        NSError *error;
+        [fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            NSLog(@"%@", error);
+        }
     }
     
     return path;
@@ -112,22 +116,27 @@ static NSString * const kCustomDefaultsFile = @"kCustomDefaultsFile";
 
 - (void)initializeCustomDefaults
 {
-    self.customDefaults = [NSArray arrayWithContentsOfFile:pathToFile(kCustomDefaultsFile)];
+    NSDictionary *dates = [NSKeyedUnarchiver unarchiveObjectWithFile:pathToFile(kCustomDefaultsFile)];
     
-    // Initialize custom defaults if none have been created before.
-    if (self.customDefaults == nil) {
-        int dateUnits[] = {SPRDateUnitDay, SPRDateUnitWeek, SPRDateUnitMonth, SPRDateUnitYear};
-        NSMutableArray *periods = [NSMutableArray array];
-        SPRPeriod *period;
+    int dateUnits[] = {SPRDateUnitDay, SPRDateUnitWeek, SPRDateUnitMonth, SPRDateUnitYear};
+    NSMutableArray *periods = [NSMutableArray array];
+    SPRPeriod *period;
+    
+    for (int i = 0; i < 4; i++) {
+        period = [[SPRPeriod alloc] init];
+        period.dateUnit = dateUnits[i];
         
-        for (int i = 0; i < 4; i++) {
-            period = [[SPRPeriod alloc] init];
-            period.dateUnit = dateUnits[i];
-            [periods addObject:period];
+        // Set the start and the end dates if they have been set by the user before.
+        if (dates[@(period.dateUnit)]) {
+            NSDictionary *values = dates[@(period.dateUnit)];
+            period.startDate = values[@"startDate"];
+            period.endDate = values[@"endDate"];
         }
         
-        self.customDefaults = [NSArray arrayWithArray:periods];
+        [periods addObject:period];
     }
+    
+    self.customDefaults = [NSArray arrayWithArray:periods];
 }
 
 - (SPRPeriod *)activePeriod
@@ -158,7 +167,26 @@ static NSString * const kCustomDefaultsFile = @"kCustomDefaultsFile";
 {
     // Set the selected index path as the active period.
     self.activeIndexPath = self.selectedIndexPath;
+    
+    // Save the active index path.
     [NSKeyedArchiver archiveRootObject:self.activeIndexPath toFile:pathToFile(kActiveIndexPathFile)];
+    
+    // Save the dates selected in the custom defaults.
+    [self saveCustomDefaultDates];
+}
+
+- (void)saveCustomDefaultDates
+{
+    NSMutableDictionary *dates = [NSMutableDictionary dictionary];
+    for (SPRPeriod *period in self.customDefaults) {
+        if (period.startDate && period.endDate) {
+            dates[@(period.dateUnit)] = @{@"startDate" : period.startDate,
+                                          @"endDate" : period.endDate};
+        }
+    }
+    
+    // Write an immutable version of the dictionary to the disk.
+    [NSKeyedArchiver archiveRootObject:[NSDictionary dictionaryWithDictionary:dates] toFile:pathToFile(kCustomDefaultsFile)];
 }
 
 @end

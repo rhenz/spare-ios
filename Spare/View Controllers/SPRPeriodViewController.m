@@ -15,8 +15,9 @@
 // Custom views
 #import "SPRPeriodTableViewCell.h"
 #import "SPRQuickDefaultCell.h"
+#import "SPRDatePicker.h"
 
-@interface SPRPeriodViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface SPRPeriodViewController () <UITableViewDataSource, UITableViewDelegate, SPRDatePickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) SPRPeriodManager *periodManager;
@@ -25,6 +26,8 @@
 
 static NSString * const kQuickDefaultCell = @"kQuickDefaultCell";
 static NSString * const kCustomDefaultCell = @"kCustomDefaultCell";
+
+static const NSInteger kDatePickerTagDay = 1000;
 
 static NSArray *identifiers;
 
@@ -38,10 +41,6 @@ static NSArray *identifiers;
     identifiers = @[kQuickDefaultCell, kCustomDefaultCell];
     
     self.periodManager = [SPRPeriodManager sharedManager];
-    
-    // Register table view cells.
-    [self.tableView registerClass:[SPRQuickDefaultCell class] forCellReuseIdentifier:kQuickDefaultCell];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCustomDefaultCell];
 }
 
 #pragma mark - Target actions
@@ -75,7 +74,7 @@ static NSArray *identifiers;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SPRPeriod *period = self.periodManager.periods[indexPath.section][indexPath.row];
-    NSString *identifier = kQuickDefaultCell;
+    NSString *identifier = identifiers[indexPath.section];
     
     SPRPeriodTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     cell.period = period;
@@ -86,16 +85,88 @@ static NSArray *identifiers;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.periodManager.selectedIndexPath = indexPath;
-    [self.tableView reloadData];
+    switch (indexPath.section) {
+        case 0: {
+            self.periodManager.selectedIndexPath = indexPath;
+            [self.tableView reloadData];
+            
+            // Select and deselect the cell.
+            [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+            
+            // Save the period manager and dismiss the screen.
+            [self.periodManager save];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            break;
+        }
+        case 1: {
+            // If the period does not have a start and end date,
+            // display a date picker. Otherwise, consider the period selected.
+            SPRPeriod *period = self.periodManager.periods[indexPath.section][indexPath.row];
+            if (period.startDate == nil && period.endDate == nil) {
+                switch (period.dateUnit) {
+                    case SPRDateUnitDay: {
+                        SPRDatePicker *datePicker = [[SPRDatePicker alloc] initWithFrame:[UIScreen mainScreen].bounds];
+                        datePicker.delegate = self;
+                        datePicker.preselectedDate = [NSDate date];
+                        datePicker.tag = kDatePickerTagDay;
+                        [self.navigationController.view addSubview:datePicker];
+                        [datePicker show];
+                        break;
+                    }
+                    case SPRDateUnitWeek: {
+                        break;
+                    }
+                    case SPRDateUnitMonth: {
+                        break;
+                    }
+                    case SPRDateUnitYear: {
+                        break;
+                    }
+                    default: {
+                        break;
+                    }
+                }
+            } else {
+                self.periodManager.selectedIndexPath = indexPath;
+                // Save the period manager and dismiss the screen.
+                [self.periodManager save];
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+            break;
+        }
+    }
+}
+
+#pragma mark - Date picker delegate
+
+- (void)datePicker:(SPRDatePicker *)datePicker didSelectDate:(NSDate *)date
+{
+    switch (datePicker.tag) {
+        case kDatePickerTagDay: {
+            SPRPeriod *dayPeriod = self.periodManager.periods[1][0];
+            dayPeriod.startDate = [date firstMomentInDateUnit:SPRDateUnitDay];
+            dayPeriod.endDate = [date lastMomentInDateUnit:SPRDateUnitDay];
+            
+            NSIndexPath *dayPeriodIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+            [self.tableView reloadRowsAtIndexPaths:@[dayPeriodIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+            [self.tableView selectRowAtIndexPath:dayPeriodIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+            break;
+        }
+    }
+}
+
+- (void)datePickerWillDisappear:(SPRDatePicker *)datePicker
+{
+    NSIndexPath *indexPath;
+    switch (datePicker.tag) {
+        case kDatePickerTagDay: {
+            indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+            break;
+        }
+    }
     
-    // Select and deselect the cell.
-    [self.tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    // Save the period manager and dismiss the screen.
-    [self.periodManager save];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

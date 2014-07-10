@@ -110,9 +110,10 @@ static NSString * const kNewCategoryCellIdentifier = @"NewCategoryCell";
 {
     NSDecimalNumber *total = [NSDecimalNumber decimalNumberWithString:@"0"];
     NSDecimalNumber *singleTotal;
+    SPRPeriod *activePeriod = [SPRPeriodManager sharedManager].activePeriod;
     
     for (SPRCategorySummary *summary in self.summaries) {
-        singleTotal = [summary totalForPeriod:[SPRPeriodManager sharedManager].activePeriod];
+        singleTotal = [summary totalForPeriod:activePeriod];
         total = [total decimalNumberByAdding:singleTotal];
     }
     
@@ -176,7 +177,9 @@ static NSString * const kNewCategoryCellIdentifier = @"NewCategoryCell";
     SPRCategorySummaryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kCellIdentifier forIndexPath:indexPath];
     SPRCategorySummary *summary = self.summaries[indexPath.row];
     cell.category = summary.category;
-    cell.displayedTotal = [summary totalForPeriod:[SPRPeriodManager sharedManager].activePeriod];
+    
+    SPRPeriod *activePeriod = [SPRPeriodManager sharedManager].activePeriod;
+    cell.displayedTotal = [summary totalForPeriod:activePeriod];
     
     return cell;
 }

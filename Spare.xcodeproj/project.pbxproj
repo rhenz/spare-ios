@@ -39,6 +39,7 @@
 		263B093A1939C88000454F2D /* SPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8A518E8147300DE2765 /* SPRCategory.m */; };
 		263BA034193E39750022BFDC /* SPRExpenseSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 263BA033193E39750022BFDC /* SPRExpenseSectionHeader.m */; };
 		263BA037193E3D3E0022BFDC /* NSNumber+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 263BA036193E3D3E0022BFDC /* NSNumber+SPR.m */; };
+		2655403A196ED0E000E0AE3C /* SPRCustomDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26554039196ED0E000E0AE3C /* SPRCustomDefaultCell.m */; };
 		2659EFF71968D5D6005F31E1 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2659EFF61968D5D6005F31E1 /* iPhone.storyboard */; };
 		2659EFFA1968D62D005F31E1 /* SPRSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2659EFF91968D62D005F31E1 /* SPRSliderViewController.m */; };
 		266065BD18F055D50085F877 /* SPRExpense+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 266065BC18F055D50085F877 /* SPRExpense+Extension.m */; };
@@ -150,6 +151,8 @@
 		263BA033193E39750022BFDC /* SPRExpenseSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRExpenseSectionHeader.m; sourceTree = "<group>"; };
 		263BA035193E3D3E0022BFDC /* NSNumber+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+SPR.h"; sourceTree = "<group>"; };
 		263BA036193E3D3E0022BFDC /* NSNumber+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+SPR.m"; sourceTree = "<group>"; };
+		26554038196ED0E000E0AE3C /* SPRCustomDefaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCustomDefaultCell.h; sourceTree = "<group>"; };
+		26554039196ED0E000E0AE3C /* SPRCustomDefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCustomDefaultCell.m; sourceTree = "<group>"; };
 		2659EFF61968D5D6005F31E1 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = iPhone.storyboard; path = ../iPhone.storyboard; sourceTree = "<group>"; };
 		2659EFF81968D62D005F31E1 /* SPRSliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRSliderViewController.h; sourceTree = "<group>"; };
 		2659EFF91968D62D005F31E1 /* SPRSliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRSliderViewController.m; sourceTree = "<group>"; };
@@ -534,6 +537,8 @@
 				26FCD19E196BD6D400AC0FC8 /* SPRQuickDefaultCell.m */,
 				26FCD1A3196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.h */,
 				26FCD1A4196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m */,
+				26554038196ED0E000E0AE3C /* SPRCustomDefaultCell.h */,
+				26554039196ED0E000E0AE3C /* SPRCustomDefaultCell.m */,
 			);
 			path = "Period Table View Cells";
 			sourceTree = "<group>";
@@ -735,6 +740,7 @@
 				26A90290191DCF9000CEE065 /* SPREditExpenseViewController.m in Sources */,
 				26E9C310193CC41B009F18D9 /* NSIndexPath+SPR.m in Sources */,
 				261EB87118DDB631009DDF78 /* main.m in Sources */,
+				2655403A196ED0E000E0AE3C /* SPRCustomDefaultCell.m in Sources */,
 				2659EFFA1968D62D005F31E1 /* SPRSliderViewController.m in Sources */,
 				26D2D7321969CFB100CCC973 /* SPRExpenseAmountCell.m in Sources */,
 				26369E6A18F5787D000A9ADA /* SPRNewExpenseViewController.m in Sources */,
