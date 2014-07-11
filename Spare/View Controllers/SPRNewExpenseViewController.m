@@ -17,7 +17,7 @@
 // Custom views
 #import "SPRTextField.h"
 #import "SPRCategoryPicker.h"
-#import "SPRDatePicker.h"
+#import "SPRDayPicker.h"
 
 // Libraries
 #import <Crashlytics/Crashlytics.h>
@@ -37,7 +37,7 @@ static NSString * const kDateSpentCell = @"kDateSpentCell";
 
 static const NSInteger kTextFieldTag = 1000;
 
-@interface SPRNewExpenseViewController () <UITextFieldDelegate, SPRCategoryPickerDelegate, SPRDatePickerDelegate>
+@interface SPRNewExpenseViewController () <UITextFieldDelegate, SPRCategoryPickerDelegate, SPRDayPickerDelegate>
 
 @property (strong, nonatomic) NSArray *identifiers;
 @property (strong, nonatomic) NSArray *fields;
@@ -181,7 +181,7 @@ static const NSInteger kTextFieldTag = 1000;
             break;
         }
         case kRowDateSpent: {
-            SPRDatePicker *datePicker = [[SPRDatePicker alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height)];
+            SPRDayPicker *datePicker = [[SPRDayPicker alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height)];
             datePicker.delegate = self;
             datePicker.preselectedDate = ((SPRField *)self.fields[kRowDateSpent]).value;
             [self.navigationController.view addSubview:datePicker];
@@ -249,9 +249,9 @@ static const NSInteger kTextFieldTag = 1000;
     [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:kRowCategory inSection:0] animated:YES];
 }
 
-#pragma mark - Date picker delegate
+#pragma mark - Day picker delegate
 
-- (void)datePicker:(SPRDatePicker *)datePicker didSelectDate:(NSDate *)date
+- (void)dayPicker:(SPRDayPicker *)dayPicker didSelectDate:(NSDate *)date
 {
     SPRField *dateSpentField = self.fields[kRowDateSpent];
     dateSpentField.value = date;
@@ -261,7 +261,7 @@ static const NSInteger kTextFieldTag = 1000;
     [self.tableView selectRowAtIndexPath:dateSpentIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
-- (void)datePickerWillDisappear:(SPRDatePicker *)datePicker
+- (void)dayPickerWillDisappear:(SPRDayPicker *)dayPicker
 {
     [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:kRowDateSpent inSection:0] animated:YES];
 }

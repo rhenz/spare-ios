@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 Matt Quiros. All rights reserved.
 //
 
-#import "SPRDatePicker.h"
+#import "SPRDayPicker.h"
 
 static const CGFloat kAnimationDuration = 0.1;
 
-@interface SPRDatePicker ()
+@interface SPRDayPicker ()
 
 @property (strong, nonatomic) UIView *translucentBackground;
 @property (strong, nonatomic) UIDatePicker *datePicker;
 
 @end
 
-@implementation SPRDatePicker
+@implementation SPRDayPicker
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -58,15 +58,15 @@ static const CGFloat kAnimationDuration = 0.1;
 
 - (void)datePickerChanged
 {
-    if ([self.delegate respondsToSelector:@selector(datePicker:didSelectDate:)]) {
-        [self.delegate datePicker:self didSelectDate:self.datePicker.date];
+    if ([self.delegate respondsToSelector:@selector(dayPicker:didSelectDate:)]) {
+        [self.delegate dayPicker:self didSelectDate:self.datePicker.date];
     }
 }
 
 - (void)hide
 {
-    if ([self.delegate respondsToSelector:@selector(datePickerWillDisappear:)]) {
-        [self.delegate datePickerWillDisappear:self];
+    if ([self.delegate respondsToSelector:@selector(dayPickerWillDisappear:)]) {
+        [self.delegate dayPickerWillDisappear:self];
     }
     
     [UIView animateWithDuration:kAnimationDuration animations:^{

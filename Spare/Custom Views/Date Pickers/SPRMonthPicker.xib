@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="dgY-Yo-Og7" customClass="SPRMonthPicker">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view alpha="0.29999999999999999" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OhV-He-Ckp">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNU-BM-Pfb">
+                    <rect key="frame" x="0.0" y="406" width="320" height="162"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="320" id="Q7g-rX-srp"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="dgY-Yo-Og7" id="NDo-C9-bLE"/>
+                        <outlet property="delegate" destination="dgY-Yo-Og7" id="pA3-Ug-xaA"/>
+                    </connections>
+                </pickerView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="qNU-BM-Pfb" secondAttribute="bottom" id="Rjk-Q9-9zM"/>
+                <constraint firstItem="qNU-BM-Pfb" firstAttribute="leading" secondItem="dgY-Yo-Og7" secondAttribute="leading" id="zMn-Xg-NZs"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="pickerView" destination="qNU-BM-Pfb" id="DKG-V7-2pT"/>
+                <outlet property="translucentBackground" destination="OhV-He-Ckp" id="1w6-y1-OsF"/>
+            </connections>
+        </view>
+    </objects>
+</document>

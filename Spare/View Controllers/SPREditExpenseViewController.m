@@ -14,7 +14,7 @@
 #import "SPRExpenseCategoryCell.h"
 #import "SPRExpenseDateSpentCell.h"
 #import "SPRCategoryPicker.h"
-#import "SPRDatePicker.h"
+#import "SPRDayPicker.h"
 
 // Objects
 #import "SPRField.h"
@@ -37,7 +37,7 @@ typedef NS_ENUM(NSUInteger, kRow)
     kRowDateSpent,
 };
 
-@interface SPREditExpenseViewController () <SPRCategoryPickerDelegate, SPRDatePickerDelegate, UIAlertViewDelegate>
+@interface SPREditExpenseViewController () <SPRCategoryPickerDelegate, SPRDayPickerDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSArray *cellIdentifiers;
 @property (strong, nonatomic) NSArray *fields;
@@ -227,7 +227,7 @@ typedef NS_ENUM(NSUInteger, kRow)
             break;
         }
         case kRowDateSpent: {
-            SPRDatePicker *datePicker = [[SPRDatePicker alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height)];
+            SPRDayPicker *datePicker = [[SPRDayPicker alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height)];
             datePicker.delegate = self;
             datePicker.preselectedDate = ((SPRField *)self.fields[kRowDateSpent]).value;
             [self.navigationController.view addSubview:datePicker];
@@ -298,7 +298,7 @@ typedef NS_ENUM(NSUInteger, kRow)
 
 #pragma mark - Date picker delegate
 
-- (void)datePicker:(SPRDatePicker *)datePicker didSelectDate:(NSDate *)date
+- (void)dayPicker:(SPRDayPicker *)datePicker didSelectDate:(NSDate *)date
 {
     SPRField *dateSpentField = self.fields[kRowDateSpent];
     dateSpentField.value = date;
@@ -308,7 +308,7 @@ typedef NS_ENUM(NSUInteger, kRow)
     [self.tableView selectRowAtIndexPath:dateSpentIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
-- (void)datePickerWillDisappear:(SPRDatePicker *)datePicker
+- (void)dayPickerWillDisappear:(SPRDayPicker *)datePicker
 {
     [self.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:kRowDateSpent inSection:0] animated:YES];
 }

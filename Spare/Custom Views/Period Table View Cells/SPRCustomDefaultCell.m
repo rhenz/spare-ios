@@ -48,4 +48,11 @@
     [self setNeedsLayout];
 }
 
+- (IBAction)changeButtonTapped:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(changeButtonTappedForPeriod:)]) {
+        [self.delegate changeButtonTappedForPeriod:self.period];
+    }
+}
+
 @end

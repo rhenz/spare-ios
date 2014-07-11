@@ -29,7 +29,7 @@
         
         // Build the attributed string.
         NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"+" attributes:@{NSFontAttributeName : [UIFont boldSystemFontOfSize:30]}];
-        [text appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nNew category" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]}]];
+        [text appendAttributedString:[[NSAttributedString alloc] initWithString:@"\nNew Category" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]}]];
         
         _label.attributedText = text;
         [self.contentView addSubview:_label];

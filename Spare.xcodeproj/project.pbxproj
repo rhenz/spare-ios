@@ -32,7 +32,6 @@
 		261EB89818DDB64F009DDF78 /* iPhone_v1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261EB89718DDB64F009DDF78 /* iPhone_v1.storyboard */; };
 		262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */; };
 		26369E6618F57817000A9ADA /* SPRCategoryPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 26369E6318F57817000A9ADA /* SPRCategoryPicker.m */; };
-		26369E6718F57817000A9ADA /* SPRDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 26369E6518F57817000A9ADA /* SPRDatePicker.m */; };
 		26369E6A18F5787D000A9ADA /* SPRNewExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26369E6918F5787D000A9ADA /* SPRNewExpenseViewController.m */; };
 		2638AAAC19260B7A00D3D3E2 /* SPREditCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2638AAAB19260B7A00D3D3E2 /* SPREditCategoryViewController.m */; };
 		263B09351939ADD900454F2D /* SPRCategorySummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 263B09341939ADD900454F2D /* SPRCategorySummary.m */; };
@@ -40,6 +39,9 @@
 		263BA034193E39750022BFDC /* SPRExpenseSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 263BA033193E39750022BFDC /* SPRExpenseSectionHeader.m */; };
 		263BA037193E3D3E0022BFDC /* NSNumber+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 263BA036193E3D3E0022BFDC /* NSNumber+SPR.m */; };
 		2655403A196ED0E000E0AE3C /* SPRCustomDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26554039196ED0E000E0AE3C /* SPRCustomDefaultCell.m */; };
+		2656B76D196FE10C003313AA /* SPRDayPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2656B76C196FE10C003313AA /* SPRDayPicker.m */; };
+		2656B770196FE24B003313AA /* SPRMonthPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2656B76F196FE24B003313AA /* SPRMonthPicker.m */; };
+		2656B772196FE5D8003313AA /* SPRMonthPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2656B771196FE5D8003313AA /* SPRMonthPicker.xib */; };
 		2659EFF71968D5D6005F31E1 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2659EFF61968D5D6005F31E1 /* iPhone.storyboard */; };
 		2659EFFA1968D62D005F31E1 /* SPRSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2659EFF91968D62D005F31E1 /* SPRSliderViewController.m */; };
 		266065BD18F055D50085F877 /* SPRExpense+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 266065BC18F055D50085F877 /* SPRExpense+Extension.m */; };
@@ -139,8 +141,6 @@
 		262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRIconFont.m; sourceTree = "<group>"; };
 		26369E6218F57817000A9ADA /* SPRCategoryPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryPicker.h; sourceTree = "<group>"; };
 		26369E6318F57817000A9ADA /* SPRCategoryPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryPicker.m; sourceTree = "<group>"; };
-		26369E6418F57817000A9ADA /* SPRDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRDatePicker.h; sourceTree = "<group>"; };
-		26369E6518F57817000A9ADA /* SPRDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRDatePicker.m; sourceTree = "<group>"; };
 		26369E6818F5787D000A9ADA /* SPRNewExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNewExpenseViewController.h; sourceTree = "<group>"; };
 		26369E6918F5787D000A9ADA /* SPRNewExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNewExpenseViewController.m; sourceTree = "<group>"; };
 		2638AAAA19260B7A00D3D3E2 /* SPREditCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPREditCategoryViewController.h; sourceTree = "<group>"; };
@@ -153,6 +153,11 @@
 		263BA036193E3D3E0022BFDC /* NSNumber+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+SPR.m"; sourceTree = "<group>"; };
 		26554038196ED0E000E0AE3C /* SPRCustomDefaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCustomDefaultCell.h; sourceTree = "<group>"; };
 		26554039196ED0E000E0AE3C /* SPRCustomDefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCustomDefaultCell.m; sourceTree = "<group>"; };
+		2656B76B196FE10C003313AA /* SPRDayPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRDayPicker.h; sourceTree = "<group>"; };
+		2656B76C196FE10C003313AA /* SPRDayPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRDayPicker.m; sourceTree = "<group>"; };
+		2656B76E196FE24B003313AA /* SPRMonthPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRMonthPicker.h; sourceTree = "<group>"; };
+		2656B76F196FE24B003313AA /* SPRMonthPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRMonthPicker.m; sourceTree = "<group>"; };
+		2656B771196FE5D8003313AA /* SPRMonthPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPRMonthPicker.xib; sourceTree = "<group>"; };
 		2659EFF61968D5D6005F31E1 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = iPhone.storyboard; path = ../iPhone.storyboard; sourceTree = "<group>"; };
 		2659EFF81968D62D005F31E1 /* SPRSliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRSliderViewController.h; sourceTree = "<group>"; };
 		2659EFF91968D62D005F31E1 /* SPRSliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRSliderViewController.m; sourceTree = "<group>"; };
@@ -379,12 +384,11 @@
 		261EB8A318DDC46B009DDF78 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				2656B76A196FE0CA003313AA /* Date Pickers */,
 				26FCD19C196BD6BD00AC0FC8 /* Period Table View Cells */,
 				26D2D7211969CFB100CCC973 /* Form Table View Cells */,
 				26369E6218F57817000A9ADA /* SPRCategoryPicker.h */,
 				26369E6318F57817000A9ADA /* SPRCategoryPicker.m */,
-				26369E6418F57817000A9ADA /* SPRDatePicker.h */,
-				26369E6518F57817000A9ADA /* SPRDatePicker.m */,
 				2688627B18E31E2F00B8D167 /* SPRColorChooserSectionHeader.h */,
 				2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */,
 				2612C8AA18E831F600DE2765 /* SPRTextField.h */,
@@ -441,6 +445,18 @@
 				26D2D71F1969BED200CCC973 /* SPRIcons.m */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2656B76A196FE0CA003313AA /* Date Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				2656B76B196FE10C003313AA /* SPRDayPicker.h */,
+				2656B76C196FE10C003313AA /* SPRDayPicker.m */,
+				2656B76E196FE24B003313AA /* SPRMonthPicker.h */,
+				2656B76F196FE24B003313AA /* SPRMonthPicker.m */,
+				2656B771196FE5D8003313AA /* SPRMonthPicker.xib */,
+			);
+			path = "Date Pickers";
 			sourceTree = "<group>";
 		};
 		2666C2B81957CF04003752BF /* GoogleAnalytics */ = {
@@ -629,6 +645,7 @@
 				2659EFF71968D5D6005F31E1 /* iPhone.storyboard in Resources */,
 				261EB86F18DDB631009DDF78 /* InfoPlist.strings in Resources */,
 				261EB89818DDB64F009DDF78 /* iPhone_v1.storyboard in Resources */,
+				2656B772196FE5D8003313AA /* SPRMonthPicker.xib in Resources */,
 				261EB87A18DDB631009DDF78 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -698,6 +715,7 @@
 				26617D6918F308F800CA51EA /* SPRSetupViewController.m in Sources */,
 				26D08D2618F105C600AE018F /* OldSPRHomeViewController.m in Sources */,
 				26E2486218E1E3C400391354 /* SPRColorChooserViewController.m in Sources */,
+				2656B770196FE24B003313AA /* SPRMonthPicker.m in Sources */,
 				2612C8AC18E831F600DE2765 /* SPRTextField.m in Sources */,
 				26D2D7201969BED200CCC973 /* SPRIcons.m in Sources */,
 				26D2D7331969CFB100CCC973 /* SPRExpenseCategoryCell.m in Sources */,
@@ -732,7 +750,6 @@
 				2638AAAC19260B7A00D3D3E2 /* SPREditCategoryViewController.m in Sources */,
 				2612C89418E7E64C00DE2765 /* SPRCategoryViewController.m in Sources */,
 				26D2D7361969CFB100CCC973 /* SPRFormCell.m in Sources */,
-				26369E6718F57817000A9ADA /* SPRDatePicker.m in Sources */,
 				2661CD7619321751009C7034 /* SPRCategoryHeaderCell.m in Sources */,
 				26A9029D191DD81400CEE065 /* UIView+SPR.m in Sources */,
 				26E2484618E1B7F900391354 /* UIColor+HexColor.m in Sources */,
@@ -743,6 +760,7 @@
 				2655403A196ED0E000E0AE3C /* SPRCustomDefaultCell.m in Sources */,
 				2659EFFA1968D62D005F31E1 /* SPRSliderViewController.m in Sources */,
 				26D2D7321969CFB100CCC973 /* SPRExpenseAmountCell.m in Sources */,
+				2656B76D196FE10C003313AA /* SPRDayPicker.m in Sources */,
 				26369E6A18F5787D000A9ADA /* SPRNewExpenseViewController.m in Sources */,
 				26D2D71119694BB100CCC973 /* SPRHomeViewController.m in Sources */,
 				26D2D71A196951A800CCC973 /* UIViewController+Slider.m in Sources */,

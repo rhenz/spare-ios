@@ -8,6 +8,14 @@
 
 #import "SPRPeriodTableViewCell.h"
 
+@protocol SPRCustomDefaultCellDelegate <NSObject>
+
+- (void)changeButtonTappedForPeriod:(SPRPeriod *)period;
+
+@end
+
 @interface SPRCustomDefaultCell : SPRPeriodTableViewCell
+
+@property (weak, nonatomic) id<SPRCustomDefaultCellDelegate> delegate;
 
 @end

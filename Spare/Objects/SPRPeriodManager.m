@@ -123,6 +123,11 @@ static NSString * const kCustomDefaultsFile = @"kCustomDefaultsFile";
     SPRPeriod *period;
     
     for (int i = 0; i < 4; i++) {
+        if (i == 1) {
+            // Skip the Week custom default for now.
+            continue;
+        }
+        
         period = [[SPRPeriod alloc] init];
         period.dateUnit = dateUnits[i];
         

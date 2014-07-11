@@ -286,6 +286,9 @@
                                                     <state key="normal" title="Change">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="changeButtonTapped:" destination="N6E-yl-neL" eventType="touchUpInside" id="Vmj-eB-Mu2"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -315,6 +318,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="sS2-AC-IJn">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="Bg6-qR-42N" id="EeF-t7-cVd"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="lgt-jo-nvX">
+                            <connections>
+                                <action selector="doneButtonTapped:" destination="Bg6-qR-42N" id="4Bd-Hy-Qk3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
