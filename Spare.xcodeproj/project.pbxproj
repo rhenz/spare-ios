@@ -57,6 +57,7 @@
 		2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */; };
 		2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628218E3370400B8D167 /* SPRManagedDocument.m */; };
 		2688628618E339F900B8D167 /* SPRField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628518E339F900B8D167 /* SPRField.m */; };
+		26A0636A19724A6900B682BB /* SPRDayWeekPickerNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A0636919724A6900B682BB /* SPRDayWeekPickerNavigationBar.m */; };
 		26A90290191DCF9000CEE065 /* SPREditExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */; };
 		26A9029D191DD81400CEE065 /* UIView+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9029C191DD81400CEE065 /* UIView+SPR.m */; };
 		26B235F3196C5FCC00268B27 /* SPRPeriodManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B235F2196C5FCC00268B27 /* SPRPeriodManager.m */; };
@@ -85,6 +86,8 @@
 		26F652FC196A33B200C19D87 /* SPRNewCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F652FB196A33B200C19D87 /* SPRNewCategoryCell.m */; };
 		26FCD19F196BD6D400AC0FC8 /* SPRQuickDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCD19E196BD6D400AC0FC8 /* SPRQuickDefaultCell.m */; };
 		26FCD1A5196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCD1A4196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m */; };
+		26FCED8719706C9300FD01D0 /* SPRDayWeekPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCED8619706C9300FD01D0 /* SPRDayWeekPickerViewController.m */; };
+		26FCED8B1970742500FD01D0 /* SPRDayWeekPickerNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FCED8A1970742500FD01D0 /* SPRDayWeekPickerNavigationBar.xib */; };
 		28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6196FFB0C5B41DEB0DB54BF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -189,6 +192,8 @@
 		2688628218E3370400B8D167 /* SPRManagedDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRManagedDocument.m; sourceTree = "<group>"; };
 		2688628418E339F900B8D167 /* SPRField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRField.h; sourceTree = "<group>"; };
 		2688628518E339F900B8D167 /* SPRField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRField.m; sourceTree = "<group>"; };
+		26A0636819724A6900B682BB /* SPRDayWeekPickerNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRDayWeekPickerNavigationBar.h; sourceTree = "<group>"; };
+		26A0636919724A6900B682BB /* SPRDayWeekPickerNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRDayWeekPickerNavigationBar.m; sourceTree = "<group>"; };
 		26A9028E191DCF9000CEE065 /* SPREditExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPREditExpenseViewController.h; sourceTree = "<group>"; };
 		26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPREditExpenseViewController.m; sourceTree = "<group>"; };
 		26A9029B191DD81400CEE065 /* UIView+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SPR.h"; sourceTree = "<group>"; };
@@ -243,6 +248,9 @@
 		26FCD19E196BD6D400AC0FC8 /* SPRQuickDefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRQuickDefaultCell.m; sourceTree = "<group>"; };
 		26FCD1A3196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRPeriodTableViewCell.h; sourceTree = "<group>"; };
 		26FCD1A4196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRPeriodTableViewCell.m; sourceTree = "<group>"; };
+		26FCED8519706C9300FD01D0 /* SPRDayWeekPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRDayWeekPickerViewController.h; sourceTree = "<group>"; };
+		26FCED8619706C9300FD01D0 /* SPRDayWeekPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRDayWeekPickerViewController.m; sourceTree = "<group>"; };
+		26FCED8A1970742500FD01D0 /* SPRDayWeekPickerNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPRDayWeekPickerNavigationBar.xib; sourceTree = "<group>"; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -403,6 +411,9 @@
 				26D2D71C1969B0DD00CCC973 /* SPRTotalView.m */,
 				26F652FA196A33B200C19D87 /* SPRNewCategoryCell.h */,
 				26F652FB196A33B200C19D87 /* SPRNewCategoryCell.m */,
+				26FCED8A1970742500FD01D0 /* SPRDayWeekPickerNavigationBar.xib */,
+				26A0636819724A6900B682BB /* SPRDayWeekPickerNavigationBar.h */,
+				26A0636919724A6900B682BB /* SPRDayWeekPickerNavigationBar.m */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -542,6 +553,8 @@
 				26D2D71019694BB100CCC973 /* SPRHomeViewController.m */,
 				26673288196AF82700BB4DBE /* SPRPeriodViewController.h */,
 				26673289196AF82700BB4DBE /* SPRPeriodViewController.m */,
+				26FCED8519706C9300FD01D0 /* SPRDayWeekPickerViewController.h */,
+				26FCED8619706C9300FD01D0 /* SPRDayWeekPickerViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -644,6 +657,7 @@
 				2603E75A193C85F9009F9AD6 /* spare-icons.ttf in Resources */,
 				2659EFF71968D5D6005F31E1 /* iPhone.storyboard in Resources */,
 				261EB86F18DDB631009DDF78 /* InfoPlist.strings in Resources */,
+				26FCED8B1970742500FD01D0 /* SPRDayWeekPickerNavigationBar.xib in Resources */,
 				261EB89818DDB64F009DDF78 /* iPhone_v1.storyboard in Resources */,
 				2656B772196FE5D8003313AA /* SPRMonthPicker.xib in Resources */,
 				261EB87A18DDB631009DDF78 /* Images.xcassets in Resources */,
@@ -724,6 +738,7 @@
 				26D2D7341969CFB100CCC973 /* SPRExpenseDateSpentCell.m in Sources */,
 				26D2D7351969CFB100CCC973 /* SPRExpenseDescriptionCell.m in Sources */,
 				2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */,
+				26A0636A19724A6900B682BB /* SPRDayWeekPickerNavigationBar.m in Sources */,
 				2688628618E339F900B8D167 /* SPRField.m in Sources */,
 				26E2485F18E1DCEF00391354 /* SPRCategory+Extension.m in Sources */,
 				26B235F3196C5FCC00268B27 /* SPRPeriodManager.m in Sources */,
@@ -765,6 +780,7 @@
 				26D2D71119694BB100CCC973 /* SPRHomeViewController.m in Sources */,
 				26D2D71A196951A800CCC973 /* UIViewController+Slider.m in Sources */,
 				266065BD18F055D50085F877 /* SPRExpense+Extension.m in Sources */,
+				26FCED8719706C9300FD01D0 /* SPRDayWeekPickerViewController.m in Sources */,
 				26B4B75618F277B5001B119D /* SPRCategorySummaryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

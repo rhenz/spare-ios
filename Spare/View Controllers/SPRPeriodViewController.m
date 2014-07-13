@@ -19,6 +19,9 @@
 #import "SPRDayPicker.h"
 #import "SPRMonthPicker.h"
 
+// View controllers
+#import "SPRDayWeekPickerViewController.h"
+
 @interface SPRPeriodViewController () <UITableViewDataSource, UITableViewDelegate,
 SPRDayPickerDelegate,
 SPRCustomDefaultCellDelegate>
@@ -120,10 +123,12 @@ static NSArray *identifiers;
                         break;
                     }
                     case SPRDateUnitMonth: {
-                        SPRMonthPicker *picker = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SPRMonthPicker class]) owner:nil options:nil] firstObject];
-                        picker.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-                        [self.navigationController.view addSubview:picker];
-                        [picker show];
+//                        SPRMonthPicker *picker = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SPRMonthPicker class]) owner:nil options:nil] firstObject];
+//                        picker.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+//                        [self.navigationController.view addSubview:picker];
+//                        [picker show];
+                        SPRDayWeekPickerViewController *dayWeekPicker = [[UIStoryboard storyboardWithName:@"iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"dayWeekPicker"];
+                        [self presentViewController:dayWeekPicker animated:YES completion:nil];
                         break;
                     }
                     case SPRDateUnitYear: {
