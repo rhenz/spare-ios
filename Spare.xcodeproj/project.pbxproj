@@ -58,6 +58,7 @@
 		2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628218E3370400B8D167 /* SPRManagedDocument.m */; };
 		2688628618E339F900B8D167 /* SPRField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628518E339F900B8D167 /* SPRField.m */; };
 		26A0636A19724A6900B682BB /* SPRDayWeekPickerNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A0636919724A6900B682BB /* SPRDayWeekPickerNavigationBar.m */; };
+		26A0636C1972655500B682BB /* SPRDayPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A0636B1972655500B682BB /* SPRDayPicker.xib */; };
 		26A90290191DCF9000CEE065 /* SPREditExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */; };
 		26A9029D191DD81400CEE065 /* UIView+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9029C191DD81400CEE065 /* UIView+SPR.m */; };
 		26B235F3196C5FCC00268B27 /* SPRPeriodManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B235F2196C5FCC00268B27 /* SPRPeriodManager.m */; };
@@ -194,6 +195,7 @@
 		2688628518E339F900B8D167 /* SPRField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRField.m; sourceTree = "<group>"; };
 		26A0636819724A6900B682BB /* SPRDayWeekPickerNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRDayWeekPickerNavigationBar.h; sourceTree = "<group>"; };
 		26A0636919724A6900B682BB /* SPRDayWeekPickerNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRDayWeekPickerNavigationBar.m; sourceTree = "<group>"; };
+		26A0636B1972655500B682BB /* SPRDayPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPRDayPicker.xib; sourceTree = "<group>"; };
 		26A9028E191DCF9000CEE065 /* SPREditExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPREditExpenseViewController.h; sourceTree = "<group>"; };
 		26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPREditExpenseViewController.m; sourceTree = "<group>"; };
 		26A9029B191DD81400CEE065 /* UIView+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SPR.h"; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 			children = (
 				2656B76B196FE10C003313AA /* SPRDayPicker.h */,
 				2656B76C196FE10C003313AA /* SPRDayPicker.m */,
+				26A0636B1972655500B682BB /* SPRDayPicker.xib */,
 				2656B76E196FE24B003313AA /* SPRMonthPicker.h */,
 				2656B76F196FE24B003313AA /* SPRMonthPicker.m */,
 				2656B771196FE5D8003313AA /* SPRMonthPicker.xib */,
@@ -656,6 +659,7 @@
 			files = (
 				2603E75A193C85F9009F9AD6 /* spare-icons.ttf in Resources */,
 				2659EFF71968D5D6005F31E1 /* iPhone.storyboard in Resources */,
+				26A0636C1972655500B682BB /* SPRDayPicker.xib in Resources */,
 				261EB86F18DDB631009DDF78 /* InfoPlist.strings in Resources */,
 				26FCED8B1970742500FD01D0 /* SPRDayWeekPickerNavigationBar.xib in Resources */,
 				261EB89818DDB64F009DDF78 /* iPhone_v1.storyboard in Resources */,

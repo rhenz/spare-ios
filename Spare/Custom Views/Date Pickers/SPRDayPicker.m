@@ -12,39 +12,36 @@ static const CGFloat kAnimationDuration = 0.1;
 
 @interface SPRDayPicker ()
 
-@property (strong, nonatomic) UIView *translucentBackground;
-@property (strong, nonatomic) UIDatePicker *datePicker;
+@property (strong, nonatomic) IBOutlet UIView *translucentBackground;
+@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @end
 
 @implementation SPRDayPicker
 
-- (id)initWithFrame:(CGRect)frame
+- (id)init
 {
-    if (self = [super initWithFrame:frame]) {
-        _translucentBackground = [[UIView alloc] init];
-        _translucentBackground.backgroundColor = [UIColor blackColor];
-        _translucentBackground.alpha = 0.3;
-        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide)];
-        [_translucentBackground addGestureRecognizer:tapRecognizer];
-        
-        _datePicker = [[UIDatePicker alloc] init];
-        _datePicker.datePickerMode = UIDatePickerModeDate;
-        _datePicker.backgroundColor = [UIColor whiteColor];
-        [_datePicker addTarget:self action:@selector(datePickerChanged) forControlEvents:UIControlEventValueChanged];
-        
-        [self addSubview:_translucentBackground];
-        [self addSubview:_datePicker];
-        self.alpha = 0;
+    self = [[[NSBundle mainBundle] loadNibNamed:@"SPRDayPicker" owner:nil options:nil] firstObject];
+    if (self) {
+        self.frame = [UIScreen mainScreen].bounds;
     }
     return self;
 }
 
-- (void)layoutSubviews
+- (id)initWithFrame:(CGRect)frame
 {
-    self.translucentBackground.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    self = [self init];
+    return self;
+}
+
+- (void)awakeFromNib
+{
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide)];
+    [self.translucentBackground addGestureRecognizer:tapRecognizer];
     
-    self.datePicker.frame = CGRectMake(0, self.frame.size.height - self.datePicker.frame.size.height, self.datePicker.frame.size.width, self.datePicker.frame.size.height);
+    self.datePicker.backgroundColor = [UIColor whiteColor];
+    [self.datePicker addTarget:self action:@selector(datePickerChanged) forControlEvents:UIControlEventValueChanged];
+    self.alpha = 0;
 }
 
 - (void)show

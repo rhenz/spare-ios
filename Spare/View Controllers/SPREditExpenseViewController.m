@@ -227,7 +227,7 @@ typedef NS_ENUM(NSUInteger, kRow)
             break;
         }
         case kRowDateSpent: {
-            SPRDayPicker *datePicker = [[SPRDayPicker alloc] initWithFrame:CGRectMake(0, 0, self.navigationController.view.frame.size.width, self.navigationController.view.frame.size.height)];
+            SPRDayPicker *datePicker = [[SPRDayPicker alloc] init];
             datePicker.delegate = self;
             datePicker.preselectedDate = ((SPRField *)self.fields[kRowDateSpent]).value;
             [self.navigationController.view addSubview:datePicker];

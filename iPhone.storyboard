@@ -371,6 +371,9 @@
                             <constraint firstItem="Efg-zk-hJF" firstAttribute="leading" secondItem="9cg-Qx-Z9P" secondAttribute="leading" id="XMr-0N-RaU"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Efg-zk-hJF" id="Lle-zl-aV5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRM-Yk-PnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

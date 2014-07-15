@@ -10,4 +10,6 @@
 
 @interface SPRDayWeekPickerViewController : UIViewController
 
+- (instancetype)initWithDateUnit:(SPRDateUnit)dateUnit preselectedDate:(NSDate *)date;
+
 @end

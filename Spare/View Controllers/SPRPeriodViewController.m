@@ -111,7 +111,7 @@ static NSArray *identifiers;
             if (period.startDate == nil && period.endDate == nil) {
                 switch (period.dateUnit) {
                     case SPRDateUnitDay: {
-                        SPRDayPicker *datePicker = [[SPRDayPicker alloc] initWithFrame:[UIScreen mainScreen].bounds];
+                        SPRDayPicker *datePicker = [[SPRDayPicker alloc] init];
                         datePicker.delegate = self;
                         datePicker.preselectedDate = [NSDate date];
                         datePicker.tag = kDatePickerTagDay;
@@ -120,15 +120,15 @@ static NSArray *identifiers;
                         break;
                     }
                     case SPRDateUnitWeek: {
+                        SPRDayWeekPickerViewController *dayWeekPicker = [[SPRDayWeekPickerViewController alloc] initWithDateUnit:SPRDateUnitWeek preselectedDate:[NSDate date]];
+                        [self presentViewController:dayWeekPicker animated:YES completion:nil];
                         break;
                     }
                     case SPRDateUnitMonth: {
-//                        SPRMonthPicker *picker = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SPRMonthPicker class]) owner:nil options:nil] firstObject];
-//                        picker.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-//                        [self.navigationController.view addSubview:picker];
-//                        [picker show];
-                        SPRDayWeekPickerViewController *dayWeekPicker = [[UIStoryboard storyboardWithName:@"iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"dayWeekPicker"];
-                        [self presentViewController:dayWeekPicker animated:YES completion:nil];
+                        SPRMonthPicker *picker = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([SPRMonthPicker class]) owner:nil options:nil] firstObject];
+                        picker.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+                        [self.navigationController.view addSubview:picker];
+                        [picker show];
                         break;
                     }
                     case SPRDateUnitYear: {
@@ -187,7 +187,7 @@ static NSArray *identifiers;
 - (void)changeButtonTappedForPeriod:(SPRPeriod *)period
 {
     if (period.dateUnit == SPRDateUnitDay) {
-        SPRDayPicker *datePicker = [[SPRDayPicker alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        SPRDayPicker *datePicker = [[SPRDayPicker alloc] init];
         datePicker.delegate = self;
         datePicker.preselectedDate = period.startDate;
         datePicker.tag = kDatePickerTagDay;

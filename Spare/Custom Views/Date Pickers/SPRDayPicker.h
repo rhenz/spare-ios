@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) id<SPRDayPickerDelegate> delegate;
 @property (strong, nonatomic) NSDate *preselectedDate;
+@property (nonatomic) SPRDateUnit dateUnit;
 
 - (void)show;
 
