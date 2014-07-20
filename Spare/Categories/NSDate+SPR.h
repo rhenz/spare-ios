@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 // Constants
-#import "SPRDateUnit.h"
+#import "SPRDateConstants.h"
 
 @interface NSDate (SPR)
 
@@ -21,6 +21,10 @@
 
 - (NSDate *)firstMomentInDateUnit:(SPRDateUnit)dateUnit;
 - (NSDate *)lastMomentInDateUnit:(SPRDateUnit)dateUnit;
+
+- (NSUInteger)month;
+- (NSUInteger)day;
+- (NSUInteger)year;
 
 + (NSDate *)simplifiedDate;
 + (NSDate *)simplifiedDateFromDate:(NSDate *)date;

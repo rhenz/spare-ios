@@ -1,14 +1,14 @@
 //
-//  SPRDayWeekPickerNavigationBar.m
+//  SPRCalendarPickerNavigationBar.m
 //  Spare
 //
 //  Created by Matt Quiros on 7/13/14.
 //  Copyright (c) 2014 Matt Quiros. All rights reserved.
 //
 
-#import "SPRDayWeekPickerNavigationBar.h"
+#import "SPRCalendarPickerNavigationBar.h"
 
-@interface SPRDayWeekPickerNavigationBar () <UICollectionViewDataSource>
+@interface SPRCalendarPickerNavigationBar () <UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *weekHeader;
@@ -25,11 +25,11 @@
 
 static NSString * const kWeekHeaderCellIdentifier = @"Cell";
 
-@implementation SPRDayWeekPickerNavigationBar
+@implementation SPRCalendarPickerNavigationBar
 
 - (instancetype)init
 {
-    self = [[[NSBundle mainBundle] loadNibNamed:@"SPRDayWeekPickerNavigationBar" owner:nil options:nil] firstObject];
+    self = [[[NSBundle mainBundle] loadNibNamed:@"SPRCalendarPickerNavigationBar" owner:nil options:nil] firstObject];
     if (self) {
         self.frame = CGRectMake(0, 0, 320, 80);
         _headers = @[@"S", @"M", @"T", @"W", @"T", @"F", @"S"];

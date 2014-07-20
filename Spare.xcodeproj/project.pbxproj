@@ -54,13 +54,17 @@
 		2666C2CA1957CFA1003752BF /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2666C2C91957CFA1003752BF /* libsqlite3.dylib */; };
 		2667328A196AF82700BB4DBE /* SPRPeriodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26673289196AF82700BB4DBE /* SPRPeriodViewController.m */; };
 		2667328D196AFA9200BB4DBE /* SPRPeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 2667328C196AFA9200BB4DBE /* SPRPeriod.m */; };
+		2670F2C8197A625000160D03 /* SPRDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2670F2C7197A625000160D03 /* SPRDate.m */; };
+		2686F504197B78E400C1D7A9 /* SPRCalendarPickerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2686F503197B78E400C1D7A9 /* SPRCalendarPickerCollectionViewCell.m */; };
+		2686F508197B792000C1D7A9 /* SPRCalendarPickerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2686F507197B792000C1D7A9 /* SPRCalendarPickerCollectionViewCell.xib */; };
 		2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */; };
 		2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628218E3370400B8D167 /* SPRManagedDocument.m */; };
 		2688628618E339F900B8D167 /* SPRField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628518E339F900B8D167 /* SPRField.m */; };
-		26A0636A19724A6900B682BB /* SPRDayWeekPickerNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A0636919724A6900B682BB /* SPRDayWeekPickerNavigationBar.m */; };
+		26A0636A19724A6900B682BB /* SPRCalendarPickerNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A0636919724A6900B682BB /* SPRCalendarPickerNavigationBar.m */; };
 		26A0636C1972655500B682BB /* SPRDayPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A0636B1972655500B682BB /* SPRDayPicker.xib */; };
 		26A90290191DCF9000CEE065 /* SPREditExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */; };
 		26A9029D191DD81400CEE065 /* UIView+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9029C191DD81400CEE065 /* UIView+SPR.m */; };
+		26ACC4331974EA92007566A3 /* SPRDateConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 26ACC4321974EA92007566A3 /* SPRDateConstants.m */; };
 		26B235F3196C5FCC00268B27 /* SPRPeriodManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B235F2196C5FCC00268B27 /* SPRPeriodManager.m */; };
 		26B4B75618F277B5001B119D /* SPRCategorySummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B4B75518F277B5001B119D /* SPRCategorySummaryCell.m */; };
 		26D08D2618F105C600AE018F /* OldSPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D08D2518F105C600AE018F /* OldSPRHomeViewController.m */; };
@@ -87,8 +91,8 @@
 		26F652FC196A33B200C19D87 /* SPRNewCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F652FB196A33B200C19D87 /* SPRNewCategoryCell.m */; };
 		26FCD19F196BD6D400AC0FC8 /* SPRQuickDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCD19E196BD6D400AC0FC8 /* SPRQuickDefaultCell.m */; };
 		26FCD1A5196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCD1A4196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m */; };
-		26FCED8719706C9300FD01D0 /* SPRDayWeekPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCED8619706C9300FD01D0 /* SPRDayWeekPickerViewController.m */; };
-		26FCED8B1970742500FD01D0 /* SPRDayWeekPickerNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FCED8A1970742500FD01D0 /* SPRDayWeekPickerNavigationBar.xib */; };
+		26FCED8719706C9300FD01D0 /* SPRCalendarPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCED8619706C9300FD01D0 /* SPRCalendarPickerViewController.m */; };
+		26FCED8B1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FCED8A1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib */; };
 		28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6196FFB0C5B41DEB0DB54BF /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -105,7 +109,6 @@
 /* Begin PBXFileReference section */
 		1D78CD279F1A45BD8D86373D /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		2603E759193C83F1009F9AD6 /* spare-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "spare-icons.ttf"; sourceTree = "<group>"; };
-		260F2BF61910053300FAEA5C /* SPRDateUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRDateUnit.h; sourceTree = "<group>"; };
 		260F58C5192C33B800F27F28 /* SPRFormComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRFormComponents.h; sourceTree = "<group>"; };
 		260F58C6192C33B800F27F28 /* SPRFormComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRFormComponents.m; sourceTree = "<group>"; };
 		2612A25318FBEEE300E4848E /* SPRExpenseSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseSectionHeaderView.h; sourceTree = "<group>"; };
@@ -187,19 +190,26 @@
 		26673289196AF82700BB4DBE /* SPRPeriodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRPeriodViewController.m; sourceTree = "<group>"; };
 		2667328B196AFA9200BB4DBE /* SPRPeriod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRPeriod.h; sourceTree = "<group>"; };
 		2667328C196AFA9200BB4DBE /* SPRPeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRPeriod.m; sourceTree = "<group>"; };
+		2670F2C6197A625000160D03 /* SPRDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRDate.h; sourceTree = "<group>"; };
+		2670F2C7197A625000160D03 /* SPRDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRDate.m; sourceTree = "<group>"; };
+		2686F502197B78E400C1D7A9 /* SPRCalendarPickerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCalendarPickerCollectionViewCell.h; sourceTree = "<group>"; };
+		2686F503197B78E400C1D7A9 /* SPRCalendarPickerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCalendarPickerCollectionViewCell.m; sourceTree = "<group>"; };
+		2686F507197B792000C1D7A9 /* SPRCalendarPickerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPRCalendarPickerCollectionViewCell.xib; sourceTree = "<group>"; };
 		2688627B18E31E2F00B8D167 /* SPRColorChooserSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRColorChooserSectionHeader.h; sourceTree = "<group>"; };
 		2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRColorChooserSectionHeader.m; sourceTree = "<group>"; };
 		2688628118E3370400B8D167 /* SPRManagedDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRManagedDocument.h; sourceTree = "<group>"; };
 		2688628218E3370400B8D167 /* SPRManagedDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRManagedDocument.m; sourceTree = "<group>"; };
 		2688628418E339F900B8D167 /* SPRField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRField.h; sourceTree = "<group>"; };
 		2688628518E339F900B8D167 /* SPRField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRField.m; sourceTree = "<group>"; };
-		26A0636819724A6900B682BB /* SPRDayWeekPickerNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRDayWeekPickerNavigationBar.h; sourceTree = "<group>"; };
-		26A0636919724A6900B682BB /* SPRDayWeekPickerNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRDayWeekPickerNavigationBar.m; sourceTree = "<group>"; };
+		26A0636819724A6900B682BB /* SPRCalendarPickerNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCalendarPickerNavigationBar.h; sourceTree = "<group>"; };
+		26A0636919724A6900B682BB /* SPRCalendarPickerNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCalendarPickerNavigationBar.m; sourceTree = "<group>"; };
 		26A0636B1972655500B682BB /* SPRDayPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPRDayPicker.xib; sourceTree = "<group>"; };
 		26A9028E191DCF9000CEE065 /* SPREditExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPREditExpenseViewController.h; sourceTree = "<group>"; };
 		26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPREditExpenseViewController.m; sourceTree = "<group>"; };
 		26A9029B191DD81400CEE065 /* UIView+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SPR.h"; sourceTree = "<group>"; };
 		26A9029C191DD81400CEE065 /* UIView+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SPR.m"; sourceTree = "<group>"; };
+		26ACC4311974EA92007566A3 /* SPRDateConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRDateConstants.h; sourceTree = "<group>"; };
+		26ACC4321974EA92007566A3 /* SPRDateConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRDateConstants.m; sourceTree = "<group>"; };
 		26B235F1196C5FCC00268B27 /* SPRPeriodManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRPeriodManager.h; sourceTree = "<group>"; };
 		26B235F2196C5FCC00268B27 /* SPRPeriodManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRPeriodManager.m; sourceTree = "<group>"; };
 		26B4B75418F277B5001B119D /* SPRCategorySummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategorySummaryCell.h; sourceTree = "<group>"; };
@@ -250,9 +260,9 @@
 		26FCD19E196BD6D400AC0FC8 /* SPRQuickDefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRQuickDefaultCell.m; sourceTree = "<group>"; };
 		26FCD1A3196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRPeriodTableViewCell.h; sourceTree = "<group>"; };
 		26FCD1A4196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRPeriodTableViewCell.m; sourceTree = "<group>"; };
-		26FCED8519706C9300FD01D0 /* SPRDayWeekPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRDayWeekPickerViewController.h; sourceTree = "<group>"; };
-		26FCED8619706C9300FD01D0 /* SPRDayWeekPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRDayWeekPickerViewController.m; sourceTree = "<group>"; };
-		26FCED8A1970742500FD01D0 /* SPRDayWeekPickerNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPRDayWeekPickerNavigationBar.xib; sourceTree = "<group>"; };
+		26FCED8519706C9300FD01D0 /* SPRCalendarPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCalendarPickerViewController.h; sourceTree = "<group>"; };
+		26FCED8619706C9300FD01D0 /* SPRCalendarPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCalendarPickerViewController.m; sourceTree = "<group>"; };
+		26FCED8A1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPRCalendarPickerNavigationBar.xib; sourceTree = "<group>"; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -293,7 +303,8 @@
 		260F2BF5191004FF00FAEA5C /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				260F2BF61910053300FAEA5C /* SPRDateUnit.h */,
+				26ACC4311974EA92007566A3 /* SPRDateConstants.h */,
+				26ACC4321974EA92007566A3 /* SPRDateConstants.m */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -413,9 +424,12 @@
 				26D2D71C1969B0DD00CCC973 /* SPRTotalView.m */,
 				26F652FA196A33B200C19D87 /* SPRNewCategoryCell.h */,
 				26F652FB196A33B200C19D87 /* SPRNewCategoryCell.m */,
-				26FCED8A1970742500FD01D0 /* SPRDayWeekPickerNavigationBar.xib */,
-				26A0636819724A6900B682BB /* SPRDayWeekPickerNavigationBar.h */,
-				26A0636919724A6900B682BB /* SPRDayWeekPickerNavigationBar.m */,
+				26FCED8A1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib */,
+				26A0636819724A6900B682BB /* SPRCalendarPickerNavigationBar.h */,
+				26A0636919724A6900B682BB /* SPRCalendarPickerNavigationBar.m */,
+				2686F502197B78E400C1D7A9 /* SPRCalendarPickerCollectionViewCell.h */,
+				2686F503197B78E400C1D7A9 /* SPRCalendarPickerCollectionViewCell.m */,
+				2686F507197B792000C1D7A9 /* SPRCalendarPickerCollectionViewCell.xib */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -443,6 +457,8 @@
 				2667328C196AFA9200BB4DBE /* SPRPeriod.m */,
 				26B235F1196C5FCC00268B27 /* SPRPeriodManager.h */,
 				26B235F2196C5FCC00268B27 /* SPRPeriodManager.m */,
+				2670F2C6197A625000160D03 /* SPRDate.h */,
+				2670F2C7197A625000160D03 /* SPRDate.m */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -556,8 +572,8 @@
 				26D2D71019694BB100CCC973 /* SPRHomeViewController.m */,
 				26673288196AF82700BB4DBE /* SPRPeriodViewController.h */,
 				26673289196AF82700BB4DBE /* SPRPeriodViewController.m */,
-				26FCED8519706C9300FD01D0 /* SPRDayWeekPickerViewController.h */,
-				26FCED8619706C9300FD01D0 /* SPRDayWeekPickerViewController.m */,
+				26FCED8519706C9300FD01D0 /* SPRCalendarPickerViewController.h */,
+				26FCED8619706C9300FD01D0 /* SPRCalendarPickerViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -661,10 +677,11 @@
 				2659EFF71968D5D6005F31E1 /* iPhone.storyboard in Resources */,
 				26A0636C1972655500B682BB /* SPRDayPicker.xib in Resources */,
 				261EB86F18DDB631009DDF78 /* InfoPlist.strings in Resources */,
-				26FCED8B1970742500FD01D0 /* SPRDayWeekPickerNavigationBar.xib in Resources */,
+				26FCED8B1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib in Resources */,
 				261EB89818DDB64F009DDF78 /* iPhone_v1.storyboard in Resources */,
 				2656B772196FE5D8003313AA /* SPRMonthPicker.xib in Resources */,
 				261EB87A18DDB631009DDF78 /* Images.xcassets in Resources */,
+				2686F508197B792000C1D7A9 /* SPRCalendarPickerCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,14 +759,16 @@
 				26D2D7341969CFB100CCC973 /* SPRExpenseDateSpentCell.m in Sources */,
 				26D2D7351969CFB100CCC973 /* SPRExpenseDescriptionCell.m in Sources */,
 				2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */,
-				26A0636A19724A6900B682BB /* SPRDayWeekPickerNavigationBar.m in Sources */,
+				26A0636A19724A6900B682BB /* SPRCalendarPickerNavigationBar.m in Sources */,
 				2688628618E339F900B8D167 /* SPRField.m in Sources */,
 				26E2485F18E1DCEF00391354 /* SPRCategory+Extension.m in Sources */,
+				2670F2C8197A625000160D03 /* SPRDate.m in Sources */,
 				26B235F3196C5FCC00268B27 /* SPRPeriodManager.m in Sources */,
 				26E2485C18E1DA2B00391354 /* NSString+SPR.m in Sources */,
 				26FCD19F196BD6D400AC0FC8 /* SPRQuickDefaultCell.m in Sources */,
 				263BA034193E39750022BFDC /* SPRExpenseSectionHeader.m in Sources */,
 				261EB87818DDB631009DDF78 /* Spare.xcdatamodeld in Sources */,
+				26ACC4331974EA92007566A3 /* SPRDateConstants.m in Sources */,
 				26FCD1A5196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m in Sources */,
 				26369E6618F57817000A9ADA /* SPRCategoryPicker.m in Sources */,
 				262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */,
@@ -767,6 +786,7 @@
 				2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */,
 				261EB87518DDB631009DDF78 /* SPRAppDelegate.m in Sources */,
 				2638AAAC19260B7A00D3D3E2 /* SPREditCategoryViewController.m in Sources */,
+				2686F504197B78E400C1D7A9 /* SPRCalendarPickerCollectionViewCell.m in Sources */,
 				2612C89418E7E64C00DE2765 /* SPRCategoryViewController.m in Sources */,
 				26D2D7361969CFB100CCC973 /* SPRFormCell.m in Sources */,
 				2661CD7619321751009C7034 /* SPRCategoryHeaderCell.m in Sources */,
@@ -784,7 +804,7 @@
 				26D2D71119694BB100CCC973 /* SPRHomeViewController.m in Sources */,
 				26D2D71A196951A800CCC973 /* UIViewController+Slider.m in Sources */,
 				266065BD18F055D50085F877 /* SPRExpense+Extension.m in Sources */,
-				26FCED8719706C9300FD01D0 /* SPRDayWeekPickerViewController.m in Sources */,
+				26FCED8719706C9300FD01D0 /* SPRCalendarPickerViewController.m in Sources */,
 				26B4B75618F277B5001B119D /* SPRCategorySummaryCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -861,6 +881,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -892,6 +913,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

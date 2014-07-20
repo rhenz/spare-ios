@@ -19,23 +19,6 @@
     return self;
 }
 
-//- (id)initWithCoder:(NSCoder *)aDecoder
-//{
-//    if (self = [super init]) {
-//        _startDate = [aDecoder decodeObjectForKey:@"startDate"];
-//        _endDate = [aDecoder decodeObjectForKey:@"endDate"];
-//        _dateUnit = [aDecoder decodeIntegerForKey:@"dateUnit"];
-//    }
-//    return self;
-//}
-//
-//- (void)encodeWithCoder:(NSCoder *)aCoder
-//{
-//    [aCoder encodeObject:self.startDate forKey:@"startDate"];
-//    [aCoder encodeObject:self.endDate forKey:@"endDate"];
-//    [aCoder encodeInteger:self.dateUnit forKey:@"dateUnit"];
-//}
-
 - (NSString *)descriptiveForm
 {
     if (_descriptiveForm) {

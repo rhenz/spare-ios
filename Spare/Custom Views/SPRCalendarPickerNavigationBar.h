@@ -1,5 +1,5 @@
 //
-//  SPRDayWeekPickerNavigationBar.h
+//  SPRCalendarPickerNavigationBar.h
 //  Spare
 //
 //  Created by Matt Quiros on 7/13/14.
@@ -8,15 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol SPRDayWeekPickerNavigationBarDelegate <NSObject>
+@protocol SPRCalendarPickerNavigationBarDelegate <NSObject>
 
 - (void)dayWeekPickerNavigationBarDidTapCancel;
 - (void)dayWeekPickerNavigationBarDidTapDone;
 
 @end
 
-@interface SPRDayWeekPickerNavigationBar : UIView
+@interface SPRCalendarPickerNavigationBar : UIView
 
-@property (weak, nonatomic) id<SPRDayWeekPickerNavigationBarDelegate> delegate;
+@property (weak, nonatomic) id<SPRCalendarPickerNavigationBarDelegate> delegate;
 
 @end

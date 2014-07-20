@@ -336,10 +336,10 @@
             </objects>
             <point key="canvasLocation" x="2734" y="-450"/>
         </scene>
-        <!--Day Week Picker View Controller-->
+        <!--Calendar Picker View Controller-->
         <scene sceneID="P9h-AN-dc3">
             <objects>
-                <viewController storyboardIdentifier="dayWeekPicker" id="a2L-dR-kbq" customClass="SPRDayWeekPickerViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="dayWeekPicker" id="a2L-dR-kbq" customClass="SPRCalendarPickerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NvP-bH-kiZ"/>
                         <viewControllerLayoutGuide type="bottom" id="5Tm-Od-u6t"/>
@@ -349,25 +349,39 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Efg-zk-hJF">
-                                <rect key="frame" x="0.0" y="74" width="320" height="494"/>
+                                <rect key="frame" x="0.0" y="80" width="320" height="488"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="jTj-8H-tEc"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p7V-da-wkT">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="0.0" id="p7V-da-wkT">
+                                    <size key="itemSize" width="45" height="60"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="kEmptyCell" id="vl3-hk-vgE">
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="45" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="a2L-dR-kbq" id="jfB-S1-e5J"/>
+                                    <outlet property="delegate" destination="a2L-dR-kbq" id="1iW-8i-nza"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5Tm-Od-u6t" firstAttribute="top" secondItem="Efg-zk-hJF" secondAttribute="bottom" id="N3E-x0-4ra"/>
-                            <constraint firstItem="Efg-zk-hJF" firstAttribute="top" secondItem="NvP-bH-kiZ" secondAttribute="bottom" constant="54" id="TU9-FP-6jQ"/>
+                            <constraint firstItem="Efg-zk-hJF" firstAttribute="top" secondItem="NvP-bH-kiZ" secondAttribute="bottom" constant="60" id="TU9-FP-6jQ"/>
                             <constraint firstItem="Efg-zk-hJF" firstAttribute="leading" secondItem="9cg-Qx-Z9P" secondAttribute="leading" id="XMr-0N-RaU"/>
                         </constraints>
                     </view>

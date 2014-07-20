@@ -145,6 +145,27 @@
     return lastMoment;
 }
 
+- (NSUInteger)month
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:NSMonthCalendarUnit fromDate:self];
+    return components.month;
+}
+
+- (NSUInteger)day
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:NSDayCalendarUnit fromDate:self];
+    return components.day;
+}
+
+- (NSUInteger)year
+{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [calendar components:NSYearCalendarUnit fromDate:self];
+    return components.year;
+}
+
 + (NSDate *)simplifiedDate
 {
     return [self simplifiedDateFromDate:[NSDate date]];

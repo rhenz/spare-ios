@@ -8,6 +8,9 @@
 
 #import "SPRMonthPicker.h"
 
+// Constants
+#import "SPRDateConstants.h"
+
 @interface SPRMonthPicker ()
 
 @property (weak, nonatomic) IBOutlet UIView *translucentBackground;
@@ -119,7 +122,7 @@ static const CGFloat kAnimationDuration = 0.1;
 {
     if (!_years) {
         NSMutableArray *years = [NSMutableArray array];
-        for (int i = 2000; i <= 3000; i++) {
+        for (NSInteger i = kSPRMinimumYear; i <= kSPRMaximumYear; i++) {
             [years addObject:@(i)];
         }
         _years = [NSArray arrayWithArray:years];

@@ -11,6 +11,7 @@
 // Objects
 #import "SPRPeriod.h"
 #import "SPRPeriodManager.h"
+#import "SPRDate.h"
 
 // Custom views
 #import "SPRPeriodTableViewCell.h"
@@ -20,7 +21,7 @@
 #import "SPRMonthPicker.h"
 
 // View controllers
-#import "SPRDayWeekPickerViewController.h"
+#import "SPRCalendarPickerViewController.h"
 
 @interface SPRPeriodViewController () <UITableViewDataSource, UITableViewDelegate,
 SPRDayPickerDelegate,
@@ -120,7 +121,7 @@ static NSArray *identifiers;
                         break;
                     }
                     case SPRDateUnitWeek: {
-                        SPRDayWeekPickerViewController *dayWeekPicker = [[SPRDayWeekPickerViewController alloc] initWithDateUnit:SPRDateUnitWeek preselectedDate:[NSDate date]];
+                        SPRCalendarPickerViewController *dayWeekPicker = [[SPRCalendarPickerViewController alloc] initWithDateUnit:SPRDateUnitWeek preselectedDate:[[SPRDate alloc] initWithDate:[NSDate date]]];
                         [self presentViewController:dayWeekPicker animated:YES completion:nil];
                         break;
                     }
