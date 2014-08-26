@@ -94,6 +94,9 @@
 		26FCED8719706C9300FD01D0 /* SPRCalendarPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCED8619706C9300FD01D0 /* SPRCalendarPickerViewController.m */; };
 		26FCED8B1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FCED8A1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib */; };
 		28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6196FFB0C5B41DEB0DB54BF /* libPods.a */; };
+		49390C7819AC8CCD009598A5 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49390C7719AC8CCD009598A5 /* UIScreen.swift */; };
+		4945559B19AC725800C882CD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4945559A19AC725800C882CD /* HomeViewController.swift */; };
+		494555A019AC731900C882CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4945559F19AC731900C882CD /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -263,6 +266,10 @@
 		26FCED8519706C9300FD01D0 /* SPRCalendarPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCalendarPickerViewController.h; sourceTree = "<group>"; };
 		26FCED8619706C9300FD01D0 /* SPRCalendarPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCalendarPickerViewController.m; sourceTree = "<group>"; };
 		26FCED8A1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPRCalendarPickerNavigationBar.xib; sourceTree = "<group>"; };
+		49390C7719AC8CCD009598A5 /* UIScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		4945559A19AC725800C882CD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4945559F19AC731900C882CD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		494555A219AC7AEB00C882CD /* Spare-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Spare-Bridging-Header.h"; sourceTree = "<group>"; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -353,6 +360,8 @@
 		261EB86A18DDB631009DDF78 /* Spare */ = {
 			isa = PBXGroup;
 			children = (
+				49390C7619AC8C78009598A5 /* Extensions */,
+				4945559E19AC730600C882CD /* Views */,
 				260F2BF5191004FF00FAEA5C /* Constants */,
 				26E2484D18E1CA9E00391354 /* View Controllers */,
 				262ABD0B18DEA1A3003C7C8B /* Utilities */,
@@ -364,6 +373,7 @@
 				261EB87918DDB631009DDF78 /* Images.xcassets */,
 				261DD0811945979200B0EBB2 /* SPRExpense.h */,
 				261DD0821945979200B0EBB2 /* SPRExpense.m */,
+				494555A219AC7AEB00C882CD /* Spare-Bridging-Header.h */,
 				261EB87618DDB631009DDF78 /* Spare.xcdatamodeld */,
 				261EB86B18DDB631009DDF78 /* Supporting Files */,
 				261EB89718DDB64F009DDF78 /* iPhone_v1.storyboard */,
@@ -574,6 +584,7 @@
 				26673289196AF82700BB4DBE /* SPRPeriodViewController.m */,
 				26FCED8519706C9300FD01D0 /* SPRCalendarPickerViewController.h */,
 				26FCED8619706C9300FD01D0 /* SPRCalendarPickerViewController.m */,
+				4945559A19AC725800C882CD /* HomeViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -591,6 +602,22 @@
 			path = "Period Table View Cells";
 			sourceTree = "<group>";
 		};
+		49390C7619AC8C78009598A5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				49390C7719AC8CCD009598A5 /* UIScreen.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4945559E19AC730600C882CD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4945559F19AC731900C882CD /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -603,7 +630,6 @@
 				261EB85C18DDB630009DDF78 /* Frameworks */,
 				261EB85D18DDB630009DDF78 /* Resources */,
 				D50A65DD683E419BAE237FE7 /* Copy Pods Resources */,
-				26D4C8F31946E5AF001B42DC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -674,6 +700,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2603E75A193C85F9009F9AD6 /* spare-icons.ttf in Resources */,
+				494555A019AC731900C882CD /* Main.storyboard in Resources */,
 				2659EFF71968D5D6005F31E1 /* iPhone.storyboard in Resources */,
 				26A0636C1972655500B682BB /* SPRDayPicker.xib in Resources */,
 				261EB86F18DDB631009DDF78 /* InfoPlist.strings in Resources */,
@@ -696,19 +723,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		26D4C8F31946E5AF001B42DC /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 5777ab02ad26fe0af3227a87ff1a25c1314bab82 7263d85aaedce46d808fc300c69ac1242cd98890e51763da44fdacd7129eafcc";
-		};
 		99DF9AC0C8D8411EB8E3F8AF /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -763,11 +777,13 @@
 				2688628618E339F900B8D167 /* SPRField.m in Sources */,
 				26E2485F18E1DCEF00391354 /* SPRCategory+Extension.m in Sources */,
 				2670F2C8197A625000160D03 /* SPRDate.m in Sources */,
+				49390C7819AC8CCD009598A5 /* UIScreen.swift in Sources */,
 				26B235F3196C5FCC00268B27 /* SPRPeriodManager.m in Sources */,
 				26E2485C18E1DA2B00391354 /* NSString+SPR.m in Sources */,
 				26FCD19F196BD6D400AC0FC8 /* SPRQuickDefaultCell.m in Sources */,
 				263BA034193E39750022BFDC /* SPRExpenseSectionHeader.m in Sources */,
 				261EB87818DDB631009DDF78 /* Spare.xcdatamodeld in Sources */,
+				4945559B19AC725800C882CD /* HomeViewController.swift in Sources */,
 				26ACC4331974EA92007566A3 /* SPRDateConstants.m in Sources */,
 				26FCD1A5196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m in Sources */,
 				26369E6618F57817000A9ADA /* SPRCategoryPicker.m in Sources */,
@@ -925,6 +941,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -934,12 +951,16 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spare/Spare-Prefix.pch";
 				INFOPLIST_FILE = "Spare/Spare-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "DDB3FCCC-ADB4-4476-B967-F4C47A42DF34";
+				SWIFT_OBJC_BRIDGING_HEADER = "Spare/Spare-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -950,6 +971,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -959,12 +981,15 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spare/Spare-Prefix.pch";
 				INFOPLIST_FILE = "Spare/Spare-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "DDB3FCCC-ADB4-4476-B967-F4C47A42DF34";
+				SWIFT_OBJC_BRIDGING_HEADER = "Spare/Spare-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
