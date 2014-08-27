@@ -7,23 +7,51 @@
 //
 
 import UIKit
+import CoreData
 
 let kWidthRatio: CGFloat = 29.0
 let kHeightRatio: CGFloat = 26.0
+
+let kSummaryCell = "kSummaryCell"
 
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var summaries: [SPRCategorySummary] = []
+    lazy var categoryFetcher: NSFetchedResultsController = {
+        let fetchRequest = NSFetchRequest()
+        let entityDescription = NSEntityDescription.entityForName("SPRCategory", inManagedObjectContext: SPRManagedDocument.sharedDocument().managedObjectContext)
+        let sortDescriptors = [NSSortDescriptor(key: "displayOrder", ascending: true)]
+        
+        let fetcher = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: SPRManagedDocument.sharedDocument().managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        return fetcher
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set up the collection view.
         self.collectionView.draggable = true
+        self.collectionView.registerClass(SPRCategorySummaryCell.self, forCellWithReuseIdentifier: kSummaryCell)
     }
     
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation,
         duration: NSTimeInterval) {
             super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
             self.collectionView.reloadData()
+    }
+    
+    func initializeSummaries() {
+        var errorPointer: NSError?
+        self.categoryFetcher.performFetch(&errorPointer)
+        if let error = errorPointer {
+            NSLog("Error fetching categories: %@", error)
+        }
+        
+        for category in self.categoryFetcher.fetchedObjects {
+            self.summaries += SPRCategorySummary(category: category as SPRCategory)
+        }
     }
     
 }
@@ -33,13 +61,21 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int  {
-        return 10
+        return self.summaries.count
     }
     
     func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
-        let identifier = "Cell"
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as UICollectionViewCell
-        cell.backgroundColor = UIColor.redColor()
+        let identifier = kSummaryCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as SPRCategorySummaryCell
+        
+        // Set the category.
+        let summary = self.summaries[indexPath.row]
+        cell.category = summary.category
+        
+        // Set the active period.
+        let period = SPRPeriodManager.sharedManager().activePeriod
+        cell.displayedTotal = summary.totalForPeriod(period)
+        
         return cell
     }
     
