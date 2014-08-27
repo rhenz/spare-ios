@@ -13,7 +13,7 @@ extension UIScreen {
     class func currentWidth() -> CGFloat {
         let orientation = UIApplication.sharedApplication().statusBarOrientation
         switch orientation {
-        case .Portrait:
+        case .Portrait, .PortraitUpsideDown:
             return UIScreen.mainScreen().bounds.size.width
         default:
             return UIScreen.mainScreen().bounds.size.height
@@ -23,7 +23,7 @@ extension UIScreen {
     class func currentHeight() -> CGFloat {
         let orientation = UIApplication.sharedApplication().statusBarOrientation
         switch orientation {
-        case .Portrait:
+        case .Portrait, .PortraitUpsideDown:
             return UIScreen.mainScreen().bounds.size.height
         default:
             return UIScreen.mainScreen().bounds.size.width

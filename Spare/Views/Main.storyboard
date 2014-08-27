@@ -8,7 +8,7 @@
         <!--Home View Controller-->
         <scene sceneID="03r-P0-jo7">
             <objects>
-                <viewController id="ok7-tx-DUh" customClass="HomeViewController" customModule="Spare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ok7-tx-DUh" customClass="HomeViewController" customModule="Spare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iil-gA-O2F"/>
                         <viewControllerLayoutGuide type="bottom" id="v1q-Nb-e5d"/>
@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IDt-h9-0bb">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IDt-h9-0bb">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Tgc-wE-d6p" customClass="DraggableCollectionViewFlowLayout">
                                     <size key="itemSize" width="50" height="50"/>
@@ -56,6 +56,9 @@
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="qUt-wB-lSj"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="mPV-aq-MB7"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="IDt-h9-0bb" id="tI0-Pj-lEG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QqQ-cA-Tnp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
