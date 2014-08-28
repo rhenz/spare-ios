@@ -13,6 +13,7 @@ let kWidthRatio: CGFloat = 29.0
 let kHeightRatio: CGFloat = 26.0
 
 let kSummaryCell = "kSummaryCell"
+let kNewCategoryCell = "kNewCategoryCell"
 
 class HomeViewController: UIViewController {
     
@@ -40,6 +41,7 @@ class HomeViewController: UIViewController {
         // Set up the collection view.
         self.collectionView.draggable = true
         self.collectionView.registerClass(SPRCategorySummaryCell.self, forCellWithReuseIdentifier: kSummaryCell)
+        self.collectionView.registerNib(UINib(nibName: "NewCategoryCell", bundle: nil), forCellWithReuseIdentifier: kNewCategoryCell)
     }
     
     override func viewWillAppear(animated: Bool)  {
@@ -81,20 +83,33 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int  {
-        return self.summaries.count
+        // Return the number of categories plus 1 for the New Category cell.
+        return self.summaries.count + 1
     }
     
     func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
-        let identifier = kSummaryCell
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as SPRCategorySummaryCell
+        var cell: UICollectionViewCell?
         
-        // Set the category.
-        let summary = self.summaries[indexPath.row]
-        cell.category = summary.category
-        
-        // Set the active period.
-        let period = SPRPeriodManager.sharedManager().activePeriod
-        cell.displayedTotal = summary.totalForPeriod(period)
+        switch indexPath.row {
+            
+            // The last cell is always the New Category cell.
+        case self.summaries.count:
+            cell = collectionView.dequeueReusableCellWithReuseIdentifier(kNewCategoryCell, forIndexPath: indexPath) as NewCategoryCell
+            
+            // Otherwise, this is a normal category summary cell.
+        default:
+            let actualCell = collectionView.dequeueReusableCellWithReuseIdentifier(kSummaryCell, forIndexPath: indexPath) as SPRCategorySummaryCell
+            
+            // Set the category.
+            let summary = self.summaries[indexPath.row]
+            actualCell.category = summary.category
+            
+            // Set the active period.
+            let period = SPRPeriodManager.sharedManager().activePeriod
+            actualCell.displayedTotal = summary.totalForPeriod(period)
+            
+            cell = actualCell
+        }
         
         return cell
     }
@@ -181,11 +196,31 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 extension HomeViewController: UICollectionViewDataSource_Draggable {
     
     func collectionView(collectionView: UICollectionView!, moveItemAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
+        // Move the summary's location in the array.
+        let summary = self.summaries.removeAtIndex(fromIndexPath.row)
+        self.summaries.insert(summary, atIndex: toIndexPath.row)
         
+        // Reassign the display order of categories.
+        for var i = 0; i < self.summaries.count; i++ {
+            summary.category.displayOrder = NSNumber(integer: i)
+        }
+        
+        // Persist the reordering into the managed document.
+        let document = SPRManagedDocument.sharedDocument()
+        document.saveToURL(document.fileURL, forSaveOperation: .ForOverwriting, completionHandler: nil)
     }
     
-    func collectionView(collectionView: UICollectionView!, canMoveItemAtIndexPath indexPath: NSIndexPath!) -> Bool {
-        return true
+    func collectionView(collectionView: UICollectionView!,
+        canMoveItemAtIndexPath indexPath: NSIndexPath!) -> Bool {
+            // Can't move the New Category cell.
+        return indexPath.row < self.summaries.count
+    }
+    
+    func collectionView(collectionView: UICollectionView!,
+        canMoveItemAtIndexPath indexPath: NSIndexPath!,
+        toIndexPath: NSIndexPath!) -> Bool {
+            // Can't move to the New Category cell.
+        return toIndexPath.row < self.summaries.count
     }
     
     func collectionView(collectionView: UICollectionView!, transformForDraggingItemAtIndexPath indexPath: NSIndexPath!, duration: UnsafePointer<NSTimeInterval>) -> CGAffineTransform {

@@ -98,6 +98,9 @@
 		4945559B19AC725800C882CD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4945559A19AC725800C882CD /* HomeViewController.swift */; };
 		494555A019AC731900C882CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4945559F19AC731900C882CD /* Main.storyboard */; };
 		495E414D19AEB67D006D4CD4 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E414C19AEB67D006D4CD4 /* SetupViewController.swift */; };
+		495E415219AED2A4006D4CD4 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E415119AED2A4006D4CD4 /* Icons.swift */; };
+		495E415519AED36F006D4CD4 /* NewCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 495E415419AED36F006D4CD4 /* NewCategoryCell.xib */; };
+		495E415719AED380006D4CD4 /* NewCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E415619AED380006D4CD4 /* NewCategoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,6 +275,9 @@
 		4945559F19AC731900C882CD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		494555A219AC7AEB00C882CD /* Spare-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Spare-Bridging-Header.h"; sourceTree = "<group>"; };
 		495E414C19AEB67D006D4CD4 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
+		495E415119AED2A4006D4CD4 /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		495E415419AED36F006D4CD4 /* NewCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewCategoryCell.xib; sourceTree = "<group>"; };
+		495E415619AED380006D4CD4 /* NewCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCategoryCell.swift; sourceTree = "<group>"; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -484,6 +490,7 @@
 				262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */,
 				26D2D71E1969BED200CCC973 /* SPRIcons.h */,
 				26D2D71F1969BED200CCC973 /* SPRIcons.m */,
+				495E415119AED2A4006D4CD4 /* Icons.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -617,8 +624,26 @@
 			isa = PBXGroup;
 			children = (
 				4945559F19AC731900C882CD /* Main.storyboard */,
+				495E414E19AECE36006D4CD4 /* Collection View Cells */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		495E414E19AECE36006D4CD4 /* Collection View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				495E415319AED36F006D4CD4 /* NewCategoryCell */,
+			);
+			path = "Collection View Cells";
+			sourceTree = "<group>";
+		};
+		495E415319AED36F006D4CD4 /* NewCategoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				495E415419AED36F006D4CD4 /* NewCategoryCell.xib */,
+				495E415619AED380006D4CD4 /* NewCategoryCell.swift */,
+			);
+			path = NewCategoryCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -710,6 +735,7 @@
 				26FCED8B1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib in Resources */,
 				261EB89818DDB64F009DDF78 /* iPhone_v1.storyboard in Resources */,
 				2656B772196FE5D8003313AA /* SPRMonthPicker.xib in Resources */,
+				495E415519AED36F006D4CD4 /* NewCategoryCell.xib in Resources */,
 				261EB87A18DDB631009DDF78 /* Images.xcassets in Resources */,
 				2686F508197B792000C1D7A9 /* SPRCalendarPickerCollectionViewCell.xib in Resources */,
 			);
@@ -772,6 +798,7 @@
 				26D2D7201969BED200CCC973 /* SPRIcons.m in Sources */,
 				26D2D7331969CFB100CCC973 /* SPRExpenseCategoryCell.m in Sources */,
 				26E2485318E1CAB700391354 /* SPRNewCategoryViewController.m in Sources */,
+				495E415219AED2A4006D4CD4 /* Icons.swift in Sources */,
 				26E9C313193CC76F009F18D9 /* NSFetchedResultsController+SPR.m in Sources */,
 				26D2D7341969CFB100CCC973 /* SPRExpenseDateSpentCell.m in Sources */,
 				26D2D7351969CFB100CCC973 /* SPRExpenseDescriptionCell.m in Sources */,
@@ -811,6 +838,7 @@
 				26D2D7361969CFB100CCC973 /* SPRFormCell.m in Sources */,
 				2661CD7619321751009C7034 /* SPRCategoryHeaderCell.m in Sources */,
 				26A9029D191DD81400CEE065 /* UIView+SPR.m in Sources */,
+				495E415719AED380006D4CD4 /* NewCategoryCell.swift in Sources */,
 				26E2484618E1B7F900391354 /* UIColor+HexColor.m in Sources */,
 				2667328A196AF82700BB4DBE /* SPRPeriodViewController.m in Sources */,
 				26A90290191DCF9000CEE065 /* SPREditExpenseViewController.m in Sources */,
