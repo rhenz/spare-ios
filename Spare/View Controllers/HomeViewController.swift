@@ -19,10 +19,16 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var summaries: [SPRCategorySummary] = []
+    var hasBeenSetup = false
+    
     lazy var categoryFetcher: NSFetchedResultsController = {
         let fetchRequest = NSFetchRequest()
+        
         let entityDescription = NSEntityDescription.entityForName("SPRCategory", inManagedObjectContext: SPRManagedDocument.sharedDocument().managedObjectContext)
+        fetchRequest.entity = entityDescription
+        
         let sortDescriptors = [NSSortDescriptor(key: "displayOrder", ascending: true)]
+        fetchRequest.sortDescriptors = sortDescriptors
         
         let fetcher = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: SPRManagedDocument.sharedDocument().managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         return fetcher
@@ -34,6 +40,20 @@ class HomeViewController: UIViewController {
         // Set up the collection view.
         self.collectionView.draggable = true
         self.collectionView.registerClass(SPRCategorySummaryCell.self, forCellWithReuseIdentifier: kSummaryCell)
+    }
+    
+    override func viewWillAppear(animated: Bool)  {
+        super.viewWillAppear(animated)
+        
+        if self.hasBeenSetup {
+            self.initializeSummaries()
+            self.collectionView.reloadData()
+        } else {
+            let setupScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SetupViewController") as UIViewController
+            let navigationController = UINavigationController(rootViewController: setupScreen)
+            self.presentViewController(navigationController, animated: false, completion: nil)
+            self.hasBeenSetup = true
+        }
     }
     
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation,

@@ -97,6 +97,7 @@
 		49390C7819AC8CCD009598A5 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49390C7719AC8CCD009598A5 /* UIScreen.swift */; };
 		4945559B19AC725800C882CD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4945559A19AC725800C882CD /* HomeViewController.swift */; };
 		494555A019AC731900C882CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4945559F19AC731900C882CD /* Main.storyboard */; };
+		495E414D19AEB67D006D4CD4 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E414C19AEB67D006D4CD4 /* SetupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -270,6 +271,7 @@
 		4945559A19AC725800C882CD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4945559F19AC731900C882CD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		494555A219AC7AEB00C882CD /* Spare-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Spare-Bridging-Header.h"; sourceTree = "<group>"; };
+		495E414C19AEB67D006D4CD4 /* SetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -585,6 +587,7 @@
 				26FCED8519706C9300FD01D0 /* SPRCalendarPickerViewController.h */,
 				26FCED8619706C9300FD01D0 /* SPRCalendarPickerViewController.m */,
 				4945559A19AC725800C882CD /* HomeViewController.swift */,
+				495E414C19AEB67D006D4CD4 /* SetupViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -794,6 +797,7 @@
 				26D2D7301969CFB100CCC973 /* SPRCategoryColorCell.m in Sources */,
 				2667328D196AFA9200BB4DBE /* SPRPeriod.m in Sources */,
 				2612C8AF18E847DB00DE2765 /* NSDate+SPR.m in Sources */,
+				495E414D19AEB67D006D4CD4 /* SetupViewController.swift in Sources */,
 				260F58C7192C33B800F27F28 /* SPRFormComponents.m in Sources */,
 				261DD0831945979200B0EBB2 /* SPRExpense.m in Sources */,
 				26D2D7311969CFB100CCC973 /* SPRCategoryNameCell.m in Sources */,
@@ -957,7 +961,7 @@
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DDB3FCCC-ADB4-4476-B967-F4C47A42DF34";
+				PROVISIONING_PROFILE = "23718763-9afb-4eb4-85c3-566edea02e40";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spare/Spare-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -987,7 +991,7 @@
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DDB3FCCC-ADB4-4476-B967-F4C47A42DF34";
+				PROVISIONING_PROFILE = "23718763-9afb-4eb4-85c3-566edea02e40";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spare/Spare-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
