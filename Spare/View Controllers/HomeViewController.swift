@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var summaries: [SPRCategorySummary] = []
+    var summaries: Array<SPRCategorySummary> = []
     var hasBeenSetup = false
     
     lazy var categoryFetcher: NSFetchedResultsController = {
@@ -71,6 +71,7 @@ class HomeViewController: UIViewController {
             NSLog("Error fetching categories: %@", error)
         }
         
+        self.summaries.removeAll(keepCapacity: false)
         for category in self.categoryFetcher.fetchedObjects {
             self.summaries += SPRCategorySummary(category: category as SPRCategory)
         }
@@ -189,6 +190,13 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             }
     }
     
+    func collectionView(collectionView: UICollectionView!,
+        didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+            if indexPath.row < self.summaries.count {
+                self.performSegueWithIdentifier(kSegueShowExpenses, sender: self)
+            }
+    }
+    
 }
 
 // MARK: UICollectionViewDataSource_Draggable
@@ -197,17 +205,17 @@ extension HomeViewController: UICollectionViewDataSource_Draggable {
     
     func collectionView(collectionView: UICollectionView!, moveItemAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
         // Move the summary's location in the array.
-        let summary = self.summaries.removeAtIndex(fromIndexPath.row)
+        var summary = self.summaries.removeAtIndex(fromIndexPath.row)
         self.summaries.insert(summary, atIndex: toIndexPath.row)
         
         // Reassign the display order of categories.
         for var i = 0; i < self.summaries.count; i++ {
+            summary = self.summaries[i]
             summary.category.displayOrder = NSNumber(integer: i)
         }
         
         // Persist the reordering into the managed document.
-        let document = SPRManagedDocument.sharedDocument()
-        document.saveToURL(document.fileURL, forSaveOperation: .ForOverwriting, completionHandler: nil)
+        SPRManagedDocument.sharedDocument().saveWithCompletionHandler(nil)
     }
     
     func collectionView(collectionView: UICollectionView!,

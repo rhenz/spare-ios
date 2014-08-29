@@ -101,6 +101,8 @@
 		495E415219AED2A4006D4CD4 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E415119AED2A4006D4CD4 /* Icons.swift */; };
 		495E415519AED36F006D4CD4 /* NewCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 495E415419AED36F006D4CD4 /* NewCategoryCell.xib */; };
 		495E415719AED380006D4CD4 /* NewCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E415619AED380006D4CD4 /* NewCategoryCell.swift */; };
+		4970979919B0602500689C45 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4970979819B0602500689C45 /* Segues.swift */; };
+		4970979B19B066C700689C45 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4970979A19B066C700689C45 /* ExpensesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -278,6 +280,8 @@
 		495E415119AED2A4006D4CD4 /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		495E415419AED36F006D4CD4 /* NewCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewCategoryCell.xib; sourceTree = "<group>"; };
 		495E415619AED380006D4CD4 /* NewCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCategoryCell.swift; sourceTree = "<group>"; };
+		4970979819B0602500689C45 /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
+		4970979A19B066C700689C45 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -320,6 +324,7 @@
 			children = (
 				26ACC4311974EA92007566A3 /* SPRDateConstants.h */,
 				26ACC4321974EA92007566A3 /* SPRDateConstants.m */,
+				4970979819B0602500689C45 /* Segues.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -595,6 +600,7 @@
 				26FCED8619706C9300FD01D0 /* SPRCalendarPickerViewController.m */,
 				4945559A19AC725800C882CD /* HomeViewController.swift */,
 				495E414C19AEB67D006D4CD4 /* SetupViewController.swift */,
+				4970979A19B066C700689C45 /* ExpensesViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -808,6 +814,7 @@
 				26E2485F18E1DCEF00391354 /* SPRCategory+Extension.m in Sources */,
 				2670F2C8197A625000160D03 /* SPRDate.m in Sources */,
 				49390C7819AC8CCD009598A5 /* UIScreen.swift in Sources */,
+				4970979919B0602500689C45 /* Segues.swift in Sources */,
 				26B235F3196C5FCC00268B27 /* SPRPeriodManager.m in Sources */,
 				26E2485C18E1DA2B00391354 /* NSString+SPR.m in Sources */,
 				26FCD19F196BD6D400AC0FC8 /* SPRQuickDefaultCell.m in Sources */,
@@ -820,6 +827,7 @@
 				262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */,
 				263BA037193E3D3E0022BFDC /* NSNumber+SPR.m in Sources */,
 				263B09351939ADD900454F2D /* SPRCategorySummary.m in Sources */,
+				4970979B19B066C700689C45 /* ExpensesViewController.swift in Sources */,
 				2612A25518FBEEE300E4848E /* SPRExpenseSectionHeaderView.m in Sources */,
 				26D2D7301969CFB100CCC973 /* SPRCategoryColorCell.m in Sources */,
 				2667328D196AFA9200BB4DBE /* SPRPeriod.m in Sources */,
