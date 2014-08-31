@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var summaries: Array<SPRCategorySummary> = []
+    var summaries: Array<CategorySummary> = []
     var hasBeenSetup = false
     
     lazy var categoryFetcher: NSFetchedResultsController = {
@@ -73,7 +73,7 @@ class HomeViewController: UIViewController {
         
         self.summaries.removeAll(keepCapacity: false)
         for category in self.categoryFetcher.fetchedObjects {
-            self.summaries += SPRCategorySummary(category: category as SPRCategory)
+            self.summaries.append(CategorySummary(category: category as SPRCategory))
         }
     }
     
@@ -106,7 +106,7 @@ extension HomeViewController: UICollectionViewDataSource {
             actualCell.category = summary.category
             
             // Set the active period.
-            let period = SPRPeriodManager.sharedManager().activePeriod
+            let period = AppState.sharedState.activePeriod
             actualCell.displayedTotal = summary.totalForPeriod(period)
             
             cell = actualCell

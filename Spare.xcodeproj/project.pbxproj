@@ -55,6 +55,12 @@
 		2667328A196AF82700BB4DBE /* SPRPeriodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26673289196AF82700BB4DBE /* SPRPeriodViewController.m */; };
 		2667328D196AFA9200BB4DBE /* SPRPeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 2667328C196AFA9200BB4DBE /* SPRPeriod.m */; };
 		2670F2C8197A625000160D03 /* SPRDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2670F2C7197A625000160D03 /* SPRDate.m */; };
+		26743AA319B31B2D0027EE94 /* CategoryHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26743AA219B31B2D0027EE94 /* CategoryHeaderCell.xib */; };
+		26743AA519B31C4A0027EE94 /* CategoryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26743AA419B31C4A0027EE94 /* CategoryHeaderCell.swift */; };
+		26743AA719B326040027EE94 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26743AA619B326040027EE94 /* AppState.swift */; };
+		26743AAA19B32B940027EE94 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26743AA919B32B940027EE94 /* Period.swift */; };
+		26743AAC19B32D540027EE94 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26743AAB19B32D540027EE94 /* NSDate.swift */; };
+		26743AAE19B336C10027EE94 /* CategorySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26743AAD19B336C10027EE94 /* CategorySummary.swift */; };
 		2686F504197B78E400C1D7A9 /* SPRCalendarPickerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2686F503197B78E400C1D7A9 /* SPRCalendarPickerCollectionViewCell.m */; };
 		2686F508197B792000C1D7A9 /* SPRCalendarPickerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2686F507197B792000C1D7A9 /* SPRCalendarPickerCollectionViewCell.xib */; };
 		2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */; };
@@ -201,6 +207,12 @@
 		2667328C196AFA9200BB4DBE /* SPRPeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRPeriod.m; sourceTree = "<group>"; };
 		2670F2C6197A625000160D03 /* SPRDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRDate.h; sourceTree = "<group>"; };
 		2670F2C7197A625000160D03 /* SPRDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRDate.m; sourceTree = "<group>"; };
+		26743AA219B31B2D0027EE94 /* CategoryHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryHeaderCell.xib; sourceTree = "<group>"; };
+		26743AA419B31C4A0027EE94 /* CategoryHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryHeaderCell.swift; sourceTree = "<group>"; };
+		26743AA619B326040027EE94 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		26743AA919B32B940027EE94 /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
+		26743AAB19B32D540027EE94 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
+		26743AAD19B336C10027EE94 /* CategorySummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySummary.swift; sourceTree = "<group>"; };
 		2686F502197B78E400C1D7A9 /* SPRCalendarPickerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCalendarPickerCollectionViewCell.h; sourceTree = "<group>"; };
 		2686F503197B78E400C1D7A9 /* SPRCalendarPickerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCalendarPickerCollectionViewCell.m; sourceTree = "<group>"; };
 		2686F507197B792000C1D7A9 /* SPRCalendarPickerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPRCalendarPickerCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -373,6 +385,7 @@
 		261EB86A18DDB631009DDF78 /* Spare */ = {
 			isa = PBXGroup;
 			children = (
+				26743AA819B32B880027EE94 /* Models */,
 				49390C7619AC8C78009598A5 /* Extensions */,
 				4945559E19AC730600C882CD /* Views */,
 				260F2BF5191004FF00FAEA5C /* Constants */,
@@ -496,6 +509,7 @@
 				26D2D71E1969BED200CCC973 /* SPRIcons.h */,
 				26D2D71F1969BED200CCC973 /* SPRIcons.m */,
 				495E415119AED2A4006D4CD4 /* Icons.swift */,
+				26743AA619B326040027EE94 /* AppState.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -525,6 +539,32 @@
 				2666C2BF1957CF04003752BF /* libGoogleAnalyticsServices.a */,
 			);
 			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		26743AA019B31AF70027EE94 /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+				26743AA119B31B210027EE94 /* CategoryHeaderCell */,
+			);
+			path = "Table View Cells";
+			sourceTree = "<group>";
+		};
+		26743AA119B31B210027EE94 /* CategoryHeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				26743AA219B31B2D0027EE94 /* CategoryHeaderCell.xib */,
+				26743AA419B31C4A0027EE94 /* CategoryHeaderCell.swift */,
+			);
+			path = CategoryHeaderCell;
+			sourceTree = "<group>";
+		};
+		26743AA819B32B880027EE94 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				26743AA919B32B940027EE94 /* Period.swift */,
+				26743AAD19B336C10027EE94 /* CategorySummary.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		267794FE18DDCB6F005C74BA /* Categories */ = {
@@ -622,6 +662,7 @@
 			isa = PBXGroup;
 			children = (
 				49390C7719AC8CCD009598A5 /* UIScreen.swift */,
+				26743AAB19B32D540027EE94 /* NSDate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -630,6 +671,7 @@
 			isa = PBXGroup;
 			children = (
 				4945559F19AC731900C882CD /* Main.storyboard */,
+				26743AA019B31AF70027EE94 /* Table View Cells */,
 				495E414E19AECE36006D4CD4 /* Collection View Cells */,
 			);
 			path = Views;
@@ -739,6 +781,7 @@
 				26A0636C1972655500B682BB /* SPRDayPicker.xib in Resources */,
 				261EB86F18DDB631009DDF78 /* InfoPlist.strings in Resources */,
 				26FCED8B1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib in Resources */,
+				26743AA319B31B2D0027EE94 /* CategoryHeaderCell.xib in Resources */,
 				261EB89818DDB64F009DDF78 /* iPhone_v1.storyboard in Resources */,
 				2656B772196FE5D8003313AA /* SPRMonthPicker.xib in Resources */,
 				495E415519AED36F006D4CD4 /* NewCategoryCell.xib in Resources */,
@@ -795,9 +838,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26743AAC19B32D540027EE94 /* NSDate.swift in Sources */,
 				263B093A1939C88000454F2D /* SPRCategory.m in Sources */,
 				26617D6918F308F800CA51EA /* SPRSetupViewController.m in Sources */,
 				26D08D2618F105C600AE018F /* OldSPRHomeViewController.m in Sources */,
+				26743AAE19B336C10027EE94 /* CategorySummary.swift in Sources */,
 				26E2486218E1E3C400391354 /* SPRColorChooserViewController.m in Sources */,
 				2656B770196FE24B003313AA /* SPRMonthPicker.m in Sources */,
 				2612C8AC18E831F600DE2765 /* SPRTextField.m in Sources */,
@@ -815,6 +860,7 @@
 				2670F2C8197A625000160D03 /* SPRDate.m in Sources */,
 				49390C7819AC8CCD009598A5 /* UIScreen.swift in Sources */,
 				4970979919B0602500689C45 /* Segues.swift in Sources */,
+				26743AAA19B32B940027EE94 /* Period.swift in Sources */,
 				26B235F3196C5FCC00268B27 /* SPRPeriodManager.m in Sources */,
 				26E2485C18E1DA2B00391354 /* NSString+SPR.m in Sources */,
 				26FCD19F196BD6D400AC0FC8 /* SPRQuickDefaultCell.m in Sources */,
@@ -829,6 +875,7 @@
 				263B09351939ADD900454F2D /* SPRCategorySummary.m in Sources */,
 				4970979B19B066C700689C45 /* ExpensesViewController.swift in Sources */,
 				2612A25518FBEEE300E4848E /* SPRExpenseSectionHeaderView.m in Sources */,
+				26743AA519B31C4A0027EE94 /* CategoryHeaderCell.swift in Sources */,
 				26D2D7301969CFB100CCC973 /* SPRCategoryColorCell.m in Sources */,
 				2667328D196AFA9200BB4DBE /* SPRPeriod.m in Sources */,
 				2612C8AF18E847DB00DE2765 /* NSDate+SPR.m in Sources */,
@@ -857,6 +904,7 @@
 				26D2D7321969CFB100CCC973 /* SPRExpenseAmountCell.m in Sources */,
 				2656B76D196FE10C003313AA /* SPRDayPicker.m in Sources */,
 				26369E6A18F5787D000A9ADA /* SPRNewExpenseViewController.m in Sources */,
+				26743AA719B326040027EE94 /* AppState.swift in Sources */,
 				26D2D71119694BB100CCC973 /* SPRHomeViewController.m in Sources */,
 				26D2D71A196951A800CCC973 /* UIViewController+Slider.m in Sources */,
 				266065BD18F055D50085F877 /* SPRExpense+Extension.m in Sources */,
@@ -991,6 +1039,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spare/Spare-Prefix.pch";
 				INFOPLIST_FILE = "Spare/Spare-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1021,6 +1070,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spare/Spare-Prefix.pch";
 				INFOPLIST_FILE = "Spare/Spare-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

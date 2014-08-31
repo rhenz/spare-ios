@@ -8,10 +8,7 @@
 #import "SPRDateConstants.h"
 
 // Objects
-#import "SPRCategorySummary.h"
 #import "SPRManagedDocument.h"
-#import "SPRPeriod.h"
-#import "SPRPeriodManager.h"
 
 // Core data objects
 #import "SPRCategory.h"

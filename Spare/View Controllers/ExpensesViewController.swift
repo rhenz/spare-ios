@@ -10,9 +10,14 @@ import Foundation
 
 class ExpensesViewController: UIViewController {
     
-    @IBAction func newExpenseButtonTapped(sender: UIBarButtonItem) {
-        
+    lazy var newExpenseBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("newExpenseButtonTapped"))
+        return barButtonItem
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.rightBarButtonItems = [self.newExpenseBarButtonItem]
     }
-    
     
 }
