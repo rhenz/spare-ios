@@ -4,9 +4,6 @@
 
 #import "UICollectionView+Draggable.h"
 
-// Constants
-#import "SPRDateConstants.h"
-
 // Objects
 #import "SPRManagedDocument.h"
 

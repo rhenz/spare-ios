@@ -71,8 +71,8 @@ extension NSDate {
             components!.second = 59
         }
         
-        let moment = calendar.dateFromComponents(components)
-        return moment
+        let moment = calendar.dateFromComponents(components!)
+        return moment!
     }
     
 }

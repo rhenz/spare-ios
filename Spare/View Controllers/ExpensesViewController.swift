@@ -20,4 +20,8 @@ class ExpensesViewController: UIViewController {
         self.navigationItem.rightBarButtonItems = [self.newExpenseBarButtonItem]
     }
     
+    func newExpenseButtonTapped() {
+        self.performSegueWithIdentifier("presentNewExpense", sender: self)
+    }
+    
 }
