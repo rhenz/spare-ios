@@ -110,6 +110,8 @@
 		495E415719AED380006D4CD4 /* NewCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E415619AED380006D4CD4 /* NewCategoryCell.swift */; };
 		4970979919B0602500689C45 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4970979819B0602500689C45 /* Segues.swift */; };
 		4970979B19B066C700689C45 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4970979A19B066C700689C45 /* ExpensesViewController.swift */; };
+		49CA1C1519B7F4D300763D93 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA1C1419B7F4D300763D93 /* Field.swift */; };
+		49CA1C1719B8311F00763D93 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA1C1619B8311F00763D93 /* Classes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -296,6 +298,8 @@
 		495E415619AED380006D4CD4 /* NewCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCategoryCell.swift; sourceTree = "<group>"; };
 		4970979819B0602500689C45 /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		4970979A19B066C700689C45 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
+		49CA1C1419B7F4D300763D93 /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		49CA1C1619B8311F00763D93 /* Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -339,6 +343,7 @@
 				26ACC4311974EA92007566A3 /* SPRDateConstants.h */,
 				26ACC4321974EA92007566A3 /* SPRDateConstants.m */,
 				4970979819B0602500689C45 /* Segues.swift */,
+				49CA1C1619B8311F00763D93 /* Classes.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -565,6 +570,7 @@
 			children = (
 				26743AA919B32B940027EE94 /* Period.swift */,
 				26743AAD19B336C10027EE94 /* CategorySummary.swift */,
+				49CA1C1419B7F4D300763D93 /* Field.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -855,6 +861,7 @@
 				495E415219AED2A4006D4CD4 /* Icons.swift in Sources */,
 				26E9C313193CC76F009F18D9 /* NSFetchedResultsController+SPR.m in Sources */,
 				26D2D7341969CFB100CCC973 /* SPRExpenseDateSpentCell.m in Sources */,
+				49CA1C1519B7F4D300763D93 /* Field.swift in Sources */,
 				26D2D7351969CFB100CCC973 /* SPRExpenseDescriptionCell.m in Sources */,
 				2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */,
 				26A0636A19724A6900B682BB /* SPRCalendarPickerNavigationBar.m in Sources */,
@@ -871,6 +878,7 @@
 				261EB87818DDB631009DDF78 /* Spare.xcdatamodeld in Sources */,
 				4945559B19AC725800C882CD /* HomeViewController.swift in Sources */,
 				26ACC4331974EA92007566A3 /* SPRDateConstants.m in Sources */,
+				49CA1C1719B8311F00763D93 /* Classes.swift in Sources */,
 				26FCD1A5196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m in Sources */,
 				26369E6618F57817000A9ADA /* SPRCategoryPicker.m in Sources */,
 				262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */,

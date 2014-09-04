@@ -175,7 +175,7 @@
         <!--New Expense-->
         <scene sceneID="zQx-DI-EfX">
             <objects>
-                <viewController id="tjF-1e-Jmx" customClass="NewExpenseViewController" sceneMemberID="viewController">
+                <viewController id="tjF-1e-Jmx" customClass="NewExpenseViewController" customModule="Spare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kkv-4i-Ocz"/>
                         <viewControllerLayoutGuide type="bottom" id="db5-1A-Me3"/>
@@ -307,6 +307,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tjF-1e-Jmx" id="LVZ-dI-bhn"/>
+                                    <outlet property="delegate" destination="tjF-1e-Jmx" id="rgE-8T-OBg"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

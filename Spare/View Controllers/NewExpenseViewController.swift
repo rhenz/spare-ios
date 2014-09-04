@@ -8,11 +8,28 @@
 
 import Foundation
 
+private enum Row: Int {
+    case Description = 0, Amount, Category, DateSpent
+}
+
 let kCellIdentifiers = ["kDescriptionCell", "kAmountCell", "kCategoryCell", "kDateSpentCell"]
+
+protocol NewExpenseViewControllerDelegate {
+ 
+    func newExpenseViewControllerDidAddExpense(_: SPRExpense) -> ();
+
+}
 
 class NewExpenseViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak private var tableView: UITableView!
+
+    var categorySummary: CategorySummary?
+    var delegate: NewExpenseViewControllerDelegate?
+
+    private lazy var fields: [Field] = {
+        return [Field(name: "Description"), Field(name: "Amount"), Field(name: "Category", value: self.categorySummary!.category), Field(name: "Date spent", value: NSDate.simplifiedDate())]
+    }()
 
     // MARK: View controller life cycle
 
@@ -30,11 +47,51 @@ class NewExpenseViewController: UIViewController {
     }
 
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.validateExpenseWithCompletion({[unowned self] in
+            if let message = $0 {
+                let alert = UIAlertView(title: "Error", message: message, delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+            } else {
+                self.saveExpenseWithCompletion({[unowned self] in
+                    self.delegate!.newExpenseViewControllerDidAddExpense($0)
+                })
+            }
+        })
     }
 
     func hideKeyboard() {
         self.view.endEditing(true)
+    }
+
+    func validateExpenseWithCompletion(completionBlock: (_: String?) -> ()) {
+        // Enumerate the missing fields.
+        var missingFields = [String]()
+        for field in self.fields {
+            if (field.value? as String).isEmpty {
+                missingFields.append(field.name!)
+            }
+        }
+        
+        if (missingFields.count > 0) {
+            let message = String(format: "You must enter the following:\n%@", ", ".join(missingFields))
+            completionBlock(message)
+        } else {
+            completionBlock(nil)
+        }
+    }
+
+    func saveExpenseWithCompletion(completionBlock: (_: SPRExpense) -> ()) {
+        let document = SPRManagedDocument.sharedDocument()
+        let expense = NSEntityDescription.insertNewObjectForEntityForName(Classes.Expense, inManagedObjectContext: document.managedObjectContext) as SPRExpense
+        expense.name = self.fields[Row.Description.toRaw()].value as NSString
+        expense.amount = NSDecimalNumber.decimalNumberWithString(self.fields[Row.Amount.toRaw()].value as NSString)
+        expense.category = self.categorySummary!.category
+        expense.dateSpent = self.fields[Row.DateSpent.toRaw()].value as NSDate
+        expense.displayOrder = NSNumber.numberWithInt(0)
+
+        document.saveWithCompletionHandler({[unowned self] success in
+            completionBlock(expense)
+        })
     }
     
 }

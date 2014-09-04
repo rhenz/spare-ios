@@ -9,6 +9,10 @@
 
 // Core data objects
 #import "SPRCategory.h"
+#import "SPRExpense.h"
 
 // Custom views
 #import "SPRCategorySummaryCell.h"
+
+// Categories
+#import "NSString+SPR.h"

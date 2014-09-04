@@ -14,6 +14,14 @@ enum DateUnit {
 
 extension NSDate {
     
+    // MARK: Class functions
+
+    class func simplifiedDate() -> NSDate {
+        return NSDate().firstMomentIn(.Day)
+    }
+
+    // MARK: Instance functions
+
     func firstMomentIn(unit: DateUnit) -> NSDate {
         return self.momentIn(unit, first: true)
     }
@@ -22,7 +30,9 @@ extension NSDate {
         return self.momentIn(unit, first: false)
     }
     
-    func momentIn(unit: DateUnit, first: Bool) -> NSDate {
+    // MARK: Helpers
+
+    private func momentIn(unit: DateUnit, first: Bool) -> NSDate {
         let calendar = NSCalendar.currentCalendar()
         var components: NSDateComponents?
         

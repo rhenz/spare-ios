@@ -64,6 +64,16 @@ class HomeViewController: UIViewController {
             self.collectionView.reloadData()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        let identifier = segue.identifier
+        if identifier == kSegueShowExpenses {
+            let navigationController = segue.destinationViewController as UINavigationController
+            let newExpenseScreen = navigationController.viewControllers[0] as NewExpenseViewController
+            newExpenseScreen.delegate = self
+            newExpenseScreen.categorySummary = self.summaries[0]
+        }
+    }
+
     func initializeSummaries() {
         var errorPointer: NSError?
         self.categoryFetcher.performFetch(&errorPointer)
@@ -235,4 +245,12 @@ extension HomeViewController: UICollectionViewDataSource_Draggable {
         return CGAffineTransformMakeScale(1.15, 1.15)
     }
     
+}
+
+extension HomeViewController: NewExpenseViewControllerDelegate {
+
+    func newExpenseViewControllerDidAddExpense(expense: SPRExpense) {
+    
+    }
+
 }
