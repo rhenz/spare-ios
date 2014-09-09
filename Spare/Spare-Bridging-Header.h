@@ -9,6 +9,7 @@
 
 // Core data objects
 #import "SPRCategory.h"
+#import "SPRCategory+Extension.h"
 #import "SPRExpense.h"
 
 // Custom views

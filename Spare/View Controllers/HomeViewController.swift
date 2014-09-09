@@ -22,19 +22,19 @@ class HomeViewController: UIViewController {
     var summaries: Array<CategorySummary> = []
     var hasBeenSetup = false
     
-    lazy var categoryFetcher: NSFetchedResultsController = {
-        let fetchRequest = NSFetchRequest()
-        
-        let entityDescription = NSEntityDescription.entityForName("SPRCategory", inManagedObjectContext: SPRManagedDocument.sharedDocument().managedObjectContext)
-        fetchRequest.entity = entityDescription
-        
-        let sortDescriptors = [NSSortDescriptor(key: "displayOrder", ascending: true)]
-        fetchRequest.sortDescriptors = sortDescriptors
-        
-        let fetcher = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: SPRManagedDocument.sharedDocument().managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        return fetcher
-    }()
-    
+//    lazy var categoryFetcher: NSFetchedResultsController = {
+//        let fetchRequest = NSFetchRequest()
+//        
+//        let entityDescription = NSEntityDescription.entityForName("SPRCategory", inManagedObjectContext: SPRManagedDocument.sharedDocument().managedObjectContext)
+//        fetchRequest.entity = entityDescription
+//        
+//        let sortDescriptors = [NSSortDescriptor(key: "displayOrder", ascending: true)]
+//        fetchRequest.sortDescriptors = sortDescriptors
+//        
+//        let fetcher = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: SPRManagedDocument.sharedDocument().managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+//        return fetcher
+//    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,7 +66,7 @@ class HomeViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
         let identifier = segue.identifier
-        if identifier == kSegueShowExpenses {
+        if identifier == kSeguePresentNewExpense {
             let navigationController = segue.destinationViewController as UINavigationController
             let newExpenseScreen = navigationController.viewControllers[0] as NewExpenseViewController
             newExpenseScreen.delegate = self
@@ -75,14 +75,9 @@ class HomeViewController: UIViewController {
     }
 
     func initializeSummaries() {
-        var errorPointer: NSError?
-        self.categoryFetcher.performFetch(&errorPointer)
-        if let error = errorPointer {
-            NSLog("Error fetching categories: %@", error)
-        }
-        
-        self.summaries.removeAll(keepCapacity: false)
-        for category in self.categoryFetcher.fetchedObjects {
+        self.summaries.removeAll(keepCapacity: true)
+        let categories = SPRCategory.allCategories()
+        for category in categories {
             self.summaries.append(CategorySummary(category: category as SPRCategory))
         }
     }
