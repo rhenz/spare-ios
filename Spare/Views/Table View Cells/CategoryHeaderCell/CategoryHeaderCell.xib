@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6205" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6206.8" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
-        <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="284" translatesAutoresizingMaskIntoConstraints="NO" id="Ev1-t1-92v">
-                        <rect key="frame" x="18" y="18" width="284" height="41"/>
+                        <rect key="frame" x="10" y="10" width="300" height="41"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="41" id="1yh-8V-246"/>
                         </constraints>
@@ -23,7 +23,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNo-R0-KsP">
-                        <rect key="frame" x="18" y="69" width="284" height="21"/>
+                        <rect key="frame" x="10" y="61" width="300" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="XWh-Rb-Jz2"/>
                         </constraints>
@@ -32,7 +32,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Period" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6v-bu-slh">
-                        <rect key="frame" x="18" y="100" width="284" height="21"/>
+                        <rect key="frame" x="10" y="92" width="300" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Y7N-fT-cvc"/>
                         </constraints>
@@ -42,15 +42,15 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="h6v-bu-slh" secondAttribute="trailing" constant="10" id="C9p-uS-rcA"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Ev1-t1-92v" secondAttribute="trailing" constant="10" id="EzV-sv-x6Y"/>
-                    <constraint firstItem="Ev1-t1-92v" firstAttribute="leading" secondItem="kdO-iZ-r0f" secondAttribute="leadingMargin" constant="10" id="Sal-hF-kVl"/>
+                    <constraint firstAttribute="trailing" secondItem="h6v-bu-slh" secondAttribute="trailing" constant="10" id="C9p-uS-rcA"/>
+                    <constraint firstAttribute="trailing" secondItem="Ev1-t1-92v" secondAttribute="trailing" constant="10" id="EzV-sv-x6Y"/>
+                    <constraint firstItem="Ev1-t1-92v" firstAttribute="leading" secondItem="kdO-iZ-r0f" secondAttribute="leading" constant="10" id="Sal-hF-kVl"/>
                     <constraint firstItem="h6v-bu-slh" firstAttribute="top" secondItem="gNo-R0-KsP" secondAttribute="bottom" constant="10" id="Sm1-bz-dQH"/>
                     <constraint firstItem="gNo-R0-KsP" firstAttribute="top" secondItem="Ev1-t1-92v" secondAttribute="bottom" constant="10" id="Z8D-QF-5KY"/>
-                    <constraint firstItem="gNo-R0-KsP" firstAttribute="leading" secondItem="kdO-iZ-r0f" secondAttribute="leadingMargin" constant="10" id="c0U-5u-hAM"/>
-                    <constraint firstItem="Ev1-t1-92v" firstAttribute="top" secondItem="kdO-iZ-r0f" secondAttribute="topMargin" constant="10" id="cqs-0V-flS"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="gNo-R0-KsP" secondAttribute="trailing" constant="10" id="noN-3L-1Fk"/>
-                    <constraint firstItem="h6v-bu-slh" firstAttribute="leading" secondItem="kdO-iZ-r0f" secondAttribute="leadingMargin" constant="10" id="tbw-Hz-pNB"/>
+                    <constraint firstItem="gNo-R0-KsP" firstAttribute="leading" secondItem="kdO-iZ-r0f" secondAttribute="leading" constant="10" id="c0U-5u-hAM"/>
+                    <constraint firstItem="Ev1-t1-92v" firstAttribute="top" secondItem="kdO-iZ-r0f" secondAttribute="top" constant="10" id="cqs-0V-flS"/>
+                    <constraint firstAttribute="trailing" secondItem="gNo-R0-KsP" secondAttribute="trailing" constant="10" id="noN-3L-1Fk"/>
+                    <constraint firstItem="h6v-bu-slh" firstAttribute="leading" secondItem="kdO-iZ-r0f" secondAttribute="leading" constant="10" id="tbw-Hz-pNB"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

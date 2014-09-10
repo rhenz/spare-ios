@@ -11,9 +11,11 @@ import Foundation
 class AppState {
     
     lazy var activePeriod: Period = {
-// For now, always return today
-return Period.today()
-}()
+        // For now, always return today
+        return Period.today()
+    }()
+    
+    var hasBeenSetup = false;
     
     class var sharedState: AppState {
         struct Singleton {

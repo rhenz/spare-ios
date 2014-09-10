@@ -3,7 +3,6 @@
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
-        <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -196,7 +195,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSk-sf-ym2">
-                                                    <rect key="frame" x="15" y="11" width="91" height="21"/>
+                                                    <rect key="frame" x="7" y="11" width="91" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="91" id="5gP-w6-AHa"/>
                                                         <constraint firstAttribute="height" constant="21" id="TxX-d5-tLi"/>
@@ -206,7 +205,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to edit" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="I9v-bB-f1G" customClass="SPRTextField">
-                                                    <rect key="frame" x="111" y="0.0" width="466" height="44"/>
+                                                    <rect key="frame" x="103" y="0.0" width="482" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="pb5-ia-FKr"/>
                                                     </constraints>
@@ -217,8 +216,8 @@
                                             <constraints>
                                                 <constraint firstItem="I9v-bB-f1G" firstAttribute="leading" secondItem="MSk-sf-ym2" secondAttribute="trailing" constant="5" id="DgL-e1-cyF"/>
                                                 <constraint firstAttribute="centerY" secondItem="MSk-sf-ym2" secondAttribute="centerY" id="Dwa-XR-QaQ"/>
-                                                <constraint firstItem="MSk-sf-ym2" firstAttribute="leading" secondItem="C6w-dK-DOP" secondAttribute="leadingMargin" constant="7" id="RFf-4f-myY"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="I9v-bB-f1G" secondAttribute="trailing" constant="15" id="UVj-bh-77E"/>
+                                                <constraint firstItem="MSk-sf-ym2" firstAttribute="leading" secondItem="C6w-dK-DOP" secondAttribute="leading" constant="7" id="RFf-4f-myY"/>
+                                                <constraint firstAttribute="trailing" secondItem="I9v-bB-f1G" secondAttribute="trailing" constant="15" id="UVj-bh-77E"/>
                                                 <constraint firstAttribute="centerY" secondItem="I9v-bB-f1G" secondAttribute="centerY" id="ovA-Ag-eri"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -231,7 +230,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="olr-PW-GQF">
-                                                    <rect key="frame" x="15" y="11" width="91" height="21"/>
+                                                    <rect key="frame" x="7" y="11" width="91" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="bgC-Kf-mlX"/>
                                                         <constraint firstAttribute="width" constant="91" id="m3Z-7c-UBe"/>
@@ -241,7 +240,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to edit" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bk0-md-Pej" customClass="SPRTextField">
-                                                    <rect key="frame" x="111" y="0.0" width="466" height="44"/>
+                                                    <rect key="frame" x="103" y="0.0" width="482" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="Q8Y-lm-yhB"/>
                                                     </constraints>
@@ -250,11 +249,11 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="olr-PW-GQF" firstAttribute="leading" secondItem="G7T-4e-0Cw" secondAttribute="leadingMargin" constant="7" id="1db-EL-SDJ"/>
+                                                <constraint firstItem="olr-PW-GQF" firstAttribute="leading" secondItem="G7T-4e-0Cw" secondAttribute="leading" constant="7" id="1db-EL-SDJ"/>
                                                 <constraint firstAttribute="centerY" secondItem="bk0-md-Pej" secondAttribute="centerY" id="BFW-lz-Ho2"/>
                                                 <constraint firstItem="bk0-md-Pej" firstAttribute="leading" secondItem="olr-PW-GQF" secondAttribute="trailing" constant="5" id="hYC-bD-xer"/>
                                                 <constraint firstAttribute="centerY" secondItem="olr-PW-GQF" secondAttribute="centerY" id="rsD-tN-ITa"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="bk0-md-Pej" secondAttribute="trailing" constant="15" id="uhI-ha-mfK"/>
+                                                <constraint firstAttribute="trailing" secondItem="bk0-md-Pej" secondAttribute="trailing" constant="15" id="uhI-ha-mfK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

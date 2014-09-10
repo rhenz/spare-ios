@@ -17,7 +17,7 @@ class CategoryHeaderCell: UITableViewCell {
     var categorySummary: CategorySummary? {
         didSet {
             self.categoryLabel.text = categorySummary!.category.name
-            self.totalLabel.text = categorySummary!.totalForPeriod(AppState.sharedState.activePeriod).stringValue
+            self.totalLabel.text = categorySummary!.total.stringValue
             self.periodLabel.text = "Today (dummy)"
             
             self.setNeedsLayout()

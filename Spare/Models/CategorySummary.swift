@@ -11,17 +11,19 @@ import Foundation
 class CategorySummary {
     
     var category: SPRCategory
+    var period: Period
     
-    init(category: SPRCategory) {
-        self.category = category
-    }
-    
-    func totalForPeriod(period: Period) -> NSDecimalNumber {
-        let fetcher = CategorySummary.totalFetcher(self.category, period: period)
+    var total: NSDecimalNumber {
+        let fetcher = CategorySummary.totalFetcher(self.category, period: self.period)
         fetcher.performFetch(nil)
         let dictionary = fetcher.fetchedObjects[0] as NSDictionary
         let total: NSDecimalNumber = dictionary["total"] as NSDecimalNumber
         return total
+    }
+    
+    init(category: SPRCategory, period: Period) {
+        self.category = category
+        self.period = period
     }
     
     class func totalFetcher(category: SPRCategory,

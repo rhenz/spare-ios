@@ -19,21 +19,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var summaries: Array<CategorySummary> = []
-    var hasBeenSetup = false
-    
-//    lazy var categoryFetcher: NSFetchedResultsController = {
-//        let fetchRequest = NSFetchRequest()
-//        
-//        let entityDescription = NSEntityDescription.entityForName("SPRCategory", inManagedObjectContext: SPRManagedDocument.sharedDocument().managedObjectContext)
-//        fetchRequest.entity = entityDescription
-//        
-//        let sortDescriptors = [NSSortDescriptor(key: "displayOrder", ascending: true)]
-//        fetchRequest.sortDescriptors = sortDescriptors
-//        
-//        let fetcher = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: SPRManagedDocument.sharedDocument().managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-//        return fetcher
-//    }()
+    var summaries: [CategorySummary]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,14 +33,26 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(animated: Bool)  {
         super.viewWillAppear(animated)
         
-        if self.hasBeenSetup {
-            self.initializeSummaries()
-            self.collectionView.reloadData()
-        } else {
+        // If the app has not yet been set up, launch the setup screen and initialize the category summaries.
+        if AppState.sharedState.hasBeenSetup == false {
             let setupScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SetupViewController") as UIViewController
             let navigationController = UINavigationController(rootViewController: setupScreen)
             self.presentViewController(navigationController, animated: false, completion: nil)
-            self.hasBeenSetup = true
+            AppState.sharedState.hasBeenSetup = true
+        }
+
+        else {
+            // If the summaries have not yet been retrieved, retrieve them.
+            if summaries == nil {
+                summaries = []
+                let categories = SPRCategory.allCategories()
+                for category in categories {
+                    summaries.append(CategorySummary(category: category as SPRCategory, period: AppState.sharedState.activePeriod))
+                }
+            }
+
+            // Refresh the collection view to reflect changes in totals & the list of categories.
+            self.collectionView.reloadData()
         }
     }
     
@@ -73,14 +71,6 @@ class HomeViewController: UIViewController {
             newExpenseScreen.categorySummary = self.summaries[0]
         }
     }
-
-    func initializeSummaries() {
-        self.summaries.removeAll(keepCapacity: true)
-        let categories = SPRCategory.allCategories()
-        for category in categories {
-            self.summaries.append(CategorySummary(category: category as SPRCategory))
-        }
-    }
     
 }
 
@@ -89,7 +79,12 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int  {
-        // Return the number of categories plus 1 for the New Category cell.
+// If the summaries have not yet been retrieved, just return 0.
+            if summaries == nil {
+return 0
+}
+
+// Return the number of categories plus 1 for the New Category cell.
         return self.summaries.count + 1
     }
     
@@ -106,13 +101,13 @@ extension HomeViewController: UICollectionViewDataSource {
         default:
             let actualCell = collectionView.dequeueReusableCellWithReuseIdentifier(kSummaryCell, forIndexPath: indexPath) as SPRCategorySummaryCell
             
-            // Set the category.
+            // Set the category label.
             let summary = self.summaries[indexPath.row]
             actualCell.category = summary.category
             
-            // Set the active period.
+            // Set the total label.
             let period = AppState.sharedState.activePeriod
-            actualCell.displayedTotal = summary.totalForPeriod(period)
+            actualCell.displayedTotal = summary.total
             
             cell = actualCell
         }
