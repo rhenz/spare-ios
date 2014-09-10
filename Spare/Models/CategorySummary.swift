@@ -16,7 +16,7 @@ class CategorySummary {
     var total: NSDecimalNumber {
         let fetcher = CategorySummary.totalFetcher(self.category, period: self.period)
         fetcher.performFetch(nil)
-        let dictionary = fetcher.fetchedObjects[0] as NSDictionary
+        let dictionary = fetcher.fetchedObjects![0] as NSDictionary
         let total: NSDecimalNumber = dictionary["total"] as NSDecimalNumber
         return total
     }

@@ -62,7 +62,7 @@ class HomeViewController: UIViewController {
             self.collectionView.reloadData()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier = segue.identifier
         if identifier == kSeguePresentNewExpense {
             let navigationController = segue.destinationViewController as UINavigationController
@@ -70,6 +70,7 @@ class HomeViewController: UIViewController {
             newExpenseScreen.delegate = self
             newExpenseScreen.categorySummary = self.summaries[0]
         }
+
     }
     
 }
@@ -78,17 +79,18 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDataSource {
     
-    func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int  {
-// If the summaries have not yet been retrieved, just return 0.
+    func collectionView(collectionView: UICollectionView,
+        numberOfItemsInSection section: Int) -> Int  {
+            // If the summaries have not yet been retrieved, just return 0.
             if summaries == nil {
-return 0
-}
-
-// Return the number of categories plus 1 for the New Category cell.
-        return self.summaries.count + 1
+                return 0
+            }
+            
+            // Return the number of categories plus 1 for the New Category cell.
+            return self.summaries.count + 1
     }
     
-    func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell: UICollectionViewCell?
         
         switch indexPath.row {
@@ -112,7 +114,7 @@ return 0
             cell = actualCell
         }
         
-        return cell
+        return cell!
     }
     
 }
