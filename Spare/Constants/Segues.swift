@@ -8,5 +8,9 @@
 
 import Foundation
 
-let kSegueShowExpenses = "showExpenses"
-let kSeguePresentNewExpense = "presentNewExpense"
+struct Segues {
+    
+    static let showExpenses = "showExpenses"
+    static let presentNewExpense = "presentNewExpense"
+    
+}

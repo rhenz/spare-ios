@@ -10,8 +10,7 @@ import Foundation
 
 struct Classes {
     
-    static var Expense: String = {
-        return "Expense"
-    }()
+    static let Expense = "Expense"
+    static let CategoryHeaderCell = "CategoryHeaderCell"
     
 }

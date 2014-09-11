@@ -20,6 +20,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var summaries: [CategorySummary]!
+    var selectedIndexPath: NSIndexPath!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,11 +65,16 @@ class HomeViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier = segue.identifier
-        if identifier == kSeguePresentNewExpense {
+        if identifier == Segues.presentNewExpense {
             let navigationController = segue.destinationViewController as UINavigationController
             let newExpenseScreen = navigationController.viewControllers[0] as NewExpenseViewController
             newExpenseScreen.delegate = self
             newExpenseScreen.categorySummary = self.summaries[0]
+        }
+        
+        else if identifier == Segues.showExpenses {
+            let expensesScreen = segue.destinationViewController as ExpensesViewController
+            expensesScreen.categorySummary = summaries[selectedIndexPath.row]
         }
 
     }
@@ -195,7 +201,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView!,
         didSelectItemAtIndexPath indexPath: NSIndexPath!) {
             if indexPath.row < self.summaries.count {
-                self.performSegueWithIdentifier(kSegueShowExpenses, sender: self)
+                self.selectedIndexPath = indexPath
+                self.performSegueWithIdentifier(Segues.showExpenses, sender: self)
             }
     }
     
