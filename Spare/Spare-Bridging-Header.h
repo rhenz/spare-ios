@@ -17,3 +17,4 @@
 
 // Categories
 #import "NSString+SPR.h"
+#import "UIColor+HexColor.h"

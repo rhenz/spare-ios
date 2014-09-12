@@ -87,6 +87,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="lJk-3S-ufA" id="nAR-pC-x7y"/>
+                                    <outlet property="delegate" destination="lJk-3S-ufA" id="C9v-ak-YGV"/>
                                 </connections>
                             </tableView>
                         </subviews>

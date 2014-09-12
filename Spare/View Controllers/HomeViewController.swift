@@ -132,8 +132,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView!,
         layout collectionViewLayout: UICollectionViewLayout!,
         sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
-            var padding: CGFloat?
-            var tilesPerRow: Int?
+            var padding: CGFloat!
+            var tilesPerRow: Int!
             
             switch UIDevice.currentDevice().userInterfaceIdiom {
             case .Pad:
@@ -154,9 +154,9 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             default: ()
             }
             
-            let numberOfPaddings = tilesPerRow! + 1
-            let availableWidth = UIScreen.currentWidth() - (padding! * CGFloat(numberOfPaddings))
-            let width = availableWidth / CGFloat(tilesPerRow!)
+            let numberOfPaddings = tilesPerRow + 1
+            let availableWidth = UIScreen.currentWidth() - (padding * CGFloat(numberOfPaddings))
+            let width = availableWidth / CGFloat(tilesPerRow)
             let height = width * kHeightRatio / kWidthRatio
             
             return CGSizeMake(width, height)

@@ -70,3 +70,17 @@ extension ExpensesViewController: UITableViewDataSource {
     }
     
 }
+
+extension ExpensesViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView,
+        heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+            switch indexPath.section {
+            case kSectionCategoryHeader:
+                return CategoryHeaderCell.heightForCategorySummary(self.categorySummary)
+            default:
+                return UITableViewAutomaticDimension
+            }
+    }
+    
+}

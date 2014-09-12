@@ -110,6 +110,7 @@
 		495E415719AED380006D4CD4 /* NewCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E415619AED380006D4CD4 /* NewCategoryCell.swift */; };
 		4970979919B0602500689C45 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4970979819B0602500689C45 /* Segues.swift */; };
 		4970979B19B066C700689C45 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4970979A19B066C700689C45 /* ExpensesViewController.swift */; };
+		4975C3FB19C27BDB005FE994 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975C3FA19C27BDB005FE994 /* Colors.swift */; };
 		49CA1C1519B7F4D300763D93 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA1C1419B7F4D300763D93 /* Field.swift */; };
 		49CA1C1719B8311F00763D93 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA1C1619B8311F00763D93 /* Classes.swift */; };
 /* End PBXBuildFile section */
@@ -298,6 +299,7 @@
 		495E415619AED380006D4CD4 /* NewCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCategoryCell.swift; sourceTree = "<group>"; };
 		4970979819B0602500689C45 /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		4970979A19B066C700689C45 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
+		4975C3FA19C27BDB005FE994 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		49CA1C1419B7F4D300763D93 /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		49CA1C1619B8311F00763D93 /* Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -344,6 +346,7 @@
 				26ACC4321974EA92007566A3 /* SPRDateConstants.m */,
 				4970979819B0602500689C45 /* Segues.swift */,
 				49CA1C1619B8311F00763D93 /* Classes.swift */,
+				4975C3FA19C27BDB005FE994 /* Colors.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -916,6 +919,7 @@
 				26D2D7321969CFB100CCC973 /* SPRExpenseAmountCell.m in Sources */,
 				2656B76D196FE10C003313AA /* SPRDayPicker.m in Sources */,
 				26369E6A18F5787D000A9ADA /* SPRNewExpenseViewController.m in Sources */,
+				4975C3FB19C27BDB005FE994 /* Colors.swift in Sources */,
 				26743AA719B326040027EE94 /* AppState.swift in Sources */,
 				26D2D71119694BB100CCC973 /* SPRHomeViewController.m in Sources */,
 				26D2D71A196951A800CCC973 /* UIViewController+Slider.m in Sources */,
