@@ -68,7 +68,6 @@ class HomeViewController: UIViewController {
         if identifier == Segues.presentNewExpense {
             let navigationController = segue.destinationViewController as UINavigationController
             let newExpenseScreen = navigationController.viewControllers[0] as NewExpenseViewController
-            newExpenseScreen.delegate = self
             newExpenseScreen.categorySummary = self.summaries[0]
         }
         
@@ -244,12 +243,4 @@ extension HomeViewController: UICollectionViewDataSource_Draggable {
         return CGAffineTransformMakeScale(1.15, 1.15)
     }
     
-}
-
-extension HomeViewController: NewExpenseViewControllerDelegate {
-
-    func newExpenseViewControllerDidAddExpense(expense: SPRExpense) {
-    
-    }
-
 }

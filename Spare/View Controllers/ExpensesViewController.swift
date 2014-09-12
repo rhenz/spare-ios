@@ -32,10 +32,27 @@ class ExpensesViewController: UIViewController {
         
         // Register table view cells.
         tableView.registerNib(UINib(nibName: Classes.CategoryHeaderCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: kCategoryHeaderCell)
+        
+        // Register for new expense notifications.
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: Selector("notify:"), name: Notifications.NewExpense, object: nil)
     }
     
     func newExpenseButtonTapped() {
         self.performSegueWithIdentifier("presentNewExpense", sender: self)
+    }
+    
+    func notify(notification: NSNotification) {
+        if notification.name == Notifications.NewExpense {
+            let expense = notification.object as SPRExpense
+            if self.categorySummary.category.displayOrder == expense.category.displayOrder {
+                NSLog("New expense!")
+            }
+        }
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
 }
@@ -71,6 +88,7 @@ extension ExpensesViewController: UITableViewDataSource {
     
 }
 
+// MARK: Table view delegate
 extension ExpensesViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView,

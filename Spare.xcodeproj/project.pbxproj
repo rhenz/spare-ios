@@ -111,6 +111,10 @@
 		4970979919B0602500689C45 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4970979819B0602500689C45 /* Segues.swift */; };
 		4970979B19B066C700689C45 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4970979A19B066C700689C45 /* ExpensesViewController.swift */; };
 		4975C3FB19C27BDB005FE994 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975C3FA19C27BDB005FE994 /* Colors.swift */; };
+		4975C3FD19C28B0B005FE994 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975C3FC19C28B0B005FE994 /* Notifications.swift */; };
+		4975C40019C29CFD005FE994 /* CategoryPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4975C3FF19C29CFD005FE994 /* CategoryPickerCell.xib */; };
+		4975C40219C29D10005FE994 /* CategoryPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975C40119C29D10005FE994 /* CategoryPickerCell.swift */; };
+		4975C40419C2C5DA005FE994 /* CategoryPickerCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975C40319C2C5DA005FE994 /* CategoryPickerCellDelegate.swift */; };
 		49CA1C1519B7F4D300763D93 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA1C1419B7F4D300763D93 /* Field.swift */; };
 		49CA1C1719B8311F00763D93 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA1C1619B8311F00763D93 /* Classes.swift */; };
 /* End PBXBuildFile section */
@@ -300,6 +304,10 @@
 		4970979819B0602500689C45 /* Segues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		4970979A19B066C700689C45 /* ExpensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
 		4975C3FA19C27BDB005FE994 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		4975C3FC19C28B0B005FE994 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		4975C3FF19C29CFD005FE994 /* CategoryPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryPickerCell.xib; sourceTree = "<group>"; };
+		4975C40119C29D10005FE994 /* CategoryPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerCell.swift; sourceTree = "<group>"; };
+		4975C40319C2C5DA005FE994 /* CategoryPickerCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerCellDelegate.swift; sourceTree = "<group>"; };
 		49CA1C1419B7F4D300763D93 /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		49CA1C1619B8311F00763D93 /* Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -347,6 +355,7 @@
 				4970979819B0602500689C45 /* Segues.swift */,
 				49CA1C1619B8311F00763D93 /* Classes.swift */,
 				4975C3FA19C27BDB005FE994 /* Colors.swift */,
+				4975C3FC19C28B0B005FE994 /* Notifications.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -554,6 +563,7 @@
 		26743AA019B31AF70027EE94 /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				4975C3FE19C29CED005FE994 /* CategoryPickerCell */,
 				26743AA119B31B210027EE94 /* CategoryHeaderCell */,
 			);
 			path = "Table View Cells";
@@ -706,6 +716,16 @@
 			path = NewCategoryCell;
 			sourceTree = "<group>";
 		};
+		4975C3FE19C29CED005FE994 /* CategoryPickerCell */ = {
+			isa = PBXGroup;
+			children = (
+				4975C3FF19C29CFD005FE994 /* CategoryPickerCell.xib */,
+				4975C40119C29D10005FE994 /* CategoryPickerCell.swift */,
+				4975C40319C2C5DA005FE994 /* CategoryPickerCellDelegate.swift */,
+			);
+			path = CategoryPickerCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -798,6 +818,7 @@
 				2656B772196FE5D8003313AA /* SPRMonthPicker.xib in Resources */,
 				495E415519AED36F006D4CD4 /* NewCategoryCell.xib in Resources */,
 				261EB87A18DDB631009DDF78 /* Images.xcassets in Resources */,
+				4975C40019C29CFD005FE994 /* CategoryPickerCell.xib in Resources */,
 				2686F508197B792000C1D7A9 /* SPRCalendarPickerCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -895,6 +916,7 @@
 				2612C8AF18E847DB00DE2765 /* NSDate+SPR.m in Sources */,
 				492652BE19B553C000315CD9 /* NewExpenseViewController.swift in Sources */,
 				495E414D19AEB67D006D4CD4 /* SetupViewController.swift in Sources */,
+				4975C40219C29D10005FE994 /* CategoryPickerCell.swift in Sources */,
 				260F58C7192C33B800F27F28 /* SPRFormComponents.m in Sources */,
 				261DD0831945979200B0EBB2 /* SPRExpense.m in Sources */,
 				26D2D7311969CFB100CCC973 /* SPRCategoryNameCell.m in Sources */,
@@ -904,9 +926,11 @@
 				261EB87518DDB631009DDF78 /* SPRAppDelegate.m in Sources */,
 				2638AAAC19260B7A00D3D3E2 /* SPREditCategoryViewController.m in Sources */,
 				2686F504197B78E400C1D7A9 /* SPRCalendarPickerCollectionViewCell.m in Sources */,
+				4975C40419C2C5DA005FE994 /* CategoryPickerCellDelegate.swift in Sources */,
 				2612C89418E7E64C00DE2765 /* SPRCategoryViewController.m in Sources */,
 				26D2D7361969CFB100CCC973 /* SPRFormCell.m in Sources */,
 				2661CD7619321751009C7034 /* SPRCategoryHeaderCell.m in Sources */,
+				4975C3FD19C28B0B005FE994 /* Notifications.swift in Sources */,
 				26A9029D191DD81400CEE065 /* UIView+SPR.m in Sources */,
 				495E415719AED380006D4CD4 /* NewCategoryCell.swift in Sources */,
 				26E2484618E1B7F900391354 /* UIColor+HexColor.m in Sources */,

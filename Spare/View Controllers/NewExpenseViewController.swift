@@ -8,28 +8,32 @@
 
 import Foundation
 
-private enum Row: Int {
-    case Description = 0, Amount, Category, DateSpent
+private struct Row {
+    
+    static let Description = 0
+    static let Amount = 1
+    static let Category = 2
+    static let DateSpent = 3
+    
 }
 
 let kCellIdentifiers = ["kDescriptionCell", "kAmountCell", "kCategoryCell", "kDateSpentCell"]
-
-protocol NewExpenseViewControllerDelegate {
- 
-    func newExpenseViewControllerDidAddExpense(_: SPRExpense) -> ();
-
-}
 
 class NewExpenseViewController: UIViewController {
 
     @IBOutlet weak private var tableView: UITableView!
 
     var categorySummary: CategorySummary?
-    var delegate: NewExpenseViewControllerDelegate?
 
     private lazy var fields: [Field] = {
         return [Field(name: "Description"), Field(name: "Amount"), Field(name: "Category", value: self.categorySummary!.category), Field(name: "Date spent", value: NSDate.simplifiedDate())]
     }()
+    
+    lazy var categoryPickerCell: CategoryPickerCell = {
+        let cell = NSBundle.mainBundle().loadNibNamed(Classes.CategoryPickerCell, owner: self, options: nil).last as CategoryPickerCell
+        cell.delegate = self
+        return cell
+        }()
 
     // MARK: View controller life cycle
 
@@ -52,8 +56,10 @@ class NewExpenseViewController: UIViewController {
                 let alert = UIAlertView(title: "Error", message: message, delegate: nil, cancelButtonTitle: "OK")
                 alert.show()
             } else {
-                self.saveExpenseWithCompletion({[unowned self] in
-                    self.delegate!.newExpenseViewControllerDidAddExpense($0)
+                self.saveExpenseWithCompletion({[unowned self] expense in
+                    // Send a notification that an expense has been saved.
+                    let notificationCenter = NSNotificationCenter.defaultCenter()
+                    notificationCenter.postNotificationName(Notifications.NewExpense, object: expense)
                 })
             }
         })
@@ -83,10 +89,10 @@ class NewExpenseViewController: UIViewController {
     func saveExpenseWithCompletion(completionBlock: (_: SPRExpense) -> ()) {
         let document = SPRManagedDocument.sharedDocument()
         let expense = NSEntityDescription.insertNewObjectForEntityForName(Classes.Expense, inManagedObjectContext: document.managedObjectContext) as SPRExpense
-        expense.name = self.fields[Row.Description.toRaw()].value as NSString
-        expense.amount = NSDecimalNumber.decimalNumberWithString(self.fields[Row.Amount.toRaw()].value as NSString)
+        expense.name = self.fields[Row.Description].value as NSString
+        expense.amount = NSDecimalNumber.decimalNumberWithString(self.fields[Row.Amount].value as NSString)
         expense.category = self.categorySummary!.category
-        expense.dateSpent = self.fields[Row.DateSpent.toRaw()].value as NSDate
+        expense.dateSpent = self.fields[Row.DateSpent].value as NSDate
         expense.displayOrder = NSNumber.numberWithInt(0)
 
         document.saveWithCompletionHandler({[unowned self] success in
@@ -96,6 +102,7 @@ class NewExpenseViewController: UIViewController {
     
 }
 
+// MARK: Table view data source
 extension NewExpenseViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -104,12 +111,48 @@ extension NewExpenseViewController: UITableViewDataSource {
 
     func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+            if indexPath.row == Row.Category {
+                let cell = self.categoryPickerCell
+                return cell
+            }
+            
             let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifiers[indexPath.row]) as UITableViewCell
             return cell
     }
     
 }
 
+// MARK: Table view delegate
 extension NewExpenseViewController: UITableViewDelegate {
 
+    func tableView(tableView: UITableView,
+        didSelectRowAtIndexPath indexPath: NSIndexPath) {
+            switch indexPath.row {
+            case Row.Category:()
+            case Row.DateSpent:
+                ()
+            default: ()
+            }
+    }
+    
+    func tableView(tableView: UITableView,
+        heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+            switch indexPath.row {
+            case Row.Category:
+                return self.categoryPickerCell.height
+            default:
+                return UITableViewAutomaticDimension
+            }
+    }
+    
+}
+
+// MARK: Category picker cell delegate
+extension NewExpenseViewController: CategoryPickerCellDelegate {
+    
+    func categoryPickerCellDidToggleExpandMode(categoryPickerCell: CategoryPickerCell) {
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+    }
+    
 }
