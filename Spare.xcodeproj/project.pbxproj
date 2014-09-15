@@ -101,6 +101,10 @@
 		26FCED8B1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FCED8A1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib */; };
 		28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6196FFB0C5B41DEB0DB54BF /* libPods.a */; };
 		492652BE19B553C000315CD9 /* NewExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492652BD19B553C000315CD9 /* NewExpenseViewController.swift */; };
+		4932D06419C6C5C4000A9F5E /* LaunchFile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4932D06319C6C5C4000A9F5E /* LaunchFile.xib */; };
+		4932D06819C6D3D3000A9F5E /* generic-launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 4932D06519C6D3D3000A9F5E /* generic-launch.png */; };
+		4932D06919C6D3D3000A9F5E /* iphone6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4932D06619C6D3D3000A9F5E /* iphone6.png */; };
+		4932D06A19C6D3D3000A9F5E /* iphone6plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 4932D06719C6D3D3000A9F5E /* iphone6plus.png */; };
 		49390C7819AC8CCD009598A5 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49390C7719AC8CCD009598A5 /* UIScreen.swift */; };
 		4945559B19AC725800C882CD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4945559A19AC725800C882CD /* HomeViewController.swift */; };
 		494555A019AC731900C882CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4945559F19AC731900C882CD /* Main.storyboard */; };
@@ -293,6 +297,10 @@
 		26FCED8619706C9300FD01D0 /* SPRCalendarPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCalendarPickerViewController.m; sourceTree = "<group>"; };
 		26FCED8A1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPRCalendarPickerNavigationBar.xib; sourceTree = "<group>"; };
 		492652BD19B553C000315CD9 /* NewExpenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewExpenseViewController.swift; sourceTree = "<group>"; };
+		4932D06319C6C5C4000A9F5E /* LaunchFile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchFile.xib; sourceTree = "<group>"; };
+		4932D06519C6D3D3000A9F5E /* generic-launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "generic-launch.png"; sourceTree = "<group>"; };
+		4932D06619C6D3D3000A9F5E /* iphone6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone6.png; sourceTree = "<group>"; };
+		4932D06719C6D3D3000A9F5E /* iphone6plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone6plus.png; sourceTree = "<group>"; };
 		49390C7719AC8CCD009598A5 /* UIScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		4945559A19AC725800C882CD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4945559F19AC731900C882CD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -430,6 +438,9 @@
 		261EB86B18DDB631009DDF78 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4932D06519C6D3D3000A9F5E /* generic-launch.png */,
+				4932D06619C6D3D3000A9F5E /* iphone6.png */,
+				4932D06719C6D3D3000A9F5E /* iphone6plus.png */,
 				2603E759193C83F1009F9AD6 /* spare-icons.ttf */,
 				261EB86C18DDB631009DDF78 /* Spare-Info.plist */,
 				261EB86D18DDB631009DDF78 /* InfoPlist.strings */,
@@ -693,6 +704,7 @@
 			isa = PBXGroup;
 			children = (
 				4945559F19AC731900C882CD /* Main.storyboard */,
+				4932D06319C6C5C4000A9F5E /* LaunchFile.xib */,
 				26743AA019B31AF70027EE94 /* Table View Cells */,
 				495E414E19AECE36006D4CD4 /* Collection View Cells */,
 			);
@@ -809,15 +821,19 @@
 			files = (
 				2603E75A193C85F9009F9AD6 /* spare-icons.ttf in Resources */,
 				494555A019AC731900C882CD /* Main.storyboard in Resources */,
+				4932D06819C6D3D3000A9F5E /* generic-launch.png in Resources */,
 				2659EFF71968D5D6005F31E1 /* iPhone.storyboard in Resources */,
 				26A0636C1972655500B682BB /* SPRDayPicker.xib in Resources */,
 				261EB86F18DDB631009DDF78 /* InfoPlist.strings in Resources */,
 				26FCED8B1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib in Resources */,
+				4932D06919C6D3D3000A9F5E /* iphone6.png in Resources */,
 				26743AA319B31B2D0027EE94 /* CategoryHeaderCell.xib in Resources */,
 				261EB89818DDB64F009DDF78 /* iPhone_v1.storyboard in Resources */,
 				2656B772196FE5D8003313AA /* SPRMonthPicker.xib in Resources */,
+				4932D06A19C6D3D3000A9F5E /* iphone6plus.png in Resources */,
 				495E415519AED36F006D4CD4 /* NewCategoryCell.xib in Resources */,
 				261EB87A18DDB631009DDF78 /* Images.xcassets in Resources */,
+				4932D06419C6C5C4000A9F5E /* LaunchFile.xib in Resources */,
 				4975C40019C29CFD005FE994 /* CategoryPickerCell.xib in Resources */,
 				2686F508197B792000C1D7A9 /* SPRCalendarPickerCollectionViewCell.xib in Resources */,
 			);

@@ -9,8 +9,9 @@
 import UIKit
 import CoreData
 
-let kWidthRatio: CGFloat = 29.0
-let kHeightRatio: CGFloat = 26.0
+let kWidthRatio = CGFloat(29)
+let kHeightRatio = CGFloat(26)
+let kPadding = CGFloat(10)
 
 let kSummaryCell = "kSummaryCell"
 let kNewCategoryCell = "kNewCategoryCell"
@@ -60,6 +61,8 @@ class HomeViewController: UIViewController {
     override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation,
         duration: NSTimeInterval) {
             super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
+            
+            // Forces collection view to recompute cell sizes.
             self.collectionView.reloadData()
     }
     
@@ -76,6 +79,22 @@ class HomeViewController: UIViewController {
             expensesScreen.categorySummary = summaries[selectedIndexPath.row]
         }
 
+    }
+    
+}
+
+// MARK: IBActions
+extension HomeViewController {
+    
+    @IBAction func newExpenseButtonTapped(sender: AnyObject) {
+        if self.summaries.count > 0 {
+            self.performSegueWithIdentifier(Segues.presentNewExpense, sender: self)
+        } else {
+            UIAlertView(title: "Invalid action",
+                message: "Before adding a new expense, you must first create a category.",
+                delegate: nil,
+                cancelButtonTitle: "Got it!").show()
+        }
     }
     
 }
@@ -131,30 +150,18 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView!,
         layout collectionViewLayout: UICollectionViewLayout!,
         sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
-            var padding: CGFloat!
-            var tilesPerRow: Int!
-            
-            switch UIDevice.currentDevice().userInterfaceIdiom {
-            case .Pad:
-                padding = 20.0
+            var tilesPerRow: Int = {
                 let orientation = UIApplication.sharedApplication().statusBarOrientation
                 switch orientation {
                 case .Portrait, .PortraitUpsideDown:
-                    tilesPerRow = 2
-                case .LandscapeLeft, .LandscapeRight:
-                    tilesPerRow = 3
-                default: ()
+                    return 2
+                default:
+                    return 3
                 }
-                
-            case .Phone:
-                padding = 10.0
-                tilesPerRow = 2
-                
-            default: ()
-            }
+            }()
             
             let numberOfPaddings = tilesPerRow + 1
-            let availableWidth = UIScreen.currentWidth() - (padding * CGFloat(numberOfPaddings))
+            let availableWidth = UIScreen.currentWidth() - (kPadding * CGFloat(numberOfPaddings))
             let width = availableWidth / CGFloat(tilesPerRow)
             let height = width * kHeightRatio / kWidthRatio
             
@@ -164,37 +171,19 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView!,
         layout collectionViewLayout: UICollectionViewLayout!,
         insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-            var inset: CGFloat?
-            switch UIDevice.currentDevice().userInterfaceIdiom {
-            case .Phone:
-                inset = 10.0
-            case .Pad:
-                inset = 20.0
-            default: ()
-            }
-            return UIEdgeInsetsMake(inset!, inset!, inset!, inset!)
+            return UIEdgeInsetsMake(kPadding, kPadding, kPadding, kPadding)
     }
     
     func collectionView(collectionView: UICollectionView!,
         layout collectionViewLayout: UICollectionViewLayout!,
         minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-            switch UIDevice.currentDevice().userInterfaceIdiom {
-            case .Pad:
-                return 20.0
-            default: // .Phone
-                return 10.0
-            }
+            return kPadding
     }
     
     func collectionView(collectionView: UICollectionView!,
         layout collectionViewLayout: UICollectionViewLayout!,
         minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-            switch UIDevice.currentDevice().userInterfaceIdiom {
-            case .Pad:
-                return 20.0
-            default: // .Phone
-                return 10.0
-            }
+            return kPadding
     }
     
     func collectionView(collectionView: UICollectionView!,

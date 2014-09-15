@@ -57,13 +57,14 @@
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="qUt-wB-lSj"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mPV-aq-MB7">
                             <connections>
-                                <segue destination="mUa-3G-Zs3" kind="presentation" identifier="presentNewExpense" modalPresentationStyle="formSheet" id="c7Q-vW-U8F"/>
+                                <action selector="newExpenseButtonTapped:" destination="ok7-tx-DUh" id="P2T-gU-I4b"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="IDt-h9-0bb" id="tI0-Pj-lEG"/>
                         <segue destination="lJk-3S-ufA" kind="show" identifier="showExpenses" id="V0A-li-WWj"/>
+                        <segue destination="mUa-3G-Zs3" kind="presentation" identifier="presentNewExpense" modalPresentationStyle="formSheet" id="ynG-cZ-0yU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QqQ-cA-Tnp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -185,7 +186,7 @@
                         <viewControllerLayoutGuide type="bottom" id="db5-1A-Me3"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tZI-EE-t6F">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="0ax-OB-DQV">
@@ -342,6 +343,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="REe-8N-gh1"/>
+        <segue reference="ynG-cZ-0yU"/>
     </inferredMetricsTieBreakers>
 </document>
