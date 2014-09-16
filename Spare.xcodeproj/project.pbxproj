@@ -121,6 +121,7 @@
 		4975C40419C2C5DA005FE994 /* CategoryPickerCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975C40319C2C5DA005FE994 /* CategoryPickerCellDelegate.swift */; };
 		49CA1C1519B7F4D300763D93 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA1C1419B7F4D300763D93 /* Field.swift */; };
 		49CA1C1719B8311F00763D93 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA1C1619B8311F00763D93 /* Classes.swift */; };
+		49D8DF4619C7FE7300ABBAE9 /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8DF4519C7FE7300ABBAE9 /* FormTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -318,6 +319,7 @@
 		4975C40319C2C5DA005FE994 /* CategoryPickerCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerCellDelegate.swift; sourceTree = "<group>"; };
 		49CA1C1419B7F4D300763D93 /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		49CA1C1619B8311F00763D93 /* Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
+		49D8DF4519C7FE7300ABBAE9 /* FormTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -707,6 +709,7 @@
 				4932D06319C6C5C4000A9F5E /* LaunchFile.xib */,
 				26743AA019B31AF70027EE94 /* Table View Cells */,
 				495E414E19AECE36006D4CD4 /* Collection View Cells */,
+				49D8DF4419C7FE5100ABBAE9 /* Text Fields */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -736,6 +739,14 @@
 				4975C40319C2C5DA005FE994 /* CategoryPickerCellDelegate.swift */,
 			);
 			path = CategoryPickerCell;
+			sourceTree = "<group>";
+		};
+		49D8DF4419C7FE5100ABBAE9 /* Text Fields */ = {
+			isa = PBXGroup;
+			children = (
+				49D8DF4519C7FE7300ABBAE9 /* FormTextField.swift */,
+			);
+			path = "Text Fields";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -898,6 +909,7 @@
 				26D2D7201969BED200CCC973 /* SPRIcons.m in Sources */,
 				26D2D7331969CFB100CCC973 /* SPRExpenseCategoryCell.m in Sources */,
 				26E2485318E1CAB700391354 /* SPRNewCategoryViewController.m in Sources */,
+				49D8DF4619C7FE7300ABBAE9 /* FormTextField.swift in Sources */,
 				495E415219AED2A4006D4CD4 /* Icons.swift in Sources */,
 				26E9C313193CC76F009F18D9 /* NSFetchedResultsController+SPR.m in Sources */,
 				26D2D7341969CFB100CCC973 /* SPRExpenseDateSpentCell.m in Sources */,

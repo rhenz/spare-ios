@@ -10,6 +10,11 @@ import Foundation
 
 protocol CategoryPickerCellDelegate {
     
-     func categoryPickerCellDidToggleExpandMode(categoryPickerCell: CategoryPickerCell)
+    func categoryPickerCellDidToggle(categoryPickerCell: CategoryPickerCell)
+    
+    /** 
+        Called when a selection is made. A selection is only made when the category picker is collapsed.
+    */
+    func categoryPickerCell(categoryPickerCell: CategoryPickerCell, didSelectCategory category: SPRCategory)
     
 }

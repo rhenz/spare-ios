@@ -25,25 +25,30 @@
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edm-EJ-L7j">
-                                <rect key="frame" x="111" y="11" width="359" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QBh-U6-Ijq">
+                                <rect key="frame" x="111" y="8" width="359" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Zbf-Xe-Bzf"/>
+                                    <constraint firstAttribute="height" constant="30" id="1IM-CM-zVq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fd9-8A-Rxu" firstAttribute="leading" secondItem="RXj-sn-OTU" secondAttribute="leading" constant="15" id="1yH-ze-aJA"/>
-                            <constraint firstAttribute="centerY" secondItem="edm-EJ-L7j" secondAttribute="centerY" constant="0.5" id="8ay-dd-dj7"/>
-                            <constraint firstItem="edm-EJ-L7j" firstAttribute="leading" secondItem="fd9-8A-Rxu" secondAttribute="trailing" constant="5" id="KLG-zQ-c8n"/>
+                            <constraint firstAttribute="trailing" secondItem="QBh-U6-Ijq" secondAttribute="trailing" constant="15" id="Ipi-hZ-hhI"/>
                             <constraint firstAttribute="centerY" secondItem="fd9-8A-Rxu" secondAttribute="centerY" constant="-0.5" id="cCq-Ir-qhi"/>
+                            <constraint firstItem="QBh-U6-Ijq" firstAttribute="leading" secondItem="fd9-8A-Rxu" secondAttribute="trailing" constant="5" id="i2N-ue-nLJ"/>
                             <constraint firstAttribute="height" constant="44" id="iO6-8V-UmF"/>
-                            <constraint firstAttribute="trailing" secondItem="edm-EJ-L7j" secondAttribute="trailing" constant="15" id="iWK-l3-qz6"/>
+                            <constraint firstAttribute="centerY" secondItem="QBh-U6-Ijq" secondAttribute="centerY" id="u4S-nH-Cbp"/>
+                            <constraint firstItem="fd9-8A-Rxu" firstAttribute="baseline" secondItem="QBh-U6-Ijq" secondAttribute="baseline" id="zfr-za-JHd"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="u4S-nH-Cbp"/>
+                            </mask>
+                        </variation>
                     </view>
                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNh-nn-P2F">
                         <rect key="frame" x="0.0" y="44" width="485" height="162"/>
@@ -64,6 +69,7 @@
             <connections>
                 <outlet property="pickerView" destination="GNh-nn-P2F" id="RHd-XZ-J6z"/>
                 <outlet property="tappableArea" destination="RXj-sn-OTU" id="4hk-5Z-hQ6"/>
+                <outlet property="textField" destination="QBh-U6-Ijq" id="ZxC-cB-dWy"/>
             </connections>
             <point key="canvasLocation" x="352.5" y="174"/>
         </tableViewCell>

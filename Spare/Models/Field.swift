@@ -11,7 +11,7 @@ import Foundation
 
 class Field {
     
-    var name: String?
+    var name: String
     var value: Any?
     
     init(name: String) {

@@ -67,13 +67,7 @@ class HomeViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier = segue.identifier
-        if identifier == Segues.presentNewExpense {
-            let navigationController = segue.destinationViewController as UINavigationController
-            let newExpenseScreen = navigationController.viewControllers[0] as NewExpenseViewController
-            newExpenseScreen.categorySummary = self.summaries[0]
-        }
-        
-        else if identifier == Segues.showExpenses {
+        if identifier == Segues.showExpenses {
             let expensesScreen = segue.destinationViewController as ExpensesViewController
             expensesScreen.categorySummary = summaries[selectedIndexPath.row]
         }
@@ -87,6 +81,10 @@ extension HomeViewController {
     
     @IBAction func newExpenseButtonTapped(sender: AnyObject) {
         if self.summaries.count > 0 {
+            // There should be no selected category if the New Expense
+            // screen is launched from the Home screen.
+            AppState.sharedState.preselectedCategory = nil
+            
             self.performSegueWithIdentifier(Segues.presentNewExpense, sender: self)
         } else {
             UIAlertView(title: "Invalid action",

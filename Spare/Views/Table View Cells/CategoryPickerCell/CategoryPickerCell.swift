@@ -15,19 +15,20 @@ class CategoryPickerCell: UITableViewCell {
     let expandedHeight = CGFloat(206)
     
     @IBOutlet weak var tappableArea: UIView!
+    @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
+    
+    var isExpanded = false
+    var delegate: CategoryPickerCellDelegate?
+    var selectedCategory = AppState.sharedState.preselectedCategory
     
     lazy var categories: [SPRCategory] = {
         return SPRCategory.allCategories() as [SPRCategory]
     }()
     
-    var isExpanded = false
-    
     var height: CGFloat {
         return isExpanded ? expandedHeight : defaultHeight
     }
-    
-    var delegate: CategoryPickerCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,13 +45,36 @@ class CategoryPickerCell: UITableViewCell {
     }
     
     func tappableAreaTapped() {
-        // Just reverse the expanded mode.
+        // Reverse the expanded mode and inform the delegate.
         self.isExpanded = !self.isExpanded
+        self.delegate?.categoryPickerCellDidToggle(self)
+        
+        // If the cell has been collapsed, consider that a selection has been made.
+        if self.isExpanded == false {
+            self.delegate?.categoryPickerCell(self, didSelectCategory: self.selectedCategory!)
+        }
         
         // Highlight or unhighlight the tappable area depending on the expansion mode.
         self.tappableArea.backgroundColor = isExpanded ? Colors.tableViewCellGraySelectedColor : UIColor.clearColor()
         
-        self.delegate?.categoryPickerCellDidToggleExpandMode(self)
+        // If there isn't an initial selected category, get all categories and select the one in the middle.
+        if self.selectedCategory == nil {
+            self.selectedCategory = self.categories[self.categories.count / 2]
+            
+            // Show it in the picker view and text field.
+            self.pickerView.selectRow(self.selectedCategory!.displayOrder, inComponent: 0, animated: false)
+            self.textField.text = self.selectedCategory!.name
+        }
+    }
+    
+    func collapse() {
+        if self.isExpanded == false {
+            return
+        }
+        
+        self.isExpanded = false
+        self.tappableArea.backgroundColor = UIColor.clearColor()
+        self.delegate?.categoryPickerCellDidToggle(self)
     }
     
 }
@@ -84,7 +108,8 @@ extension CategoryPickerCell: UIPickerViewDelegate {
     func pickerView(pickerView: UIPickerView,
         didSelectRow row: Int,
         inComponent component: Int) {
-            
+            self.selectedCategory = self.categories[row]
+            self.textField.text = self.selectedCategory!.name
     }
     
 }

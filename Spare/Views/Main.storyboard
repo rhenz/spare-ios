@@ -210,7 +210,7 @@
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to edit" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="I9v-bB-f1G" customClass="SPRTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to edit" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="I9v-bB-f1G" customClass="FormTextField" customModule="Spare" customModuleProvider="target">
                                                     <rect key="frame" x="111" y="0.0" width="474" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="pb5-ia-FKr"/>
@@ -224,8 +224,14 @@
                                                 <constraint firstAttribute="centerY" secondItem="MSk-sf-ym2" secondAttribute="centerY" id="Dwa-XR-QaQ"/>
                                                 <constraint firstItem="MSk-sf-ym2" firstAttribute="leading" secondItem="C6w-dK-DOP" secondAttribute="leading" constant="15" id="RFf-4f-myY"/>
                                                 <constraint firstAttribute="trailing" secondItem="I9v-bB-f1G" secondAttribute="trailing" constant="15" id="UVj-bh-77E"/>
+                                                <constraint firstItem="I9v-bB-f1G" firstAttribute="baseline" secondItem="MSk-sf-ym2" secondAttribute="baseline" id="YEe-Sx-6Bp"/>
                                                 <constraint firstAttribute="centerY" secondItem="I9v-bB-f1G" secondAttribute="centerY" id="ovA-Ag-eri"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="ovA-Ag-eri"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="kAmountCell" id="TWc-op-pfV">
@@ -245,7 +251,7 @@
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to edit" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bk0-md-Pej" customClass="SPRTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tap to edit" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bk0-md-Pej" customClass="FormTextField" customModule="Spare" customModuleProvider="target">
                                                     <rect key="frame" x="111" y="0.0" width="474" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="Q8Y-lm-yhB"/>
@@ -257,10 +263,16 @@
                                             <constraints>
                                                 <constraint firstItem="olr-PW-GQF" firstAttribute="leading" secondItem="G7T-4e-0Cw" secondAttribute="leading" constant="15" id="1db-EL-SDJ"/>
                                                 <constraint firstAttribute="centerY" secondItem="bk0-md-Pej" secondAttribute="centerY" id="BFW-lz-Ho2"/>
+                                                <constraint firstItem="olr-PW-GQF" firstAttribute="baseline" secondItem="bk0-md-Pej" secondAttribute="baseline" id="MfI-in-d8H"/>
                                                 <constraint firstItem="bk0-md-Pej" firstAttribute="leading" secondItem="olr-PW-GQF" secondAttribute="trailing" constant="5" id="hYC-bD-xer"/>
                                                 <constraint firstAttribute="centerY" secondItem="olr-PW-GQF" secondAttribute="centerY" id="rsD-tN-ITa"/>
                                                 <constraint firstAttribute="trailing" secondItem="bk0-md-Pej" secondAttribute="trailing" constant="15" id="uhI-ha-mfK"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="BFW-lz-Ho2"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kDateSpentCell" textLabel="88u-G1-i47" detailTextLabel="cNe-2I-D2r" style="IBUITableViewCellStyleValue2" id="bDc-qP-DXl">

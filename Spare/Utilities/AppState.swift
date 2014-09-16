@@ -15,7 +15,10 @@ class AppState {
         return Period.today()
     }()
     
-    var hasBeenSetup = false;
+    var hasBeenSetup = false
+    
+    // The preselected category when the New Expense screen is launched.
+    var preselectedCategory: SPRCategory?
     
     class var sharedState: AppState {
         struct Singleton {

@@ -19,14 +19,14 @@ private struct Row {
 
 let kCellIdentifiers = ["kDescriptionCell", "kAmountCell", "kCategoryCell", "kDateSpentCell"]
 
+let kTextFieldTag = 1000
+
 class NewExpenseViewController: UIViewController {
 
     @IBOutlet weak private var tableView: UITableView!
 
-    var categorySummary: CategorySummary?
-
     private lazy var fields: [Field] = {
-        return [Field(name: "Description"), Field(name: "Amount"), Field(name: "Category", value: self.categorySummary!.category), Field(name: "Date spent", value: NSDate.simplifiedDate())]
+        return [Field(name: "Description"), Field(name: "Amount"), Field(name: "Category", value: AppState.sharedState.preselectedCategory), Field(name: "Date spent", value: NSDate.simplifiedDate())]
     }()
     
     lazy var categoryPickerCell: CategoryPickerCell = {
@@ -72,9 +72,19 @@ class NewExpenseViewController: UIViewController {
     func validateExpenseWithCompletion(completionBlock: (_: String?) -> ()) {
         // Enumerate the missing fields.
         var missingFields = [String]()
-        for field in self.fields {
-            if (field.value? as String).isEmpty {
-                missingFields.append(field.name!)
+        
+        var field: Field
+        for var i = 0; i < self.fields.count; i++ {
+            field = self.fields[i]
+            if let value = field.value {
+                if i < Row.Category {
+                    let stringValue = value as String
+                    if stringValue.isEmpty {
+                        missingFields.append(field.name)
+                    }
+                }
+            } else {
+                missingFields.append(field.name)
             }
         }
         
@@ -91,7 +101,7 @@ class NewExpenseViewController: UIViewController {
         let expense = NSEntityDescription.insertNewObjectForEntityForName(Classes.Expense, inManagedObjectContext: document.managedObjectContext) as SPRExpense
         expense.name = self.fields[Row.Description].value as NSString
         expense.amount = NSDecimalNumber.decimalNumberWithString(self.fields[Row.Amount].value as NSString)
-        expense.category = self.categorySummary!.category
+        expense.category = self.fields[Row.Category].value as SPRCategory
         expense.dateSpent = self.fields[Row.DateSpent].value as NSDate
         expense.displayOrder = NSNumber.numberWithInt(0)
 
@@ -117,6 +127,11 @@ extension NewExpenseViewController: UITableViewDataSource {
             }
             
             let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifiers[indexPath.row]) as UITableViewCell
+            
+            let textField = cell.viewWithTag(kTextFieldTag) as FormTextField?
+            textField?.field = self.fields[indexPath.row]
+            textField?.delegate = self
+            
             return cell
     }
     
@@ -151,11 +166,31 @@ extension NewExpenseViewController: UITableViewDelegate {
 // MARK: Category picker cell delegate
 extension NewExpenseViewController: CategoryPickerCellDelegate {
     
-    func categoryPickerCellDidToggleExpandMode(categoryPickerCell: CategoryPickerCell) {
+    func categoryPickerCellDidToggle(categoryPickerCell: CategoryPickerCell) {
+        self.hideKeyboard()
+        
         self.tableView.beginUpdates()
         self.tableView.endUpdates()
-        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: Row.Category, inSection: 0),
-            atScrollPosition: .Middle, animated: true)
+        
+        // Scroll the cell to the middle if it has been expanded.
+        if categoryPickerCell.isExpanded {
+            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: Row.Category, inSection: 0),
+                atScrollPosition: .Middle, animated: true)
+        }
+    }
+    
+    func categoryPickerCell(categoryPickerCell: CategoryPickerCell,
+        didSelectCategory category: SPRCategory) {
+            self.fields[Row.Category].value = category
+    }
+    
+}
+
+extension NewExpenseViewController: UITextFieldDelegate {
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        self.categoryPickerCell.collapse()
+        return true
     }
     
 }
