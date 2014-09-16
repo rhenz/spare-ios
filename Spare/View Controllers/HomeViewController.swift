@@ -58,12 +58,11 @@ class HomeViewController: UIViewController {
         }
     }
     
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation,
-        duration: NSTimeInterval) {
-            super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
-            
-            // Forces collection view to recompute cell sizes.
-            self.collectionView.reloadData()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        // Force the collection view to re-layout when device orientation changes.
+        self.collectionView.collectionViewLayout.invalidateLayout()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

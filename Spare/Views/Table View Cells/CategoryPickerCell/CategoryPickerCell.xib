@@ -6,29 +6,29 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="222" id="nph-Pw-Ry7" customClass="CategoryPickerCell" customModule="Spare" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="222"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="207" id="nph-Pw-Ry7" customClass="CategoryPickerCell" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="485" height="206"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nph-Pw-Ry7" id="4j2-7F-eYh">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RXj-sn-OTU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="485" height="44"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fd9-8A-Rxu">
                                 <rect key="frame" x="15" y="12" width="91" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="1LF-5d-gcy"/>
-                                    <constraint firstAttribute="width" constant="91" id="3O2-qc-mXl"/>
+                                    <constraint firstAttribute="height" constant="21" id="e2z-Zd-Uw1"/>
+                                    <constraint firstAttribute="width" constant="91" id="hSh-Ve-WZS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edm-EJ-L7j">
-                                <rect key="frame" x="111" y="11" width="194" height="21"/>
+                                <rect key="frame" x="111" y="11" width="359" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="02w-pQ-myI"/>
+                                    <constraint firstAttribute="height" constant="21" id="Zbf-Xe-Bzf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -37,35 +37,35 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="fd9-8A-Rxu" secondAttribute="centerY" id="S6P-sQ-h5u"/>
-                            <constraint firstItem="fd9-8A-Rxu" firstAttribute="leading" secondItem="RXj-sn-OTU" secondAttribute="leading" constant="15" id="Ucy-9k-obY"/>
-                            <constraint firstAttribute="height" constant="44" id="UtW-oz-BzJ"/>
-                            <constraint firstAttribute="trailing" secondItem="edm-EJ-L7j" secondAttribute="trailing" constant="15" id="el3-os-scU"/>
-                            <constraint firstAttribute="centerY" secondItem="edm-EJ-L7j" secondAttribute="centerY" constant="0.5" id="slO-7a-qHc"/>
-                            <constraint firstItem="edm-EJ-L7j" firstAttribute="leading" secondItem="fd9-8A-Rxu" secondAttribute="trailing" constant="5" id="uwh-2F-DKk"/>
+                            <constraint firstItem="fd9-8A-Rxu" firstAttribute="leading" secondItem="RXj-sn-OTU" secondAttribute="leading" constant="15" id="1yH-ze-aJA"/>
+                            <constraint firstAttribute="centerY" secondItem="edm-EJ-L7j" secondAttribute="centerY" constant="0.5" id="8ay-dd-dj7"/>
+                            <constraint firstItem="edm-EJ-L7j" firstAttribute="leading" secondItem="fd9-8A-Rxu" secondAttribute="trailing" constant="5" id="KLG-zQ-c8n"/>
+                            <constraint firstAttribute="centerY" secondItem="fd9-8A-Rxu" secondAttribute="centerY" constant="-0.5" id="cCq-Ir-qhi"/>
+                            <constraint firstAttribute="height" constant="44" id="iO6-8V-UmF"/>
+                            <constraint firstAttribute="trailing" secondItem="edm-EJ-L7j" secondAttribute="trailing" constant="15" id="iWK-l3-qz6"/>
                         </constraints>
                     </view>
                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GNh-nn-P2F">
-                        <rect key="frame" x="0.0" y="44" width="320" height="162"/>
+                        <rect key="frame" x="0.0" y="44" width="485" height="162"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="162" id="0ZD-4z-Umn"/>
-                            <constraint firstAttribute="width" constant="320" id="IWi-BQ-BYz"/>
+                            <constraint firstAttribute="height" constant="162" id="2ZM-Y9-7A4"/>
                         </constraints>
                     </pickerView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="RXj-sn-OTU" firstAttribute="leading" secondItem="4j2-7F-eYh" secondAttribute="leading" id="LfC-1c-9WB"/>
-                    <constraint firstItem="GNh-nn-P2F" firstAttribute="top" secondItem="RXj-sn-OTU" secondAttribute="bottom" id="TLO-kQ-FWX"/>
-                    <constraint firstItem="RXj-sn-OTU" firstAttribute="top" secondItem="4j2-7F-eYh" secondAttribute="top" id="YXA-aT-6og"/>
-                    <constraint firstAttribute="trailing" secondItem="RXj-sn-OTU" secondAttribute="trailing" id="cCN-g0-R7a"/>
-                    <constraint firstItem="GNh-nn-P2F" firstAttribute="leading" secondItem="4j2-7F-eYh" secondAttribute="leading" id="ohb-LK-BRM"/>
+                    <constraint firstItem="RXj-sn-OTU" firstAttribute="leading" secondItem="4j2-7F-eYh" secondAttribute="leading" id="Krd-pB-XEt"/>
+                    <constraint firstItem="RXj-sn-OTU" firstAttribute="top" secondItem="4j2-7F-eYh" secondAttribute="top" id="Sxy-rc-9dN"/>
+                    <constraint firstAttribute="trailing" secondItem="GNh-nn-P2F" secondAttribute="trailing" id="hmO-Yv-SRd"/>
+                    <constraint firstAttribute="trailing" secondItem="RXj-sn-OTU" secondAttribute="trailing" id="oow-k4-deU"/>
+                    <constraint firstItem="GNh-nn-P2F" firstAttribute="leading" secondItem="4j2-7F-eYh" secondAttribute="leading" id="qFf-pV-RbA"/>
+                    <constraint firstItem="GNh-nn-P2F" firstAttribute="top" secondItem="RXj-sn-OTU" secondAttribute="bottom" id="vu9-FU-sop"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="pickerView" destination="GNh-nn-P2F" id="RHd-XZ-J6z"/>
                 <outlet property="tappableArea" destination="RXj-sn-OTU" id="4hk-5Z-hQ6"/>
             </connections>
-            <point key="canvasLocation" x="374" y="178"/>
+            <point key="canvasLocation" x="352.5" y="174"/>
         </tableViewCell>
     </objects>
 </document>

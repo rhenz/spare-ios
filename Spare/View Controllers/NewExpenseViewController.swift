@@ -139,7 +139,8 @@ extension NewExpenseViewController: UITableViewDelegate {
         heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
             switch indexPath.row {
             case Row.Category:
-                return self.categoryPickerCell.height
+                let height = self.categoryPickerCell.height
+                return height
             default:
                 return UITableViewAutomaticDimension
             }
@@ -153,6 +154,8 @@ extension NewExpenseViewController: CategoryPickerCellDelegate {
     func categoryPickerCellDidToggleExpandMode(categoryPickerCell: CategoryPickerCell) {
         self.tableView.beginUpdates()
         self.tableView.endUpdates()
+        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: Row.Category, inSection: 0),
+            atScrollPosition: .Middle, animated: true)
     }
     
 }
