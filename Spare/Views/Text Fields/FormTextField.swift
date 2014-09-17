@@ -10,6 +10,6 @@ import Foundation
 
 class FormTextField: UITextField {
     
-    var field: Field?
+    var field: Field!
     
 }

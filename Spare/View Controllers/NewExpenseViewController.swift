@@ -21,12 +21,16 @@ let kCellIdentifiers = ["kDescriptionCell", "kAmountCell", "kCategoryCell", "kDa
 
 let kTextFieldTag = 1000
 
+// MARK: Class
 class NewExpenseViewController: UIViewController {
 
     @IBOutlet weak private var tableView: UITableView!
 
     private lazy var fields: [Field] = {
-        return [Field(name: "Description"), Field(name: "Amount"), Field(name: "Category", value: AppState.sharedState.preselectedCategory), Field(name: "Date spent", value: NSDate.simplifiedDate())]
+        return [Field(name: "Description"),
+            Field(name: "Amount"),
+            Field(name: "Category", value: AppState.sharedState.preselectedCategory),
+            Field(name: "Date spent", value: NSDate.simplifiedDate())]
     }()
     
     lazy var categoryPickerCell: CategoryPickerCell = {
@@ -72,19 +76,14 @@ class NewExpenseViewController: UIViewController {
     func validateExpenseWithCompletion(completionBlock: (_: String?) -> ()) {
         // Enumerate the missing fields.
         var missingFields = [String]()
-        
-        var field: Field
-        for var i = 0; i < self.fields.count; i++ {
-            field = self.fields[i]
-            if let value = field.value {
-                if i < Row.Category {
-                    let stringValue = value as String
-                    if stringValue.isEmpty {
-                        missingFields.append(field.name)
-                    }
-                }
-            } else {
+        for field in self.fields {
+            if field.value == nil {
                 missingFields.append(field.name)
+            } else if let stringValue = field.value as? String {
+                // Make sure that empty strings also count as missing.
+                if stringValue.isEmpty {
+                    missingFields.append(field.name)
+                }
             }
         }
         
@@ -103,6 +102,7 @@ class NewExpenseViewController: UIViewController {
         expense.amount = NSDecimalNumber.decimalNumberWithString(self.fields[Row.Amount].value as NSString)
         expense.category = self.fields[Row.Category].value as SPRCategory
         expense.dateSpent = self.fields[Row.DateSpent].value as NSDate
+        
         expense.displayOrder = NSNumber.numberWithInt(0)
 
         document.saveWithCompletionHandler({[unowned self] success in
@@ -186,10 +186,37 @@ extension NewExpenseViewController: CategoryPickerCellDelegate {
     
 }
 
+// MARK: Text field delegate
 extension NewExpenseViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         self.categoryPickerCell.collapse()
+        return true
+    }
+    
+    func textField(textField: UITextField,
+        shouldChangeCharactersInRange range: NSRange,
+        replacementString string: String) -> Bool {
+            if let field = (textField as FormTextField).field {
+                // If this is the Amount field, check if the characters are valid.
+                if field === self.fields[Row.Amount] {
+                    let invalidCharacterSet = NSCharacterSet(charactersInString: "1234567890.").invertedSet
+                    if string.intersectsWithCharacterSet(invalidCharacterSet) {
+                        return false
+                    }
+                }
+                
+                // Update the field's value.
+                let value = field.value == nil ? "" : field.value! as NSString
+                let newValue = value.stringByReplacingCharactersInRange(range, withString: string)
+                field.value = newValue
+            }
+            return true
+    }
+    
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        let field = (textField as FormTextField).field
+        field?.value = nil
         return true
     }
     

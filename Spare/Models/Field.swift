@@ -8,17 +8,16 @@
 
 import Foundation
 
-
 class Field {
     
     var name: String
-    var value: Any?
+    var value: Any!
     
     init(name: String) {
         self.name = name
     }
     
-    convenience init(name: String, value: Any) {
+    convenience init(name: String, value: Any!) {
         self.init(name: name)
         self.value = value
     }
