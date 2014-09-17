@@ -100,6 +100,7 @@
 		26FCED8719706C9300FD01D0 /* SPRCalendarPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCED8619706C9300FD01D0 /* SPRCalendarPickerViewController.m */; };
 		26FCED8B1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26FCED8A1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib */; };
 		28822B437E5247E3BDE57F66 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6196FFB0C5B41DEB0DB54BF /* libPods.a */; };
+		4906172E19C95B9000553751 /* StoryboardIDs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4906172D19C95B9000553751 /* StoryboardIDs.swift */; };
 		492652BE19B553C000315CD9 /* NewExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492652BD19B553C000315CD9 /* NewExpenseViewController.swift */; };
 		4932D06419C6C5C4000A9F5E /* LaunchFile.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4932D06319C6C5C4000A9F5E /* LaunchFile.xib */; };
 		4932D06819C6D3D3000A9F5E /* generic-launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 4932D06519C6D3D3000A9F5E /* generic-launch.png */; };
@@ -301,6 +302,7 @@
 		26FCED8519706C9300FD01D0 /* SPRCalendarPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCalendarPickerViewController.h; sourceTree = "<group>"; };
 		26FCED8619706C9300FD01D0 /* SPRCalendarPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCalendarPickerViewController.m; sourceTree = "<group>"; };
 		26FCED8A1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPRCalendarPickerNavigationBar.xib; sourceTree = "<group>"; };
+		4906172D19C95B9000553751 /* StoryboardIDs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardIDs.swift; sourceTree = "<group>"; };
 		492652BD19B553C000315CD9 /* NewExpenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewExpenseViewController.swift; sourceTree = "<group>"; };
 		4932D06319C6C5C4000A9F5E /* LaunchFile.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchFile.xib; sourceTree = "<group>"; };
 		4932D06519C6D3D3000A9F5E /* generic-launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "generic-launch.png"; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 				49CA1C1619B8311F00763D93 /* Classes.swift */,
 				4975C3FA19C27BDB005FE994 /* Colors.swift */,
 				4975C3FC19C28B0B005FE994 /* Notifications.swift */,
+				4906172D19C95B9000553751 /* StoryboardIDs.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -966,6 +969,7 @@
 				26D2D7301969CFB100CCC973 /* SPRCategoryColorCell.m in Sources */,
 				2667328D196AFA9200BB4DBE /* SPRPeriod.m in Sources */,
 				2612C8AF18E847DB00DE2765 /* NSDate+SPR.m in Sources */,
+				4906172E19C95B9000553751 /* StoryboardIDs.swift in Sources */,
 				492652BE19B553C000315CD9 /* NewExpenseViewController.swift in Sources */,
 				495E414D19AEB67D006D4CD4 /* SetupViewController.swift in Sources */,
 				4975C40219C29D10005FE994 /* CategoryPickerCell.swift in Sources */,

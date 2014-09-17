@@ -61,6 +61,11 @@ class NewExpenseViewController: UIViewController {
     }
 
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
+        // Hide keyboard and collapse all cells.
+        self.hideKeyboard()
+        self.categoryPickerCell.collapse()
+        self.datePickerCell.collapse()
+        
         self.validateExpenseWithCompletion({[unowned self] in
             if let message = $0 {
                 let alert = UIAlertView(title: "Error", message: message, delegate: nil, cancelButtonTitle: "OK")
@@ -70,6 +75,8 @@ class NewExpenseViewController: UIViewController {
                     // Send a notification that an expense has been saved.
                     let notificationCenter = NSNotificationCenter.defaultCenter()
                     notificationCenter.postNotificationName(Notifications.NewExpense, object: expense)
+                    
+                    
                 })
             }
         })
@@ -149,16 +156,6 @@ extension NewExpenseViewController: UITableViewDataSource {
 
 // MARK: Table view delegate
 extension NewExpenseViewController: UITableViewDelegate {
-
-    func tableView(tableView: UITableView,
-        didSelectRowAtIndexPath indexPath: NSIndexPath) {
-            switch indexPath.row {
-            case Row.Category:()
-            case Row.DateSpent:
-                ()
-            default: ()
-            }
-    }
     
     func tableView(tableView: UITableView,
         heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -225,7 +222,9 @@ extension NewExpenseViewController: DatePickerCellDelegate {
 extension NewExpenseViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        // Collapse the picker cells if a text field will begin editing.
         self.categoryPickerCell.collapse()
+        self.datePickerCell.collapse()
         return true
     }
     

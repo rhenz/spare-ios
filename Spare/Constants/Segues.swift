@@ -11,6 +11,7 @@ import Foundation
 struct Segues {
     
     static let showExpenses = "showExpenses"
+    static let popoverNewExpense = "popoverNewExpense"
     static let presentNewExpense = "presentNewExpense"
     
 }

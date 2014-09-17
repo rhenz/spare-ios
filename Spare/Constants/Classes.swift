@@ -10,7 +10,7 @@ import Foundation
 
 struct Classes {
     
-    static let Expense = "Expense"
+    static let Expense = "SPRExpense"
     static let CategoryHeaderCell = "CategoryHeaderCell"
     static let CategoryPickerCell = "CategoryPickerCell"
     static let DatePickerCell = "DatePickerCell"

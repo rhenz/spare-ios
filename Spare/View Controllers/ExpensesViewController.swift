@@ -20,9 +20,10 @@ class ExpensesViewController: UIViewController {
     
     var categorySummary: CategorySummary!
     var expenses = [SPRExpense]()
+    var newExpensePopoverController: UIPopoverController!
     
     lazy var newExpenseBarButtonItem: UIBarButtonItem = {
-        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("newExpenseButtonTapped"))
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("newExpenseButtonTapped:"))
         return barButtonItem
     }()
 
@@ -38,8 +39,15 @@ class ExpensesViewController: UIViewController {
         notificationCenter.addObserver(self, selector: Selector("notify:"), name: Notifications.NewExpense, object: nil)
     }
     
-    func newExpenseButtonTapped() {
-        self.performSegueWithIdentifier("presentNewExpense", sender: self)
+    func newExpenseButtonTapped(sender: UIBarButtonItem) {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+            self.performSegueWithIdentifier(Segues.presentNewExpense, sender: self)
+        } else {
+            let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(StoryboardIDs.NewExpenseNavigationController) as UINavigationController
+            self.newExpensePopoverController = UIPopoverController(contentViewController: navigationController)
+            let originatingView = sender.valueForKey("view") as UIView
+            self.newExpensePopoverController.presentPopoverFromRect(originatingView.frame, inView: self.view, permittedArrowDirections: .Any, animated: true)
+        }
     }
     
     func notify(notification: NSNotification) {

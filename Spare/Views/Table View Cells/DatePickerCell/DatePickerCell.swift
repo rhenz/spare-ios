@@ -37,6 +37,9 @@ class DatePickerCell: UITableViewCell {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("tappableAreaTapped"))
         self.tappableArea.addGestureRecognizer(tapGestureRecognizer)
         
+        // Add an action for when the date selection changes.
+        self.datePicker.addTarget(self, action: Selector("dateSelectionChanged"), forControlEvents: .ValueChanged)
+        
         // Set the initial text for the text field.
         self.textField.text = self.selectedDate.textInForm()
         
@@ -72,5 +75,10 @@ class DatePickerCell: UITableViewCell {
         
         // Consider that a selection has been made.
         self.delegate?.datePickerCell(self, didSelectDate: self.selectedDate)
+    }
+    
+    func dateSelectionChanged() {
+        self.selectedDate = self.datePicker.date
+        self.textField.text = self.selectedDate.textInForm()
     }
 }

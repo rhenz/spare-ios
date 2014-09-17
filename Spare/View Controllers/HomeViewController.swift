@@ -85,7 +85,11 @@ extension HomeViewController {
             // screen is launched from the Home screen.
             AppState.sharedState.preselectedCategory = nil
             
-            self.performSegueWithIdentifier(Segues.presentNewExpense, sender: self)
+            if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+                self.performSegueWithIdentifier(Segues.presentNewExpense, sender: self)
+            } else {
+                self.performSegueWithIdentifier(Segues.popoverNewExpense, sender: self)
+            }
         } else {
             UIAlertView(title: "Invalid action",
                 message: "Before adding a new expense, you must first create a category.",
