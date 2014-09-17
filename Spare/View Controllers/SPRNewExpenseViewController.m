@@ -55,7 +55,7 @@ static const NSInteger kTextFieldTag = 1000;
     self.fields = @[[[SPRField alloc] initWithName:@"Description"],
                     [[SPRField alloc] initWithName:@"Amount"],
                     [[SPRField alloc] initWithName:@"Category" value:self.category],
-                    [[SPRField alloc] initWithName:@"Date spent" value:[NSDate simplifiedDate]]];
+                    [[SPRField alloc] initWithName:@"Date spent" value:[NSDate date]]];
     
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
     tapRecognizer.cancelsTouchesInView = NO;

@@ -26,7 +26,7 @@
 - (NSUInteger)day;
 - (NSUInteger)year;
 
-+ (NSDate *)simplifiedDate;
-+ (NSDate *)simplifiedDateFromDate:(NSDate *)date;
+//+ (NSDate *)simplifiedDate;
+//+ (NSDate *)simplifiedDateFromDate:(NSDate *)date;
 
 @end

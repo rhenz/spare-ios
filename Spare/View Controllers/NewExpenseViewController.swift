@@ -38,6 +38,12 @@ class NewExpenseViewController: UIViewController {
         cell.delegate = self
         return cell
         }()
+    
+    lazy var datePickerCell: DatePickerCell = {
+        let cell = NSBundle.mainBundle().loadNibNamed(Classes.DatePickerCell, owner: self, options: nil).last as DatePickerCell
+        cell.delegate = self
+        return cell
+        }()
 
     // MARK: View controller life cycle
 
@@ -121,16 +127,20 @@ extension NewExpenseViewController: UITableViewDataSource {
 
     func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            if indexPath.row == Row.Category {
-                let cell = self.categoryPickerCell
-                return cell
+            var cell: UITableViewCell
+            switch indexPath.row {
+            case Row.Description, Row.Amount:
+                cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifiers[indexPath.row]) as UITableViewCell
+                let textField = cell.viewWithTag(kTextFieldTag) as FormTextField?
+                textField?.field = self.fields[indexPath.row]
+                textField?.delegate = self
+            
+            case Row.Category:
+                cell = self.categoryPickerCell
+                
+            default: // Row.DateSpent
+                cell = self.datePickerCell
             }
-            
-            let cell = tableView.dequeueReusableCellWithIdentifier(kCellIdentifiers[indexPath.row]) as UITableViewCell
-            
-            let textField = cell.viewWithTag(kTextFieldTag) as FormTextField?
-            textField?.field = self.fields[indexPath.row]
-            textField?.delegate = self
             
             return cell
     }
@@ -155,6 +165,9 @@ extension NewExpenseViewController: UITableViewDelegate {
             switch indexPath.row {
             case Row.Category:
                 let height = self.categoryPickerCell.height
+                return height
+            case Row.DateSpent:
+                let height = self.datePickerCell.height
                 return height
             default:
                 return UITableViewAutomaticDimension
@@ -182,6 +195,28 @@ extension NewExpenseViewController: CategoryPickerCellDelegate {
     func categoryPickerCell(categoryPickerCell: CategoryPickerCell,
         didSelectCategory category: SPRCategory) {
             self.fields[Row.Category].value = category
+    }
+    
+}
+
+// MARK: Date picker delegate
+extension NewExpenseViewController: DatePickerCellDelegate {
+    
+    func datePickerCellDidToggle(datePickerCell: DatePickerCell) {
+        self.hideKeyboard()
+        
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
+        
+        // Scroll the cell to the middle if it has been expanded.
+        if datePickerCell.isExpanded {
+            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: Row.DateSpent, inSection: 0),
+                atScrollPosition: .Middle, animated: true)
+        }
+    }
+    
+    func datePickerCell(datePickerCell: DatePickerCell, didSelectDate date: NSDate) {
+        self.fields[Row.DateSpent].value = date
     }
     
 }

@@ -13,5 +13,6 @@ struct Classes {
     static let Expense = "Expense"
     static let CategoryHeaderCell = "CategoryHeaderCell"
     static let CategoryPickerCell = "CategoryPickerCell"
+    static let DatePickerCell = "DatePickerCell"
     
 }

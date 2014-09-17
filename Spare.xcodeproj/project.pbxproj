@@ -119,6 +119,10 @@
 		4975C40019C29CFD005FE994 /* CategoryPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4975C3FF19C29CFD005FE994 /* CategoryPickerCell.xib */; };
 		4975C40219C29D10005FE994 /* CategoryPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975C40119C29D10005FE994 /* CategoryPickerCell.swift */; };
 		4975C40419C2C5DA005FE994 /* CategoryPickerCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975C40319C2C5DA005FE994 /* CategoryPickerCellDelegate.swift */; };
+		49A6533919C930360076C385 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A6533819C930360076C385 /* Value.swift */; };
+		49A6533B19C949CD0076C385 /* DatePickerCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A6533A19C949CD0076C385 /* DatePickerCellDelegate.swift */; };
+		49B6740A19C924CD003A9C2E /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B6740919C924CD003A9C2E /* DatePickerCell.swift */; };
+		49B6740C19C924D9003A9C2E /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49B6740B19C924D9003A9C2E /* DatePickerCell.xib */; };
 		49CA1C1519B7F4D300763D93 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA1C1419B7F4D300763D93 /* Field.swift */; };
 		49CA1C1719B8311F00763D93 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA1C1619B8311F00763D93 /* Classes.swift */; };
 		49D8DF4619C7FE7300ABBAE9 /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8DF4519C7FE7300ABBAE9 /* FormTextField.swift */; };
@@ -317,6 +321,10 @@
 		4975C3FF19C29CFD005FE994 /* CategoryPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryPickerCell.xib; sourceTree = "<group>"; };
 		4975C40119C29D10005FE994 /* CategoryPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerCell.swift; sourceTree = "<group>"; };
 		4975C40319C2C5DA005FE994 /* CategoryPickerCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerCellDelegate.swift; sourceTree = "<group>"; };
+		49A6533819C930360076C385 /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
+		49A6533A19C949CD0076C385 /* DatePickerCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCellDelegate.swift; sourceTree = "<group>"; };
+		49B6740919C924CD003A9C2E /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
+		49B6740B19C924D9003A9C2E /* DatePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerCell.xib; sourceTree = "<group>"; };
 		49CA1C1419B7F4D300763D93 /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		49CA1C1619B8311F00763D93 /* Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		49D8DF4519C7FE7300ABBAE9 /* FormTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
@@ -576,6 +584,7 @@
 		26743AA019B31AF70027EE94 /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				49B6740819C924C1003A9C2E /* DatePickerCell */,
 				4975C3FE19C29CED005FE994 /* CategoryPickerCell */,
 				26743AA119B31B210027EE94 /* CategoryHeaderCell */,
 			);
@@ -597,6 +606,7 @@
 				26743AA919B32B940027EE94 /* Period.swift */,
 				26743AAD19B336C10027EE94 /* CategorySummary.swift */,
 				49CA1C1419B7F4D300763D93 /* Field.swift */,
+				49A6533819C930360076C385 /* Value.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -741,6 +751,16 @@
 			path = CategoryPickerCell;
 			sourceTree = "<group>";
 		};
+		49B6740819C924C1003A9C2E /* DatePickerCell */ = {
+			isa = PBXGroup;
+			children = (
+				49B6740B19C924D9003A9C2E /* DatePickerCell.xib */,
+				49B6740919C924CD003A9C2E /* DatePickerCell.swift */,
+				49A6533A19C949CD0076C385 /* DatePickerCellDelegate.swift */,
+			);
+			path = DatePickerCell;
+			sourceTree = "<group>";
+		};
 		49D8DF4419C7FE5100ABBAE9 /* Text Fields */ = {
 			isa = PBXGroup;
 			children = (
@@ -839,6 +859,7 @@
 				26FCED8B1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib in Resources */,
 				4932D06919C6D3D3000A9F5E /* iphone6.png in Resources */,
 				26743AA319B31B2D0027EE94 /* CategoryHeaderCell.xib in Resources */,
+				49B6740C19C924D9003A9C2E /* DatePickerCell.xib in Resources */,
 				261EB89818DDB64F009DDF78 /* iPhone_v1.storyboard in Resources */,
 				2656B772196FE5D8003313AA /* SPRMonthPicker.xib in Resources */,
 				4932D06A19C6D3D3000A9F5E /* iphone6plus.png in Resources */,
@@ -903,12 +924,14 @@
 				26617D6918F308F800CA51EA /* SPRSetupViewController.m in Sources */,
 				26D08D2618F105C600AE018F /* OldSPRHomeViewController.m in Sources */,
 				26743AAE19B336C10027EE94 /* CategorySummary.swift in Sources */,
+				49B6740A19C924CD003A9C2E /* DatePickerCell.swift in Sources */,
 				26E2486218E1E3C400391354 /* SPRColorChooserViewController.m in Sources */,
 				2656B770196FE24B003313AA /* SPRMonthPicker.m in Sources */,
 				2612C8AC18E831F600DE2765 /* SPRTextField.m in Sources */,
 				26D2D7201969BED200CCC973 /* SPRIcons.m in Sources */,
 				26D2D7331969CFB100CCC973 /* SPRExpenseCategoryCell.m in Sources */,
 				26E2485318E1CAB700391354 /* SPRNewCategoryViewController.m in Sources */,
+				49A6533B19C949CD0076C385 /* DatePickerCellDelegate.swift in Sources */,
 				49D8DF4619C7FE7300ABBAE9 /* FormTextField.swift in Sources */,
 				495E415219AED2A4006D4CD4 /* Icons.swift in Sources */,
 				26E9C313193CC76F009F18D9 /* NSFetchedResultsController+SPR.m in Sources */,
@@ -919,6 +942,7 @@
 				26A0636A19724A6900B682BB /* SPRCalendarPickerNavigationBar.m in Sources */,
 				2688628618E339F900B8D167 /* SPRField.m in Sources */,
 				26E2485F18E1DCEF00391354 /* SPRCategory+Extension.m in Sources */,
+				49A6533919C930360076C385 /* Value.swift in Sources */,
 				2670F2C8197A625000160D03 /* SPRDate.m in Sources */,
 				49390C7819AC8CCD009598A5 /* UIScreen.swift in Sources */,
 				4970979919B0602500689C45 /* Segues.swift in Sources */,

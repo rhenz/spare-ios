@@ -45,17 +45,21 @@ class CategoryPickerCell: UITableViewCell {
     }
     
     func tappableAreaTapped() {
-        // Reverse the expanded mode and inform the delegate.
-        self.isExpanded = !self.isExpanded
-        self.delegate?.categoryPickerCellDidToggle(self)
-        
-        // If the cell has been collapsed, consider that a selection has been made.
-        if self.isExpanded == false {
-            self.delegate?.categoryPickerCell(self, didSelectCategory: self.selectedCategory!)
+        if self.isExpanded {
+            self.collapse()
+        } else {
+            self.expand()
+        }
+    }
+    
+    func expand() {
+        if self.isExpanded == true {
+            return
         }
         
-        // Highlight or unhighlight the tappable area depending on the expansion mode.
-        self.tappableArea.backgroundColor = isExpanded ? Colors.tableViewCellGraySelectedColor : UIColor.clearColor()
+        self.isExpanded = true
+        self.tappableArea.backgroundColor = Colors.tableViewCellGraySelectedColor
+        self.delegate?.categoryPickerCellDidToggle(self)
         
         // If there isn't an initial selected category, get all categories and select the one in the middle.
         if self.selectedCategory == nil {
@@ -75,6 +79,9 @@ class CategoryPickerCell: UITableViewCell {
         self.isExpanded = false
         self.tappableArea.backgroundColor = UIColor.clearColor()
         self.delegate?.categoryPickerCellDidToggle(self)
+        
+        // Consider that a selection has been made.
+        self.delegate?.categoryPickerCell(self, didSelectCategory: self.selectedCategory!)
     }
     
 }
