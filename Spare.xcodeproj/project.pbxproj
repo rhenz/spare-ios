@@ -33,6 +33,9 @@
 		2636766F19CAECFB00AFC544 /* CategorySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636766B19CAECFB00AFC544 /* CategorySummary.swift */; };
 		2636767019CAECFB00AFC544 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636766C19CAECFB00AFC544 /* Field.swift */; };
 		2636767119CAECFB00AFC544 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636766D19CAECFB00AFC544 /* Period.swift */; };
+		2636767619CB297000AFC544 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636767519CB297000AFC544 /* ColorPickerViewController.swift */; };
+		2636767919CB318A00AFC544 /* ColorPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2636767819CB318A00AFC544 /* ColorPickerCell.xib */; };
+		2636767B19CB319700AFC544 /* ColorPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636767A19CB319700AFC544 /* ColorPickerCell.swift */; };
 		26369E6618F57817000A9ADA /* SPRCategoryPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 26369E6318F57817000A9ADA /* SPRCategoryPicker.m */; };
 		26369E6A18F5787D000A9ADA /* SPRNewExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26369E6918F5787D000A9ADA /* SPRNewExpenseViewController.m */; };
 		2638AAAC19260B7A00D3D3E2 /* SPREditCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2638AAAB19260B7A00D3D3E2 /* SPREditCategoryViewController.m */; };
@@ -180,6 +183,9 @@
 		2636766B19CAECFB00AFC544 /* CategorySummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySummary.swift; sourceTree = "<group>"; };
 		2636766C19CAECFB00AFC544 /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 		2636766D19CAECFB00AFC544 /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
+		2636767519CB297000AFC544 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		2636767819CB318A00AFC544 /* ColorPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorPickerCell.xib; sourceTree = "<group>"; };
+		2636767A19CB319700AFC544 /* ColorPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerCell.swift; sourceTree = "<group>"; };
 		26369E6218F57817000A9ADA /* SPRCategoryPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryPicker.h; sourceTree = "<group>"; };
 		26369E6318F57817000A9ADA /* SPRCategoryPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategoryPicker.m; sourceTree = "<group>"; };
 		26369E6818F5787D000A9ADA /* SPRNewExpenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNewExpenseViewController.h; sourceTree = "<group>"; };
@@ -253,7 +259,7 @@
 		26B4B75418F277B5001B119D /* SPRCategorySummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategorySummaryCell.h; sourceTree = "<group>"; };
 		26B4B75518F277B5001B119D /* SPRCategorySummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategorySummaryCell.m; sourceTree = "<group>"; };
 		26D08D2418F105C600AE018F /* OldSPRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldSPRHomeViewController.h; sourceTree = "<group>"; };
-		26D08D2518F105C600AE018F /* OldSPRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldSPRHomeViewController.m; sourceTree = "<group>"; };
+		26D08D2518F105C600AE018F /* OldSPRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OldSPRHomeViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		26D2D70F19694BB100CCC973 /* SPRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRHomeViewController.h; sourceTree = "<group>"; };
 		26D2D71019694BB100CCC973 /* SPRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRHomeViewController.m; sourceTree = "<group>"; };
 		26D2D718196951A800CCC973 /* UIViewController+Slider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Slider.h"; sourceTree = "<group>"; };
@@ -556,6 +562,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		2636767719CB317B00AFC544 /* ColorPickerCell */ = {
+			isa = PBXGroup;
+			children = (
+				2636767819CB318A00AFC544 /* ColorPickerCell.xib */,
+				2636767A19CB319700AFC544 /* ColorPickerCell.swift */,
+			);
+			path = ColorPickerCell;
+			sourceTree = "<group>";
+		};
 		2656B76A196FE0CA003313AA /* Date Pickers */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,6 +693,7 @@
 				4970979A19B066C700689C45 /* ExpensesViewController.swift */,
 				492652BD19B553C000315CD9 /* NewExpenseViewController.swift */,
 				493E3FF319CA7C4E008CE2F1 /* NewCategoryViewController.swift */,
+				2636767519CB297000AFC544 /* ColorPickerViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -719,6 +735,7 @@
 		495E414E19AECE36006D4CD4 /* Collection View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				2636767719CB317B00AFC544 /* ColorPickerCell */,
 				495E415319AED36F006D4CD4 /* NewCategoryCell */,
 			);
 			path = "Collection View Cells";
@@ -859,6 +876,7 @@
 				4932D06419C6C5C4000A9F5E /* LaunchFile.xib in Resources */,
 				4975C40019C29CFD005FE994 /* CategoryPickerCell.xib in Resources */,
 				2686F508197B792000C1D7A9 /* SPRCalendarPickerCollectionViewCell.xib in Resources */,
+				2636767919CB318A00AFC544 /* ColorPickerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -970,8 +988,10 @@
 				2638AAAC19260B7A00D3D3E2 /* SPREditCategoryViewController.m in Sources */,
 				2636766F19CAECFB00AFC544 /* CategorySummary.swift in Sources */,
 				2686F504197B78E400C1D7A9 /* SPRCalendarPickerCollectionViewCell.m in Sources */,
+				2636767619CB297000AFC544 /* ColorPickerViewController.swift in Sources */,
 				4975C40419C2C5DA005FE994 /* CategoryPickerCellDelegate.swift in Sources */,
 				2612C89418E7E64C00DE2765 /* SPRCategoryViewController.m in Sources */,
+				2636767B19CB319700AFC544 /* ColorPickerCell.swift in Sources */,
 				26D2D7361969CFB100CCC973 /* SPRFormCell.m in Sources */,
 				2661CD7619321751009C7034 /* SPRCategoryHeaderCell.m in Sources */,
 				4975C3FD19C28B0B005FE994 /* Notifications.swift in Sources */,

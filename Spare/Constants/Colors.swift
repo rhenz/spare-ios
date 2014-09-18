@@ -64,4 +64,7 @@ struct Colors {
         UIColor(fromHex: 0xD0AD87)]
     
     static let tableViewCellGraySelectedColor = UIColor(fromHex: 0xd9d9d9)
+    
+    static let sections = ["Canary", "Neon", "Ultra",
+        "Tropical", "Samba", "Aquatic", "Sunbrite", "Classic"]
 }

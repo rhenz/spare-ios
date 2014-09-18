@@ -25,6 +25,7 @@ class NewCategoryViewController: UIViewController {
         
         // Add a gesture recognizer to dismiss keyboard on tap.
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("hideKeyboard"))
+        gestureRecognizer.cancelsTouchesInView = false
         self.tableView.addGestureRecognizer(gestureRecognizer)
     }
 }
@@ -107,6 +108,11 @@ extension NewCategoryViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView,
         didSelectRowAtIndexPath indexPath: NSIndexPath) {
+            // Do nothing when the Name cell is selected.
+            if indexPath.row == Row.Name.toRaw() {
+                return
+            }
+            
             // Reassert the background color of the color box so that it does
             // not disappear with the table view cell highlight.
             let cell = tableView.cellForRowAtIndexPath(indexPath)
@@ -116,6 +122,9 @@ extension NewCategoryViewController: UITableViewDelegate {
             
             // Remove the table view cell highlight.
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            
+            // Segue to the color picker.
+            self.performSegueWithIdentifier(Segues.ShowColorPicker, sender: self)
     }
     
 }

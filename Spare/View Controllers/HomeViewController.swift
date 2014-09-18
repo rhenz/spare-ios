@@ -67,7 +67,7 @@ class HomeViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier = segue.identifier
-        if identifier == Segues.showExpenses {
+        if identifier == Segues.ShowExpenses {
             let expensesScreen = segue.destinationViewController as ExpensesViewController
             expensesScreen.categorySummary = summaries[selectedIndexPath.row]
         }
@@ -86,9 +86,9 @@ extension HomeViewController {
             AppState.sharedState.preselectedCategory = nil
             
             if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-                self.performSegueWithIdentifier(Segues.presentNewExpense, sender: self)
+                self.performSegueWithIdentifier(Segues.PresentNewExpense, sender: self)
             } else {
-                self.performSegueWithIdentifier(Segues.popoverNewExpense, sender: self)
+                self.performSegueWithIdentifier(Segues.PopoverNewExpense, sender: self)
             }
         } else {
             UIAlertView(title: "Invalid action",
@@ -154,9 +154,9 @@ extension HomeViewController: UICollectionViewDelegate {
             // Otherwise, launch the new category modal.
             if indexPath.row < self.summaries.count {
                 self.selectedIndexPath = indexPath
-                self.performSegueWithIdentifier(Segues.showExpenses, sender: self)
+                self.performSegueWithIdentifier(Segues.ShowExpenses, sender: self)
             } else {
-                self.performSegueWithIdentifier(Segues.presentNewCategory, sender: self)
+                self.performSegueWithIdentifier(Segues.PresentNewCategory, sender: self)
             }
     }
     

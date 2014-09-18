@@ -11,13 +11,14 @@ import Foundation
 struct Segues {
     
     // Push navigation
-    static let showExpenses = "showExpenses"
+    static let ShowExpenses = "ShowExpenses"
+    static let ShowColorPicker = "ShowColorPicker"
     
     // Popovers
-    static let popoverNewExpense = "popoverNewExpense"
+    static let PopoverNewExpense = "PopoverNewExpense"
     
     // Modals
-    static let presentNewExpense = "presentNewExpense"
-    static let presentNewCategory = "presentNewCategory"
+    static let PresentNewExpense = "PresentNewExpense"
+    static let PresentNewCategory = "PresentNewCategory"
     
 }

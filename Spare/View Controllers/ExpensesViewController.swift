@@ -41,7 +41,7 @@ class ExpensesViewController: UIViewController {
     
     func newExpenseButtonTapped(sender: UIBarButtonItem) {
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            self.performSegueWithIdentifier(Segues.presentNewExpense, sender: self)
+            self.performSegueWithIdentifier(Segues.PresentNewExpense, sender: self)
         } else {
             let navigationController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(StoryboardIDs.NewExpenseNavigationController) as UINavigationController
             self.newExpensePopoverController = UIPopoverController(contentViewController: navigationController)

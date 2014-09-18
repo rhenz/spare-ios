@@ -14,5 +14,6 @@ struct Classes {
     static let CategoryHeaderCell = "CategoryHeaderCell"
     static let CategoryPickerCell = "CategoryPickerCell"
     static let DatePickerCell = "DatePickerCell"
+    static let ColorPickerCell = "ColorPickerCell"
     
 }
