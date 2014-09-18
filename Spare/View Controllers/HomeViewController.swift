@@ -144,6 +144,24 @@ extension HomeViewController: UICollectionViewDataSource {
     
 }
 
+// MARK: UICollectionViewDelegate
+
+extension HomeViewController: UICollectionViewDelegate {
+    
+    func collectionView(collectionView: UICollectionView!,
+        didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+            // If one of the categories has been selected, open the Expenses screen.
+            // Otherwise, launch the new category modal.
+            if indexPath.row < self.summaries.count {
+                self.selectedIndexPath = indexPath
+                self.performSegueWithIdentifier(Segues.showExpenses, sender: self)
+            } else {
+                self.performSegueWithIdentifier(Segues.presentNewCategory, sender: self)
+            }
+    }
+    
+}
+
 // MARK: UICollectionViewDelegateFlowLayout
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
@@ -185,14 +203,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout!,
         minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
             return kPadding
-    }
-    
-    func collectionView(collectionView: UICollectionView!,
-        didSelectItemAtIndexPath indexPath: NSIndexPath!) {
-            if indexPath.row < self.summaries.count {
-                self.selectedIndexPath = indexPath
-                self.performSegueWithIdentifier(Segues.showExpenses, sender: self)
-            }
     }
     
 }

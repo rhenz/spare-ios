@@ -29,7 +29,6 @@
 		261EB88418DDB631009DDF78 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86818DDB631009DDF78 /* CoreData.framework */; };
 		261EB88C18DDB631009DDF78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261EB88A18DDB631009DDF78 /* InfoPlist.strings */; };
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
-		261EB89818DDB64F009DDF78 /* iPhone_v1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261EB89718DDB64F009DDF78 /* iPhone_v1.storyboard */; };
 		262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */; };
 		26369E6618F57817000A9ADA /* SPRCategoryPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 26369E6318F57817000A9ADA /* SPRCategoryPicker.m */; };
 		26369E6A18F5787D000A9ADA /* SPRNewExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26369E6918F5787D000A9ADA /* SPRNewExpenseViewController.m */; };
@@ -107,6 +106,7 @@
 		4932D06919C6D3D3000A9F5E /* iphone6.png in Resources */ = {isa = PBXBuildFile; fileRef = 4932D06619C6D3D3000A9F5E /* iphone6.png */; };
 		4932D06A19C6D3D3000A9F5E /* iphone6plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 4932D06719C6D3D3000A9F5E /* iphone6plus.png */; };
 		49390C7819AC8CCD009598A5 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49390C7719AC8CCD009598A5 /* UIScreen.swift */; };
+		493E3FF419CA7C4E008CE2F1 /* NewCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E3FF319CA7C4E008CE2F1 /* NewCategoryViewController.swift */; };
 		4945559B19AC725800C882CD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4945559A19AC725800C882CD /* HomeViewController.swift */; };
 		494555A019AC731900C882CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4945559F19AC731900C882CD /* Main.storyboard */; };
 		495E414D19AEB67D006D4CD4 /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495E414C19AEB67D006D4CD4 /* SetupViewController.swift */; };
@@ -176,7 +176,6 @@
 		261EB88918DDB631009DDF78 /* SpareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpareTests-Info.plist"; sourceTree = "<group>"; };
 		261EB88B18DDB631009DDF78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
-		261EB89718DDB64F009DDF78 /* iPhone_v1.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone_v1.storyboard; sourceTree = "<group>"; };
 		262ABD0C18DEA1BF003C7C8B /* SPRIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRIconFont.h; sourceTree = "<group>"; };
 		262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRIconFont.m; sourceTree = "<group>"; };
 		26369E6218F57817000A9ADA /* SPRCategoryPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategoryPicker.h; sourceTree = "<group>"; };
@@ -309,6 +308,7 @@
 		4932D06619C6D3D3000A9F5E /* iphone6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone6.png; sourceTree = "<group>"; };
 		4932D06719C6D3D3000A9F5E /* iphone6plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone6plus.png; sourceTree = "<group>"; };
 		49390C7719AC8CCD009598A5 /* UIScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
+		493E3FF319CA7C4E008CE2F1 /* NewCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCategoryViewController.swift; sourceTree = "<group>"; };
 		4945559A19AC725800C882CD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4945559F19AC731900C882CD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		494555A219AC7AEB00C882CD /* Spare-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Spare-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -442,7 +442,6 @@
 				494555A219AC7AEB00C882CD /* Spare-Bridging-Header.h */,
 				261EB87618DDB631009DDF78 /* Spare.xcdatamodeld */,
 				261EB86B18DDB631009DDF78 /* Supporting Files */,
-				261EB89718DDB64F009DDF78 /* iPhone_v1.storyboard */,
 				2659EFF61968D5D6005F31E1 /* iPhone.storyboard */,
 			);
 			path = Spare;
@@ -689,6 +688,7 @@
 				495E414C19AEB67D006D4CD4 /* SetupViewController.swift */,
 				4970979A19B066C700689C45 /* ExpensesViewController.swift */,
 				492652BD19B553C000315CD9 /* NewExpenseViewController.swift */,
+				493E3FF319CA7C4E008CE2F1 /* NewCategoryViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -863,7 +863,6 @@
 				4932D06919C6D3D3000A9F5E /* iphone6.png in Resources */,
 				26743AA319B31B2D0027EE94 /* CategoryHeaderCell.xib in Resources */,
 				49B6740C19C924D9003A9C2E /* DatePickerCell.xib in Resources */,
-				261EB89818DDB64F009DDF78 /* iPhone_v1.storyboard in Resources */,
 				2656B772196FE5D8003313AA /* SPRMonthPicker.xib in Resources */,
 				4932D06A19C6D3D3000A9F5E /* iphone6plus.png in Resources */,
 				495E415519AED36F006D4CD4 /* NewCategoryCell.xib in Resources */,
@@ -954,6 +953,7 @@
 				26E2485C18E1DA2B00391354 /* NSString+SPR.m in Sources */,
 				26FCD19F196BD6D400AC0FC8 /* SPRQuickDefaultCell.m in Sources */,
 				263BA034193E39750022BFDC /* SPRExpenseSectionHeader.m in Sources */,
+				493E3FF419CA7C4E008CE2F1 /* NewCategoryViewController.swift in Sources */,
 				261EB87818DDB631009DDF78 /* Spare.xcdatamodeld in Sources */,
 				4945559B19AC725800C882CD /* HomeViewController.swift in Sources */,
 				26ACC4331974EA92007566A3 /* SPRDateConstants.m in Sources */,

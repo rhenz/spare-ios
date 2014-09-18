@@ -66,4 +66,14 @@ class NewCategoryCell: UICollectionViewCell {
         
         super.updateConstraints()
     }
+    
+    /**
+        Fixes bug where constraints aren't updated in iOS 7 but update in iOS 8.
+        See: http://stackoverflow.com/a/25791713/855680
+    */
+    override func layoutSubviews() {
+        self.contentView.frame = self.bounds
+        super.layoutSubviews()
+    }
+    
 }

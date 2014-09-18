@@ -10,8 +10,14 @@ import Foundation
 
 struct Segues {
     
+    // Push navigation
     static let showExpenses = "showExpenses"
+    
+    // Popovers
     static let popoverNewExpense = "popoverNewExpense"
+    
+    // Modals
     static let presentNewExpense = "presentNewExpense"
+    static let presentNewCategory = "presentNewCategory"
     
 }

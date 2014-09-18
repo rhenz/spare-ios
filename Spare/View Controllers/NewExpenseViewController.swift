@@ -8,22 +8,22 @@
 
 import Foundation
 
-private struct Row {
-    
-    static let Description = 0
-    static let Amount = 1
-    static let Category = 2
-    static let DateSpent = 3
-    
-}
+private let kCellIdentifiers = ["kDescriptionCell", "kAmountCell", "kCategoryCell", "kDateSpentCell"]
 
-let kCellIdentifiers = ["kDescriptionCell", "kAmountCell", "kCategoryCell", "kDateSpentCell"]
-
-let kTextFieldTag = 1000
+private let kTextFieldTag = 1000
 
 // MARK: Class
 class NewExpenseViewController: UIViewController {
 
+    private struct Row {
+        
+        static let Description = 0
+        static let Amount = 1
+        static let Category = 2
+        static let DateSpent = 3
+        
+    }
+    
     @IBOutlet weak private var tableView: UITableView!
 
     private lazy var fields: [Field] = {
