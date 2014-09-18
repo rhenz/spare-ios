@@ -12,12 +12,24 @@ import Foundation
 class NewCategoryViewController: UIViewController {
     
     lazy var fields: [Field] = {
-        return [Field(name: "Name"), Field(name: "Color", value: Colors.allColors.first)]
+        return [Field("Name"), Field("Color", value: 0)]
         }()
     
+    private let kTextFieldTag = 1000
+    private let kColorBoxTag = 1000
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Add a gesture recognizer to dismiss keyboard on tap.
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("hideKeyboard"))
+        self.tableView.addGestureRecognizer(gestureRecognizer)
+    }
 }
 
-// MARK: Internal enums
+// MARK: Private enums
 extension NewCategoryViewController {
     
     private enum Row: Int {
@@ -46,7 +58,7 @@ extension NewCategoryViewController {
     
 }
 
-// MARK: IBActions
+// MARK: Target actions
 extension NewCategoryViewController {
     
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
@@ -55,6 +67,10 @@ extension NewCategoryViewController {
     
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func hideKeyboard() {
+        self.view.endEditing(true)
     }
     
 }
@@ -69,8 +85,17 @@ extension NewCategoryViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            let identifier = Row(indexPath.row).identifier()
+            let row = Row(indexPath.row)
+            let identifier = row.identifier()
             let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as UITableViewCell
+            
+            switch row {
+            case .Name:
+                let textField = cell.viewWithTag(kTextFieldTag) as FormTextField
+                textField.field = self.fields[indexPath.row]
+                textField.delegate = self
+            default: ()
+            }
             
             return cell
     }
@@ -82,7 +107,44 @@ extension NewCategoryViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView,
         didSelectRowAtIndexPath indexPath: NSIndexPath) {
+            // Reassert the background color of the color box so that it does
+            // not disappear with the table view cell highlight.
+            let cell = tableView.cellForRowAtIndexPath(indexPath)
+            let colorBox = cell?.viewWithTag(kColorBoxTag)
+            let colorNumber = (self.fields[Row.Color.toRaw()].value as NSNumber).integerValue
+            colorBox?.backgroundColor = Colors.allColors[colorNumber]
+            
+            // Remove the table view cell highlight.
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+}
+
+// MARK: Text field delegate
+extension NewCategoryViewController: UITextFieldDelegate {
+    
+    func textField(textField: UITextField,
+        shouldChangeCharactersInRange range: NSRange,
+        replacementString string: String) -> Bool {
+            let field = (textField as FormTextField).field
+            
+            // Replace the field's old value with the new one.
+            var oldValue: NSString?
+            if let value = field.value {
+                oldValue = field.value as? NSString
+            } else {
+                oldValue = ""
+            }
+            let newValue = oldValue?.stringByReplacingCharactersInRange(range, withString: string)
+            field.value = newValue
+            
+            return true
+    }
+    
+    func textFieldShouldClear(textField: UITextField) -> Bool {
+        let field = (textField as FormTextField).field
+        field.value = nil
+        return true
     }
     
 }

@@ -11,14 +11,14 @@ import Foundation
 class Field {
     
     var name: String
-    var value: Any!
+    var value: Any?
     
-    init(name: String) {
+    init(_ name: String) {
         self.name = name
     }
     
-    convenience init(name: String, value: Any!) {
-        self.init(name: name)
+    convenience init(_ name: String, value: Any?) {
+        self.init(name)
         self.value = value
     }
     

@@ -8,10 +8,6 @@
 
 import Foundation
 
-private let kCellIdentifiers = ["kDescriptionCell", "kAmountCell", "kCategoryCell", "kDateSpentCell"]
-
-private let kTextFieldTag = 1000
-
 // MARK: Class
 class NewExpenseViewController: UIViewController {
 
@@ -24,13 +20,17 @@ class NewExpenseViewController: UIViewController {
         
     }
     
+    private let kCellIdentifiers = ["kDescriptionCell", "kAmountCell", "kCategoryCell", "kDateSpentCell"]
+    
+    private let kTextFieldTag = 1000
+    
     @IBOutlet weak private var tableView: UITableView!
 
     private lazy var fields: [Field] = {
-        return [Field(name: "Description"),
-            Field(name: "Amount"),
-            Field(name: "Category", value: AppState.sharedState.preselectedCategory),
-            Field(name: "Date spent", value: NSDate.simplifiedDate())]
+        return [Field("Description"),
+            Field("Amount"),
+            Field("Category", value: AppState.sharedState.preselectedCategory),
+            Field("Date spent", value: NSDate.simplifiedDate())]
     }()
     
     lazy var categoryPickerCell: CategoryPickerCell = {
@@ -90,13 +90,14 @@ class NewExpenseViewController: UIViewController {
         // Enumerate the missing fields.
         var missingFields = [String]()
         for field in self.fields {
-            if field.value == nil {
-                missingFields.append(field.name)
-            } else if let stringValue = field.value as? String {
-                // Make sure that empty strings also count as missing.
+            if let value = field.value {
+                // Make sure that empty strings are considered missing.
+                let stringValue = value as String
                 if stringValue.isEmpty {
                     missingFields.append(field.name)
                 }
+            } else {
+                missingFields.append(field.name)
             }
         }
         
@@ -111,11 +112,15 @@ class NewExpenseViewController: UIViewController {
     func saveExpenseWithCompletion(completionBlock: (_: SPRExpense) -> ()) {
         let document = SPRManagedDocument.sharedDocument()
         let expense = NSEntityDescription.insertNewObjectForEntityForName(Classes.Expense, inManagedObjectContext: document.managedObjectContext) as SPRExpense
+        
+        for field in self.fields {
+            
+        }
+        
         expense.name = self.fields[Row.Description].value as NSString
         expense.amount = NSDecimalNumber.decimalNumberWithString(self.fields[Row.Amount].value as NSString)
         expense.category = self.fields[Row.Category].value as SPRCategory
         expense.dateSpent = self.fields[Row.DateSpent].value as NSDate
-        
         expense.displayOrder = NSNumber.numberWithInt(0)
 
         document.saveWithCompletionHandler({[unowned self] success in
@@ -241,8 +246,13 @@ extension NewExpenseViewController: UITextFieldDelegate {
                 }
                 
                 // Update the field's value.
-                let value = field.value == nil ? "" : field.value! as NSString
-                let newValue = value.stringByReplacingCharactersInRange(range, withString: string)
+                var oldValue: NSString?
+                if let value = field.value {
+                    oldValue = field.value as? NSString
+                } else {
+                    oldValue = ""
+                }
+                let newValue = oldValue?.stringByReplacingCharactersInRange(range, withString: string)
                 field.value = newValue
             }
             return true
@@ -250,7 +260,7 @@ extension NewExpenseViewController: UITextFieldDelegate {
     
     func textFieldShouldClear(textField: UITextField) -> Bool {
         let field = (textField as FormTextField).field
-        field?.value = nil
+        field.value = nil
         return true
     }
     
