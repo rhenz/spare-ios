@@ -8,18 +8,41 @@
 
 import Foundation
 
+// MARK: Protocol
+protocol ColorPickerViewControllerDelegate {
+    
+    func colorPicker(colorPicker: ColorPickerViewController, didSelectColorNumber colorNumber: Int)
+    
+}
+
+// MARK: Class
 class ColorPickerViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     private let kPadding = CGFloat(0)
     
+    var selectedColorNumber = 0
+    var delegate: ColorPickerViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Register the color picker cell Nib.
+        // Register the nibs.
+        self.collectionView.registerNib(UINib(nibName: Classes.ColorPickerHeader, bundle: nil),
+            forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+            withReuseIdentifier: Identifier.Header.toRaw())
         self.collectionView.registerNib(UINib(nibName: Classes.ColorPickerCell, bundle: nil), forCellWithReuseIdentifier: Identifier.Cell.toRaw())
     }
+    
+    @IBAction func selectButtonTapped(sender: UIBarButtonItem) {
+        // Inform the delegate that a selection has been made.
+        self.delegate?.colorPicker(self, didSelectColorNumber: self.selectedColorNumber)
+        
+        // Pop the view controller.
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
     
     func colorNumberForIndexPath(indexPath: NSIndexPath) -> Int {
         let base = indexPath.section > 0 ? 1 : 0
@@ -28,6 +51,15 @@ class ColorPickerViewController: UIViewController {
         
         let colorNumber = base + offset + row
         return colorNumber
+    }
+    
+    func indexPathForColorNumber(colorNumber: Int) -> NSIndexPath {
+        let base = colorNumber > 0 ? 1 : 0
+        let row = (colorNumber - base) % 5
+        let section = colorNumber > 0 ? (colorNumber - (base + row)) / 5 + 1 : 0
+        
+        let indexPath = NSIndexPath(forRow: row, inSection: section)
+        return indexPath
     }
     
 }
@@ -62,14 +94,57 @@ extension ColorPickerViewController: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView,
         cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Identifier.Cell.toRaw(), forIndexPath: indexPath) as ColorPickerCell
-            cell.contents = (self.colorNumberForIndexPath(indexPath), false)
+            
+            let colorNumber = self.colorNumberForIndexPath(indexPath)
+            let selected = colorNumber == self.selectedColorNumber
+            cell.contents = (colorNumber, selected)
             return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+            if kind != UICollectionElementKindSectionHeader {
+                return UICollectionReusableView()
+            }
+            
+            let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: Identifier.Header.toRaw(), forIndexPath: indexPath) as ColorPickerHeader
+            header.section = Colors.sections[indexPath.section]
+            return header
+    }
+    
+}
+
+// MARK: Collection view delegate
+extension ColorPickerViewController: UICollectionViewDelegate {
+    
+    func collectionView(collectionView: UICollectionView,
+        didSelectItemAtIndexPath indexPath: NSIndexPath) {
+            let colorNumber = self.colorNumberForIndexPath(indexPath)
+            if colorNumber == selectedColorNumber {
+                // Do nothing if the selection is the same.
+                return
+            }
+            
+            let oldSelection = self.indexPathForColorNumber(self.selectedColorNumber)
+            self.selectedColorNumber = colorNumber
+            self.collectionView.reloadItemsAtIndexPaths([oldSelection, indexPath])
     }
     
 }
 
 // MARK: Collection view flow layout
 extension ColorPickerViewController: UICollectionViewDelegateFlowLayout {
+    
+    // MARK: Header
+    
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int) -> CGSize {
+            return CGSizeMake(self.collectionView.frame.width, 26)
+    }
+    
+    // MARK: Items
     
     func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -86,7 +161,8 @@ extension ColorPickerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView!,
         layout collectionViewLayout: UICollectionViewLayout!,
         insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-            return UIEdgeInsetsMake(kPadding, kPadding, kPadding, kPadding)
+            let inset = CGFloat(6)
+            return UIEdgeInsetsMake(inset, 0, inset, 0)
     }
     
     func collectionView(collectionView: UICollectionView!,

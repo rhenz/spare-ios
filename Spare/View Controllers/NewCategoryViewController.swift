@@ -28,6 +28,16 @@ class NewCategoryViewController: UIViewController {
         gestureRecognizer.cancelsTouchesInView = false
         self.tableView.addGestureRecognizer(gestureRecognizer)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Segues.ShowColorPicker {
+            let colorPicker = segue.destinationViewController as ColorPickerViewController
+            colorPicker.delegate = self
+            
+            let selectedColorNumber = self.fields[Row.Color.toRaw()].value as Int
+            colorPicker.selectedColorNumber = selectedColorNumber
+        }
+    }
 }
 
 // MARK: Private enums
@@ -95,7 +105,10 @@ extension NewCategoryViewController: UITableViewDataSource {
                 let textField = cell.viewWithTag(kTextFieldTag) as FormTextField
                 textField.field = self.fields[indexPath.row]
                 textField.delegate = self
-            default: ()
+            default:
+                let colorBox = cell.viewWithTag(kColorBoxTag)
+                let colorNumber = self.fields[Row.Color.toRaw()].value as Int
+                colorBox?.backgroundColor = Colors.allColors[colorNumber]
             }
             
             return cell
@@ -154,6 +167,19 @@ extension NewCategoryViewController: UITextFieldDelegate {
         let field = (textField as FormTextField).field
         field.value = nil
         return true
+    }
+    
+}
+
+// MARK: Color picker delegate
+
+extension NewCategoryViewController: ColorPickerViewControllerDelegate {
+    
+    func colorPicker(colorPicker: ColorPickerViewController,
+        didSelectColorNumber colorNumber: Int) {
+            let field = self.fields[Row.Color.toRaw()]
+            field.value = colorNumber
+            self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: Row.Color.toRaw(), inSection: 0)], withRowAnimation: .Automatic)
     }
     
 }

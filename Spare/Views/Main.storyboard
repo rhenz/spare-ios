@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Vgi-KO-WeE">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -212,28 +213,11 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z6W-Sk-5og">
                                     <size key="itemSize" width="167" height="165"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Header" id="EfX-rr-FG8">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLJ-p3-lP8">
-                                            <rect key="frame" x="10" y="16" width="580" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="SLJ-p3-lP8" firstAttribute="leading" secondItem="EfX-rr-FG8" secondAttribute="leading" constant="10" id="2P2-H3-cgh"/>
-                                        <constraint firstAttribute="trailing" secondItem="SLJ-p3-lP8" secondAttribute="trailing" constant="10" id="FmW-pC-E7L"/>
-                                        <constraint firstAttribute="centerY" secondItem="SLJ-p3-lP8" secondAttribute="centerY" id="hz6-vo-RNh"/>
-                                    </constraints>
-                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="Tnh-a3-lIk" id="brZ-dN-i3X"/>
                                     <outlet property="delegate" destination="Tnh-a3-lIk" id="VZP-cc-493"/>
@@ -249,7 +233,13 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Colors" id="qeL-cr-Wxm"/>
+                    <navigationItem key="navigationItem" title="Colors" id="qeL-cr-Wxm">
+                        <barButtonItem key="rightBarButtonItem" title="Select" style="done" id="s9r-S5-TUj">
+                            <connections>
+                                <action selector="selectButtonTapped:" destination="Tnh-a3-lIk" id="xd0-bh-RyG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="pVo-DN-eDQ" id="YQN-pB-qhl"/>
                     </connections>
