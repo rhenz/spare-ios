@@ -77,6 +77,12 @@ class NewExpenseViewController: UIViewController {
                     notificationCenter.postNotificationName(Notifications.NewExpense, object: expense)
                     
                     // Dismiss modal or popover.
+                    let idiom = UIDevice.currentDevice().userInterfaceIdiom
+                    switch idiom {
+                    case .Phone:
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    default: ()
+                    }
                 })
             }
         })

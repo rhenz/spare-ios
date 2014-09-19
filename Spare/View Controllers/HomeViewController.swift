@@ -31,8 +31,9 @@ class HomeViewController: UIViewController {
         self.collectionView.registerClass(SPRCategorySummaryCell.self, forCellWithReuseIdentifier: kSummaryCell)
         self.collectionView.registerNib(UINib(nibName: "NewCategoryCell", bundle: nil), forCellWithReuseIdentifier: kNewCategoryCell)
         
-        // Listen for new categories.
+        // Listen for notifications.
         let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: Notifications.NewExpense, object: nil)
         notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: Notifications.NewCategory, object: nil)
     }
     
@@ -55,10 +56,10 @@ class HomeViewController: UIViewController {
                 for category in categories {
                     summaries.append(CategorySummary(category: category as SPRCategory, period: AppState.sharedState.activePeriod))
                 }
+                
+                // Refresh the collection view to reflect changes in totals & the list of categories.
+                self.collectionView.reloadData()
             }
-
-            // Refresh the collection view to reflect changes in totals & the list of categories.
-            self.collectionView.reloadData()
         }
     }
     
@@ -84,6 +85,22 @@ class HomeViewController: UIViewController {
             
         default: ()
         }
+    }
+    
+    func notifyWithNotification(notification: NSNotification) {
+        if notification.name == Notifications.NewExpense {
+            // Get the category and refresh it.
+            let object = notification.object as? SPRExpense
+            if let expense = object {
+                let category = expense.category
+                self.collectionView.reloadItemsAtIndexPaths([NSIndexPath(forItem: category.displayOrder, inSection: 0)])
+            }
+        }
+    }
+    
+    deinit {
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.removeObserver(self)
     }
     
 }
