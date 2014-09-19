@@ -8,14 +8,6 @@
 
 import Foundation
 
-// MARK: Protocol
-protocol NewCategoryViewControllerDelegate {
-    
-    func newCategoryViewController(newCategoryViewController: NewCategoryViewController,
-        didAddCategory category: SPRCategory)
-    
-}
-
 // MARK: Class declaration
 class NewCategoryViewController: UIViewController {
     
@@ -27,8 +19,6 @@ class NewCategoryViewController: UIViewController {
     private let kColorBoxTag = 1000
     
     @IBOutlet weak var tableView: UITableView!
-    
-    var delegate: NewCategoryViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,8 +84,9 @@ extension NewCategoryViewController {
             } else {
                 self.saveCategoryWithCompletion({[unowned self] savedCategory in
                     if let category = savedCategory {
-                        // Inform the delegate that a category has been added.
-                        self.delegate?.newCategoryViewController(self, didAddCategory: category)
+                        // Post a notification that a new category has been added.
+                        let notificationCenter = NSNotificationCenter.defaultCenter()
+                        notificationCenter.postNotificationName(Notifications.NewCategory, object: category)
                         
                         // Dismiss the modal.
                         self.dismissViewControllerAnimated(true, completion: nil)

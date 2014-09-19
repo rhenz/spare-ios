@@ -14,9 +14,11 @@ extension UIScreen {
         let orientation = UIApplication.sharedApplication().statusBarOrientation
         switch orientation {
         case .Portrait, .PortraitUpsideDown:
-            return UIScreen.mainScreen().bounds.size.width
+            let width = UIScreen.mainScreen().bounds.size.width
+            return width
         default:
-            return UIScreen.mainScreen().bounds.size.height
+            let height = UIScreen.mainScreen().bounds.size.height
+            return height
         }
     }
     

@@ -78,23 +78,29 @@ class HomeViewController: UIViewController {
             let expensesScreen = segue.destinationViewController as ExpensesViewController
             expensesScreen.categorySummary = summaries[selectedIndexPath.row]
             
-        case Segues.PresentNewCategory:
-            let navigationController = segue.destinationViewController as UINavigationController
-            let newCategoryScreen = navigationController.viewControllers.first as NewCategoryViewController
-            newCategoryScreen.delegate = self
-            
         default: ()
         }
     }
     
     func notifyWithNotification(notification: NSNotification) {
-        if notification.name == Notifications.NewExpense {
+        switch notification.name {
+        case Notifications.NewExpense:
             // Get the category and refresh it.
             let object = notification.object as? SPRExpense
             if let expense = object {
                 let category = expense.category
                 self.collectionView.reloadItemsAtIndexPaths([NSIndexPath(forItem: category.displayOrder, inSection: 0)])
             }
+            
+        case Notifications.NewCategory:
+            let object = notification.object as? SPRCategory
+            if let category = object {
+                let summary = CategorySummary(category: category, period: AppState.sharedState.activePeriod)
+                self.summaries.append(summary)
+                self.collectionView.reloadData()
+            }
+            
+        default: ()
         }
     }
     
@@ -130,7 +136,6 @@ extension HomeViewController {
 }
 
 // MARK: UICollectionViewDataSource
-
 extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView,
@@ -174,7 +179,6 @@ extension HomeViewController: UICollectionViewDataSource {
 }
 
 // MARK: UICollectionViewDelegate
-
 extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView!,
@@ -192,7 +196,6 @@ extension HomeViewController: UICollectionViewDelegate {
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
-
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView!,
@@ -237,7 +240,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: UICollectionViewDataSource_Draggable
-
 extension HomeViewController: UICollectionViewDataSource_Draggable {
     
     func collectionView(collectionView: UICollectionView!, moveItemAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
@@ -270,19 +272,6 @@ extension HomeViewController: UICollectionViewDataSource_Draggable {
     
     func collectionView(collectionView: UICollectionView!, transformForDraggingItemAtIndexPath indexPath: NSIndexPath!, duration: UnsafePointer<NSTimeInterval>) -> CGAffineTransform {
         return CGAffineTransformMakeScale(1.15, 1.15)
-    }
-    
-}
-
-// MARK: New category delegate
-
-extension HomeViewController: NewCategoryViewControllerDelegate {
-    
-    func newCategoryViewController(newCategoryViewController: NewCategoryViewController,
-        didAddCategory category: SPRCategory) {
-            // Add the new category to the end of the array.
-            self.summaries.append(CategorySummary(category: category, period: AppState.sharedState.activePeriod))
-            self.collectionView.reloadData()
     }
     
 }
