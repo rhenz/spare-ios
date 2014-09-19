@@ -67,7 +67,7 @@
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                         <segue destination="mUa-3G-Zs3" kind="presentation" identifier="PresentNewExpense" id="irD-9b-Ak9"/>
-                        <segue destination="pvq-LE-sMe" kind="presentation" identifier="PresentNewCategory" id="95r-gc-N1a"/>
+                        <segue destination="pvq-LE-sMe" kind="presentation" identifier="PresentNewCategory" modalPresentationStyle="formSheet" id="95r-gc-N1a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QqQ-cA-Tnp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -83,11 +83,11 @@
                         <viewControllerLayoutGuide type="bottom" id="uh1-F8-4GJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZTe-Il-8zv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="4Yc-nb-mmR">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="kNameCell" id="HYU-8c-pi8">
@@ -204,11 +204,11 @@
                         <viewControllerLayoutGuide type="bottom" id="9U8-Wm-5gI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rRx-3H-xkx">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pVo-DN-eDQ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z6W-Sk-5og">
                                     <size key="itemSize" width="167" height="165"/>
@@ -242,10 +242,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="pVo-DN-eDQ" secondAttribute="trailing" id="86g-Bw-QU0"/>
-                            <constraint firstItem="pVo-DN-eDQ" firstAttribute="leading" secondItem="rRx-3H-xkx" secondAttribute="leading" id="ZJb-is-pvh"/>
-                            <constraint firstItem="9U8-Wm-5gI" firstAttribute="top" secondItem="pVo-DN-eDQ" secondAttribute="bottom" id="aHI-16-DXc"/>
-                            <constraint firstItem="pVo-DN-eDQ" firstAttribute="top" secondItem="aKu-LP-goP" secondAttribute="bottom" id="guL-aD-9Mc"/>
+                            <constraint firstItem="9U8-Wm-5gI" firstAttribute="top" secondItem="pVo-DN-eDQ" secondAttribute="bottom" id="HfR-V7-YJx"/>
+                            <constraint firstItem="pVo-DN-eDQ" firstAttribute="top" secondItem="aKu-LP-goP" secondAttribute="bottom" id="J6G-jN-fcC"/>
+                            <constraint firstItem="pVo-DN-eDQ" firstAttribute="leading" secondItem="rRx-3H-xkx" secondAttribute="leading" id="UWb-Pb-r81"/>
+                            <constraint firstAttribute="trailing" secondItem="pVo-DN-eDQ" secondAttribute="trailing" id="hHQ-g4-m8r"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -520,6 +520,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1Op-8D-GC0"/>
+        <segue reference="ynG-cZ-0yU"/>
     </inferredMetricsTieBreakers>
 </document>

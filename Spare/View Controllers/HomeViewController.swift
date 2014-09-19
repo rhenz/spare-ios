@@ -9,14 +9,14 @@
 import UIKit
 import CoreData
 
-let kWidthRatio = CGFloat(29)
-let kHeightRatio = CGFloat(26)
-let kPadding = CGFloat(10)
-
-let kSummaryCell = "kSummaryCell"
-let kNewCategoryCell = "kNewCategoryCell"
-
 class HomeViewController: UIViewController {
+    
+    private let kWidthRatio = CGFloat(29)
+    private let kHeightRatio = CGFloat(26)
+    private let kPadding = CGFloat(10)
+    
+    private let kSummaryCell = "kSummaryCell"
+    private let kNewCategoryCell = "kNewCategoryCell"
     
     @IBOutlet weak var collectionView: UICollectionView!
     
