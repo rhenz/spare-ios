@@ -76,7 +76,7 @@ class NewExpenseViewController: UIViewController {
                     let notificationCenter = NSNotificationCenter.defaultCenter()
                     notificationCenter.postNotificationName(Notifications.NewExpense, object: expense)
                     
-                    
+                    // Dismiss modal or popover.
                 })
             }
         })
@@ -86,15 +86,16 @@ class NewExpenseViewController: UIViewController {
         self.view.endEditing(true)
     }
 
-    func validateExpenseWithCompletion(completionBlock: (_: String?) -> ()) {
+    func validateExpenseWithCompletion(completionBlock: (String?) -> ()) {
         // Enumerate the missing fields.
         var missingFields = [String]()
         for field in self.fields {
             if let value = field.value {
                 // Make sure that empty strings are considered missing.
-                let stringValue = value as String
-                if stringValue.isEmpty {
-                    missingFields.append(field.name)
+                if let stringValue = value as? String {
+                    if stringValue.isEmpty {
+                        missingFields.append(field.name)
+                    }
                 }
             } else {
                 missingFields.append(field.name)
@@ -109,13 +110,9 @@ class NewExpenseViewController: UIViewController {
         }
     }
 
-    func saveExpenseWithCompletion(completionBlock: (_: SPRExpense) -> ()) {
+    func saveExpenseWithCompletion(completionBlock: (SPRExpense) -> ()) {
         let document = SPRManagedDocument.sharedDocument()
         let expense = NSEntityDescription.insertNewObjectForEntityForName(Classes.Expense, inManagedObjectContext: document.managedObjectContext) as SPRExpense
-        
-        for field in self.fields {
-            
-        }
         
         expense.name = self.fields[Row.Description].value as NSString
         expense.amount = NSDecimalNumber.decimalNumberWithString(self.fields[Row.Amount].value as NSString)

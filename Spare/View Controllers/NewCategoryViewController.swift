@@ -8,6 +8,14 @@
 
 import Foundation
 
+// MARK: Protocol
+protocol NewCategoryViewControllerDelegate {
+    
+    func newCategoryViewController(newCategoryViewController: NewCategoryViewController,
+        didAddCategory category: SPRCategory)
+    
+}
+
 // MARK: Class declaration
 class NewCategoryViewController: UIViewController {
     
@@ -19,6 +27,8 @@ class NewCategoryViewController: UIViewController {
     private let kColorBoxTag = 1000
     
     @IBOutlet weak var tableView: UITableView!
+    
+    var delegate: NewCategoryViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,11 +87,71 @@ extension NewCategoryViewController {
     }
     
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.hideKeyboard()
+        self.validateCategoryWithCompletion({[unowned self] errorMessage in
+            if let message = errorMessage {
+                UIAlertView(title: "Missing fields", message: message, delegate: nil, cancelButtonTitle: "OK").show()
+            } else {
+                self.saveCategoryWithCompletion({[unowned self] savedCategory in
+                    if let category = savedCategory {
+                        // Inform the delegate that a category has been added.
+                        self.delegate?.newCategoryViewController(self, didAddCategory: category)
+                        
+                        // Dismiss the modal.
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    } else {
+                        UIAlertView(title: "Error", message: "Failed to save category.", delegate: nil, cancelButtonTitle: "OK").show()
+                    }
+                })
+            }
+        })
     }
     
     func hideKeyboard() {
         self.view.endEditing(true)
+    }
+    
+    func validateCategoryWithCompletion(completionBlock: (String?) -> ()) {
+        // Only check the Name field for nullity. The color field is defaulted to 0.
+        var missingFields = [String]()
+        let nameField = self.fields[Row.Name.toRaw()]
+        if let value = nameField.value {
+            let stringValue = value as String
+            if stringValue.isEmpty {
+                missingFields.append(nameField.name)
+            }
+        } else {
+            missingFields.append(nameField.name)
+        }
+        
+        if missingFields.count > 0 {
+            completionBlock("You must enter a category name.")
+        } else {
+            completionBlock(nil)
+        }
+    }
+    
+    func saveCategoryWithCompletion(completionBlock: (SPRCategory?) -> ()) {
+        let document = SPRManagedDocument.sharedDocument()
+        let category = NSEntityDescription.insertNewObjectForEntityForName(Classes.Category, inManagedObjectContext: document.managedObjectContext) as SPRCategory
+        
+        // Set the values.
+        category.name = self.fields[Row.Name.toRaw()].value! as NSString
+        category.colorNumber = NSNumber(integer: (self.fields[Row.Color.toRaw()].value! as Int))
+        
+        // Append the category to the end of the list.
+        let numberOfCategories = SPRCategory.allCategories().count
+        let displayOrder = numberOfCategories > 0 ? numberOfCategories - 1 : 0
+        category.displayOrder = NSNumber(integer: displayOrder)
+        
+        // Save the document.
+        document.saveWithCompletionHandler({[unowned self] success in
+            if success {
+                completionBlock(category)
+            } else {
+                completionBlock(nil)
+            }
+        })
     }
     
 }

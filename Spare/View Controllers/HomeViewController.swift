@@ -30,6 +30,10 @@ class HomeViewController: UIViewController {
         self.collectionView.draggable = true
         self.collectionView.registerClass(SPRCategorySummaryCell.self, forCellWithReuseIdentifier: kSummaryCell)
         self.collectionView.registerNib(UINib(nibName: "NewCategoryCell", bundle: nil), forCellWithReuseIdentifier: kNewCategoryCell)
+        
+        // Listen for new categories.
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: Notifications.NewCategory, object: nil)
     }
     
     override func viewWillAppear(animated: Bool)  {
@@ -67,11 +71,19 @@ class HomeViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier = segue.identifier
-        if identifier == Segues.ShowExpenses {
+        
+        switch identifier {
+        case Segues.ShowExpenses:
             let expensesScreen = segue.destinationViewController as ExpensesViewController
             expensesScreen.categorySummary = summaries[selectedIndexPath.row]
+            
+        case Segues.PresentNewCategory:
+            let navigationController = segue.destinationViewController as UINavigationController
+            let newCategoryScreen = navigationController.viewControllers.first as NewCategoryViewController
+            newCategoryScreen.delegate = self
+            
+        default: ()
         }
-
     }
     
 }
@@ -241,6 +253,19 @@ extension HomeViewController: UICollectionViewDataSource_Draggable {
     
     func collectionView(collectionView: UICollectionView!, transformForDraggingItemAtIndexPath indexPath: NSIndexPath!, duration: UnsafePointer<NSTimeInterval>) -> CGAffineTransform {
         return CGAffineTransformMakeScale(1.15, 1.15)
+    }
+    
+}
+
+// MARK: New category delegate
+
+extension HomeViewController: NewCategoryViewControllerDelegate {
+    
+    func newCategoryViewController(newCategoryViewController: NewCategoryViewController,
+        didAddCategory category: SPRCategory) {
+            // Add the new category to the end of the array.
+            self.summaries.append(CategorySummary(category: category, period: AppState.sharedState.activePeriod))
+            self.collectionView.reloadData()
     }
     
 }

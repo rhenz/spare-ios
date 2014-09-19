@@ -11,5 +11,6 @@ import Foundation
 struct Notifications {
     
     static let NewExpense = "Notifications.NewExpense"
+    static let NewCategory = "Notifications.NewCategory"
     
 }

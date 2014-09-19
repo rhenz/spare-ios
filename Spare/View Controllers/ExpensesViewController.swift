@@ -36,7 +36,7 @@ class ExpensesViewController: UIViewController {
         
         // Register for new expense notifications.
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: Selector("notify:"), name: Notifications.NewExpense, object: nil)
+        notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: Notifications.NewExpense, object: nil)
     }
     
     func newExpenseButtonTapped(sender: UIBarButtonItem) {
@@ -50,7 +50,7 @@ class ExpensesViewController: UIViewController {
         }
     }
     
-    func notify(notification: NSNotification) {
+    func notifyWithNotification(notification: NSNotification) {
         if notification.name == Notifications.NewExpense {
             let expense = notification.object as SPRExpense
             if self.categorySummary.category.displayOrder == expense.category.displayOrder {
