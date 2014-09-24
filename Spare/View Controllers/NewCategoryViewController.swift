@@ -11,14 +11,27 @@ import Foundation
 // MARK: Class declaration
 class NewCategoryViewController: UIViewController {
     
-    lazy var fields: [Field] = {
-        return [Field("Name"), Field("Color", value: 0)]
-        }()
+    // Lazy stored properties
+    lazy var fields: [Field] = [Field("Name"), Field("Color", value: 0)]
     
+    // Subview tags
     private let kTextFieldTag = 1000
     private let kColorBoxTag = 1000
     
+    // Row numbers
+    private let kRowName = 0
+    private let kRowColor = 1
+    private let kRowDelete = 0
+    
+    // Section numbers
+    private let kSectionFields = 0
+    private let kSectionDelete = 1
+    
+    // IBOutlets
     @IBOutlet weak var tableView: UITableView!
+    
+    // Stored properties
+    var isEditingMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,37 +47,52 @@ class NewCategoryViewController: UIViewController {
             let colorPicker = segue.destinationViewController as ColorPickerViewController
             colorPicker.delegate = self
             
-            let selectedColorNumber = self.fields[Row.Color.toRaw()].value as Int
+            let selectedColorNumber = self.fields[Row.Color].value as Int
             colorPicker.selectedColorNumber = selectedColorNumber
         }
     }
 }
 
-// MARK: Private enums
+// MARK: Private structs
 extension NewCategoryViewController {
     
-    private enum Row: Int {
+    private struct Section {
+        static let Fields = 0
+        static let Delete = 1
+    }
+    
+    private struct Row {
+        static let Name = 0
+        static let Color = 1
         
-        case Name = 0, Color
+        static let Delete = 0
         
-        init(_ int: Int) {
-            switch int {
-            case 0:
-                self = .Name
+        private var indexPath: NSIndexPath
+        
+        init(indexPath: NSIndexPath) {
+            self.indexPath = indexPath
+        }
+        
+        func identifier() -> String? {
+            switch self.indexPath.section {
+            case Section.Fields:
+                switch self.indexPath.row {
+                case Row.Name:
+                    return "kNameCell"
+                case Row.Color:
+                    return "kColorCell"
+                default:
+                    return nil
+                }
+            case Section.Delete:
+                if indexPath.row == Row.Delete {
+                    return "kDeleteCell"
+                }
+                fallthrough
             default:
-                self = .Color
+                return nil;
             }
         }
-        
-        func identifier() -> String {
-            switch self {
-            case .Name:
-                return "kNameCell"
-            default: // .Color
-                return "kColorCell"
-            }
-        }
-        
     }
     
 }
@@ -105,7 +133,7 @@ extension NewCategoryViewController {
     func validateCategoryWithCompletion(completionBlock: (String?) -> ()) {
         // Only check the Name field for nullity. The color field is defaulted to 0.
         var missingFields = [String]()
-        let nameField = self.fields[Row.Name.toRaw()]
+        let nameField = self.fields[Row.Name]
         if let value = nameField.value {
             let stringValue = value as String
             if stringValue.isEmpty {
@@ -127,8 +155,8 @@ extension NewCategoryViewController {
         let category = NSEntityDescription.insertNewObjectForEntityForName(Classes.Category, inManagedObjectContext: document.managedObjectContext) as SPRCategory
         
         // Set the values.
-        category.name = self.fields[Row.Name.toRaw()].value! as NSString
-        category.colorNumber = NSNumber(integer: (self.fields[Row.Color.toRaw()].value! as Int))
+        category.name = self.fields[Row.Name].value! as NSString
+        category.colorNumber = NSNumber(integer: (self.fields[Row.Color].value! as Int))
         
         // Append the category to the end of the list.
         let numberOfCategories = SPRCategory.allCategories().count
@@ -150,6 +178,14 @@ extension NewCategoryViewController {
 // MARK: Table view data source
 extension NewCategoryViewController: UITableViewDataSource {
     
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if self.isEditingMode {
+            // The second section just contains a delete button.
+            return 2
+        }
+        return 1
+    }
+    
     func tableView(tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
             return self.fields.count
@@ -157,18 +193,17 @@ extension NewCategoryViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            let row = Row(indexPath.row)
-            let identifier = row.identifier()
+            let identifier = Row(indexPath: indexPath).identifier()!
             let cell = tableView.dequeueReusableCellWithIdentifier(identifier) as UITableViewCell
             
-            switch row {
-            case .Name:
+            switch indexPath.row {
+            case Row.Name:
                 let textField = cell.viewWithTag(kTextFieldTag) as FormTextField
                 textField.field = self.fields[indexPath.row]
                 textField.delegate = self
             default:
                 let colorBox = cell.viewWithTag(kColorBoxTag)
-                let colorNumber = self.fields[Row.Color.toRaw()].value as Int
+                let colorNumber = self.fields[Row.Color].value as Int
                 colorBox?.backgroundColor = Colors.allColors[colorNumber]
             }
             
@@ -183,7 +218,7 @@ extension NewCategoryViewController: UITableViewDelegate {
     func tableView(tableView: UITableView,
         didSelectRowAtIndexPath indexPath: NSIndexPath) {
             // Do nothing when the Name cell is selected.
-            if indexPath.row == Row.Name.toRaw() {
+            if indexPath.row == Row.Name {
                 return
             }
             
@@ -191,7 +226,7 @@ extension NewCategoryViewController: UITableViewDelegate {
             // not disappear with the table view cell highlight.
             let cell = tableView.cellForRowAtIndexPath(indexPath)
             let colorBox = cell?.viewWithTag(kColorBoxTag)
-            let colorNumber = (self.fields[Row.Color.toRaw()].value as NSNumber).integerValue
+            let colorNumber = (self.fields[Row.Color].value as NSNumber).integerValue
             colorBox?.backgroundColor = Colors.allColors[colorNumber]
             
             // Remove the table view cell highlight.
@@ -233,14 +268,13 @@ extension NewCategoryViewController: UITextFieldDelegate {
 }
 
 // MARK: Color picker delegate
-
 extension NewCategoryViewController: ColorPickerViewControllerDelegate {
     
     func colorPicker(colorPicker: ColorPickerViewController,
         didSelectColorNumber colorNumber: Int) {
-            let field = self.fields[Row.Color.toRaw()]
+            let field = self.fields[Row.Color]
             field.value = colorNumber
-            self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: Row.Color.toRaw(), inSection: 0)], withRowAnimation: .Automatic)
+            self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: Row.Color, inSection: 0)], withRowAnimation: .Automatic)
     }
     
 }
