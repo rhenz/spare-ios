@@ -42,9 +42,7 @@ class HomeViewController: UIViewController {
         
         // If the app has not yet been set up, launch the setup screen and initialize the category summaries.
         if AppState.sharedState.hasBeenSetup == false {
-            let setupScreen = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("SetupViewController") as UIViewController
-            let navigationController = UINavigationController(rootViewController: setupScreen)
-            self.presentViewController(navigationController, animated: false, completion: nil)
+            self.performSegueWithIdentifier(Segues.PresentSetup, sender: self)
             AppState.sharedState.hasBeenSetup = true
         }
 

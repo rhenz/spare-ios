@@ -18,6 +18,7 @@ struct Segues {
     static let PopoverNewExpense = "PopoverNewExpense"
     
     // Modals
+    static let PresentSetup = "PresentSetup"
     static let PresentNewExpense = "PresentNewExpense"
     static let PresentNewCategory = "PresentNewCategory"
     static let PresentEditCategory = "PresentEditCategory"

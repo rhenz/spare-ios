@@ -17,7 +17,7 @@ class SetupViewController: UIViewController {
         let document = SPRManagedDocument.sharedDocument()
         document.prepareWithCompletionHandler {success in
             if success {
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismissViewControllerAnimated(false, completion: nil)
             } else {
                 self.loadingView.stopAnimating()
                 UIAlertView(title: "Error", message: "Categories can't be loaded.", delegate: nil, cancelButtonTitle: "OK").show()
