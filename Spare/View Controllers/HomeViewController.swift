@@ -77,7 +77,6 @@ class HomeViewController: UIViewController {
         case Segues.ShowExpenses:
             let expensesScreen = segue.destinationViewController as ExpensesViewController
             expensesScreen.categorySummary = summaries[selectedIndexPath.row]
-            
         default: ()
         }
     }

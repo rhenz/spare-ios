@@ -39,6 +39,14 @@ class ExpensesViewController: UIViewController {
         notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: Notifications.NewExpense, object: nil)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == Segues.PresentEditCategory {
+            let navigationController = segue.destinationViewController as UINavigationController
+            let editCategoryScreen = navigationController.viewControllers.first as NewCategoryViewController
+            editCategoryScreen.isForEditing = true
+        }
+    }
+    
     func newExpenseButtonTapped(sender: UIBarButtonItem) {
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
             self.performSegueWithIdentifier(Segues.PresentNewExpense, sender: self)
@@ -106,6 +114,15 @@ extension ExpensesViewController: UITableViewDelegate {
                 return CategoryHeaderCell.heightForCategorySummary(self.categorySummary)
             default:
                 return UITableViewAutomaticDimension
+            }
+    }
+    
+    func tableView(tableView: UITableView,
+        didSelectRowAtIndexPath indexPath: NSIndexPath) {
+            switch indexPath.section {
+            case kSectionCategoryHeader:
+                self.performSegueWithIdentifier(Segues.PresentEditCategory, sender: self)
+            default: ()
             }
     }
     

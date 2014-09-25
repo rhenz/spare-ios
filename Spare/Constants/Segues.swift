@@ -20,5 +20,6 @@ struct Segues {
     // Modals
     static let PresentNewExpense = "PresentNewExpense"
     static let PresentNewCategory = "PresentNewCategory"
+    static let PresentEditCategory = "PresentEditCategory"
     
 }

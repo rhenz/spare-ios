@@ -75,7 +75,7 @@
             </objects>
             <point key="canvasLocation" x="1766" y="497"/>
         </scene>
-        <!--New Category-->
+        <!--New Category View Controller-->
         <scene sceneID="xyr-WQ-KPd">
             <objects>
                 <viewController id="uZ1-t3-r0o" customClass="NewCategoryViewController" customModule="Spare" customModuleProvider="target" sceneMemberID="viewController">
@@ -91,7 +91,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="kNameCell" id="HYU-8c-pi8">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="kCellName" id="HYU-8c-pi8">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HYU-8c-pi8" id="XJ4-QV-gRY">
@@ -125,7 +125,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kColorCell" id="376-M9-oNc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kCellColor" id="376-M9-oNc">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="376-M9-oNc" id="0PS-fb-UA3">
@@ -158,13 +158,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="ueJ-jX-aiU" style="IBUITableViewCellStyleDefault" id="aCu-wC-NWa">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="kCellDelete" textLabel="ueJ-jX-aiU" style="IBUITableViewCellStyleDefault" id="aCu-wC-NWa">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aCu-wC-NWa" id="rwz-8v-c6N">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Delete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ueJ-jX-aiU">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Delete Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ueJ-jX-aiU">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -190,7 +190,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="New Category" id="3V8-s8-JBF">
+                    <navigationItem key="navigationItem" id="3V8-s8-JBF">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="FEX-lu-7XV">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="uZ1-t3-r0o" id="hkA-rf-mdm"/>
@@ -293,6 +293,7 @@
                     <connections>
                         <outlet property="tableView" destination="TeO-Ka-DFl" id="7dd-5m-oyR"/>
                         <segue destination="mUa-3G-Zs3" kind="presentation" identifier="PresentNewExpense" id="1Op-8D-GC0"/>
+                        <segue destination="pvq-LE-sMe" kind="presentation" identifier="PresentEditCategory" modalPresentationStyle="formSheet" id="mqS-jL-Uwh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3xk-R5-qZK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -525,6 +526,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ynG-cZ-0yU"/>
+        <segue reference="1Op-8D-GC0"/>
+        <segue reference="mqS-jL-Uwh"/>
     </inferredMetricsTieBreakers>
 </document>
