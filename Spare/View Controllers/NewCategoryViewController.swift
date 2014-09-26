@@ -22,6 +22,9 @@ private let kCellName = "kCellName"
 private let kCellColor = "kCellColor"
 private let kCellDelete = "kCellDelete"
 
+// Alert view tags
+private let kAlertViewConfirmDelete = 1000
+
 // MARK: Class declaration
 class NewCategoryViewController: UIViewController {
     
@@ -200,7 +203,15 @@ extension NewCategoryViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView,
         didSelectRowAtIndexPath indexPath: NSIndexPath) {
+            // For the delete button, show a confirmation dialog.
+            if indexPath.section == kSectionDelete {
+                self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                self.confirmDelete()
+                return
+            }
+            
             // Do nothing when the Name cell is selected.
+            // Only the Color cell has a dedicated action.
             if indexPath.row == kRowName {
                 return
             }
@@ -217,6 +228,13 @@ extension NewCategoryViewController: UITableViewDelegate {
             
             // Segue to the color picker.
             self.performSegueWithIdentifier(Segues.ShowColorPicker, sender: self)
+    }
+    
+    func confirmDelete() {
+        let message = "Deleting a category also deletes all expenses in it. This can't be undone. Are you sure?"
+        let proceedButton = "Yes, delete!"
+        let alertView = UIAlertView(title: DialogTitles.Confirm.toRaw(), message: message, delegate: self, cancelButtonTitle: DialogButtons.Cancel.toRaw(), otherButtonTitles: proceedButton)
+        alertView.show()
     }
     
 }
@@ -246,6 +264,21 @@ extension NewCategoryViewController: UITextFieldDelegate {
         let field = (textField as FormTextField).field
         field.value = nil
         return true
+    }
+    
+}
+
+// MARK: Alert view delegate
+extension NewCategoryViewController: UIAlertViewDelegate {
+    
+    func alertView(alertView: UIAlertView,
+        clickedButtonAtIndex buttonIndex: Int) {
+            if alertView.tag == kAlertViewConfirmDelete {
+                if buttonIndex == 1 {
+                    // Proceed deletion.
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            }
     }
     
 }

@@ -97,6 +97,7 @@
 		26E4E0591937AF690096191A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E4E0581937AF690096191A /* QuartzCore.framework */; };
 		26E9C310193CC41B009F18D9 /* NSIndexPath+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E9C30F193CC41B009F18D9 /* NSIndexPath+SPR.m */; };
 		26E9C313193CC76F009F18D9 /* NSFetchedResultsController+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E9C312193CC76F009F18D9 /* NSFetchedResultsController+SPR.m */; };
+		26F1F69619D583A700D925DE /* Dialogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F1F69519D583A700D925DE /* Dialogs.swift */; };
 		26F652FC196A33B200C19D87 /* SPRNewCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F652FB196A33B200C19D87 /* SPRNewCategoryCell.m */; };
 		26FCD19F196BD6D400AC0FC8 /* SPRQuickDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCD19E196BD6D400AC0FC8 /* SPRQuickDefaultCell.m */; };
 		26FCD1A5196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26FCD1A4196BDC7D00AC0FC8 /* SPRPeriodTableViewCell.m */; };
@@ -300,6 +301,7 @@
 		26E9C30F193CC41B009F18D9 /* NSIndexPath+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+SPR.m"; sourceTree = "<group>"; };
 		26E9C311193CC76F009F18D9 /* NSFetchedResultsController+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFetchedResultsController+SPR.h"; sourceTree = "<group>"; };
 		26E9C312193CC76F009F18D9 /* NSFetchedResultsController+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFetchedResultsController+SPR.m"; sourceTree = "<group>"; };
+		26F1F69519D583A700D925DE /* Dialogs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dialogs.swift; sourceTree = "<group>"; };
 		26F652FA196A33B200C19D87 /* SPRNewCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRNewCategoryCell.h; sourceTree = "<group>"; };
 		26F652FB196A33B200C19D87 /* SPRNewCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNewCategoryCell.m; sourceTree = "<group>"; };
 		26FCD19D196BD6D400AC0FC8 /* SPRQuickDefaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRQuickDefaultCell.h; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 				4975C3FA19C27BDB005FE994 /* Colors.swift */,
 				4975C3FC19C28B0B005FE994 /* Notifications.swift */,
 				4906172D19C95B9000553751 /* StoryboardIDs.swift */,
+				26F1F69519D583A700D925DE /* Dialogs.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -954,6 +957,7 @@
 				26D2D7201969BED200CCC973 /* SPRIcons.m in Sources */,
 				26D2D7331969CFB100CCC973 /* SPRExpenseCategoryCell.m in Sources */,
 				26E2485318E1CAB700391354 /* SPRNewCategoryViewController.m in Sources */,
+				26F1F69619D583A700D925DE /* Dialogs.swift in Sources */,
 				49A6533B19C949CD0076C385 /* DatePickerCellDelegate.swift in Sources */,
 				49D8DF4619C7FE7300ABBAE9 /* FormTextField.swift in Sources */,
 				495E415219AED2A4006D4CD4 /* Icons.swift in Sources */,
