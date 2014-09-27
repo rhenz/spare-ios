@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
         self.collectionView.registerNib(UINib(nibName: "NewCategoryCell", bundle: nil), forCellWithReuseIdentifier: kNewCategoryCell)
         
         // Listen for notifications.
-        let notifications = [Notifications.ExpenseAdded, Notifications.CategoryAdded, NSManagedObjectContextObjectsDidChangeNotification]
+        let notifications = [Notifications.ExpenseAdded, Notifications.CategoryAdded, Notifications.CategoryDeleted]
         let notificationCenter = NSNotificationCenter.defaultCenter()
         for notification in notifications {
             notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: notification, object: nil)
@@ -98,13 +98,14 @@ class HomeViewController: UIViewController {
                 self.collectionView.reloadData()
             }
             
-        case NSManagedObjectContextObjectsDidChangeNotification:
-            if let deletionSet = notification.userInfo?[NSDeletedObjectsKey] as? NSSet {
-                if let deletedCategory = deletionSet.allObjects.first as? SPRCategory {
-                    let displayOrder = deletedCategory.displayOrder
-                    self.summaries.removeAtIndex(displayOrder)
-                    self.collectionView.reloadData()
+        case Notifications.CategoryDeleted:
+            if let displayOrder = notification.object as? NSNumber {
+                self.summaries.removeAtIndex(displayOrder)
+                for i in displayOrder..<self.summaries.count {
+                    var summary = self.summaries[i]
+                    summary.category.displayOrder = NSNumber(integer: i)
                 }
+                self.collectionView.reloadData()
             }
             
         default: ()

@@ -36,8 +36,8 @@ class ExpensesViewController: UIViewController {
         
         // Register for notifications.
         let notificationCenter = NSNotificationCenter.defaultCenter()
-//        notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: Notifications.ExpenseAdded, object: nil)
-        notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: NSManagedObjectContextObjectsDidChangeNotification, object: nil)
+        notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: Notifications.ExpenseAdded, object: nil)
+        notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: Notifications.CategoryDeleted, object: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -68,13 +68,12 @@ class ExpensesViewController: UIViewController {
             if self.categorySummary?.category.displayOrder == expense.category.displayOrder {
                 NSLog("New expense!")
             }
-            
-        case NSManagedObjectContextObjectsDidChangeNotification:
-            if let deletionSet = notification.userInfo?[NSDeletedObjectsKey] as? NSSet {
-                if let category = self.categorySummary?.category {
-                    if deletionSet.containsObject(category) {
-                        self.navigationController?.popViewControllerAnimated(true)
-                    }
+
+        case Notifications.CategoryDeleted:
+            // Pop the view controller if the categories are the same.
+            if let displayOrder = notification.object as? NSNumber {
+                if self.categorySummary?.category.displayOrder == displayOrder {
+                    self.navigationController?.popViewControllerAnimated(true)
                 }
             }
             

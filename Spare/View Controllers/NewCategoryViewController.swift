@@ -296,18 +296,16 @@ extension NewCategoryViewController: UIAlertViewDelegate {
                 if buttonIndex == 1 {
                     // Proceed deletion.
                     if let category = self.categoryToEdit {
+                        let displayOrder = category.displayOrder
                         let context = category.managedObjectContext
                         context.deleteObject(category)
                         
                         let document = SPRManagedDocument.sharedDocument()
                         document.saveWithCompletionHandler {[unowned self] success in
                             if success {
-                                let displayOrder3 = self.categoryToEdit?.displayOrder
-                                NSLog("category.displayOrder3 = \(displayOrder3)")
-                                
-//                                // Post a notification that the category has been deleted.
-//                                let notificationCenter = NSNotificationCenter.defaultCenter()
-//                                notificationCenter.postNotificationName(Notifications.CategoryDeleted, object: self.categoryToEdit)
+                                // Post a notification that the category has been deleted.
+                                let notificationCenter = NSNotificationCenter.defaultCenter()
+                                notificationCenter.postNotificationName(Notifications.CategoryDeleted, object: displayOrder)
                                 
                                 self.dismissViewControllerAnimated(true, completion: nil)
                             }
