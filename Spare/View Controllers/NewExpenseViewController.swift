@@ -74,7 +74,7 @@ class NewExpenseViewController: UIViewController {
                 self.saveExpenseWithCompletion({[unowned self] expense in
                     // Send a notification that an expense has been saved.
                     let notificationCenter = NSNotificationCenter.defaultCenter()
-                    notificationCenter.postNotificationName(Notifications.NewExpense, object: expense)
+                    notificationCenter.postNotificationName(Notifications.ExpenseAdded, object: expense)
                     
                     // Dismiss modal or popover.
                     let idiom = UIDevice.currentDevice().userInterfaceIdiom
@@ -262,8 +262,9 @@ extension NewExpenseViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldClear(textField: UITextField) -> Bool {
-        let field = (textField as FormTextField).field
-        field.value = nil
+        if let field = (textField as FormTextField).field {
+            field.value = nil
+        }
         return true
     }
     

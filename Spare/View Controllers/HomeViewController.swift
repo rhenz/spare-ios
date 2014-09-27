@@ -32,9 +32,11 @@ class HomeViewController: UIViewController {
         self.collectionView.registerNib(UINib(nibName: "NewCategoryCell", bundle: nil), forCellWithReuseIdentifier: kNewCategoryCell)
         
         // Listen for notifications.
+        let notifications = [Notifications.ExpenseAdded, Notifications.CategoryAdded, NSManagedObjectContextObjectsDidChangeNotification]
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: Notifications.NewExpense, object: nil)
-        notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: Notifications.NewCategory, object: nil)
+        for notification in notifications {
+            notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: notification, object: nil)
+        }
     }
     
     override func viewWillAppear(animated: Bool)  {
@@ -81,7 +83,7 @@ class HomeViewController: UIViewController {
     
     func notifyWithNotification(notification: NSNotification) {
         switch notification.name {
-        case Notifications.NewExpense:
+        case Notifications.ExpenseAdded:
             // Get the category and refresh it.
             let object = notification.object as? SPRExpense
             if let expense = object {
@@ -89,12 +91,20 @@ class HomeViewController: UIViewController {
                 self.collectionView.reloadItemsAtIndexPaths([NSIndexPath(forItem: category.displayOrder, inSection: 0)])
             }
             
-        case Notifications.NewCategory:
-            let object = notification.object as? SPRCategory
-            if let category = object {
+        case Notifications.CategoryAdded:
+            if let category = notification.object as? SPRCategory {
                 let summary = CategorySummary(category: category, period: AppState.sharedState.activePeriod)
                 self.summaries.append(summary)
                 self.collectionView.reloadData()
+            }
+            
+        case NSManagedObjectContextObjectsDidChangeNotification:
+            if let deletionSet = notification.userInfo?[NSDeletedObjectsKey] as? NSSet {
+                if let deletedCategory = deletionSet.allObjects.first as? SPRCategory {
+                    let displayOrder = deletedCategory.displayOrder
+                    self.summaries.removeAtIndex(displayOrder)
+                    self.collectionView.reloadData()
+                }
             }
             
         default: ()

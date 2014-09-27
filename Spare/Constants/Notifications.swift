@@ -10,7 +10,8 @@ import Foundation
 
 struct Notifications {
     
-    static let NewExpense = "Notifications.NewExpense"
-    static let NewCategory = "Notifications.NewCategory"
+    static let prefix = "Spare.Notifications"
     
+    static let ExpenseAdded = "\(prefix).ExpenseAdded"
+    static let CategoryAdded = "\(prefix).CategoryAdded"
 }

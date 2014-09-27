@@ -38,8 +38,16 @@ class NewCategoryViewController: UIViewController {
     // IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
+    // Computed properties
+    var isForEditing: Bool {
+        if let category = self.categoryToEdit {
+            return true
+        }
+        return false
+    }
+    
     // Stored properties
-    var isForEditing = false
+    var categoryToEdit: SPRCategory?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +58,15 @@ class NewCategoryViewController: UIViewController {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("hideKeyboard"))
         gestureRecognizer.cancelsTouchesInView = false
         self.tableView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if self.isForEditing {
+            self.fields[kRowName].value = self.categoryToEdit?.name
+            self.fields[kRowColor].value = self.categoryToEdit?.colorNumber
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -80,7 +97,7 @@ extension NewCategoryViewController {
                     if let category = savedCategory {
                         // Post a notification that a new category has been added.
                         let notificationCenter = NSNotificationCenter.defaultCenter()
-                        notificationCenter.postNotificationName(Notifications.NewCategory, object: category)
+                        notificationCenter.postNotificationName(Notifications.CategoryAdded, object: category)
                         
                         // Dismiss the modal.
                         self.dismissViewControllerAnimated(true, completion: nil)
@@ -234,6 +251,7 @@ extension NewCategoryViewController: UITableViewDelegate {
         let message = "Deleting a category also deletes all expenses in it. This can't be undone. Are you sure?"
         let proceedButton = "Yes, delete!"
         let alertView = UIAlertView(title: DialogTitles.Confirm.toRaw(), message: message, delegate: self, cancelButtonTitle: DialogButtons.Cancel.toRaw(), otherButtonTitles: proceedButton)
+        alertView.tag = kAlertViewConfirmDelete
         alertView.show()
     }
     
@@ -245,24 +263,25 @@ extension NewCategoryViewController: UITextFieldDelegate {
     func textField(textField: UITextField,
         shouldChangeCharactersInRange range: NSRange,
         replacementString string: String) -> Bool {
-            let field = (textField as FormTextField).field
-            
-            // Replace the field's old value with the new one.
-            var oldValue: NSString?
-            if let value = field.value {
-                oldValue = field.value as? NSString
-            } else {
-                oldValue = ""
+            if let field = (textField as FormTextField).field {
+                // Replace the field's old value with the new one.
+                var oldValue: NSString?
+                if let value = field.value {
+                    oldValue = field.value as? NSString
+                } else {
+                    oldValue = ""
+                }
+                let newValue = oldValue?.stringByReplacingCharactersInRange(range, withString: string)
+                field.value = newValue
             }
-            let newValue = oldValue?.stringByReplacingCharactersInRange(range, withString: string)
-            field.value = newValue
             
             return true
     }
     
     func textFieldShouldClear(textField: UITextField) -> Bool {
-        let field = (textField as FormTextField).field
-        field.value = nil
+        if let field = (textField as FormTextField).field {
+            field.value = nil
+        }
         return true
     }
     
@@ -276,7 +295,24 @@ extension NewCategoryViewController: UIAlertViewDelegate {
             if alertView.tag == kAlertViewConfirmDelete {
                 if buttonIndex == 1 {
                     // Proceed deletion.
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    if let category = self.categoryToEdit {
+                        let context = category.managedObjectContext
+                        context.deleteObject(category)
+                        
+                        let document = SPRManagedDocument.sharedDocument()
+                        document.saveWithCompletionHandler {[unowned self] success in
+                            if success {
+                                let displayOrder3 = self.categoryToEdit?.displayOrder
+                                NSLog("category.displayOrder3 = \(displayOrder3)")
+                                
+//                                // Post a notification that the category has been deleted.
+//                                let notificationCenter = NSNotificationCenter.defaultCenter()
+//                                notificationCenter.postNotificationName(Notifications.CategoryDeleted, object: self.categoryToEdit)
+                                
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                            }
+                        }
+                    }
                 }
             }
     }

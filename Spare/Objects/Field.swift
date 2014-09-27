@@ -15,6 +15,7 @@ class Field {
     
     init(_ name: String) {
         self.name = name
+        self.value = nil
     }
     
     convenience init(_ name: String, value: Any?) {

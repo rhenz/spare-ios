@@ -18,7 +18,7 @@ class ExpensesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var categorySummary: CategorySummary!
+    var categorySummary: CategorySummary?
     var expenses = [SPRExpense]()
     var newExpensePopoverController: UIPopoverController!
     
@@ -34,16 +34,17 @@ class ExpensesViewController: UIViewController {
         // Register table view cells.
         tableView.registerNib(UINib(nibName: Classes.CategoryHeaderCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: kCategoryHeaderCell)
         
-        // Register for new expense notifications.
+        // Register for notifications.
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: Notifications.NewExpense, object: nil)
+//        notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: Notifications.ExpenseAdded, object: nil)
+        notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: NSManagedObjectContextObjectsDidChangeNotification, object: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Segues.PresentEditCategory {
             let navigationController = segue.destinationViewController as UINavigationController
             let editCategoryScreen = navigationController.viewControllers.first as NewCategoryViewController
-            editCategoryScreen.isForEditing = true
+            editCategoryScreen.categoryToEdit = self.categorySummary?.category
         }
     }
     
@@ -59,11 +60,25 @@ class ExpensesViewController: UIViewController {
     }
     
     func notifyWithNotification(notification: NSNotification) {
-        if notification.name == Notifications.NewExpense {
+        let notificationName = notification.name
+        
+        switch notificationName {
+        case Notifications.ExpenseAdded:
             let expense = notification.object as SPRExpense
-            if self.categorySummary.category.displayOrder == expense.category.displayOrder {
+            if self.categorySummary?.category.displayOrder == expense.category.displayOrder {
                 NSLog("New expense!")
             }
+            
+        case NSManagedObjectContextObjectsDidChangeNotification:
+            if let deletionSet = notification.userInfo?[NSDeletedObjectsKey] as? NSSet {
+                if let category = self.categorySummary?.category {
+                    if deletionSet.containsObject(category) {
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }
+                }
+            }
+            
+        default: ()
         }
     }
     
@@ -111,7 +126,7 @@ extension ExpensesViewController: UITableViewDelegate {
         heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
             switch indexPath.section {
             case kSectionCategoryHeader:
-                return CategoryHeaderCell.heightForCategorySummary(self.categorySummary)
+                return CategoryHeaderCell.heightForCategorySummary(self.categorySummary!)
             default:
                 return UITableViewAutomaticDimension
             }
