@@ -70,12 +70,10 @@ class ExpensesViewController: UIViewController {
             }
 
         case Notifications.CategoryDeleted:
-            // Pop the view controller if the categories are the same.
-            if let displayOrder = notification.object as? NSNumber {
-                if self.categorySummary?.category.displayOrder == displayOrder {
-                    self.navigationController?.popViewControllerAnimated(true)
-                }
-            }
+            // Just pop the view controller, to keep things simple.
+            // It is assumed that the deleted category and this category are the same
+            // since deleting categories are possible only through this view controller.
+            self.navigationController?.popViewControllerAnimated(true)
             
         default: ()
         }
