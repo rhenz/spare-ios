@@ -19,7 +19,7 @@ class CategoryHeaderCell: UITableViewCell {
             if let summary = self.categorySummary {
                 self.categoryLabel.text = summary.category.name
                 self.totalLabel.text = summary.total.stringValue
-                self.periodLabel.text = "Today (dummy"
+                self.periodLabel.text = "Today (dummy)"
                 self.backgroundColor = Colors.allColors[summary.category.colorNumber.integerValue]
             }
             self.setNeedsLayout()

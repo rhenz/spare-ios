@@ -1,5 +1,5 @@
 //
-//  NewCategoryViewController.swift
+//  EditCategoryViewController.swift
 //  Spare
 //
 //  Created by Matt Quiros on 9/18/14.
@@ -25,8 +25,12 @@ private let kCellDelete = "kCellDelete"
 // Alert view tags
 private let kAlertViewConfirmDelete = 1000
 
+enum CategoryEditMode {
+    case Add, Edit
+}
+
 // MARK: Class declaration
-class NewCategoryViewController: UIViewController {
+class EditCategoryViewController: UIViewController {
     
     // Lazy stored properties
     lazy var fields: [Field] = [Field("Name"), Field("Color", value: 0)]
@@ -40,10 +44,18 @@ class NewCategoryViewController: UIViewController {
     
     // Computed properties
     var isForEditing: Bool {
+        return self.editMode == .Edit
+    }
+    
+    var isForAdding: Bool {
+        return self.editMode == .Add
+    }
+    
+    var editMode: CategoryEditMode {
         if let category = self.categoryToEdit {
-            return true
-        }
-        return false
+            return .Edit
+            }
+            return .Add
     }
     
     // Stored properties
@@ -52,7 +64,14 @@ class NewCategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set the screen title.
         self.title = self.isForEditing ? "Edit Category" : "New Category"
+        
+        // Set the initial field values.
+        if self.isForEditing {
+            self.fields[kRowName].value = self.categoryToEdit?.name
+            self.fields[kRowColor].value = self.categoryToEdit?.colorNumber
+        }
         
         // Add a gesture recognizer to dismiss keyboard on tap.
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("hideKeyboard"))
@@ -62,11 +81,6 @@ class NewCategoryViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if self.isForEditing {
-            self.fields[kRowName].value = self.categoryToEdit?.name
-            self.fields[kRowColor].value = self.categoryToEdit?.colorNumber
-        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -81,7 +95,7 @@ class NewCategoryViewController: UIViewController {
 }
 
 // MARK: Target actions
-extension NewCategoryViewController {
+extension EditCategoryViewController {
     
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -95,9 +109,15 @@ extension NewCategoryViewController {
             } else {
                 self.saveCategoryWithCompletion({[unowned self] savedCategory in
                     if let category = savedCategory {
-                        // Post a notification that a new category has been added.
+                        // Post a notification.
                         let notificationCenter = NSNotificationCenter.defaultCenter()
-                        notificationCenter.postNotificationName(Notifications.CategoryAdded, object: category)
+                        switch self.editMode {
+                        case .Add:
+                            notificationCenter.postNotificationName(Notifications.CategoryAdded, object: category)
+                        case .Edit:
+                            notificationCenter.postNotificationName(Notifications.CategoryEdited, object: category)
+                        default: ()
+                        }
                         
                         // Dismiss the modal.
                         self.dismissViewControllerAnimated(true, completion: nil)
@@ -135,16 +155,26 @@ extension NewCategoryViewController {
     
     func saveCategoryWithCompletion(completionBlock: (SPRCategory?) -> ()) {
         let document = SPRManagedDocument.sharedDocument()
-        let category = NSEntityDescription.insertNewObjectForEntityForName(Classes.Category, inManagedObjectContext: document.managedObjectContext) as SPRCategory
+        
+        var category: SPRCategory?
+        if self.isForEditing {
+            category = self.categoryToEdit
+        } else {
+            category = NSEntityDescription.insertNewObjectForEntityForName(Classes.Category, inManagedObjectContext: document.managedObjectContext) as? SPRCategory
+        }
         
         // Set the values.
-        category.name = self.fields[kRowName].value! as NSString
-        category.colorNumber = NSNumber(integer: (self.fields[kRowColor].value! as Int))
+        let name = self.fields[kRowName].value! as NSString
+        category?.name = name
+        let colorNumber = self.fields[kRowColor].value! as Int
+        category?.colorNumber = NSNumber(integer: colorNumber)
         
-        // Append the category to the end of the list.
-        let numberOfCategories = SPRCategory.allCategories().count
-        let displayOrder = numberOfCategories > 0 ? numberOfCategories - 1 : 0
-        category.displayOrder = NSNumber(integer: displayOrder)
+        // If this is for adding a new category, append the category to the end of the list.
+        if self.isForAdding {
+            let numberOfCategories = SPRCategory.allCategories().count
+            let displayOrder = numberOfCategories > 0 ? numberOfCategories - 1 : 0
+            category?.displayOrder = NSNumber(integer: displayOrder)
+        }
         
         // Save the document.
         document.saveWithCompletionHandler({[unowned self] success in
@@ -159,7 +189,7 @@ extension NewCategoryViewController {
 }
 
 // MARK: Table view data source
-extension NewCategoryViewController: UITableViewDataSource {
+extension EditCategoryViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if self.isForEditing {
@@ -216,7 +246,7 @@ extension NewCategoryViewController: UITableViewDataSource {
 }
 
 // MARK: Table view delegate
-extension NewCategoryViewController: UITableViewDelegate {
+extension EditCategoryViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView,
         didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -258,7 +288,7 @@ extension NewCategoryViewController: UITableViewDelegate {
 }
 
 // MARK: Text field delegate
-extension NewCategoryViewController: UITextFieldDelegate {
+extension EditCategoryViewController: UITextFieldDelegate {
     
     func textField(textField: UITextField,
         shouldChangeCharactersInRange range: NSRange,
@@ -288,7 +318,7 @@ extension NewCategoryViewController: UITextFieldDelegate {
 }
 
 // MARK: Alert view delegate
-extension NewCategoryViewController: UIAlertViewDelegate {
+extension EditCategoryViewController: UIAlertViewDelegate {
     
     func alertView(alertView: UIAlertView,
         clickedButtonAtIndex buttonIndex: Int) {
@@ -318,7 +348,7 @@ extension NewCategoryViewController: UIAlertViewDelegate {
 }
 
 // MARK: Color picker delegate
-extension NewCategoryViewController: ColorPickerViewControllerDelegate {
+extension EditCategoryViewController: ColorPickerViewControllerDelegate {
     
     func colorPicker(colorPicker: ColorPickerViewController,
         didSelectColorNumber colorNumber: Int) {

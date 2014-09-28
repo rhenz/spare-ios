@@ -14,6 +14,7 @@ struct Notifications {
     
     static let ExpenseAdded = "\(prefix).ExpenseAdded"
     static let CategoryAdded = "\(prefix).CategoryAdded"
+    static let CategoryEdited = "\(prefix).CategoryEdited"
     static let CategoryDeleted = "\(prefix).CategoryDeleted"
     
 }

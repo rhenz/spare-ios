@@ -26,6 +26,10 @@ class ExpensesViewController: UIViewController {
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("newExpenseButtonTapped:"))
         return barButtonItem
     }()
+    
+    let recognizedNotifications = [Notifications.ExpenseAdded,
+        Notifications.CategoryEdited,
+        Notifications.CategoryDeleted]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +40,15 @@ class ExpensesViewController: UIViewController {
         
         // Register for notifications.
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: Notifications.ExpenseAdded, object: nil)
-        notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: Notifications.CategoryDeleted, object: nil)
+        for notification in self.recognizedNotifications {
+            notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: notification, object: nil)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Segues.PresentEditCategory {
             let navigationController = segue.destinationViewController as UINavigationController
-            let editCategoryScreen = navigationController.viewControllers.first as NewCategoryViewController
+            let editCategoryScreen = navigationController.viewControllers.first as EditCategoryViewController
             editCategoryScreen.categoryToEdit = self.categorySummary?.category
         }
     }
@@ -69,6 +74,12 @@ class ExpensesViewController: UIViewController {
                 NSLog("New expense!")
             }
 
+        case Notifications.CategoryEdited:
+            if let summary = self.categorySummary {
+                // Refresh the category header cell.
+                self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: kSectionCategoryHeader)], withRowAnimation: .Automatic)
+            }
+            
         case Notifications.CategoryDeleted:
             // Just pop the view controller, to keep things simple.
             // It is assumed that the deleted category and this category are the same

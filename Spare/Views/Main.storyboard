@@ -75,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="1078" y="525"/>
         </scene>
-        <!--New Category View Controller-->
+        <!--Edit Category View Controller-->
         <scene sceneID="xyr-WQ-KPd">
             <objects>
-                <viewController id="uZ1-t3-r0o" customClass="NewCategoryViewController" customModule="Spare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uZ1-t3-r0o" customClass="EditCategoryViewController" customModule="Spare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tqb-ID-BtR"/>
                         <viewControllerLayoutGuide type="bottom" id="uh1-F8-4GJ"/>

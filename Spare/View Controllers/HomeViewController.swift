@@ -22,6 +22,11 @@ class HomeViewController: UIViewController {
     
     var summaries: [CategorySummary]!
     var selectedIndexPath: NSIndexPath!
+    
+    let recognizedNotifications = [Notifications.ExpenseAdded,
+        Notifications.CategoryAdded,
+        Notifications.CategoryEdited,
+        Notifications.CategoryDeleted]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +37,8 @@ class HomeViewController: UIViewController {
         self.collectionView.registerNib(UINib(nibName: "NewCategoryCell", bundle: nil), forCellWithReuseIdentifier: kNewCategoryCell)
         
         // Listen for notifications.
-        let notifications = [Notifications.ExpenseAdded, Notifications.CategoryAdded, Notifications.CategoryDeleted]
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        for notification in notifications {
+        for notification in self.recognizedNotifications {
             notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: notification, object: nil)
         }
     }
@@ -96,6 +100,13 @@ class HomeViewController: UIViewController {
                 let summary = CategorySummary(category: category, period: AppState.sharedState.activePeriod)
                 self.summaries.append(summary)
                 self.collectionView.reloadData()
+            }
+            
+        case Notifications.CategoryEdited:
+            if let category = notification.object as? SPRCategory {
+                let index = category.displayOrder.integerValue
+                self.summaries[index].category = category
+                self.collectionView.reloadItemsAtIndexPaths([NSIndexPath(forItem: index, inSection: 0)])
             }
             
         case Notifications.CategoryDeleted:
