@@ -20,7 +20,11 @@ class CategoryPickerCell: UITableViewCell {
     
     var isExpanded = false
     var delegate: CategoryPickerCellDelegate?
-    var selectedCategory = AppState.sharedState.preselectedCategory
+    var selectedCategory: SPRCategory? {
+        didSet {
+            self.textField.text = self.selectedCategory?.name
+        }
+    }
     
     lazy var categories: [SPRCategory] = {
         return SPRCategory.allCategories() as [SPRCategory]
@@ -65,9 +69,9 @@ class CategoryPickerCell: UITableViewCell {
         if self.selectedCategory == nil {
             self.selectedCategory = self.categories[self.categories.count / 2]
             
-            // Show it in the picker view and text field.
+            // Show it in the picker view.
             self.pickerView.selectRow(self.selectedCategory!.displayOrder, inComponent: 0, animated: false)
-            self.textField.text = self.selectedCategory!.name
+//            self.textField.text = self.selectedCategory!.name
         }
     }
     
@@ -116,7 +120,7 @@ extension CategoryPickerCell: UIPickerViewDelegate {
         didSelectRow row: Int,
         inComponent component: Int) {
             self.selectedCategory = self.categories[row]
-            self.textField.text = self.selectedCategory!.name
+//            self.textField.text = self.selectedCategory!.name
     }
     
 }

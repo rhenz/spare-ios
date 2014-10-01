@@ -17,9 +17,6 @@ class AppState {
     
     var hasBeenSetup = false
     
-    // The preselected category when the New Expense screen is launched.
-    var preselectedCategory: SPRCategory?
-    
     class var sharedState: AppState {
         struct Singleton {
             static let instance = AppState()

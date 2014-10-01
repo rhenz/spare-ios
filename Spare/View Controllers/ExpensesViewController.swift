@@ -46,10 +46,18 @@ class ExpensesViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == Segues.PresentEditCategory {
+        switch segue.identifier {
+        case Segues.PresentNewExpense:
+            let navigationController = segue.destinationViewController as UINavigationController
+            let newExpenseScreen = navigationController.viewControllers.first as NewExpenseViewController
+            newExpenseScreen.preselectedCategory = self.categorySummary?.category
+            
+        case Segues.PresentEditCategory:
             let navigationController = segue.destinationViewController as UINavigationController
             let editCategoryScreen = navigationController.viewControllers.first as EditCategoryViewController
             editCategoryScreen.categoryToEdit = self.categorySummary?.category
+            
+        default: ()
         }
     }
     

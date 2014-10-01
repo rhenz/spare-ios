@@ -11,30 +11,38 @@ import Foundation
 // MARK: Class
 class NewExpenseViewController: UIViewController {
 
+    // MARK: Private enums & constants
+    
     private struct Row {
-        
         static let Description = 0
         static let Amount = 1
         static let Category = 2
         static let DateSpent = 3
-        
     }
     
     private let kCellIdentifiers = ["kDescriptionCell", "kAmountCell", "kCategoryCell", "kDateSpentCell"]
-    
     private let kTextFieldTag = 1000
     
+    // MARK: IBOutlets
+    
     @IBOutlet weak private var tableView: UITableView!
+    
+    // MARK: Stored properties
+    
+    var preselectedCategory: SPRCategory?
 
+    // MARK: Lazy properties
+    
     private lazy var fields: [Field] = {
         return [Field("Description"),
             Field("Amount"),
-            Field("Category", value: AppState.sharedState.preselectedCategory),
+            Field("Category", value: self.preselectedCategory),
             Field("Date spent", value: NSDate.simplifiedDate())]
     }()
     
     lazy var categoryPickerCell: CategoryPickerCell = {
         let cell = NSBundle.mainBundle().loadNibNamed(Classes.CategoryPickerCell, owner: self, options: nil).last as CategoryPickerCell
+        cell.selectedCategory = self.preselectedCategory
         cell.delegate = self
         return cell
         }()
@@ -45,21 +53,67 @@ class NewExpenseViewController: UIViewController {
         return cell
         }()
 
-    // MARK: View controller life cycle
-
+    // MARK: Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("hideKeyboard"))
         gestureRecognizer.cancelsTouchesInView = false
         self.tableView.addGestureRecognizer(gestureRecognizer)
     }
+    
+    func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    func validateExpenseWithCompletion(completionBlock: (String?) -> ()) {
+        // Enumerate the missing fields.
+        var missingFields = [String]()
+        for field in self.fields {
+            if let value = field.value {
+                // Make sure that empty strings are considered missing.
+                if let stringValue = value as? String {
+                    if stringValue.isEmpty {
+                        missingFields.append(field.name)
+                    }
+                }
+            } else {
+                missingFields.append(field.name)
+            }
+        }
+        
+        if (missingFields.count > 0) {
+            let message = String(format: "You must enter the following:\n%@", ", ".join(missingFields))
+            completionBlock(message)
+        } else {
+            completionBlock(nil)
+        }
+    }
+    
+    func saveExpenseWithCompletion(completionBlock: (SPRExpense) -> ()) {
+        let document = SPRManagedDocument.sharedDocument()
+        let expense = NSEntityDescription.insertNewObjectForEntityForName(Classes.Expense, inManagedObjectContext: document.managedObjectContext) as SPRExpense
+        
+        expense.name = self.fields[Row.Description].value as NSString
+        expense.amount = NSDecimalNumber.decimalNumberWithString(self.fields[Row.Amount].value as NSString)
+        expense.category = self.fields[Row.Category].value as SPRCategory
+        expense.dateSpent = self.fields[Row.DateSpent].value as NSDate
+        expense.displayOrder = NSNumber.numberWithInt(0)
+        
+        document.saveWithCompletionHandler({[unowned self] success in
+            completionBlock(expense)
+        })
+    }
+    
+}
 
-    // MARK: Target actions
-
+// MARK: Target actions
+extension NewExpenseViewController {
+    
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
         // Hide keyboard and collapse all cells.
         self.hideKeyboard()
@@ -85,49 +139,6 @@ class NewExpenseViewController: UIViewController {
                     }
                 })
             }
-        })
-    }
-
-    func hideKeyboard() {
-        self.view.endEditing(true)
-    }
-
-    func validateExpenseWithCompletion(completionBlock: (String?) -> ()) {
-        // Enumerate the missing fields.
-        var missingFields = [String]()
-        for field in self.fields {
-            if let value = field.value {
-                // Make sure that empty strings are considered missing.
-                if let stringValue = value as? String {
-                    if stringValue.isEmpty {
-                        missingFields.append(field.name)
-                    }
-                }
-            } else {
-                missingFields.append(field.name)
-            }
-        }
-        
-        if (missingFields.count > 0) {
-            let message = String(format: "You must enter the following:\n%@", ", ".join(missingFields))
-            completionBlock(message)
-        } else {
-            completionBlock(nil)
-        }
-    }
-
-    func saveExpenseWithCompletion(completionBlock: (SPRExpense) -> ()) {
-        let document = SPRManagedDocument.sharedDocument()
-        let expense = NSEntityDescription.insertNewObjectForEntityForName(Classes.Expense, inManagedObjectContext: document.managedObjectContext) as SPRExpense
-        
-        expense.name = self.fields[Row.Description].value as NSString
-        expense.amount = NSDecimalNumber.decimalNumberWithString(self.fields[Row.Amount].value as NSString)
-        expense.category = self.fields[Row.Category].value as SPRCategory
-        expense.dateSpent = self.fields[Row.DateSpent].value as NSDate
-        expense.displayOrder = NSNumber.numberWithInt(0)
-
-        document.saveWithCompletionHandler({[unowned self] success in
-            completionBlock(expense)
         })
     }
     

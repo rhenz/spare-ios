@@ -15,7 +15,7 @@ class SetupViewController: UIViewController {
     override func viewDidAppear(animated: Bool)  {
         super.viewDidAppear(animated)
         let document = SPRManagedDocument.sharedDocument()
-        document.prepareWithCompletionHandler {[unowned self] success in
+        document.prepareWithCompletionHandler {success in
             if success {
                 self.dismissViewControllerAnimated(false, completion: nil)
             } else {

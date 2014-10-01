@@ -135,10 +135,6 @@ extension HomeViewController {
     
     @IBAction func newExpenseButtonTapped(sender: AnyObject) {
         if self.summaries.count > 0 {
-            // There should be no selected category if the New Expense
-            // screen is launched from the Home screen.
-            AppState.sharedState.preselectedCategory = nil
-            
             if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
                 self.performSegueWithIdentifier(Segues.PresentNewExpense, sender: self)
             } else {
