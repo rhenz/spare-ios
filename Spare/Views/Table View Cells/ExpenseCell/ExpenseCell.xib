@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fbT-Z4-jNu" customClass="ExpenseCell" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fbT-Z4-jNu" id="IKt-v8-miF">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" horizontalCompressionResistancePriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qu2-Y0-TQZ">
+                        <rect key="frame" x="8" y="11" width="46" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="kuS-2P-KQ7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8s-Oz-kWH">
+                        <rect key="frame" x="64" y="11" width="246" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="0MC-pg-o4U"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="H8s-Oz-kWH" secondAttribute="trailing" constant="10" id="JNu-Yu-A3I"/>
+                    <constraint firstAttribute="centerY" secondItem="H8s-Oz-kWH" secondAttribute="centerY" id="QuQ-XO-QP9"/>
+                    <constraint firstItem="Qu2-Y0-TQZ" firstAttribute="baseline" secondItem="H8s-Oz-kWH" secondAttribute="baseline" id="XCR-hU-hTy"/>
+                    <constraint firstItem="H8s-Oz-kWH" firstAttribute="leading" secondItem="Qu2-Y0-TQZ" secondAttribute="trailing" constant="10" id="eXn-Z2-73Z"/>
+                    <constraint firstItem="Qu2-Y0-TQZ" firstAttribute="leading" secondItem="IKt-v8-miF" secondAttribute="leading" constant="8" id="ipc-C7-Gvg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="amountLabel" destination="H8s-Oz-kWH" id="2Jc-3R-HBg"/>
+                <outlet property="nameLabel" destination="Qu2-Y0-TQZ" id="UMr-5G-weF"/>
+            </connections>
+            <point key="canvasLocation" x="507" y="432"/>
+        </tableViewCell>
+    </objects>
+</document>

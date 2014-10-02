@@ -12,36 +12,105 @@ import Foundation
 private let kSectionCategoryHeader = 0
 
 // Cell identifiers
-private let kCategoryHeaderCell = "kCategoryHeaderCell"
+private let kCellCategoryHeader = "kCellCategoryHeader"
+private let kCellExpense = "kCellExpense"
 
+// MARK: Main class
 class ExpensesViewController: UIViewController {
+    
+    // MARK: IBOutlets
     
     @IBOutlet weak var tableView: UITableView!
     
-    var categorySummary: CategorySummary?
-    var expenses = [SPRExpense]()
-    var newExpensePopoverController: UIPopoverController!
+    // MARK: Stored properties
     
-    lazy var newExpenseBarButtonItem: UIBarButtonItem = {
-        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("newExpenseButtonTapped:"))
-        return barButtonItem
-    }()
+    var categorySummary: CategorySummary?
+    var newExpensePopoverController: UIPopoverController!
+    var headers: [ExpenseHeader]!
+    var expenses: Array<Array<SPRExpense>>!
+    
+    // MARK: Constants
     
     let recognizedNotifications = [Notifications.ExpenseAdded,
         Notifications.CategoryEdited,
         Notifications.CategoryDeleted]
+    
+    // MARK: Lazy properties
+    
+    lazy var newExpenseBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("newExpenseButtonTapped:"))
+        return barButtonItem
+        }()
+    
+    lazy var fetcher : NSFetchedResultsController? = {
+        if let summary = self.categorySummary {
+            let context = SPRManagedDocument.sharedDocument().managedObjectContext
+            
+            let fetchRequest = NSFetchRequest()
+            let entityDescription = NSEntityDescription.entityForName(Classes.Expense, inManagedObjectContext: context)
+            fetchRequest.entity = entityDescription
+            
+            let period = AppState.sharedState.activePeriod
+            let predicate = NSPredicate(format: "category == %@ AND dateSpent >= %@ AND dateSpent <= %@", summary.category, period.startDate, period.endDate)
+            fetchRequest.predicate = predicate
+            
+            // First, sort the expenses by most recent dateSpent so that sections are also sorted by most recent.
+            // Next, sort the expenses according to displayOrder.
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateSpent", ascending: false),
+                NSSortDescriptor(key:"displayOrder", ascending: true)]
+            
+            let fetcher = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "dateSpentAsSectionTitle", cacheName: nil)
+            return fetcher
+        }
+        return nil
+    }()
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationItem.rightBarButtonItems = [self.newExpenseBarButtonItem]
-        
-        // Register table view cells.
-        tableView.registerNib(UINib(nibName: Classes.CategoryHeaderCell, bundle: NSBundle.mainBundle()), forCellReuseIdentifier: kCategoryHeaderCell)
-        
-        // Register for notifications.
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        for notification in self.recognizedNotifications {
-            notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: notification, object: nil)
+// MARK: Main functions
+extension ExpensesViewController {
+    
+    func performFetch() {
+        var error: NSError?
+        if let fetcher = self.fetcher {
+            // Perform the fetch.
+            let success = fetcher.performFetch(&error)
+            if success == false {
+                NSLog("\(error)")
+            }
+            
+            // Restart the header and expense arrays.
+            self.headers = [ExpenseHeader]()
+            self.expenses = Array<Array<SPRExpense>>()
+            
+            if let sections = fetcher.sections {
+                // Get the sections.
+                for i in 0..<sections.count {
+                    // Extract the dateSpent from the section string.
+                    let sectionInfo = sections[i] as NSFetchedResultsSectionInfo
+                    let timeInterval = (sectionInfo.name as NSString).doubleValue
+                    let dateSpent = NSDate(timeIntervalSince1970: timeInterval)
+                    
+                    // Get the expenses.
+                    var expenses = [SPRExpense]()
+                    for j in 0..<sectionInfo.numberOfObjects {
+                        let indexPath = NSIndexPath(forRow: j, inSection: i)
+                        let expense = fetcher.objectAtIndexPath(indexPath) as SPRExpense
+                        expenses.append(expense)
+                    }
+                    self.expenses.append(expenses)
+                    
+                    // Compute for the total in the section
+                    let total = (expenses as AnyObject).valueForKeyPath("@sum.amount") as NSNumber
+                    
+                    // Create the header object and add it to the array.
+                    let header = ExpenseHeader(date: dateSpent, total: total)
+                    self.headers.append(header)
+                }
+            }
         }
     }
     
@@ -60,6 +129,29 @@ class ExpensesViewController: UIViewController {
         default: ()
         }
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.rightBarButtonItems = [self.newExpenseBarButtonItem]
+        
+        // Register table view cells.
+        tableView.registerNib(UINib(nibName: Classes.CategoryHeaderCell, bundle: nil), forCellReuseIdentifier: kCellCategoryHeader)
+        tableView.registerNib(UINib(nibName: Classes.ExpenseCell, bundle: nil), forCellReuseIdentifier: kCellExpense)
+        
+        // Register for notifications.
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        for notification in self.recognizedNotifications {
+            notificationCenter.addObserver(self, selector: Selector("notifyWithNotification:"), name: notification, object: nil)
+        }
+        
+        // Fetch the sections and expenses for the first time.
+        self.performFetch()
+    }
+    
+}
+
+// MARK: Target actions and observer callbacks
+extension ExpensesViewController {
     
     func newExpenseButtonTapped(sender: UIBarButtonItem) {
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
@@ -81,7 +173,7 @@ class ExpensesViewController: UIViewController {
             if self.categorySummary?.category.displayOrder == expense.category.displayOrder {
                 NSLog("New expense!")
             }
-
+            
         case Notifications.CategoryEdited:
             if let summary = self.categorySummary {
                 // Refresh the category header cell.
@@ -98,17 +190,14 @@ class ExpensesViewController: UIViewController {
         }
     }
     
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-    
 }
 
 // MARK: Table view data source
 extension ExpensesViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        let count = 1 + self.headers.count
+        return count
     }
     
     func tableView(tableView: UITableView,
@@ -117,6 +206,7 @@ extension ExpensesViewController: UITableViewDataSource {
             case kSectionCategoryHeader:
                 return 1
             default:
+                let expenses = self.expenses[section - 1]
                 return expenses.count
             }
     }
@@ -125,11 +215,18 @@ extension ExpensesViewController: UITableViewDataSource {
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
             switch indexPath.section {
             case kSectionCategoryHeader:
-                let cell = tableView.dequeueReusableCellWithIdentifier(kCategoryHeaderCell) as CategoryHeaderCell
+                let cell = tableView.dequeueReusableCellWithIdentifier(kCellCategoryHeader) as CategoryHeaderCell
                 cell.categorySummary = self.categorySummary
                 return cell
+                
+                // By default, this is gonna be an expense cell.
             default:
-                return UITableViewCell()
+                let expenses = self.expenses[indexPath.section - 1]
+                let expense = expenses[indexPath.row]
+                
+                let cell = tableView.dequeueReusableCellWithIdentifier(kCellExpense) as ExpenseCell
+                cell.expense = expense
+                return cell
             }
     }
     

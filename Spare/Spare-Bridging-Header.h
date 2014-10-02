@@ -19,3 +19,4 @@
 #import "NSString+SPR.h"
 #import "UIColor+HexColor.h"
 #import "NSDate+SPR.h"
+#import "NSNumber+SPR.h"

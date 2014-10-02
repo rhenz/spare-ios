@@ -147,8 +147,7 @@ UIAlertViewDelegate>
         NSLog(@"%@", error);
     }
     
-    // Initialize the arrays
-    self.headers = [NSMutableOrderedDictionary orderedDictionaryWithCapacity:0];
+    // Initialize the arrays    self.headers = [NSMutableOrderedDictionary orderedDictionaryWithCapacity:0];
     self.expenses = [NSMutableArray array];
     
     id<NSFetchedResultsSectionInfo> sectionInfo;
