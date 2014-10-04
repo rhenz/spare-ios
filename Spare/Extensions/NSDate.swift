@@ -14,13 +14,13 @@ enum DateUnit {
 
 extension NSDate {
     
-    // MARK: Class functions
+    // MARK: Class
 
     class func simplifiedDate() -> NSDate {
         return NSDate().firstMomentIn(.Day)
     }
 
-    // MARK: Instance functions
+    // MARK: Instance
 
     func firstMomentIn(unit: DateUnit) -> NSDate {
         return self.momentIn(unit, first: true)
@@ -30,7 +30,20 @@ extension NSDate {
         return self.momentIn(unit, first: false)
     }
     
-    // MARK: Helpers
+    func expenseHeaderString() -> String {
+        let formatter = NSDateFormatter()
+        formatter.calendar = NSCalendar.currentCalendar()
+        if self.isSameDayAsDate(NSDate.date()) {
+            formatter.dateFormat = "'Today,' MMM dd"
+        } else {
+            formatter.dateFormat = "EEE, MMM dd"
+        }
+        
+        let string = formatter.stringFromDate(self)
+        return string
+    }
+    
+    // MARK: Private
 
     private func momentIn(unit: DateUnit, first: Bool) -> NSDate {
         let calendar = NSCalendar.currentCalendar()

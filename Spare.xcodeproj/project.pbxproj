@@ -29,6 +29,9 @@
 		261EB88418DDB631009DDF78 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86818DDB631009DDF78 /* CoreData.framework */; };
 		261EB88C18DDB631009DDF78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 261EB88A18DDB631009DDF78 /* InfoPlist.strings */; };
 		261EB88E18DDB631009DDF78 /* SpareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 261EB88D18DDB631009DDF78 /* SpareTests.m */; };
+		261F117719DFF3E0007B4C36 /* ExpenseHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261F117619DFF3E0007B4C36 /* ExpenseHeaderView.xib */; };
+		261F117919DFF58D007B4C36 /* ExpenseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261F117819DFF58D007B4C36 /* ExpenseHeader.swift */; };
+		261F117D19DFF609007B4C36 /* ExpenseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261F117C19DFF609007B4C36 /* ExpenseHeaderView.swift */; };
 		262ABD0E18DEA1BF003C7C8B /* SPRIconFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */; };
 		2636766F19CAECFB00AFC544 /* CategorySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636766B19CAECFB00AFC544 /* CategorySummary.swift */; };
 		2636767019CAECFB00AFC544 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636766C19CAECFB00AFC544 /* Field.swift */; };
@@ -132,7 +135,6 @@
 		49B6740C19C924D9003A9C2E /* DatePickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49B6740B19C924D9003A9C2E /* DatePickerCell.xib */; };
 		49CA1C1719B8311F00763D93 /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CA1C1619B8311F00763D93 /* Classes.swift */; };
 		49D8DF4619C7FE7300ABBAE9 /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D8DF4519C7FE7300ABBAE9 /* FormTextField.swift */; };
-		49ED5E7E19DD170A00B1B4E7 /* ExpenseHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ED5E7D19DD170A00B1B4E7 /* ExpenseHeader.swift */; };
 		49ED5E8119DD27F100B1B4E7 /* ExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ED5E8019DD27F100B1B4E7 /* ExpenseCell.swift */; };
 		49ED5E8319DD280300B1B4E7 /* ExpenseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49ED5E8219DD280300B1B4E7 /* ExpenseCell.xib */; };
 /* End PBXBuildFile section */
@@ -184,6 +186,9 @@
 		261EB88918DDB631009DDF78 /* SpareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpareTests-Info.plist"; sourceTree = "<group>"; };
 		261EB88B18DDB631009DDF78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		261EB88D18DDB631009DDF78 /* SpareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpareTests.m; sourceTree = "<group>"; };
+		261F117619DFF3E0007B4C36 /* ExpenseHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseHeaderView.xib; sourceTree = "<group>"; };
+		261F117819DFF58D007B4C36 /* ExpenseHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseHeader.swift; sourceTree = "<group>"; };
+		261F117C19DFF609007B4C36 /* ExpenseHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseHeaderView.swift; sourceTree = "<group>"; };
 		262ABD0C18DEA1BF003C7C8B /* SPRIconFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRIconFont.h; sourceTree = "<group>"; };
 		262ABD0D18DEA1BF003C7C8B /* SPRIconFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRIconFont.m; sourceTree = "<group>"; };
 		2636766B19CAECFB00AFC544 /* CategorySummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySummary.swift; sourceTree = "<group>"; };
@@ -343,7 +348,6 @@
 		49B6740B19C924D9003A9C2E /* DatePickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerCell.xib; sourceTree = "<group>"; };
 		49CA1C1619B8311F00763D93 /* Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		49D8DF4519C7FE7300ABBAE9 /* FormTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
-		49ED5E7D19DD170A00B1B4E7 /* ExpenseHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseHeader.swift; sourceTree = "<group>"; };
 		49ED5E8019DD27F100B1B4E7 /* ExpenseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseCell.swift; sourceTree = "<group>"; };
 		49ED5E8219DD280300B1B4E7 /* ExpenseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExpenseCell.xib; sourceTree = "<group>"; };
 		F6196FFB0C5B41DEB0DB54BF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -531,8 +535,8 @@
 		261EB8A718DDC574009DDF78 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				261F117819DFF58D007B4C36 /* ExpenseHeader.swift */,
 				2636766B19CAECFB00AFC544 /* CategorySummary.swift */,
-				49ED5E7D19DD170A00B1B4E7 /* ExpenseHeader.swift */,
 				2636766C19CAECFB00AFC544 /* Field.swift */,
 				2636766D19CAECFB00AFC544 /* Period.swift */,
 				2612C8A418E8147300DE2765 /* SPRCategory.h */,
@@ -559,6 +563,23 @@
 				2670F2C7197A625000160D03 /* SPRDate.m */,
 			);
 			path = Objects;
+			sourceTree = "<group>";
+		};
+		261F117219DFF338007B4C36 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				261F117319DFF3D6007B4C36 /* ExpenseHeaderView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		261F117319DFF3D6007B4C36 /* ExpenseHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				261F117619DFF3E0007B4C36 /* ExpenseHeaderView.xib */,
+				261F117C19DFF609007B4C36 /* ExpenseHeaderView.swift */,
+			);
+			path = ExpenseHeaderView;
 			sourceTree = "<group>";
 		};
 		262ABD0B18DEA1A3003C7C8B /* Utilities */ = {
@@ -744,6 +765,7 @@
 				495E414E19AECE36006D4CD4 /* Collection View Cells */,
 				49A5599319CBCABB0040843A /* Collection View Reusable Views */,
 				49D8DF4419C7FE5100ABBAE9 /* Text Fields */,
+				261F117219DFF338007B4C36 /* Views */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -911,6 +933,7 @@
 				261EB87A18DDB631009DDF78 /* Images.xcassets in Resources */,
 				4932D06419C6C5C4000A9F5E /* LaunchFile.xib in Resources */,
 				4975C40019C29CFD005FE994 /* CategoryPickerCell.xib in Resources */,
+				261F117719DFF3E0007B4C36 /* ExpenseHeaderView.xib in Resources */,
 				2686F508197B792000C1D7A9 /* SPRCalendarPickerCollectionViewCell.xib in Resources */,
 				2636767919CB318A00AFC544 /* ColorPickerCell.xib in Resources */,
 			);
@@ -965,6 +988,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26743AAC19B32D540027EE94 /* NSDate.swift in Sources */,
+				261F117919DFF58D007B4C36 /* ExpenseHeader.swift in Sources */,
 				263B093A1939C88000454F2D /* SPRCategory.m in Sources */,
 				26617D6918F308F800CA51EA /* SPRSetupViewController.m in Sources */,
 				26D08D2618F105C600AE018F /* OldSPRHomeViewController.m in Sources */,
@@ -1043,12 +1067,12 @@
 				261EB87118DDB631009DDF78 /* main.m in Sources */,
 				2655403A196ED0E000E0AE3C /* SPRCustomDefaultCell.m in Sources */,
 				2659EFFA1968D62D005F31E1 /* SPRSliderViewController.m in Sources */,
-				49ED5E7E19DD170A00B1B4E7 /* ExpenseHeader.swift in Sources */,
 				26D2D7321969CFB100CCC973 /* SPRExpenseAmountCell.m in Sources */,
 				2656B76D196FE10C003313AA /* SPRDayPicker.m in Sources */,
 				26369E6A18F5787D000A9ADA /* SPRNewExpenseViewController.m in Sources */,
 				4975C3FB19C27BDB005FE994 /* Colors.swift in Sources */,
 				26743AA719B326040027EE94 /* AppState.swift in Sources */,
+				261F117D19DFF609007B4C36 /* ExpenseHeaderView.swift in Sources */,
 				26D2D71119694BB100CCC973 /* SPRHomeViewController.m in Sources */,
 				26D2D71A196951A800CCC973 /* UIViewController+Slider.m in Sources */,
 				266065BD18F055D50085F877 /* SPRExpense+Extension.m in Sources */,

@@ -26,7 +26,7 @@ class ExpensesViewController: UIViewController {
     
     var categorySummary: CategorySummary?
     var newExpensePopoverController: UIPopoverController!
-    var headers: [ExpenseHeader]!
+    var expenseHeaders: [ExpenseHeader]!
     var expenses: Array<Array<SPRExpense>>!
     
     // MARK: Constants
@@ -83,7 +83,7 @@ extension ExpensesViewController {
             }
             
             // Restart the header and expense arrays.
-            self.headers = [ExpenseHeader]()
+            self.expenseHeaders = [ExpenseHeader]()
             self.expenses = Array<Array<SPRExpense>>()
             
             if let sections = fetcher.sections {
@@ -108,7 +108,7 @@ extension ExpensesViewController {
                     
                     // Create the header object and add it to the array.
                     let header = ExpenseHeader(date: dateSpent, total: total)
-                    self.headers.append(header)
+                    self.expenseHeaders.append(header)
                 }
             }
         }
@@ -146,6 +146,13 @@ extension ExpensesViewController {
         
         // Fetch the sections and expenses for the first time.
         self.performFetch()
+    }
+    
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
+        
+        // Makes sure the section header widths adjust.
+        self.tableView.reloadData()
     }
     
 }
@@ -196,7 +203,7 @@ extension ExpensesViewController {
 extension ExpensesViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        let count = 1 + self.headers.count
+        let count = 1 + self.expenseHeaders.count
         return count
     }
     
@@ -252,6 +259,30 @@ extension ExpensesViewController: UITableViewDelegate {
                 self.performSegueWithIdentifier(Segues.PresentEditCategory, sender: self)
             default: ()
             }
+    }
+    
+    func tableView(tableView: UITableView,
+        viewForHeaderInSection section: Int) -> UIView? {
+            // The category header cell has no section header.
+            if section == kSectionCategoryHeader {
+                return nil
+            }
+            
+            let expenseHeader = self.expenseHeaders[section - 1]
+            let expenseHeaderView = ExpenseHeaderView.instantiateFromNib(owner: self)
+            expenseHeaderView.expenseHeader = self.expenseHeaders[section - 1]
+            
+            
+            
+            return expenseHeaderView
+    }
+    
+    func tableView(tableView: UITableView,
+        heightForHeaderInSection section: Int) -> CGFloat {
+            if section == kSectionCategoryHeader {
+                return UITableViewAutomaticDimension
+            }
+            return 20
     }
     
 }

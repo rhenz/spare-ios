@@ -14,9 +14,10 @@ struct Classes {
     static let Category = "SPRCategory"
     static let Expense = "SPRExpense"
     
-    // MARK: ExpensesViewController table view cells
+    // MARK: ExpensesViewController views
     static let CategoryHeaderCell = "CategoryHeaderCell"
     static let ExpenseCell = "ExpenseCell"
+    static let ExpenseHeaderView = "ExpenseHeaderView"
     
     // MARK: Picker table view cells
     static let CategoryPickerCell = "CategoryPickerCell"
