@@ -148,13 +148,6 @@ extension ExpensesViewController {
         self.performFetch()
     }
     
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        super.willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
-        
-        // Makes sure the section header widths adjust.
-        self.tableView.reloadData()
-    }
-    
 }
 
 // MARK: Target actions and observer callbacks
@@ -259,6 +252,8 @@ extension ExpensesViewController: UITableViewDelegate {
                 self.performSegueWithIdentifier(Segues.PresentEditCategory, sender: self)
             default: ()
             }
+            
+            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     func tableView(tableView: UITableView,
@@ -271,8 +266,6 @@ extension ExpensesViewController: UITableViewDelegate {
             let expenseHeader = self.expenseHeaders[section - 1]
             let expenseHeaderView = ExpenseHeaderView.instantiateFromNib(owner: self)
             expenseHeaderView.expenseHeader = self.expenseHeaders[section - 1]
-            
-            
             
             return expenseHeaderView
     }

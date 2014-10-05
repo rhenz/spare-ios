@@ -13,7 +13,7 @@ class ExpenseHeaderView: UIView {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var totalLabel: UILabel!
     
-    var expenseHeader: ExpenseHeader? {
+    weak var expenseHeader: ExpenseHeader? {
         didSet {
             if let headerInfo = self.expenseHeader {
                 self.dateLabel.text = headerInfo.date.expenseHeaderString()
@@ -28,10 +28,4 @@ class ExpenseHeaderView: UIView {
         return instance
     }
     
-    override func layoutSubviews() {
-        // Size the view to occupy the full width of its screen.
-        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, UIScreen.currentWidth(), self.frame.size.height)
-        super.layoutSubviews()
-    }
-
 }

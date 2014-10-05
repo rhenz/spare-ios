@@ -18,8 +18,8 @@ class ExpenseCell: UITableViewCell {
             if let expense = self.expense {
                 self.nameLabel.text = expense.name
                 self.amountLabel.text = expense.amount.currencyString()
+                self.setNeedsLayout()
             }
         }
     }
-    
 }
