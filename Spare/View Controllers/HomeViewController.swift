@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+// MARK: Main class
 class HomeViewController: UIViewController {
     
     private let kWidthRatio = CGFloat(29)
@@ -27,9 +28,27 @@ class HomeViewController: UIViewController {
         Notifications.CategoryAdded,
         Notifications.CategoryEdited,
         Notifications.CategoryDeleted]
+    
+    lazy var totalView: TotalView! = {
+        let totalView = TotalView.instantiateFromNib(owner: self) as TotalView!
+        return totalView
+    }()
+    
+    deinit {
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.removeObserver(self)
+    }
+    
+}
 
+// MARK: UIViewController methods
+extension HomeViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set up the title view.
+        self.navigationItem.titleView = self.totalView
         
         // Set up the collection view.
         self.collectionView.draggable = true
@@ -51,7 +70,7 @@ class HomeViewController: UIViewController {
             self.performSegueWithIdentifier(Segues.PresentSetup, sender: self)
             AppState.sharedState.hasBeenSetup = true
         }
-
+            
         else {
             // If the summaries have not yet been retrieved, retrieve them.
             if summaries == nil {
@@ -63,6 +82,9 @@ class HomeViewController: UIViewController {
                 
                 // Refresh the collection view to reflect changes in totals & the list of categories.
                 self.collectionView.reloadData()
+                
+                // Update the total view.
+                self.updateTotalView()
             }
         }
     }
@@ -82,6 +104,43 @@ class HomeViewController: UIViewController {
             let expensesScreen = segue.destinationViewController as ExpensesViewController
             expensesScreen.categorySummary = summaries[selectedIndexPath.row]
         default: ()
+        }
+    }
+    
+}
+
+// MARK: Helper functions
+extension HomeViewController {
+    
+    func updateTotalView() {
+        // Add the totals of each category.
+        var total = NSDecimalNumber(double: 0)
+        for summary in self.summaries {
+            let categoryTotal = summary.total
+            total = total.decimalNumberByAdding(categoryTotal)
+        }
+        
+        self.totalView.total = total
+        self.totalView.period = AppState.sharedState.activePeriod
+    }
+    
+}
+
+// MARK: Target actions and notifications
+extension HomeViewController {
+    
+    @IBAction func newExpenseButtonTapped(sender: AnyObject) {
+        if self.summaries.count > 0 {
+            if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+                self.performSegueWithIdentifier(Segues.PresentNewExpense, sender: self)
+            } else {
+                self.performSegueWithIdentifier(Segues.PopoverNewExpense, sender: self)
+            }
+        } else {
+            UIAlertView(title: "Invalid action",
+                message: "Before adding a new expense, you must first create a category.",
+                delegate: nil,
+                cancelButtonTitle: "Got it!").show()
         }
     }
     
@@ -120,31 +179,6 @@ class HomeViewController: UIViewController {
             }
             
         default: ()
-        }
-    }
-    
-    deinit {
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.removeObserver(self)
-    }
-    
-}
-
-// MARK: IBActions
-extension HomeViewController {
-    
-    @IBAction func newExpenseButtonTapped(sender: AnyObject) {
-        if self.summaries.count > 0 {
-            if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-                self.performSegueWithIdentifier(Segues.PresentNewExpense, sender: self)
-            } else {
-                self.performSegueWithIdentifier(Segues.PopoverNewExpense, sender: self)
-            }
-        } else {
-            UIAlertView(title: "Invalid action",
-                message: "Before adding a new expense, you must first create a category.",
-                delegate: nil,
-                cancelButtonTitle: "Got it!").show()
         }
     }
     

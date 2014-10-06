@@ -13,6 +13,11 @@
 		2612C89418E7E64C00DE2765 /* SPRCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C89318E7E64C00DE2765 /* SPRCategoryViewController.m */; };
 		2612C8AC18E831F600DE2765 /* SPRTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8AB18E831F600DE2765 /* SPRTextField.m */; };
 		2612C8AF18E847DB00DE2765 /* NSDate+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8AE18E847DB00DE2765 /* NSDate+SPR.m */; };
+		261815C419E19FCA00065E51 /* PeriodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261815C319E19FCA00065E51 /* PeriodViewController.swift */; };
+		261815CB19E1A85200065E51 /* TotalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261815CA19E1A85200065E51 /* TotalView.xib */; };
+		261815CD19E1AA2300065E51 /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261815CC19E1AA2300065E51 /* TotalView.swift */; };
+		261815D019E1B69F00065E51 /* QuickDefaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261815CF19E1B69F00065E51 /* QuickDefaultCell.xib */; };
+		261815D219E1B6BA00065E51 /* QuickDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261815D119E1B6BA00065E51 /* QuickDefaultCell.swift */; };
 		261DD0831945979200B0EBB2 /* SPRExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 261DD0821945979200B0EBB2 /* SPRExpense.m */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
@@ -72,6 +77,7 @@
 		2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */; };
 		2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628218E3370400B8D167 /* SPRManagedDocument.m */; };
 		2688628618E339F900B8D167 /* SPRField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628518E339F900B8D167 /* SPRField.m */; };
+		269A3C5B19E2277A0043C564 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A3C5A19E2277A0043C564 /* UIView.swift */; };
 		26A0636A19724A6900B682BB /* SPRCalendarPickerNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A0636919724A6900B682BB /* SPRCalendarPickerNavigationBar.m */; };
 		26A0636C1972655500B682BB /* SPRDayPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A0636B1972655500B682BB /* SPRDayPicker.xib */; };
 		26A90290191DCF9000CEE065 /* SPREditExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */; };
@@ -166,6 +172,11 @@
 		2612C8AB18E831F600DE2765 /* SPRTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRTextField.m; sourceTree = "<group>"; };
 		2612C8AD18E847DB00DE2765 /* NSDate+SPR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+SPR.h"; sourceTree = "<group>"; };
 		2612C8AE18E847DB00DE2765 /* NSDate+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+SPR.m"; sourceTree = "<group>"; };
+		261815C319E19FCA00065E51 /* PeriodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodViewController.swift; sourceTree = "<group>"; };
+		261815CA19E1A85200065E51 /* TotalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TotalView.xib; sourceTree = "<group>"; };
+		261815CC19E1AA2300065E51 /* TotalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalView.swift; sourceTree = "<group>"; };
+		261815CF19E1B69F00065E51 /* QuickDefaultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuickDefaultCell.xib; sourceTree = "<group>"; };
+		261815D119E1B6BA00065E51 /* QuickDefaultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickDefaultCell.swift; sourceTree = "<group>"; };
 		261DD0811945979200B0EBB2 /* SPRExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRExpense.h; path = Objects/SPRExpense.h; sourceTree = "<group>"; };
 		261DD0821945979200B0EBB2 /* SPRExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRExpense.m; path = Objects/SPRExpense.m; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,6 +267,7 @@
 		2688628218E3370400B8D167 /* SPRManagedDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRManagedDocument.m; sourceTree = "<group>"; };
 		2688628418E339F900B8D167 /* SPRField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRField.h; sourceTree = "<group>"; };
 		2688628518E339F900B8D167 /* SPRField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRField.m; sourceTree = "<group>"; };
+		269A3C5A19E2277A0043C564 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		26A0636819724A6900B682BB /* SPRCalendarPickerNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCalendarPickerNavigationBar.h; sourceTree = "<group>"; };
 		26A0636919724A6900B682BB /* SPRCalendarPickerNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCalendarPickerNavigationBar.m; sourceTree = "<group>"; };
 		26A0636B1972655500B682BB /* SPRDayPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPRDayPicker.xib; sourceTree = "<group>"; };
@@ -400,6 +412,24 @@
 				26F1F69519D583A700D925DE /* Dialogs.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		261815C919E1A84600065E51 /* TotalView */ = {
+			isa = PBXGroup;
+			children = (
+				261815CA19E1A85200065E51 /* TotalView.xib */,
+				261815CC19E1AA2300065E51 /* TotalView.swift */,
+			);
+			path = TotalView;
+			sourceTree = "<group>";
+		};
+		261815CE19E1B68D00065E51 /* QuickDefaultCell */ = {
+			isa = PBXGroup;
+			children = (
+				261815CF19E1B69F00065E51 /* QuickDefaultCell.xib */,
+				261815D119E1B6BA00065E51 /* QuickDefaultCell.swift */,
+			);
+			path = QuickDefaultCell;
 			sourceTree = "<group>";
 		};
 		261EB85618DDB630009DDF78 = {
@@ -568,6 +598,7 @@
 		261F117219DFF338007B4C36 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				261815C919E1A84600065E51 /* TotalView */,
 				261F117319DFF3D6007B4C36 /* ExpenseHeaderView */,
 			);
 			path = Views;
@@ -636,6 +667,7 @@
 		26743AA019B31AF70027EE94 /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				261815CE19E1B68D00065E51 /* QuickDefaultCell */,
 				49ED5E7F19DD27DA00B1B4E7 /* ExpenseCell */,
 				49B6740819C924C1003A9C2E /* DatePickerCell */,
 				4975C3FE19C29CED005FE994 /* CategoryPickerCell */,
@@ -730,6 +762,7 @@
 				492652BD19B553C000315CD9 /* NewExpenseViewController.swift */,
 				493E3FF319CA7C4E008CE2F1 /* EditCategoryViewController.swift */,
 				2636767519CB297000AFC544 /* ColorPickerViewController.swift */,
+				261815C319E19FCA00065E51 /* PeriodViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -752,6 +785,7 @@
 			children = (
 				49390C7719AC8CCD009598A5 /* UIScreen.swift */,
 				26743AAB19B32D540027EE94 /* NSDate.swift */,
+				269A3C5A19E2277A0043C564 /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -920,6 +954,7 @@
 				4932D06819C6D3D3000A9F5E /* generic-launch.png in Resources */,
 				2659EFF71968D5D6005F31E1 /* iPhone.storyboard in Resources */,
 				26A0636C1972655500B682BB /* SPRDayPicker.xib in Resources */,
+				261815CB19E1A85200065E51 /* TotalView.xib in Resources */,
 				261EB86F18DDB631009DDF78 /* InfoPlist.strings in Resources */,
 				26FCED8B1970742500FD01D0 /* SPRCalendarPickerNavigationBar.xib in Resources */,
 				4932D06919C6D3D3000A9F5E /* iphone6.png in Resources */,
@@ -927,6 +962,7 @@
 				49A5599719CBCADB0040843A /* ColorPickerHeader.xib in Resources */,
 				26743AA319B31B2D0027EE94 /* CategoryHeaderCell.xib in Resources */,
 				49B6740C19C924D9003A9C2E /* DatePickerCell.xib in Resources */,
+				261815D019E1B69F00065E51 /* QuickDefaultCell.xib in Resources */,
 				2656B772196FE5D8003313AA /* SPRMonthPicker.xib in Resources */,
 				4932D06A19C6D3D3000A9F5E /* iphone6plus.png in Resources */,
 				495E415519AED36F006D4CD4 /* NewCategoryCell.xib in Resources */,
@@ -1050,12 +1086,14 @@
 				261EB87518DDB631009DDF78 /* SPRAppDelegate.m in Sources */,
 				2638AAAC19260B7A00D3D3E2 /* SPREditCategoryViewController.m in Sources */,
 				2636766F19CAECFB00AFC544 /* CategorySummary.swift in Sources */,
+				261815D219E1B6BA00065E51 /* QuickDefaultCell.swift in Sources */,
 				2686F504197B78E400C1D7A9 /* SPRCalendarPickerCollectionViewCell.m in Sources */,
 				2636767619CB297000AFC544 /* ColorPickerViewController.swift in Sources */,
 				4975C40419C2C5DA005FE994 /* CategoryPickerCellDelegate.swift in Sources */,
 				2612C89418E7E64C00DE2765 /* SPRCategoryViewController.m in Sources */,
 				2636767B19CB319700AFC544 /* ColorPickerCell.swift in Sources */,
 				26D2D7361969CFB100CCC973 /* SPRFormCell.m in Sources */,
+				269A3C5B19E2277A0043C564 /* UIView.swift in Sources */,
 				2661CD7619321751009C7034 /* SPRCategoryHeaderCell.m in Sources */,
 				4975C3FD19C28B0B005FE994 /* Notifications.swift in Sources */,
 				26A9029D191DD81400CEE065 /* UIView+SPR.m in Sources */,
@@ -1065,11 +1103,13 @@
 				26A90290191DCF9000CEE065 /* SPREditExpenseViewController.m in Sources */,
 				26E9C310193CC41B009F18D9 /* NSIndexPath+SPR.m in Sources */,
 				261EB87118DDB631009DDF78 /* main.m in Sources */,
+				261815CD19E1AA2300065E51 /* TotalView.swift in Sources */,
 				2655403A196ED0E000E0AE3C /* SPRCustomDefaultCell.m in Sources */,
 				2659EFFA1968D62D005F31E1 /* SPRSliderViewController.m in Sources */,
 				26D2D7321969CFB100CCC973 /* SPRExpenseAmountCell.m in Sources */,
 				2656B76D196FE10C003313AA /* SPRDayPicker.m in Sources */,
 				26369E6A18F5787D000A9ADA /* SPRNewExpenseViewController.m in Sources */,
+				261815C419E19FCA00065E51 /* PeriodViewController.swift in Sources */,
 				4975C3FB19C27BDB005FE994 /* Colors.swift in Sources */,
 				26743AA719B326040027EE94 /* AppState.swift in Sources */,
 				261F117D19DFF609007B4C36 /* ExpenseHeaderView.swift in Sources */,

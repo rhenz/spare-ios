@@ -23,9 +23,8 @@ class ExpenseHeaderView: UIView {
         }
     }
     
-    class func instantiateFromNib(#owner: AnyObject) -> ExpenseHeaderView {
-        let instance = NSBundle.mainBundle().loadNibNamed(Classes.ExpenseHeaderView, owner: owner, options: nil).first as ExpenseHeaderView
-        return instance
+    override class func className() -> String? {
+        return Classes.ExpenseHeaderView
     }
     
 }

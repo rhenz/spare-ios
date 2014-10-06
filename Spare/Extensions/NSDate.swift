@@ -9,7 +9,7 @@
 import Foundation
 
 enum DateUnit {
-    case Day, Week, Month, Year
+    case Day, Week, Month, Year, Any
 }
 
 extension NSDate {

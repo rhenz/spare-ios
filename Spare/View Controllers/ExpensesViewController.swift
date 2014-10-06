@@ -264,10 +264,12 @@ extension ExpensesViewController: UITableViewDelegate {
             }
             
             let expenseHeader = self.expenseHeaders[section - 1]
-            let expenseHeaderView = ExpenseHeaderView.instantiateFromNib(owner: self)
-            expenseHeaderView.expenseHeader = self.expenseHeaders[section - 1]
+            let headerView = ExpenseHeaderView.instantiateFromNib(owner: self)
+            if let expenseHeaderView = headerView as? ExpenseHeaderView {
+                expenseHeaderView.expenseHeader = self.expenseHeaders[section - 1]
+            }
             
-            return expenseHeaderView
+            return headerView
     }
     
     func tableView(tableView: UITableView,
