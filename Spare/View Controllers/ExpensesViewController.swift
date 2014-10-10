@@ -171,7 +171,8 @@ extension ExpensesViewController {
         case Notifications.ExpenseAdded:
             let expense = notification.object as SPRExpense
             if self.categorySummary?.category.displayOrder == expense.category.displayOrder {
-                NSLog("New expense!")
+                self.performFetch()
+                self.tableView.reloadData()
             }
             
         case Notifications.CategoryEdited:
