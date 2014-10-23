@@ -16,8 +16,14 @@ class PeriodViewController: UIViewController {
     
 }
 
-// MARK: Target actions
+// MARK: Main functions
 extension PeriodViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tableView.registerNib(<#nib: UINib#>, forCellReuseIdentifier: <#String#>)
+    }
     
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -26,4 +32,24 @@ extension PeriodViewController {
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+}
+
+// MARK: UITableViewDataSource
+
+extension PeriodViewController: UITableViewDataSource {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1;
+    }
+    
+    func tableView(tableView: UITableView,
+        cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+            
+    }
+    
 }

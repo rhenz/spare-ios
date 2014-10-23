@@ -29,10 +29,11 @@ class ColorPickerViewController: UIViewController {
         super.viewDidLoad()
         
         // Register the nibs.
-        self.collectionView.registerNib(UINib(nibName: Classes.ColorPickerHeader, bundle: nil),
+        self.collectionView.registerNib(UINib.nibWithName(Classes.ColorPickerCell),
             forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
             withReuseIdentifier: Identifier.Header.toRaw())
-        self.collectionView.registerNib(UINib(nibName: Classes.ColorPickerCell, bundle: nil), forCellWithReuseIdentifier: Identifier.Cell.toRaw())
+        self.collectionView.registerNib(UINib.nibWithName(Classes.ColorPickerCell),
+            forCellWithReuseIdentifier: Identifier.Cell.toRaw())
     }
     
     @IBAction func selectButtonTapped(sender: UIBarButtonItem) {
@@ -42,7 +43,6 @@ class ColorPickerViewController: UIViewController {
         // Pop the view controller.
         self.navigationController?.popViewControllerAnimated(true)
     }
-    
     
     func colorNumberForIndexPath(indexPath: NSIndexPath) -> Int {
         let base = indexPath.section > 0 ? 1 : 0
@@ -65,7 +65,6 @@ class ColorPickerViewController: UIViewController {
 }
 
 // MARK: Private enum
-
 extension ColorPickerViewController {
     
     private enum Identifier: String {

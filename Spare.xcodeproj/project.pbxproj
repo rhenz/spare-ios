@@ -19,6 +19,8 @@
 		261815D019E1B69F00065E51 /* QuickDefaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261815CF19E1B69F00065E51 /* QuickDefaultCell.xib */; };
 		261815D219E1B6BA00065E51 /* QuickDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261815D119E1B6BA00065E51 /* QuickDefaultCell.swift */; };
 		26195B5019F9153100212D27 /* TotalViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26195B4F19F9153100212D27 /* TotalViewDelegate.swift */; };
+		26195B5319F9187B00212D27 /* DayPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26195B5219F9187B00212D27 /* DayPickerCell.swift */; };
+		26195B5519F9188F00212D27 /* DayPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26195B5419F9188F00212D27 /* DayPickerCell.xib */; };
 		261DD0831945979200B0EBB2 /* SPRExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 261DD0821945979200B0EBB2 /* SPRExpense.m */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
@@ -48,6 +50,7 @@
 		26369E6618F57817000A9ADA /* SPRCategoryPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 26369E6318F57817000A9ADA /* SPRCategoryPicker.m */; };
 		26369E6A18F5787D000A9ADA /* SPRNewExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26369E6918F5787D000A9ADA /* SPRNewExpenseViewController.m */; };
 		2638AAAC19260B7A00D3D3E2 /* SPREditCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2638AAAB19260B7A00D3D3E2 /* SPREditCategoryViewController.m */; };
+		2638EDE919F91CE200AACEF6 /* UINib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2638EDE819F91CE200AACEF6 /* UINib.swift */; };
 		263B09351939ADD900454F2D /* SPRCategorySummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 263B09341939ADD900454F2D /* SPRCategorySummary.m */; };
 		263B093A1939C88000454F2D /* SPRCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612C8A518E8147300DE2765 /* SPRCategory.m */; };
 		263BA034193E39750022BFDC /* SPRExpenseSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 263BA033193E39750022BFDC /* SPRExpenseSectionHeader.m */; };
@@ -179,6 +182,8 @@
 		261815CF19E1B69F00065E51 /* QuickDefaultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuickDefaultCell.xib; sourceTree = "<group>"; };
 		261815D119E1B6BA00065E51 /* QuickDefaultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickDefaultCell.swift; sourceTree = "<group>"; };
 		26195B4F19F9153100212D27 /* TotalViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalViewDelegate.swift; sourceTree = "<group>"; };
+		26195B5219F9187B00212D27 /* DayPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayPickerCell.swift; sourceTree = "<group>"; };
+		26195B5419F9188F00212D27 /* DayPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DayPickerCell.xib; sourceTree = "<group>"; };
 		261DD0811945979200B0EBB2 /* SPRExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRExpense.h; path = Objects/SPRExpense.h; sourceTree = "<group>"; };
 		261DD0821945979200B0EBB2 /* SPRExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRExpense.m; path = Objects/SPRExpense.m; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,6 +221,7 @@
 		26369E6918F5787D000A9ADA /* SPRNewExpenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRNewExpenseViewController.m; sourceTree = "<group>"; };
 		2638AAAA19260B7A00D3D3E2 /* SPREditCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPREditCategoryViewController.h; sourceTree = "<group>"; };
 		2638AAAB19260B7A00D3D3E2 /* SPREditCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPREditCategoryViewController.m; sourceTree = "<group>"; };
+		2638EDE819F91CE200AACEF6 /* UINib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINib.swift; sourceTree = "<group>"; };
 		263B09331939ADD900454F2D /* SPRCategorySummary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategorySummary.h; sourceTree = "<group>"; };
 		263B09341939ADD900454F2D /* SPRCategorySummary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategorySummary.m; sourceTree = "<group>"; };
 		263BA032193E39750022BFDC /* SPRExpenseSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRExpenseSectionHeader.h; sourceTree = "<group>"; };
@@ -433,6 +439,15 @@
 				261815D119E1B6BA00065E51 /* QuickDefaultCell.swift */,
 			);
 			path = QuickDefaultCell;
+			sourceTree = "<group>";
+		};
+		26195B5119F9186700212D27 /* DayPickerCell */ = {
+			isa = PBXGroup;
+			children = (
+				26195B5419F9188F00212D27 /* DayPickerCell.xib */,
+				26195B5219F9187B00212D27 /* DayPickerCell.swift */,
+			);
+			path = DayPickerCell;
 			sourceTree = "<group>";
 		};
 		261EB85618DDB630009DDF78 = {
@@ -670,6 +685,7 @@
 		26743AA019B31AF70027EE94 /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				26195B5119F9186700212D27 /* DayPickerCell */,
 				261815CE19E1B68D00065E51 /* QuickDefaultCell */,
 				49ED5E7F19DD27DA00B1B4E7 /* ExpenseCell */,
 				49B6740819C924C1003A9C2E /* DatePickerCell */,
@@ -789,6 +805,7 @@
 				49390C7719AC8CCD009598A5 /* UIScreen.swift */,
 				26743AAB19B32D540027EE94 /* NSDate.swift */,
 				269A3C5A19E2277A0043C564 /* UIView.swift */,
+				2638EDE819F91CE200AACEF6 /* UINib.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -974,6 +991,7 @@
 				4975C40019C29CFD005FE994 /* CategoryPickerCell.xib in Resources */,
 				261F117719DFF3E0007B4C36 /* ExpenseHeaderView.xib in Resources */,
 				2686F508197B792000C1D7A9 /* SPRCalendarPickerCollectionViewCell.xib in Resources */,
+				26195B5519F9188F00212D27 /* DayPickerCell.xib in Resources */,
 				2636767919CB318A00AFC544 /* ColorPickerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1056,6 +1074,7 @@
 				26E2485C18E1DA2B00391354 /* NSString+SPR.m in Sources */,
 				26FCD19F196BD6D400AC0FC8 /* SPRQuickDefaultCell.m in Sources */,
 				263BA034193E39750022BFDC /* SPRExpenseSectionHeader.m in Sources */,
+				26195B5319F9187B00212D27 /* DayPickerCell.swift in Sources */,
 				493E3FF419CA7C4E008CE2F1 /* EditCategoryViewController.swift in Sources */,
 				261EB87818DDB631009DDF78 /* Spare.xcdatamodeld in Sources */,
 				4945559B19AC725800C882CD /* HomeViewController.swift in Sources */,
@@ -1082,6 +1101,7 @@
 				49ED5E8119DD27F100B1B4E7 /* ExpenseCell.swift in Sources */,
 				260F58C7192C33B800F27F28 /* SPRFormComponents.m in Sources */,
 				261DD0831945979200B0EBB2 /* SPRExpense.m in Sources */,
+				2638EDE919F91CE200AACEF6 /* UINib.swift in Sources */,
 				26D2D7311969CFB100CCC973 /* SPRCategoryNameCell.m in Sources */,
 				26F652FC196A33B200C19D87 /* SPRNewCategoryCell.m in Sources */,
 				26D2D71D1969B0DD00CCC973 /* SPRTotalView.m in Sources */,

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6246" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6239"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cSE-MR-OnA" customClass="DayPickerCell" customModule="Spare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="206"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cSE-MR-OnA" id="aGs-S0-t0k">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5X-Cb-lI2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Day:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYC-i5-0vN">
+                                <rect key="frame" x="24" y="11" width="35" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jun 5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfq-gs-wVv">
+                                <rect key="frame" x="67" y="11" width="43" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWg-dF-wj0">
+                                <rect key="frame" x="255" y="7" width="54" height="30"/>
+                                <state key="normal" title="Change">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="xpr-zC-YFA"/>
+                        </constraints>
+                    </view>
+                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ALU-PG-WjQ">
+                        <rect key="frame" x="0.0" y="44" width="320" height="162"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="162" id="qwy-o7-HCW"/>
+                        </constraints>
+                        <date key="date" timeIntervalSinceReferenceDate="435755695.09964901">
+                            <!--2014-10-23 11:14:55 +0000-->
+                        </date>
+                    </datePicker>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="w5X-Cb-lI2" firstAttribute="top" secondItem="aGs-S0-t0k" secondAttribute="top" id="0xE-ft-EiA"/>
+                    <constraint firstItem="w5X-Cb-lI2" firstAttribute="leading" secondItem="aGs-S0-t0k" secondAttribute="leading" id="AqM-s2-rHy"/>
+                    <constraint firstItem="ALU-PG-WjQ" firstAttribute="leading" secondItem="aGs-S0-t0k" secondAttribute="leading" id="G8x-V6-75H"/>
+                    <constraint firstAttribute="trailing" secondItem="w5X-Cb-lI2" secondAttribute="trailing" id="OwA-k9-aYo"/>
+                    <constraint firstAttribute="trailing" secondItem="ALU-PG-WjQ" secondAttribute="trailing" id="bAc-oh-HFk"/>
+                    <constraint firstItem="ALU-PG-WjQ" firstAttribute="top" secondItem="w5X-Cb-lI2" secondAttribute="bottom" id="jyK-Sn-CE3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="changeButton" destination="RWg-dF-wj0" id="QUc-pT-tuH"/>
+                <outlet property="datePicker" destination="ALU-PG-WjQ" id="4dw-x5-Aoi"/>
+                <outlet property="periodLabel" destination="qfq-gs-wVv" id="wfv-LU-aNt"/>
+                <outlet property="tappableArea" destination="w5X-Cb-lI2" id="cX3-Ws-b0I"/>
+            </connections>
+            <point key="canvasLocation" x="264" y="137"/>
+        </tableViewCell>
+    </objects>
+</document>
