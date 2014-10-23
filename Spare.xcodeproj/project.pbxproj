@@ -18,6 +18,7 @@
 		261815CD19E1AA2300065E51 /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261815CC19E1AA2300065E51 /* TotalView.swift */; };
 		261815D019E1B69F00065E51 /* QuickDefaultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 261815CF19E1B69F00065E51 /* QuickDefaultCell.xib */; };
 		261815D219E1B6BA00065E51 /* QuickDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261815D119E1B6BA00065E51 /* QuickDefaultCell.swift */; };
+		26195B5019F9153100212D27 /* TotalViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26195B4F19F9153100212D27 /* TotalViewDelegate.swift */; };
 		261DD0831945979200B0EBB2 /* SPRExpense.m in Sources */ = {isa = PBXBuildFile; fileRef = 261DD0821945979200B0EBB2 /* SPRExpense.m */; };
 		261EB86318DDB630009DDF78 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86218DDB630009DDF78 /* Foundation.framework */; };
 		261EB86518DDB630009DDF78 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261EB86418DDB630009DDF78 /* CoreGraphics.framework */; };
@@ -177,6 +178,7 @@
 		261815CC19E1AA2300065E51 /* TotalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalView.swift; sourceTree = "<group>"; };
 		261815CF19E1B69F00065E51 /* QuickDefaultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuickDefaultCell.xib; sourceTree = "<group>"; };
 		261815D119E1B6BA00065E51 /* QuickDefaultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickDefaultCell.swift; sourceTree = "<group>"; };
+		26195B4F19F9153100212D27 /* TotalViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TotalViewDelegate.swift; sourceTree = "<group>"; };
 		261DD0811945979200B0EBB2 /* SPRExpense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPRExpense.h; path = Objects/SPRExpense.h; sourceTree = "<group>"; };
 		261DD0821945979200B0EBB2 /* SPRExpense.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPRExpense.m; path = Objects/SPRExpense.m; sourceTree = "<group>"; };
 		261EB85F18DDB630009DDF78 /* Spare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -419,6 +421,7 @@
 			children = (
 				261815CA19E1A85200065E51 /* TotalView.xib */,
 				261815CC19E1AA2300065E51 /* TotalView.swift */,
+				26195B4F19F9153100212D27 /* TotalViewDelegate.swift */,
 			);
 			path = TotalView;
 			sourceTree = "<group>";
@@ -919,7 +922,7 @@
 				ORGANIZATIONNAME = "Matt Quiros";
 				TargetAttributes = {
 					261EB85E18DDB630009DDF78 = {
-						DevelopmentTeam = FPAETPH845;
+						DevelopmentTeam = HZRWP982DG;
 					};
 					261EB87E18DDB631009DDF78 = {
 						TestTargetID = 261EB85E18DDB630009DDF78;
@@ -1099,6 +1102,7 @@
 				26A9029D191DD81400CEE065 /* UIView+SPR.m in Sources */,
 				495E415719AED380006D4CD4 /* NewCategoryCell.swift in Sources */,
 				26E2484618E1B7F900391354 /* UIColor+HexColor.m in Sources */,
+				26195B5019F9153100212D27 /* TotalViewDelegate.swift in Sources */,
 				2667328A196AF82700BB4DBE /* SPRPeriodViewController.m in Sources */,
 				26A90290191DCF9000CEE065 /* SPREditExpenseViewController.m in Sources */,
 				26E9C310193CC41B009F18D9 /* NSIndexPath+SPR.m in Sources */,
@@ -1256,7 +1260,7 @@
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "23718763-9afb-4eb4-85c3-566edea02e40";
+				PROVISIONING_PROFILE = "320f3487-a454-4734-a586-cd2a4771f9a4";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spare/Spare-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1287,7 +1291,7 @@
 					"$(PROJECT_DIR)/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "23718763-9afb-4eb4-85c3-566edea02e40";
+				PROVISIONING_PROFILE = "320f3487-a454-4734-a586-cd2a4771f9a4";
 				SWIFT_OBJC_BRIDGING_HEADER = "Spare/Spare-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;

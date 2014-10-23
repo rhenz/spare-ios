@@ -22,5 +22,6 @@ struct Segues {
     static let PresentNewExpense = "PresentNewExpense"
     static let PresentNewCategory = "PresentNewCategory"
     static let PresentEditCategory = "PresentEditCategory"
+    static let PresentPeriod = "PresentPeriod"
     
 }

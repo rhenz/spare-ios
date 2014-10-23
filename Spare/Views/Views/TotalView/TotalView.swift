@@ -13,6 +13,8 @@ class TotalView: UIView {
     @IBOutlet private weak var totalLabel: UILabel!
     @IBOutlet private weak var periodLabel: UILabel!
     
+    var delegate: TotalViewDelegate?
+    
     var total: NSDecimalNumber? {
         didSet {
             if let total = self.total {
@@ -31,34 +33,27 @@ class TotalView: UIView {
         }
     }
     
+}
+
+// MARK: Functions
+extension TotalView {
+    
     override class func className() -> String? {
         return "TotalView"
     }
     
-//    func printFrames() {
-//        NSLog("\nself: \(self.frame)\ntotalLabel: \(self.totalLabel.text), \(self.totalLabel.frame)\nperiodLabel: \(self.periodLabel.text), \(self.periodLabel.frame)")
-//    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        // Add a tap gesture recognizer.
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("totalViewTapped"))
+        self.addGestureRecognizer(gestureRecognizer)
+    }
     
-//    override func updateConstraints() {
-//        let totalLabelWidth = self.totalLabel.intrinsicContentSize().width
-//        let periodLabelWidth = self.periodLabel.intrinsicContentSize().width
-//        var greaterWidth: CGFloat = fmax(totalLabelWidth, periodLabelWidth)
-//        self.frame.size.width = greaterWidth
-//        
-//        super.updateConstraints()
-//    }
-//    
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-////        self.totalLabel.sizeToFit()
-////        self.periodLabel.sizeToFit()
-////        let totalLabelWidth = self.totalLabel.frame.width
-////        let periodLabelWidth = self.periodLabel.frame.width
-////        var greaterWidth: CGFloat = fmax(totalLabelWidth, periodLabelWidth)
-////        self.frame.size.width = greaterWidth
-////        super.layoutSubviews()
-////        NSLog("IN LAYOUTSUBVIEWS")
-//        self.printFrames()
-//    }
+    func totalViewTapped() {
+        if let theDelegate = delegate {
+            theDelegate.totalViewDidTap(self)
+        }
+    }
     
 }

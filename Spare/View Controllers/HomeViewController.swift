@@ -31,6 +31,7 @@ class HomeViewController: UIViewController {
     
     lazy var totalView: TotalView! = {
         let totalView = TotalView.instantiateFromNib(owner: self) as TotalView!
+        totalView.delegate = self
         return totalView
     }()
     
@@ -321,6 +322,16 @@ extension HomeViewController: UICollectionViewDataSource_Draggable {
     
     func collectionView(collectionView: UICollectionView!, transformForDraggingItemAtIndexPath indexPath: NSIndexPath!, duration: UnsafePointer<NSTimeInterval>) -> CGAffineTransform {
         return CGAffineTransformMakeScale(1.15, 1.15)
+    }
+    
+}
+
+// MARK: TotalViewDelegate
+
+extension HomeViewController: TotalViewDelegate {
+    
+    func totalViewDidTap(totalView: TotalView) {
+        self.performSegueWithIdentifier(Segues.PresentPeriod, sender: self)
     }
     
 }
