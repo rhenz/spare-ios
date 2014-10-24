@@ -16,7 +16,6 @@ class DayPickerCell: UITableViewCell {
     @IBOutlet weak var changeButton: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
     
-    var isExpanded: Bool = false
     var delegate: DayPickerCellDelegate?
     
     weak var period: Period? {
@@ -35,9 +34,30 @@ class DayPickerCell: UITableViewCell {
         }
     }
     
-    var checked: Bool = false {
+    var isExpanded: Bool = false {
         didSet {
-            self.checkLabel.hidden = self.checked == false
+            if self.isExpanded {
+                self.changeButton.setTitle("Done", forState: .Normal)
+                
+                if self.period == nil {
+                    self.period = Period.today()
+                }
+            } else {
+                self.changeButton.setTitle("Change", forState: .Normal)
+            }
+            self.setNeedsLayout()
+            
+            self.delegate?.dayPickerCellDidToggle(self)
+        }
+    }
+    
+    var isChecked: Bool = false {
+        didSet {
+            if self.isChecked {
+                self.delegate?.dayPickerCellGotSelected(self)
+            }
+            
+            self.checkLabel.hidden = self.isChecked == false
             self.setNeedsLayout()
         }
     }
@@ -57,49 +77,34 @@ class DayPickerCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.checkLabel.hidden = self.checked == false
+        
+        self.checkLabel.hidden = self.isChecked == false
+        
+        // Add a gesture recognizer to the tappable area.
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("tappableAreaTapped"))
+        self.tappableArea.addGestureRecognizer(tapGestureRecognizer)
     }
     
     @IBAction func changeButtonTapped(sender: AnyObject) {
-        // When the Change button is tapped, the cell is automatically selected.
-        self.checked = true
+        // Expanding the cell always selects the cell.
+        self.isChecked = true
         self.tappableArea.backgroundColor = Colors.tableViewCellGraySelectedColor
         
-        // Expand or collapse depending on the current state.
-        if self.isExpanded {
-            self.collapse()
-        } else {
-            self.expand()
-        }
-    }
-    func collapse() {
-        // Do nothing if it's already collapsed.
-        if self.isExpanded == false {
-            return
-        }
-        
-        self.isExpanded = false
-        
-        self.changeButton.setTitle("Change", forState: .Normal)
-        
-        self.delegate?.dayPickerCellDidToggle(self)
+        self.isExpanded = !self.isExpanded
     }
     
-    func expand() {
-        // Do nothing if it's already expanded.
-        if self.isExpanded {
-            return
+    func tappableAreaTapped() {
+        // If the cell is collapsed, select the cell.
+        if self.isExpanded == false {
+            self.isChecked = true
+            self.tappableArea.backgroundColor = Colors.tableViewCellGraySelectedColor
+            
+            // Selecting the cell does not always expand the cell. Expand only when there
+            // are no selected periods yet.
+            if self.period == nil {
+                self.isExpanded = true
+            }
         }
-        
-        self.isExpanded = true
-        
-        self.changeButton.setTitle("Done", forState: .Normal)
-        
-        if self.period == nil {
-            self.period = Period.today()
-        }
-        
-        self.delegate?.dayPickerCellDidToggle(self)
     }
-
+    
 }

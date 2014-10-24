@@ -97,4 +97,9 @@ extension PeriodViewController: DayPickerCellDelegate {
         self.tableView.endUpdates()
     }
     
+    func dayPickerCellGotSelected(dayPickerCell: DayPickerCell) {
+        // TO FIX: reload only the index paths of the old and new selection
+        self.tableView.reloadData()
+    }
+    
 }

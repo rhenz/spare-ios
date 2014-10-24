@@ -10,6 +10,7 @@ import Foundation
 
 protocol DayPickerCellDelegate {
     
+    func dayPickerCellGotSelected(dayPickerCell: DayPickerCell)
     func dayPickerCellDidToggle(dayPickerCell: DayPickerCell)
     
 }
