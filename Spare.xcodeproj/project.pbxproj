@@ -81,6 +81,7 @@
 		2688627D18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688627C18E31E2F00B8D167 /* SPRColorChooserSectionHeader.m */; };
 		2688628318E3370400B8D167 /* SPRManagedDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628218E3370400B8D167 /* SPRManagedDocument.m */; };
 		2688628618E339F900B8D167 /* SPRField.m in Sources */ = {isa = PBXBuildFile; fileRef = 2688628518E339F900B8D167 /* SPRField.m */; };
+		269916DD19FA6C9E00809ED1 /* DayPickerCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269916DC19FA6C9E00809ED1 /* DayPickerCellDelegate.swift */; };
 		269A3C5B19E2277A0043C564 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A3C5A19E2277A0043C564 /* UIView.swift */; };
 		26A0636A19724A6900B682BB /* SPRCalendarPickerNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A0636919724A6900B682BB /* SPRCalendarPickerNavigationBar.m */; };
 		26A0636C1972655500B682BB /* SPRDayPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26A0636B1972655500B682BB /* SPRDayPicker.xib */; };
@@ -275,6 +276,7 @@
 		2688628218E3370400B8D167 /* SPRManagedDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRManagedDocument.m; sourceTree = "<group>"; };
 		2688628418E339F900B8D167 /* SPRField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRField.h; sourceTree = "<group>"; };
 		2688628518E339F900B8D167 /* SPRField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRField.m; sourceTree = "<group>"; };
+		269916DC19FA6C9E00809ED1 /* DayPickerCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayPickerCellDelegate.swift; sourceTree = "<group>"; };
 		269A3C5A19E2277A0043C564 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		26A0636819724A6900B682BB /* SPRCalendarPickerNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCalendarPickerNavigationBar.h; sourceTree = "<group>"; };
 		26A0636919724A6900B682BB /* SPRCalendarPickerNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCalendarPickerNavigationBar.m; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 			children = (
 				26195B5419F9188F00212D27 /* DayPickerCell.xib */,
 				26195B5219F9187B00212D27 /* DayPickerCell.swift */,
+				269916DC19FA6C9E00809ED1 /* DayPickerCellDelegate.swift */,
 			);
 			path = DayPickerCell;
 			sourceTree = "<group>";
@@ -1091,6 +1094,7 @@
 				2612A25518FBEEE300E4848E /* SPRExpenseSectionHeaderView.m in Sources */,
 				26743AA519B31C4A0027EE94 /* CategoryHeaderCell.swift in Sources */,
 				26D2D7301969CFB100CCC973 /* SPRCategoryColorCell.m in Sources */,
+				269916DD19FA6C9E00809ED1 /* DayPickerCellDelegate.swift in Sources */,
 				2667328D196AFA9200BB4DBE /* SPRPeriod.m in Sources */,
 				2612C8AF18E847DB00DE2765 /* NSDate+SPR.m in Sources */,
 				4906172E19C95B9000553751 /* StoryboardIDs.swift in Sources */,

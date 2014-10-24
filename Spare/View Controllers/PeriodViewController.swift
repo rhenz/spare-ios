@@ -12,7 +12,9 @@ class PeriodViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
+    var selectedIndexPath: NSIndexPath?
     
+    var dayPickerCell: DayPickerCell!
     
 }
 
@@ -22,7 +24,7 @@ extension PeriodViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.registerNib(<#nib: UINib#>, forCellReuseIdentifier: <#String#>)
+        self.initializeCustomCells()
     }
     
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
@@ -33,10 +35,13 @@ extension PeriodViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func initializeCustomCells() {
+        self.dayPickerCell = DayPickerCell.instantiateFromNib(owner: self) as DayPickerCell
+        self.dayPickerCell.delegate = self
+    }
 }
 
 // MARK: UITableViewDataSource
-
 extension PeriodViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -49,7 +54,47 @@ extension PeriodViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView,
         cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+            let cell = UITableViewCell()
             
+            switch indexPath.section {
+            case 0:
+                switch indexPath.row {
+                case 0:
+                    return self.dayPickerCell
+                default:
+                    return cell
+                }
+            default:
+                return cell
+            }
+    }
+    
+}
+
+// MARK: UITableViewDelegate
+extension PeriodViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView,
+        heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+            let cell = self.tableView(tableView, cellForRowAtIndexPath: indexPath)
+            if let theCell = cell as? DayPickerCell {
+                return theCell.height
+            }
+            return UITableViewAutomaticDimension
+    }
+    
+}
+
+// MARK: DayPickerCellDelegate
+extension PeriodViewController: DayPickerCellDelegate {
+    
+    func dayPickerCellDidToggle(dayPickerCell: DayPickerCell) {
+        if dayPickerCell.isExpanded {
+            self.selectedIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+        }
+        
+        self.tableView.beginUpdates()
+        self.tableView.endUpdates()
     }
     
 }

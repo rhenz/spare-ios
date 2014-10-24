@@ -30,4 +30,12 @@ extension UIView {
         return nil
     }
     
+    class func nib() -> UINib! {
+        var nib: UINib?
+        if let nibName = self.className() {
+            nib = UINib(nibName: nibName, bundle: NSBundle.mainBundle())
+        }
+        return nib
+    }
+    
 }
