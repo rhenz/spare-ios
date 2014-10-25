@@ -90,6 +90,7 @@
 		26ACC4331974EA92007566A3 /* SPRDateConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 26ACC4321974EA92007566A3 /* SPRDateConstants.m */; };
 		26B235F3196C5FCC00268B27 /* SPRPeriodManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B235F2196C5FCC00268B27 /* SPRPeriodManager.m */; };
 		26B4B75618F277B5001B119D /* SPRCategorySummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B4B75518F277B5001B119D /* SPRCategorySummaryCell.m */; };
+		26C3D9FB19FB9F5F0080A8EB /* PeriodManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C3D9FA19FB9F5F0080A8EB /* PeriodManager.swift */; };
 		26D08D2618F105C600AE018F /* OldSPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D08D2518F105C600AE018F /* OldSPRHomeViewController.m */; };
 		26D2D71119694BB100CCC973 /* SPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D2D71019694BB100CCC973 /* SPRHomeViewController.m */; };
 		26D2D71A196951A800CCC973 /* UIViewController+Slider.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D2D719196951A800CCC973 /* UIViewController+Slider.m */; };
@@ -291,6 +292,7 @@
 		26B235F2196C5FCC00268B27 /* SPRPeriodManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRPeriodManager.m; sourceTree = "<group>"; };
 		26B4B75418F277B5001B119D /* SPRCategorySummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategorySummaryCell.h; sourceTree = "<group>"; };
 		26B4B75518F277B5001B119D /* SPRCategorySummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRCategorySummaryCell.m; sourceTree = "<group>"; };
+		26C3D9FA19FB9F5F0080A8EB /* PeriodManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodManager.swift; sourceTree = "<group>"; };
 		26D08D2418F105C600AE018F /* OldSPRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldSPRHomeViewController.h; sourceTree = "<group>"; };
 		26D08D2518F105C600AE018F /* OldSPRHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OldSPRHomeViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		26D2D70F19694BB100CCC973 /* SPRHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRHomeViewController.h; sourceTree = "<group>"; };
@@ -590,6 +592,7 @@
 				2636766B19CAECFB00AFC544 /* CategorySummary.swift */,
 				2636766C19CAECFB00AFC544 /* Field.swift */,
 				2636766D19CAECFB00AFC544 /* Period.swift */,
+				26C3D9FA19FB9F5F0080A8EB /* PeriodManager.swift */,
 				2612C8A418E8147300DE2765 /* SPRCategory.h */,
 				2612C8A518E8147300DE2765 /* SPRCategory.m */,
 				2612C8A118E8147200DE2765 /* SPRExpense.h */,
@@ -1137,6 +1140,7 @@
 				26D2D7321969CFB100CCC973 /* SPRExpenseAmountCell.m in Sources */,
 				2656B76D196FE10C003313AA /* SPRDayPicker.m in Sources */,
 				26369E6A18F5787D000A9ADA /* SPRNewExpenseViewController.m in Sources */,
+				26C3D9FB19FB9F5F0080A8EB /* PeriodManager.swift in Sources */,
 				261815C419E19FCA00065E51 /* PeriodViewController.swift in Sources */,
 				4975C3FB19C27BDB005FE994 /* Colors.swift in Sources */,
 				26743AA719B326040027EE94 /* AppState.swift in Sources */,

@@ -15,6 +15,7 @@ extension UIView {
     to provide the class name, which is also the name of the nib file.
     */
     class func className() -> String? {
+        // TO DO: Throw an exception here instead of returning nil.
         return nil
     }
     

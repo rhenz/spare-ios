@@ -10,11 +10,6 @@ import Foundation
 
 class AppState {
     
-    lazy var activePeriod: Period = {
-        // For now, always return today
-        return Period.today()
-    }()
-    
     var hasBeenSetup = false
     
     class var sharedState: AppState {
@@ -22,6 +17,12 @@ class AppState {
             static let instance = AppState()
         }
         return Singleton.instance
+    }
+    
+    lazy var periodManager: PeriodManager = PeriodManager()
+    
+    var activePeriod: Period! {
+        return self.periodManager.activePeriod
     }
     
 }

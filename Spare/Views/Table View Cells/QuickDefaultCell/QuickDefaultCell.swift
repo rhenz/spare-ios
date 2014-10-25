@@ -13,12 +13,25 @@ class QuickDefaultCell: UITableViewCell {
     @IBOutlet private weak var checkLabel: UILabel!
     @IBOutlet private weak var periodLabel: UILabel!
     
+    
     weak var period: Period? {
         didSet {
             if let period = self.period {
-//                self.periodLabel.text = period.
+                self.periodLabel.text = period.quickDefaultDescription
+                self.setNeedsLayout()
             }
         }
+    }
+    
+    var isChecked: Bool = false {
+        didSet {
+            self.checkLabel.hidden = self.isChecked == false
+            self.setNeedsLayout()
+        }
+    }
+    
+    override class func className() -> String? {
+        return "QuickDefaultCell"
     }
     
 }
