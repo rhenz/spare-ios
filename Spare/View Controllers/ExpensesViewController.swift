@@ -50,9 +50,10 @@ class ExpensesViewController: UIViewController {
             let entityDescription = NSEntityDescription.entityForName(Classes.Expense, inManagedObjectContext: context)
             fetchRequest.entity = entityDescription
             
-            let period = AppState.sharedState.activePeriod
-            let predicate = NSPredicate(format: "category == %@ AND dateSpent >= %@ AND dateSpent <= %@", summary.category, period.startDate, period.endDate)
-            fetchRequest.predicate = predicate
+            if let period = PeriodList.sharedList.activePeriod {
+                let predicate = NSPredicate(format: "category == %@ AND dateSpent >= %@ AND dateSpent <= %@", summary.category, period.startDate, period.endDate)
+                fetchRequest.predicate = predicate
+            }
             
             // First, sort the expenses by most recent dateSpent so that sections are also sorted by most recent.
             // Next, sort the expenses according to displayOrder.

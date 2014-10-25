@@ -19,10 +19,4 @@ class AppState {
         return Singleton.instance
     }
     
-    lazy var periodManager: PeriodManager = PeriodManager()
-    
-    var activePeriod: Period! {
-        return self.periodManager.activePeriod
-    }
-    
 }

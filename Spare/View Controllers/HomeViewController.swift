@@ -77,8 +77,10 @@ extension HomeViewController {
             if summaries == nil {
                 summaries = []
                 let categories = SPRCategory.allCategories()
-                for category in categories {
-                    summaries.append(CategorySummary(category: category as SPRCategory, period: AppState.sharedState.activePeriod))
+                if let activePeriod = PeriodList.sharedList.activePeriod {
+                    for category in categories {
+                        summaries.append(CategorySummary(category: category as SPRCategory, period: activePeriod))
+                    }
                 }
                 
                 // Refresh the collection view to reflect changes in totals & the list of categories.
@@ -104,6 +106,10 @@ extension HomeViewController {
         case Segues.ShowExpenses:
             let expensesScreen = segue.destinationViewController as ExpensesViewController
             expensesScreen.categorySummary = summaries[selectedIndexPath.row]
+        case Segues.PresentPeriod:
+            let navigationController = segue.destinationViewController as UINavigationController
+            let periodScreen = navigationController.viewControllers[0] as PeriodViewController
+            periodScreen.delegate = self
         default: ()
         }
     }
@@ -122,7 +128,7 @@ extension HomeViewController {
         }
         
         self.totalView.total = total
-        self.totalView.period = AppState.sharedState.activePeriod
+        self.totalView.period = PeriodList.sharedList.activePeriod
     }
     
 }
@@ -157,8 +163,10 @@ extension HomeViewController {
             
         case Notifications.CategoryAdded:
             if let category = notification.object as? SPRCategory {
-                let summary = CategorySummary(category: category, period: AppState.sharedState.activePeriod)
-                self.summaries.append(summary)
+                if let activePeriod = PeriodList.sharedList.activePeriod {
+                    let summary = CategorySummary(category: category, period: activePeriod)
+                    self.summaries.append(summary)
+                }
                 self.collectionView.reloadData()
             }
             
@@ -217,7 +225,6 @@ extension HomeViewController: UICollectionViewDataSource {
             actualCell.category = summary.category
             
             // Set the total label.
-            let period = AppState.sharedState.activePeriod
             actualCell.displayedTotal = summary.total
             
             cell = actualCell
@@ -327,11 +334,27 @@ extension HomeViewController: UICollectionViewDataSource_Draggable {
 }
 
 // MARK: TotalViewDelegate
-
 extension HomeViewController: TotalViewDelegate {
     
     func totalViewDidTap(totalView: TotalView) {
         self.performSegueWithIdentifier(Segues.PresentPeriod, sender: self)
+    }
+    
+}
+
+// MARK: PeriodViewControllerDelegate
+extension HomeViewController: PeriodViewControllerDelegate {
+    
+    func periodViewControllerDidUpdate(periodViewController: PeriodViewController) {
+        // Set the new active period in each summary.
+        if let activePeriod = PeriodList.sharedList.activePeriod {
+            for summary in self.summaries {
+                summary.period = activePeriod
+            }
+        }
+        
+        self.updateTotalView()
+        self.collectionView.reloadData()
     }
     
 }
