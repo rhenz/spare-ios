@@ -18,7 +18,7 @@ class DayPickerCell: UITableViewCell {
     
     var delegate: DayPickerCellDelegate?
     
-    weak var period: Period? {
+    var period: Period? {
         didSet {
             self.periodLabel.text = {
                 if let thePeriod = self.period {
@@ -38,16 +38,10 @@ class DayPickerCell: UITableViewCell {
         didSet {
             if self.isExpanded {
                 self.changeButton.setTitle("Done", forState: .Normal)
-                
-                if self.period == nil {
-                    self.period = Period.today()
-                }
             } else {
                 self.changeButton.setTitle("Change", forState: .Normal)
             }
             self.setNeedsLayout()
-            
-            self.delegate?.dayPickerCellDidToggle(self)
         }
     }
     
@@ -91,19 +85,24 @@ class DayPickerCell: UITableViewCell {
         self.tappableArea.backgroundColor = Colors.tableViewCellGraySelectedColor
         
         self.isExpanded = !self.isExpanded
+        self.delegate?.dayPickerCellDidToggle(self)
     }
     
     func tappableAreaTapped() {
-        // If the cell is collapsed, select the cell.
-        if self.isExpanded == false {
-            self.isChecked = true
-            self.tappableArea.backgroundColor = Colors.tableViewCellGraySelectedColor
-            
-            // Selecting the cell does not always expand the cell. Expand only when there
-            // are no selected periods yet.
-            if self.period == nil {
-                self.isExpanded = true
-            }
+        // Do nothing if the cell is expanded.
+        if self.isExpanded {
+            return
+        }
+        
+        self.isChecked = true
+        self.tappableArea.backgroundColor = Colors.tableViewCellGraySelectedColor
+        
+        // Selecting the cell does not always expand the cell. Expand only when there
+        // are no selected periods yet.
+        if self.period == nil {
+            self.isExpanded = true
+            self.period = Period(day: self.datePicker.date)
+            self.delegate?.dayPickerCellDidToggle(self)
         }
     }
     

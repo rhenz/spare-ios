@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -15,19 +16,19 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5X-Cb-lI2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Day:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYC-i5-0vN">
-                                <rect key="frame" x="24" y="11" width="35" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYC-i5-0vN">
+                                <rect key="frame" x="26" y="11" width="35" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfq-gs-wVv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfq-gs-wVv">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWg-dF-wj0">
-                                <rect key="frame" x="255" y="7" width="54" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWg-dF-wj0">
+                                <rect key="frame" x="256" y="7" width="54" height="30"/>
                                 <state key="normal" title="Change">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -35,7 +36,7 @@
                                     <action selector="changeButtonTapped:" destination="cSE-MR-OnA" eventType="touchUpInside" id="Ofd-rI-rIZ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95x-Be-T43">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95x-Be-T43">
                                 <rect key="frame" x="10" y="11" width="6" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -44,6 +45,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qfq-gs-wVv" firstAttribute="leading" secondItem="XYC-i5-0vN" secondAttribute="trailing" constant="8" id="GI5-Qb-lQT"/>
+                            <constraint firstItem="XYC-i5-0vN" firstAttribute="leading" secondItem="95x-Be-T43" secondAttribute="trailing" constant="10" id="KbP-xW-Fj1"/>
+                            <constraint firstItem="95x-Be-T43" firstAttribute="leading" secondItem="w5X-Cb-lI2" secondAttribute="leading" constant="10" id="UbV-Vj-erx"/>
+                            <constraint firstItem="XYC-i5-0vN" firstAttribute="baseline" secondItem="qfq-gs-wVv" secondAttribute="baseline" id="dN4-nZ-P8k"/>
+                            <constraint firstAttribute="centerY" secondItem="RWg-dF-wj0" secondAttribute="centerY" id="emg-b9-wqc"/>
+                            <constraint firstAttribute="centerY" secondItem="XYC-i5-0vN" secondAttribute="centerY" id="fVQ-nC-GBf"/>
+                            <constraint firstAttribute="trailing" secondItem="RWg-dF-wj0" secondAttribute="trailing" constant="10" id="hgP-aW-L0o"/>
+                            <constraint firstAttribute="centerY" secondItem="95x-Be-T43" secondAttribute="centerY" id="hzX-F3-JjU"/>
                             <constraint firstAttribute="height" constant="44" id="xpr-zC-YFA"/>
                         </constraints>
                     </view>
@@ -73,7 +82,7 @@
                 <outlet property="periodLabel" destination="qfq-gs-wVv" id="wfv-LU-aNt"/>
                 <outlet property="tappableArea" destination="w5X-Cb-lI2" id="cX3-Ws-b0I"/>
             </connections>
-            <point key="canvasLocation" x="264" y="137"/>
+            <point key="canvasLocation" x="169" y="140"/>
         </tableViewCell>
     </objects>
 </document>
