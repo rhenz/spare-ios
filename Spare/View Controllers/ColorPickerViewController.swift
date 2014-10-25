@@ -29,10 +29,10 @@ class ColorPickerViewController: UIViewController {
         super.viewDidLoad()
         
         // Register the nibs.
-        self.collectionView.registerNib(UINib.nibWithName(Classes.ColorPickerCell),
+        self.collectionView.registerNib(ColorPickerHeader.nib(),
             forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
             withReuseIdentifier: Identifier.Header.toRaw())
-        self.collectionView.registerNib(UINib.nibWithName(Classes.ColorPickerCell),
+        self.collectionView.registerNib(ColorPickerCell.nib(),
             forCellWithReuseIdentifier: Identifier.Cell.toRaw())
     }
     

@@ -20,4 +20,9 @@ class ColorPickerHeader: UICollectionReusableView {
             self.sectionLabel.text = newValue
         }
     }
+    
+    override class func className() -> String? {
+        return "ColorPickerHeader"
+    }
+    
 }

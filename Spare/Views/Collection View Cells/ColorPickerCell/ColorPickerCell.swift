@@ -40,4 +40,8 @@ class ColorPickerCell: UICollectionViewCell {
         self.contentView.frame = self.bounds
         super.layoutSubviews()
     }
+    
+    override class func className() -> String? {
+        return "ColorPickerCell"
+    }
 }

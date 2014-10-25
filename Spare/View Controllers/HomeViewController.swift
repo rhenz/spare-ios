@@ -154,6 +154,9 @@ extension HomeViewController {
     func notifyWithNotification(notification: NSNotification) {
         switch notification.name {
         case Notifications.ExpenseAdded:
+            // Update the total view.
+            self.updateTotalView()
+            
             // Get the category and refresh it.
             let object = notification.object as? SPRExpense
             if let expense = object {
@@ -180,12 +183,18 @@ extension HomeViewController {
         case Notifications.CategoryDeleted:
             if let displayOrder = notification.object as? NSNumber {
                 self.summaries.removeAtIndex(displayOrder)
+                
+                // Reassign the display orders from the deleted category onwards.
                 for i in displayOrder..<self.summaries.count {
                     var summary = self.summaries[i]
                     summary.category.displayOrder = NSNumber(integer: i)
                 }
+                
                 self.collectionView.reloadData()
             }
+            
+            // Update the total view.
+            self.updateTotalView()
             
         default: ()
         }

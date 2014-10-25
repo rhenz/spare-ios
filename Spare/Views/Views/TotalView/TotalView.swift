@@ -27,9 +27,7 @@ class TotalView: UIView {
     var period: Period? {
         didSet {
             if let period = self.period {
-                let periodText = period.quickDefaultDescription
-                NSLog("periodText: \(periodText)")
-                self.periodLabel.text = periodText
+                self.periodLabel.text = period.quickDefaultDescription
                 self.setNeedsLayout()
             }
         }
