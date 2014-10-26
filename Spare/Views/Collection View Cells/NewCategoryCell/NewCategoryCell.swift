@@ -20,6 +20,10 @@ class NewCategoryCell: UICollectionViewCell {
     
     @IBOutlet weak var verticalSpacingConstraint: NSLayoutConstraint!
     
+    override class func className() -> String? {
+        return "NewCategoryCell"
+    }
+    
     override func awakeFromNib() {
         // Set up the plus label.
         plusLabel.text = Icons.NewCategory.toRaw()

@@ -89,6 +89,8 @@
 		26A90290191DCF9000CEE065 /* SPREditExpenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9028F191DCF9000CEE065 /* SPREditExpenseViewController.m */; };
 		26A9029D191DD81400CEE065 /* UIView+SPR.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9029C191DD81400CEE065 /* UIView+SPR.m */; };
 		26ACC4331974EA92007566A3 /* SPRDateConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 26ACC4321974EA92007566A3 /* SPRDateConstants.m */; };
+		26B09F6219FC9A3C004DB3DF /* CategorySummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B09F6019FC9A3C004DB3DF /* CategorySummaryCell.swift */; };
+		26B09F6319FC9A3C004DB3DF /* CategorySummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26B09F6119FC9A3C004DB3DF /* CategorySummaryCell.xib */; };
 		26B235F3196C5FCC00268B27 /* SPRPeriodManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B235F2196C5FCC00268B27 /* SPRPeriodManager.m */; };
 		26B4B75618F277B5001B119D /* SPRCategorySummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B4B75518F277B5001B119D /* SPRCategorySummaryCell.m */; };
 		26D08D2618F105C600AE018F /* OldSPRHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D08D2518F105C600AE018F /* OldSPRHomeViewController.m */; };
@@ -289,6 +291,8 @@
 		26A9029C191DD81400CEE065 /* UIView+SPR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SPR.m"; sourceTree = "<group>"; };
 		26ACC4311974EA92007566A3 /* SPRDateConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRDateConstants.h; sourceTree = "<group>"; };
 		26ACC4321974EA92007566A3 /* SPRDateConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRDateConstants.m; sourceTree = "<group>"; };
+		26B09F6019FC9A3C004DB3DF /* CategorySummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySummaryCell.swift; sourceTree = "<group>"; };
+		26B09F6119FC9A3C004DB3DF /* CategorySummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategorySummaryCell.xib; sourceTree = "<group>"; };
 		26B235F1196C5FCC00268B27 /* SPRPeriodManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRPeriodManager.h; sourceTree = "<group>"; };
 		26B235F2196C5FCC00268B27 /* SPRPeriodManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPRPeriodManager.m; sourceTree = "<group>"; };
 		26B4B75418F277B5001B119D /* SPRCategorySummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPRCategorySummaryCell.h; sourceTree = "<group>"; };
@@ -733,6 +737,15 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		26B09F5F19FC9A22004DB3DF /* CategorySummaryCell */ = {
+			isa = PBXGroup;
+			children = (
+				26B09F6019FC9A3C004DB3DF /* CategorySummaryCell.swift */,
+				26B09F6119FC9A3C004DB3DF /* CategorySummaryCell.xib */,
+			);
+			path = CategorySummaryCell;
+			sourceTree = "<group>";
+		};
 		26D2D7211969CFB100CCC973 /* Form Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -833,6 +846,7 @@
 		495E414E19AECE36006D4CD4 /* Collection View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				26B09F5F19FC9A22004DB3DF /* CategorySummaryCell */,
 				2636767719CB317B00AFC544 /* ColorPickerCell */,
 				495E415319AED36F006D4CD4 /* NewCategoryCell */,
 			);
@@ -996,6 +1010,7 @@
 				4932D06419C6C5C4000A9F5E /* LaunchFile.xib in Resources */,
 				4975C40019C29CFD005FE994 /* CategoryPickerCell.xib in Resources */,
 				261F117719DFF3E0007B4C36 /* ExpenseHeaderView.xib in Resources */,
+				26B09F6319FC9A3C004DB3DF /* CategorySummaryCell.xib in Resources */,
 				2686F508197B792000C1D7A9 /* SPRCalendarPickerCollectionViewCell.xib in Resources */,
 				26195B5519F9188F00212D27 /* DayPickerCell.xib in Resources */,
 				2636767919CB318A00AFC544 /* ColorPickerCell.xib in Resources */,
@@ -1122,6 +1137,7 @@
 				4975C40419C2C5DA005FE994 /* CategoryPickerCellDelegate.swift in Sources */,
 				2612C89418E7E64C00DE2765 /* SPRCategoryViewController.m in Sources */,
 				2636767B19CB319700AFC544 /* ColorPickerCell.swift in Sources */,
+				26B09F6219FC9A3C004DB3DF /* CategorySummaryCell.swift in Sources */,
 				26D2D7361969CFB100CCC973 /* SPRFormCell.m in Sources */,
 				269A3C5B19E2277A0043C564 /* UIView.swift in Sources */,
 				2661CD7619321751009C7034 /* SPRCategoryHeaderCell.m in Sources */,

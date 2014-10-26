@@ -53,8 +53,8 @@ extension HomeViewController {
         
         // Set up the collection view.
         self.collectionView.draggable = true
-        self.collectionView.registerClass(SPRCategorySummaryCell.self, forCellWithReuseIdentifier: kSummaryCell)
-        self.collectionView.registerNib(UINib(nibName: "NewCategoryCell", bundle: nil), forCellWithReuseIdentifier: kNewCategoryCell)
+        self.collectionView.registerNib(CategorySummaryCell.nib(), forCellWithReuseIdentifier: kSummaryCell)
+        self.collectionView.registerNib(NewCategoryCell.nib(), forCellWithReuseIdentifier: kNewCategoryCell)
         
         // Listen for notifications.
         let notificationCenter = NSNotificationCenter.defaultCenter()
@@ -227,14 +227,11 @@ extension HomeViewController: UICollectionViewDataSource {
             
             // Otherwise, this is a normal category summary cell.
         default:
-            let actualCell = collectionView.dequeueReusableCellWithReuseIdentifier(kSummaryCell, forIndexPath: indexPath) as SPRCategorySummaryCell
+            let actualCell = collectionView.dequeueReusableCellWithReuseIdentifier(kSummaryCell, forIndexPath: indexPath) as CategorySummaryCell
             
             // Set the category label.
             let summary = self.summaries[indexPath.row]
-            actualCell.category = summary.category
-            
-            // Set the total label.
-            actualCell.displayedTotal = summary.total
+            actualCell.summary = summary
             
             cell = actualCell
         }
