@@ -95,10 +95,10 @@ class NewExpenseViewController: UIViewController {
         let expense = NSEntityDescription.insertNewObjectForEntityForName(Classes.Expense, inManagedObjectContext: document.managedObjectContext) as SPRExpense
         
         expense.name = self.fields[Row.Description].value as NSString
-        expense.amount = NSDecimalNumber.decimalNumberWithString(self.fields[Row.Amount].value as NSString)
+        expense.amount = NSDecimalNumber(string: self.fields[Row.Amount].value as NSString)
         expense.category = self.fields[Row.Category].value as SPRCategory
         expense.dateSpent = self.fields[Row.DateSpent].value as NSDate
-        expense.displayOrder = NSNumber.numberWithInt(0)
+        expense.displayOrder = NSNumber(int:0)
         
         document.saveWithCompletionHandler({[unowned self] success in
             completionBlock(expense)

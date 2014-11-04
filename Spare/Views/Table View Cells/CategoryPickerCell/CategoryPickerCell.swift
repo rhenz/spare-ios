@@ -70,7 +70,7 @@ class CategoryPickerCell: UITableViewCell {
             self.selectedCategory = self.categories[self.categories.count / 2]
             
             // Show it in the picker view.
-            self.pickerView.selectRow(self.selectedCategory!.displayOrder, inComponent: 0, animated: false)
+            self.pickerView.selectRow(self.selectedCategory!.displayOrder.integerValue, inComponent: 0, animated: false)
 //            self.textField.text = self.selectedCategory!.name
         }
     }

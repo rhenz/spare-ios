@@ -280,7 +280,7 @@ extension EditCategoryViewController: UITableViewDelegate {
     func confirmDelete() {
         let message = "Deleting a category also deletes all expenses in it. This can't be undone. Are you sure?"
         let proceedButton = "Yes, delete!"
-        let alertView = UIAlertView(title: DialogTitles.Confirm.toRaw(), message: message, delegate: self, cancelButtonTitle: DialogButtons.Cancel.toRaw(), otherButtonTitles: proceedButton)
+        let alertView = UIAlertView(title: DialogTitles.Confirm.rawValue, message: message, delegate: self, cancelButtonTitle: DialogButtons.Cancel.rawValue, otherButtonTitles: proceedButton)
         alertView.tag = kAlertViewConfirmDelete
         alertView.show()
     }
@@ -327,8 +327,9 @@ extension EditCategoryViewController: UIAlertViewDelegate {
                     // Proceed deletion.
                     if let category = self.categoryToEdit {
                         let displayOrder = category.displayOrder
-                        let context = category.managedObjectContext
-                        context.deleteObject(category)
+                        if let context = category.managedObjectContext {
+                            context.deleteObject(category)
+                        }
                         
                         let document = SPRManagedDocument.sharedDocument()
                         document.saveWithCompletionHandler {[unowned self] success in

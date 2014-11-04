@@ -92,7 +92,7 @@ extension ExpensesViewController {
                 for i in 0..<sections.count {
                     // Extract the dateSpent from the section string.
                     let sectionInfo = sections[i] as NSFetchedResultsSectionInfo
-                    let timeInterval = (sectionInfo.name as NSString).doubleValue
+                    let timeInterval = (sectionInfo.name! as NSString).doubleValue
                     let dateSpent = NSDate(timeIntervalSince1970: timeInterval)
                     
                     // Get the expenses.
@@ -116,18 +116,20 @@ extension ExpensesViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        switch segue.identifier {
-        case Segues.PresentNewExpense:
-            let navigationController = segue.destinationViewController as UINavigationController
-            let newExpenseScreen = navigationController.viewControllers.first as NewExpenseViewController
-            newExpenseScreen.preselectedCategory = self.categorySummary?.category
-            
-        case Segues.PresentEditCategory:
-            let navigationController = segue.destinationViewController as UINavigationController
-            let editCategoryScreen = navigationController.viewControllers.first as EditCategoryViewController
-            editCategoryScreen.categoryToEdit = self.categorySummary?.category
-            
-        default: ()
+        if let identifier = segue.identifier {
+            switch identifier {
+            case Segues.PresentNewExpense:
+                let navigationController = segue.destinationViewController as UINavigationController
+                let newExpenseScreen = navigationController.viewControllers.first as NewExpenseViewController
+                newExpenseScreen.preselectedCategory = self.categorySummary?.category
+                
+            case Segues.PresentEditCategory:
+                let navigationController = segue.destinationViewController as UINavigationController
+                let editCategoryScreen = navigationController.viewControllers.first as EditCategoryViewController
+                editCategoryScreen.categoryToEdit = self.categorySummary?.category
+                
+            default: ()
+            }
         }
     }
     

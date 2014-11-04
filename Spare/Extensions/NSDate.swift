@@ -33,7 +33,7 @@ extension NSDate {
     func expenseHeaderString() -> String {
         let formatter = NSDateFormatter()
         formatter.calendar = NSCalendar.currentCalendar()
-        if self.isSameDayAsDate(NSDate.date()) {
+        if self.isSameDayAsDate(NSDate()) {
             formatter.dateFormat = "'Today,' MMM dd"
         } else {
             formatter.dateFormat = "EEE, MMM dd"

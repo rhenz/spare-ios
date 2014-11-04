@@ -26,7 +26,7 @@ class NewCategoryCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         // Set up the plus label.
-        plusLabel.text = Icons.NewCategory.toRaw()
+        plusLabel.text = Icons.NewCategory.rawValue
         plusLabel.font = UIFont(name: kIconFontName, size: {
             let idiom = UIDevice.currentDevice().userInterfaceIdiom
             switch idiom {

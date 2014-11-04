@@ -31,9 +31,9 @@ class ColorPickerViewController: UIViewController {
         // Register the nibs.
         self.collectionView.registerNib(ColorPickerHeader.nib(),
             forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-            withReuseIdentifier: Identifier.Header.toRaw())
+            withReuseIdentifier: Identifier.Header.rawValue)
         self.collectionView.registerNib(ColorPickerCell.nib(),
-            forCellWithReuseIdentifier: Identifier.Cell.toRaw())
+            forCellWithReuseIdentifier: Identifier.Cell.rawValue)
     }
     
     @IBAction func selectButtonTapped(sender: UIBarButtonItem) {
@@ -92,7 +92,7 @@ extension ColorPickerViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView,
         cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Identifier.Cell.toRaw(), forIndexPath: indexPath) as ColorPickerCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Identifier.Cell.rawValue, forIndexPath: indexPath) as ColorPickerCell
             
             let colorNumber = self.colorNumberForIndexPath(indexPath)
             let selected = colorNumber == self.selectedColorNumber
@@ -107,7 +107,7 @@ extension ColorPickerViewController: UICollectionViewDataSource {
                 return UICollectionReusableView()
             }
             
-            let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: Identifier.Header.toRaw(), forIndexPath: indexPath) as ColorPickerHeader
+            let header = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: Identifier.Header.rawValue, forIndexPath: indexPath) as ColorPickerHeader
             header.section = Colors.sections[indexPath.section]
             return header
     }
