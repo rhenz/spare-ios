@@ -33,31 +33,15 @@ class CategorySummaryCell: UICollectionViewCell {
         self.contentView.frame = self.bounds
         super.layoutSubviews()
         
-//        self.categoryLabel.numberOfLines = {
-//            switch UIDevice.currentDevice().userInterfaceIdiom {
-//            case .Pad:
-//                return 3
-//            case .Phone:
-//                // For iPhone 5S and below.
-//                if UIScreen.mainScreen().bounds.size.width == 320 {
-//                    return 2
-//                } else {
-//                    return 3
-//                }
-//            default:
-//                return 1
-//            }
-//            }()
-        
         self.categoryLabel.font = UIFont(name: self.categoryLabel.font.fontName,
             size: {
-                let fontSize = self.bounds.height / 8
+                let fontSize = self.bounds.height / 6
                 return fontSize
                 }())
         
         self.totalLabel.font = UIFont(name: self.totalLabel.font.fontName,
             size: {
-                let fontSize = self.bounds.height / 10
+                let fontSize = self.bounds.height / 8
                 return fontSize
         }())
     }
