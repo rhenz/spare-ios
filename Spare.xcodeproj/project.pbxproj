@@ -148,6 +148,8 @@
 		4975C40019C29CFD005FE994 /* CategoryPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4975C3FF19C29CFD005FE994 /* CategoryPickerCell.xib */; };
 		4975C40219C29D10005FE994 /* CategoryPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975C40119C29D10005FE994 /* CategoryPickerCell.swift */; };
 		4975C40419C2C5DA005FE994 /* CategoryPickerCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975C40319C2C5DA005FE994 /* CategoryPickerCellDelegate.swift */; };
+		49819A391A382DC00019ED41 /* CustomPeriodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49819A381A382DC00019ED41 /* CustomPeriodCell.xib */; };
+		49819A3B1A382DD30019ED41 /* CustomPeriodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49819A3A1A382DD30019ED41 /* CustomPeriodCell.swift */; };
 		49A5599519CBCACF0040843A /* ColorPickerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5599419CBCACF0040843A /* ColorPickerHeader.swift */; };
 		49A5599719CBCADB0040843A /* ColorPickerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49A5599619CBCADB0040843A /* ColorPickerHeader.xib */; };
 		49A6533B19C949CD0076C385 /* DatePickerCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A6533A19C949CD0076C385 /* DatePickerCellDelegate.swift */; };
@@ -381,6 +383,8 @@
 		4975C3FF19C29CFD005FE994 /* CategoryPickerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryPickerCell.xib; sourceTree = "<group>"; };
 		4975C40119C29D10005FE994 /* CategoryPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerCell.swift; sourceTree = "<group>"; };
 		4975C40319C2C5DA005FE994 /* CategoryPickerCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryPickerCellDelegate.swift; sourceTree = "<group>"; };
+		49819A381A382DC00019ED41 /* CustomPeriodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPeriodCell.xib; sourceTree = "<group>"; };
+		49819A3A1A382DD30019ED41 /* CustomPeriodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPeriodCell.swift; sourceTree = "<group>"; };
 		49A5599419CBCACF0040843A /* ColorPickerHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerHeader.swift; sourceTree = "<group>"; };
 		49A5599619CBCADB0040843A /* ColorPickerHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorPickerHeader.xib; sourceTree = "<group>"; };
 		49A6533A19C949CD0076C385 /* DatePickerCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCellDelegate.swift; sourceTree = "<group>"; };
@@ -707,6 +711,7 @@
 		26743AA019B31AF70027EE94 /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				49819A371A382D4C0019ED41 /* CustomPeriodCell */,
 				26195B5119F9186700212D27 /* DayPickerCell */,
 				261815CE19E1B68D00065E51 /* QuickDefaultCell */,
 				49ED5E7F19DD27DA00B1B4E7 /* ExpenseCell */,
@@ -898,6 +903,15 @@
 			path = CategoryPickerCell;
 			sourceTree = "<group>";
 		};
+		49819A371A382D4C0019ED41 /* CustomPeriodCell */ = {
+			isa = PBXGroup;
+			children = (
+				49819A381A382DC00019ED41 /* CustomPeriodCell.xib */,
+				49819A3A1A382DD30019ED41 /* CustomPeriodCell.swift */,
+			);
+			path = CustomPeriodCell;
+			sourceTree = "<group>";
+		};
 		49A5599319CBCABB0040843A /* Collection View Reusable Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1016,6 +1030,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2603E75A193C85F9009F9AD6 /* spare-icons.ttf in Resources */,
+				49819A391A382DC00019ED41 /* CustomPeriodCell.xib in Resources */,
 				494555A019AC731900C882CD /* Main.storyboard in Resources */,
 				4932D06819C6D3D3000A9F5E /* generic-launch.png in Resources */,
 				2659EFF71968D5D6005F31E1 /* iPhone.storyboard in Resources */,
@@ -1142,6 +1157,7 @@
 				26743AA519B31C4A0027EE94 /* CategoryHeaderCell.swift in Sources */,
 				26D2D7301969CFB100CCC973 /* SPRCategoryColorCell.m in Sources */,
 				269916DD19FA6C9E00809ED1 /* DayPickerCellDelegate.swift in Sources */,
+				49819A3B1A382DD30019ED41 /* CustomPeriodCell.swift in Sources */,
 				2667328D196AFA9200BB4DBE /* SPRPeriod.m in Sources */,
 				2612C8AF18E847DB00DE2765 /* NSDate+SPR.m in Sources */,
 				4906172E19C95B9000553751 /* StoryboardIDs.swift in Sources */,
