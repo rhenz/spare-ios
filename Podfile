@@ -1,4 +1,6 @@
-platform :ios, '7.0'
+platform :ios, '9.0'
+use_frameworks!
 
-pod 'DraggableCollectionView'
-pod 'M13OrderedDictionary'
+pod 'BNRCoreDataStack'
+pod 'NKOColorPickerView', :path => '/Users/mattquiros/Developer/NKOColorPickerView'
+

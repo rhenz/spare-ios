@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-DraggableCollectionView.xcscheme</key>
+		<key>BNRCoreDataStack.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-M13OrderedDictionary.xcscheme</key>
+		<key>NKOColorPickerView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,17 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>46830AFBF0F8478DBC090D15</key>
+		<key>0F8EFCD4598622EB84D9BD1928DC474F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BCFC6722C7AB40C1B0147DE8</key>
+		<key>698733C4D35F57BFBAEEEF66B2C06C7F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D79156532D384784841AA8DC</key>
+		<key>C1CD1F1DE0F273D90638723EA7A09124</key>
 		<dict>
 			<key>primary</key>
 			<true/>
